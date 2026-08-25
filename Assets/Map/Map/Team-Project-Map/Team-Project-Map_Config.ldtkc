@@ -1,0 +1,34 @@
+{
+    "PixelsPerUnit": 16,
+    "CustomLevelPrefab": {
+        "instanceID": 0
+    },
+    "IntGridValueColorsVisible": false,
+    "UseCompositeCollider": true,
+    "GeometryType": 0,
+    "CreateBackgroundColor": true,
+    "CreateLevelBoundsTrigger": false,
+    "UseParallax": true,
+    "ScaleEntities": true,
+    "IntGridValues": [
+        {
+            "_key": "Yellow_Line_Road_V_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
+            "_key": "Yellow_Line_Road_H_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
+            "_key": "Yellow_Line_Road_Big_V_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        }
+    ],
+    "Entities": []
+}
