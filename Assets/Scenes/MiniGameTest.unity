@@ -425,7 +425,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 84006496}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1664252582}
+        m_TargetAssemblyTypeName: BarricadeMinigameView, Assembly-CSharp
+        m_MethodName: OnFuseClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &84006496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,8 +784,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 23.8892, y: 59.7231}
+  m_SizeDelta: {x: 630.0068, y: 169.4463}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691139397
 MonoBehaviour:
@@ -822,15 +834,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 113
+  m_fontSizeBase: 113
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1060,7 +1072,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 903556809}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1664252582}
+        m_TargetAssemblyTypeName: BarricadeMinigameView, Assembly-CSharp
+        m_MethodName: OnFuseClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &903556809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1612,7 +1636,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1466071051}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1664252582}
+        m_TargetAssemblyTypeName: BarricadeMinigameView, Assembly-CSharp
+        m_MethodName: OnFuseClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1466071051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1799,6 +1835,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1664252581}
+  - component: {fileID: 1664252582}
   m_Layer: 5
   m_Name: Barricade
   m_TagString: Untagged
@@ -1819,10 +1856,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 668263535}
-  - {fileID: 691139396}
   - {fileID: 1268076229}
   - {fileID: 1085131699}
   - {fileID: 1349341557}
+  - {fileID: 691139396}
   m_Father: {fileID: 944809731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1830,6 +1867,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1664252582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664252580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c624d95a158a343bcc80dd8c9a43a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BarricadeMinigameView
+  titleText: {fileID: 668263536}
+  assigneeText: {fileID: 1268076230}
+  resultText: {fileID: 691139397}
+  overloadPanel: {fileID: 1349341558}
+  fuseButtons:
+  - {fileID: 1466071050}
+  - {fileID: 903556808}
+  - {fileID: 84006495}
 --- !u!1 &1748047041
 GameObject:
   m_ObjectHideFlags: 0
