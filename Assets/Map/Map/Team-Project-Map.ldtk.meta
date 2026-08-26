@@ -26,6 +26,10 @@ ScriptedImporter:
     _asset: {instanceID: 0}
   - _key: Yellow_Line_Road_Big_V_1
     _asset: {instanceID: 0}
+  - _key: Yellow_Line_Road_Big_H_1
+    _asset: {instanceID: 0}
+  - _key: Crosswork_1
+    _asset: {instanceID: 0}
   _entities: []
   _enumGenerate: 0
   _enumPath: 
@@ -38,3 +42,7 @@ ScriptedImporter:
     _ldtkLayerOrder: -1
   - _ldtkLayerName: Yellow_Line_Road_Big_V
     _ldtkLayerOrder: -2
+  - _ldtkLayerName: Yellow_Line_Road_Big_H
+    _ldtkLayerOrder: -3
+  - _ldtkLayerName: Crosswork
+    _ldtkLayerOrder: -4
