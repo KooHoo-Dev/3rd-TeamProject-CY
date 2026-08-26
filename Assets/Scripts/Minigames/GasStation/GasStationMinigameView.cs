@@ -4,7 +4,7 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 
-public class GasStationMinigame : MonoBehaviour
+public class GasStationMinigameView : MonoBehaviour
 {
     [Header("UI")]
     public Image gaugeFill;          
