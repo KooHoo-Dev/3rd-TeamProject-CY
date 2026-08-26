@@ -20,6 +20,9 @@ public class VehicleController : MonoBehaviour
         
     private Rigidbody2D rb;
     private IVehicleInputSource inputSource;
+    private bool inputEnabled = true;
+    
+    public void SetInputEnabled(bool value) => inputEnabled = value;
 
     private void Awake()
     {
@@ -34,8 +37,8 @@ public class VehicleController : MonoBehaviour
     {
         if (inputSource == null) return;
 
-        VehicleInput input = inputSource.Read();
-
+        VehicleInput input = inputEnabled ? inputSource.Read() : default;
+        
         ApplyEngine(input);
         ApplyBrake(input);
         ApplySteering(input);
