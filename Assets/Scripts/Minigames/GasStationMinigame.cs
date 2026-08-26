@@ -13,6 +13,7 @@ public class GasStationMinigame : MonoBehaviour
     public TextMeshProUGUI titleText;       
     public TextMeshProUGUI assigneeText;    
     public TextMeshProUGUI resultText;
+    public RectTransform fuelButtonRect;
     
     [Header("Settings")]
     public float fillSpeed = 0.1f;   // 1초에 오르는 양
@@ -39,44 +40,51 @@ public class GasStationMinigame : MonoBehaviour
         resultText.transform.localScale = Vector3.zero;
     }
 
-    private void Update()
+    public void OnFuelButtonDown()
     {
         if (isFailed) return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isPressing = true;
-            fuelNozzle.rectTransform.DOKill();
-            fuelNozzle.rectTransform.DOAnchorPos(nozzleActivePos, nozzleMoveDuration).SetEase(Ease.OutQuad);
-        }
+        isPressing = true;
+        
+        fuelNozzle.rectTransform.DOKill();
+        fuelNozzle.rectTransform.DOAnchorPos(nozzleActivePos, nozzleMoveDuration).SetEase(Ease.OutQuad);
+        
+        fuelButtonRect.DOKill();
+        fuelButtonRect.DOScale(Vector3.one * 0.9f, 0.1f);
+    }
+    
+    public void OnFuelButtonUp()
+    {
+        if (isFailed || !isPressing) return;
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        isPressing = false;
+        
+        RetractNozzleButton();
+        CheckResult();
+    }
+
+    private void Update()
+    {
+        if (isFailed || !isPressing) return;
+        
+        gaugeFill.fillAmount += fillSpeed * Time.deltaTime;
+        
+        if (gaugeFill.fillAmount >= 1.0f)
         {
             isPressing = false;
-            RetractNozzle();
-            
-            CheckResult();
+            RetractNozzleButton();
+            StartCoroutine(FailRoutine());
         }
-
-        if (isPressing)
-        {
-            gaugeFill.fillAmount += fillSpeed * Time.deltaTime;
-
-            if (gaugeFill.fillAmount >= 1.0f)
-            {
-                isPressing = false;
-                RetractNozzle();;
-                StartCoroutine(FailRoutine());
-            }
-        }
-        
     }
 
     
-    private void RetractNozzle()
+    private void RetractNozzleButton()
     {
         fuelNozzle.rectTransform.DOKill();
         fuelNozzle.rectTransform.DOAnchorPos(nozzleIdlePos, nozzleMoveDuration).SetEase(Ease.OutQuad);
+        
+        fuelButtonRect.DOKill();
+        fuelButtonRect.DOScale(Vector3.one, 0.1f);
     }
     
     private void CheckResult()
