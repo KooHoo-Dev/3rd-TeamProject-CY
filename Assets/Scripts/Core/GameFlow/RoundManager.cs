@@ -18,11 +18,15 @@ public class RoundManager : MonoBehaviour
     public bool IsFinished => finished;
     
     private bool finished;
+    private VehicleDamage damage;
     
     private void Start()
     {
         foreach (CheckpointZone zone in checkpoints)
             zone.Bind(this);
+        
+        damage = vehicle.GetComponent<VehicleDamage>();
+        damage?.Bind(this);
 
         StartRound();
     }
@@ -33,6 +37,7 @@ public class RoundManager : MonoBehaviour
         ClearedCount = 0;
 
         MoveVehicleToStart();
+        damage?.ResetDurability();
         vehicle.SetInputEnabled(true);
         timer.StartRound();
 

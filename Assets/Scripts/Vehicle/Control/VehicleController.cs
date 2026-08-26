@@ -20,9 +20,12 @@ public class VehicleController : MonoBehaviour
         
     private Rigidbody2D rb;
     private IVehicleInputSource inputSource;
+    
     private bool inputEnabled = true;
+    private float speedMultiplier = 1f;
     
     public void SetInputEnabled(bool value) => inputEnabled = value;
+    public void SetSpeedMultiplier(float value) => speedMultiplier = Mathf.Clamp01(value);
 
     private void Awake()
     {
