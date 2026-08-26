@@ -23,6 +23,7 @@ public class CheckpointZone: MonoBehaviour
     private BoxCollider2D vehicleBox;
     private bool completed; // 이미 완료한 미션은 다시 진행 못함
     private VehicleController lockedVehicle;
+    private RoundManager roundManager;
 
     private void Reset()
     {
@@ -108,5 +109,8 @@ public class CheckpointZone: MonoBehaviour
         }
 
         Debug.Log($"[Checkpoint] {missionType} 미션 완료", this);
+        roundManager?.OnCheckpointCleared(this);  
     }
+    
+    public void Bind(RoundManager manager) => roundManager = manager;
 }
