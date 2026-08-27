@@ -7,6 +7,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 namespace HelloServer
 {
@@ -175,6 +176,7 @@ namespace HelloServer
                 case "leave": OnLeave(JsonConvert.DeserializeObject<LeaveMessage>(json)); break;
                 case "state": OnState(JsonConvert.DeserializeObject<StateMessage>(json)); break;
                 case "chat": OnChat(JsonConvert.DeserializeObject<ChatMessage>(json)); break;
+                case "scene_change" : OnSceneChange(JsonConvert.DeserializeObject<SceneChangeMessage>(json)); break;
                 default: Debug.Log($"[방] 등록되지 않은 종류(type) : {type}"); break;
             }
             
@@ -247,6 +249,15 @@ namespace HelloServer
             Debug.Log($"[방] {message.NickName}({message.Id}) : {message.Text}");
         }
 
+        private void OnSceneChange(SceneChangeMessage message)
+        {
+            if (message == null || string.IsNullOrEmpty(message.SceneName)) return;
+            // Build Setting에 등록되지 않은 씬의 경우
+            if (Application.CanStreamedLevelBeLoaded(message.SceneName) == false) return;
+
+            SceneManager.LoadScene(message.SceneName);
+        }
+        
         private void Spawn(User user)
         {
             // 이미 있으면 만들지 않는다. welcome 과 join 이 겹칠 수 있다.
@@ -319,6 +330,15 @@ namespace HelloServer
             }
         }
 
+        public void RequestSceneChage(string sceneName)
+        {
+            if (Me == null) return;
+
+            if (string.IsNullOrEmpty(sceneName)) return;
+
+            SendAsync(new SceneChangeRequestMessage { SceneName = sceneName.Trim() }).Forget();
+        }
+        
         #endregion
 
         private static Color ColorOf(string id)

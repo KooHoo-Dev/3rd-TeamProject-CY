@@ -40,6 +40,12 @@
         public float Y { get; set; }
     }
 
+    public class SceneChangeRequestMessage
+    {
+        public string Type { get; set; } = "scene_change_request";
+        public string SceneName { get; set; }
+    }
+    
     #endregion
 
     #region 서버 -> 클라이언트
@@ -80,6 +86,12 @@
     {
         public string Type { get; set; } = "state";
         public PlayerState[] States { get; set; }
+    }
+    
+    public class SceneChangeMessage
+    {
+        public string Type { get; set; } = "scene_change";
+        public string SceneName { get; set; }
     }
 
     #endregion
