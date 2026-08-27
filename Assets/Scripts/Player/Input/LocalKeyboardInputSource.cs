@@ -3,6 +3,13 @@ using UnityEngine.InputSystem;
 
 public class LocalKeyboardInputSource : MonoBehaviour, IVehicleInputSource
 {
+    [Header("역할")]
+    [SerializeField] private VehicleRole role = VehicleRole.Handle;
+    [SerializeField] private bool readAllRoles = true;
+    
+    public VehicleRole Role => role;
+    public VehicleInput Read() => current;
+    
     [SerializeField] private VehicleInput current;
     private Gear gear = Gear.N;
 
@@ -19,14 +26,29 @@ public class LocalKeyboardInputSource : MonoBehaviour, IVehicleInputSource
         if (kb.downArrowKey.wasPressedThisFrame) gear = Gear.R;
         if (kb.leftArrowKey.wasPressedThisFrame) gear = Gear.N;
 
-        current = new VehicleInput
+        VehicleInput full = new VehicleInput
         {
             Steer = steer,
             Accel = kb.spaceKey.isPressed ? 1f : 0f,
             Brake = kb.kKey.isPressed ? 1f : 0f,
             CurrentGear = gear,
         };
+        
+        current = readAllRoles ? full : MaskToRole(full);
     }
 
-    public VehicleInput Read() => current;
+    /// <summary>자기 역할이 담당하는 필드만 남기고 나머지는 비운다.</summary>
+    private VehicleInput MaskToRole(VehicleInput full)
+    {
+        VehicleInput masked = default;
+
+        switch (role)
+        {
+            case VehicleRole.Handle: masked.Steer       = full.Steer;       break;
+            case VehicleRole.Accel:  masked.Accel       = full.Accel;       break;
+            case VehicleRole.Brake:  masked.Brake       = full.Brake;       break;
+            case VehicleRole.Gear:   masked.CurrentGear = full.CurrentGear; break;
+        }
+        return masked;
+    }
 }

@@ -1731,7 +1731,7 @@ GameObject:
   - component: {fileID: 830314984}
   - component: {fileID: 830314983}
   m_Layer: 0
-  m_Name: Checkpoint_1 (2)
+  m_Name: Checkpoint_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1886,6 +1886,7 @@ GameObject:
   - component: {fileID: 957076526}
   - component: {fileID: 957076525}
   - component: {fileID: 957076528}
+  - component: {fileID: 957076529}
   - component: {fileID: 957076524}
   - component: {fileID: 957076523}
   m_Layer: 0
@@ -2078,6 +2079,25 @@ MonoBehaviour:
   turnRate: 180
   turnSpeedThreshold: 4
   sideFriction: 0.9
+--- !u!114 &957076529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957076522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9c170d74a0420e8992e6fb1fd73535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleDamage
+  maxDurability: 100
+  ignoreSpeed: 3
+  damagePerSpeed: 4
+  minSpeedMultiplier: 0.5
+  onDurabilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1005451358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,7 +2813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9634855e62934e7ea63edb7b0bfa9647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoundTimer
-  roundDuration: 20
+  roundDuration: 20000
   onTimeExpired:
     m_PersistentCalls:
       m_Calls:
@@ -3315,7 +3335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29956fcd0c0a49fd843cb713ce69f03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestinationZone
-  roundManager: {fileID: 0}
+  roundManager: {fileID: 1284254694}
 --- !u!212 &2144647184
 SpriteRenderer:
   serializedVersion: 2

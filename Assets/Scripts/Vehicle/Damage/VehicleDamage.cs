@@ -48,6 +48,7 @@ public class VehicleDamage: MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!Session.IsHost) return;
         if (IsDestroyed) return;
             
         // 충돌 직전의 상대 속도. 벽은 정지해 있으므로 사실상 차의 속도
