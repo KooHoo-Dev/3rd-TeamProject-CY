@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class VehicleCamera : MonoBehaviour
+namespace CY.Vehicle
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private float smoothTime = 0.15f;
-    
-    private Vector3 velocity;
-
-    private void LateUpdate()
+    public class VehicleCamera : MonoBehaviour
     {
-        if (target == null) return;
-        
-        Vector3 desired = new Vector3(target.position.x, target.position.y, transform.position.z);
-        transform.position = Vector3.SmoothDamp(transform.position, desired, ref velocity, smoothTime);
+        [SerializeField] private Transform target;
+        [SerializeField] private float smoothTime = 0.15f;
+
+        private Vector3 velocity;
+
+        private void LateUpdate()
+        {
+            if (target == null) return;
+
+            Vector3 desired = new Vector3(target.position.x, target.position.y, transform.position.z);
+            transform.position = Vector3.SmoothDamp(transform.position, desired, ref velocity, smoothTime);
+        }
     }
 }
