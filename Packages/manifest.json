@@ -62,6 +62,9 @@
       "url": "https://package.openupm.com",
       "scopes": [
         "com.cysharp.unitask"
+      ]
+    },
+    {
       "name": "LDtk",
       "url": "https://package.openupm.com",
       "scopes": [
