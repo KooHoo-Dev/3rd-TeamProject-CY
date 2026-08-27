@@ -30,6 +30,11 @@ MonoBehaviour:
     m_Compliance:
       m_Status: 0
       m_Violations: []
+  - m_Id: scoped:project:UniTask
+    m_Name: UniTask
+    m_Url: https://package.openupm.com
+    m_Scopes:
+    - com.cysharp.unitask
   - m_Id: scoped:project:LDtk
     m_Name: LDtk
     m_Url: https://package.openupm.com
@@ -41,6 +46,7 @@ MonoBehaviour:
     m_Compliance:
       m_Status: 0
       m_Violations: []
+  m_UserSelectedRegistryName: UniTask
   m_UserSelectedRegistryName: LDtk
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
