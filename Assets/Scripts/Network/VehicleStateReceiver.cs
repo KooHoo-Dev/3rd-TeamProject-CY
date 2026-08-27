@@ -1,44 +1,47 @@
 using UnityEngine;
 
-public struct VehicleSnapshot
+namespace CY.Network
 {
-    public Vector2 Position;
-    public float   Rotation;
-    public Vector2 Velocity;
-}
-
-public class VehicleStateReceiver : MonoBehaviour
-{
-    [SerializeField] private float positionSmoothTime  = 0.08f;
-    [SerializeField] private float rotationSmoothSpeed = 720f;
-    
-    private Vector2 targetPosition;
-    private float   targetRotation;
-    private Vector2 smoothVelocity;
-    private bool    hasSnapshot;
-
-    public void ApplySnapshot(VehicleSnapshot snapshot)
+    public struct VehicleSnapshot
     {
-        targetPosition = snapshot.Position;
-        targetRotation = snapshot.Rotation;
-        hasSnapshot    = true;
+        public Vector2 Position;
+        public float Rotation;
+        public Vector2 Velocity;
     }
-    
-    private void Awake()
+
+    public class VehicleStateReceiver : MonoBehaviour
     {
-        if (Session.IsHost)
+        [SerializeField] private float positionSmoothTime = 0.08f;
+        [SerializeField] private float rotationSmoothSpeed = 720f;
+
+        private Vector2 targetPosition;
+        private float targetRotation;
+        private Vector2 smoothVelocity;
+        private bool hasSnapshot;
+
+        public void ApplySnapshot(VehicleSnapshot snapshot)
         {
-            enabled = false;      // 호스트는 물리로 직접 움직인다
-            return;
+            targetPosition = snapshot.Position;
+            targetRotation = snapshot.Rotation;
+            hasSnapshot = true;
         }
-        
-        // 비호스트는 물리를 끄고 받은 값으로만 움직인다
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null) rb.simulated = false;
-    }
 
-    private void Update()
-    {
-        if (!hasSnapshot) return;
+        private void Awake()
+        {
+            if (Session.IsHost)
+            {
+                enabled = false; // 호스트는 물리로 직접 움직인다
+                return;
+            }
+
+            // 비호스트는 물리를 끄고 받은 값으로만 움직인다
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null) rb.simulated = false;
+        }
+
+        private void Update()
+        {
+            if (!hasSnapshot) return;
+        }
     }
 }
