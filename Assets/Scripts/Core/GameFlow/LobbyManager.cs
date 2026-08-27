@@ -20,6 +20,6 @@ public class LobbyManager : MonoBehaviour
             return;
         }
         
-        roomClient.RequestSceneChage(sceneName);
+        roomClient.RequestSceneChange(sceneName);
     }
 }

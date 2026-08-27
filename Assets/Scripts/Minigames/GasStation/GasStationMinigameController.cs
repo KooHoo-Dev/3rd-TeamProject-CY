@@ -1,8 +1,8 @@
 using UnityEngine;
+using CY.Network;
 
 namespace CY.Minigame
 {
-
     public class MiniGameStartedMessage
     {
         public string MiniGameType;
@@ -19,23 +19,26 @@ namespace CY.Minigame
     public class GasStationMinigameController : MonoBehaviour
     {
         private GasStationMinigameView view;
-        //private RoomClient roomClient;
+        private NetworkSession session;
 
         private bool IsOperator;
         private bool IsActive;
         private bool CanSendInput;
 
-        private string myUserId = "임시_로컬_아이디";
+        private string myUserId;
 
         private void Awake()
         {
             view = GetComponent<GasStationMinigameView>();
-            //roomClient = FindObjectOfType<RoomClient>();
-
-            //if (roomClient == null)
+            session = NetworkSession.Instance;
+            
+            if (session.Me == null)
             {
-                Debug.LogWarning("씬에 RoomClient가 없습니다. 네트워크 연동 시 확인해주세요.");
+                Debug.LogWarning("NetworkSession은 존재하지만 서버에 참여하지 않은 상태입니다.");
+                return;
             }
+
+            myUserId = session.Me.Id;
         }
 
         private void Start()

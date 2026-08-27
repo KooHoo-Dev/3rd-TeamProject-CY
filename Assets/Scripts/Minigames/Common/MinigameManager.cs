@@ -1,18 +1,19 @@
-using System;
+using CY.Network;
+using HelloServer;
 using UnityEngine;
 
 namespace CY.Minigame
 {
     public class MinigameManager : MonoBehaviour
     {
-        //private RoomClient roomClient;
+        private NetworkSession session;
         private bool isInsideFuelZone = false;
 
         public string CurrentMiniGameType { get; private set; }
 
         public void Awake()
         {
-            //roomClient = FindObjectOfType<RoomClient>();
+            session = NetworkSession.Instance;
         }
 
         public void OnTriggerEnter(Collider other)
