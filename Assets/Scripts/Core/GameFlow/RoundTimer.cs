@@ -43,6 +43,7 @@ public class RoundTimer: MonoBehaviour
 
     private void Update()
     {
+        if (!Session.IsHost) return;
         if (!isRunning) return;
         
         remainingTime -= Time.deltaTime;

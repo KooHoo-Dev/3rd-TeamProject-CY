@@ -38,6 +38,7 @@ public class VehicleController : MonoBehaviour
     
     private void FixedUpdate()
     {
+        if (!Session.IsHost) return;
         if (inputSource == null) return;
 
         VehicleInput input = inputEnabled ? inputSource.Read() : default;

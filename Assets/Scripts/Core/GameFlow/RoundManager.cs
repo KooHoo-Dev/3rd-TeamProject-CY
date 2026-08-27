@@ -22,6 +22,8 @@ public class RoundManager : MonoBehaviour
     
     private void Start()
     {
+        if (!Session.IsHost) { enabled = false; return; }
+        
         foreach (CheckpointZone zone in checkpoints)
             zone.Bind(this);
         

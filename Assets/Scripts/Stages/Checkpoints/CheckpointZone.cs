@@ -62,6 +62,7 @@ public class CheckpointZone: MonoBehaviour
 
     private void Update()
     {
+        if (!Session.IsHost) return;
         if (completed) return;
         if (vehicleBody == null) return;
         if (vehicleInput.Read().CurrentGear != Gear.N) return;
