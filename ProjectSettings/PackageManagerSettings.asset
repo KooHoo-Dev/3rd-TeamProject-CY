@@ -35,6 +35,12 @@ MonoBehaviour:
     m_Url: https://package.openupm.com
     m_Scopes:
     - com.cysharp.unitask
+    m_IsDefault: 0
+    m_Capabilities: 0
+    m_ConfigSource: 4
+    m_Compliance:
+      m_Status: 0
+      m_Violations: []
   - m_Id: scoped:project:LDtk
     m_Name: LDtk
     m_Url: https://package.openupm.com
@@ -47,11 +53,10 @@ MonoBehaviour:
       m_Status: 0
       m_Violations: []
   m_UserSelectedRegistryName: UniTask
-  m_UserSelectedRegistryName: LDtk
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -900
-    m_OriginalInstanceId: -902
+    m_UserModificationsInstanceId: -896
+    m_OriginalInstanceId: -898
   m_LoadAssets: 0
