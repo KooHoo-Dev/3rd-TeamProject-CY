@@ -142,7 +142,7 @@ namespace HelloServer
                 await UniTask.Delay(delay, cancellationToken: destroyCancellationToken);
 
                 // 아직 번호를 못 받았으면 보낼 것이 없다.
-                if (Me == null) continue;
+                if (Me == null || token.IsCancellationRequested) continue;
 
                 Vector2 position = localPlayer.transform.position;
 

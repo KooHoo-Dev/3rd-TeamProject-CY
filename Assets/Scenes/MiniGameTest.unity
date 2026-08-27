@@ -201,19 +201,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 20550064}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1748047042}
-        m_TargetAssemblyTypeName: MinigameUI, Assembly-CSharp
-        m_MethodName: HideMinigameUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &20550064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,6 +950,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694dda1593c98484c8b59a7a92b1b2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Minigame.MinigameManager
+  gasStationMinigameController: {fileID: 2037806463}
+  minigameUI: {fileID: 1748047042}
+  requestTemporaryMiniGameOnStart: 1
+  temporaryMiniGameType: fuel
 --- !u!1 &804532866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,19 +2186,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1947093033}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1748047042}
-        m_TargetAssemblyTypeName: MinigameUI, Assembly-CSharp
-        m_MethodName: ShowMinigameUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1947093033
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,8 @@ namespace CY.Minigame
 {
     public class GasStationMinigameView : MonoBehaviour
     {
-        [Header("UI")] public Image gaugeFill;
+        [Header("UI")] 
+        public Image gaugeFill;
         public Image fuelNozzle;
 
         public TextMeshProUGUI titleText;
@@ -16,7 +17,8 @@ namespace CY.Minigame
         public TextMeshProUGUI resultText;
         public RectTransform fuelButtonRect;
 
-        [Header("Settings")] public float fillSpeed = 0.1f; // 1초에 오르는 양
+        [Header("Settings")] 
+        public float fillSpeed = 0.1f; // 1초에 오르는 양
         public float nozzleMoveDistance = 50f;
         public float nozzleMoveDuration = 0.2f;
 
@@ -41,17 +43,21 @@ namespace CY.Minigame
             ResetView();
 
             fuelButtonRect.gameObject.SetActive(isOperator);
+            assigneeText.text = isOperator
+                ? "Assignee : You"
+                : "Assignee : OtherPlayer";
         }
 
 
         public void ApplyFuelState(float gaugePercent, bool isPressed)
         {
             // 서버에서 오는 게이지 퍼센트(0~100)를 fillAmount(0~1) 비율로 변환
-            gaugeFill.fillAmount = gaugePercent / 100f;
+            gaugeFill.fillAmount = Mathf.Clamp01(gaugePercent / 100f);
 
             if (isPressed && isCurrentlyPressed == false)
             {
                 isCurrentlyPressed = true;
+                
                 fuelNozzle.rectTransform.DOKill();
                 fuelNozzle.rectTransform.DOAnchorPos(nozzleActivePos, nozzleMoveDuration).SetEase(Ease.OutQuad);
 
@@ -85,10 +91,13 @@ namespace CY.Minigame
         public void ResetView()
         {
             StopAllCoroutines();
+            
             gaugeFill.color = originalGaugeColor;
             gaugeFill.fillAmount = 0f;
+            
             resultText.transform.localScale = Vector3.zero;
             isCurrentlyPressed = false;
+            
             RetractNozzleButton();
         }
 
@@ -114,6 +123,7 @@ namespace CY.Minigame
             gaugeFill.fillAmount = 0f;
             gaugeFill.color = originalGaugeColor;
 
+            resultText.transform.DOKill();
             resultText.transform.DOScale(Vector3.zero, 0.2f);
 
         }
@@ -123,6 +133,7 @@ namespace CY.Minigame
             resultText.text = message;
             resultText.color = color;
 
+            resultText.transform.DOKill();
             resultText.transform.localScale = Vector3.zero;
             resultText.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.OutBack);
         }

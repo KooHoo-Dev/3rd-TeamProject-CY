@@ -1,29 +1,27 @@
 using UnityEngine;
+using System;
 using CY.Network;
+using CY.Stages;
+using Cysharp.Threading.Tasks;
+using HelloServer;
 
 namespace CY.Minigame
 {
-    public class MiniGameStartedMessage
-    {
-        public string MiniGameType;
-        public string OperatorId;
-    }
-
-    public class FuelStateMessage
-    {
-        public float GaugePercent;
-        public bool IsPressed;
-    }
-
     [RequireComponent(typeof(GasStationMinigameView))]
     public class GasStationMinigameController : MonoBehaviour
     {
+        private const string FuelMiniGameType = "fuel";
+        private const float CompletedDisplaySeconds = 2f;
+        
         private GasStationMinigameView view;
         private NetworkSession session;
+        private Coroutine completedRoutine;
 
         private bool IsOperator;
         private bool IsActive;
         private bool CanSendInput;
+
+        public event Action MinigameEnded;
 
         private string myUserId;
 
@@ -31,14 +29,6 @@ namespace CY.Minigame
         {
             view = GetComponent<GasStationMinigameView>();
             session = NetworkSession.Instance;
-            
-            if (session.Me == null)
-            {
-                Debug.LogWarning("NetworkSession은 존재하지만 서버에 참여하지 않은 상태입니다.");
-                return;
-            }
-
-            myUserId = session.Me.Id;
         }
 
         private void Start()
@@ -48,29 +38,32 @@ namespace CY.Minigame
 
         public void SendFuelPress()
         {
-            if (!IsActive || !IsOperator || !CanSendInput)
-                return;
+            if (!IsActive || !IsOperator || !CanSendInput) return;
 
-            //roomClient.SendFuelPress();
+            session.SendAsync(new TypeOnly { Type = "fuel_press" }).Forget();
         }
 
         public void SendFuelRelease()
         {
-            if (!IsActive || !IsOperator || !CanSendInput)
-                return;
+            if (!IsActive || !IsOperator || !CanSendInput) return;
 
-            //roomClient.SendFuelRelease();
+            session.SendAsync(new TypeOnly { Type = "fuel_release" }).Forget();
         }
 
         public void HandleMiniGameStarted(MiniGameStartedMessage message)
         {
-            if (message.MiniGameType != "fuel") return;
-
+            if (message == null || message.MiniGameType != FuelMiniGameType) return;
+            
             ResetState();
+
+            if (session == null || session.Me == null)
+            {
+                Debug.LogWarning("[미니게임] 내 사용자 ID가 없어 담당자를 판별할 수 없습니다.");
+                return;
+            }
+            
             IsActive = true;
-
-            IsOperator = (myUserId == message.OperatorId);
-
+            IsOperator = session.Me.Id == message.OperatorId;
             CanSendInput = IsOperator;
 
             view.Begin(IsOperator);
@@ -78,47 +71,68 @@ namespace CY.Minigame
 
         public void HandleFuelState(FuelStateMessage message)
         {
-            if (!IsActive) return;
+            if (IsActive == false || message == null) return;
 
             view.ApplyFuelState(message.GaugePercent, message.IsPressed);
-
         }
 
         public void HandleFuelAttemptFailed()
         {
             if (!IsActive) return;
 
+            CanSendInput = IsOperator;
             view.ApplyAttemptFailed();
-
         }
 
         public void HandleFuelCompleted()
         {
-            if (!IsActive) return;
+            if (!IsActive || completedRoutine != null) return;
 
             CanSendInput = false;
             view.ApplyCompleted();
 
+            completedRoutine = StartCoroutine(FinishAfterCompletedRoutine());
         }
 
         public void HandleGameAborted()
         {
             if (!IsActive) return;
 
+            StopCompletedRoutine();
+            
             CanSendInput = false;
+            IsActive = false;
+            IsOperator = false;
+            
             view.ApplyAborted();
-            ResetState();
-
+            MinigameEnded?.Invoke();
         }
 
+        private System.Collections.IEnumerator FinishAfterCompletedRoutine()
+        {
+            yield return new WaitForSeconds(CompletedDisplaySeconds);
+
+            completedRoutine = null;
+            ResetState();
+            MinigameEnded?.Invoke();
+        }
+        
         private void ResetState()
         {
             IsActive = false;
             IsOperator = false;
             CanSendInput = false;
 
-            if (view != null)
-                view.ResetView();
+            if (view != null) view.ResetView();
+        }
+        
+        private void StopCompletedRoutine()
+        {
+            if (completedRoutine == null)
+                return;
+
+            StopCoroutine(completedRoutine);
+            completedRoutine = null;
         }
     }
 }
