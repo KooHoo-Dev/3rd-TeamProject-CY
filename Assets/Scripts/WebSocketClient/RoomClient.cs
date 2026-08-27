@@ -179,22 +179,6 @@ namespace HelloServer
                 case "scene_change" : OnSceneChange(JsonConvert.DeserializeObject<SceneChangeMessage>(json)); break;
                 default: Debug.Log($"[방] 등록되지 않은 종류(type) : {type}"); break;
             }
-            
-            // === 아래는 수업중 했던 코드 ---
-            
-            // string type = JsonUtility.FromJson<TypeOnly>(json).Type;
-            
-            // switch (type)
-            // {
-            //     case "welcome": OnWelcome(JsonUtility.FromJson<WelcomeMessage>(json)); break;
-            //     case "join": OnJoin(JsonUtility.FromJson<JoinMessage>(json)); break;
-            //     case "leave": OnLeave(JsonUtility.FromJson<LeaveMessage>(json)); break;
-            //     case "state": OnState(JsonUtility.FromJson<StateMessage>(json)); break;
-            //     case "chat": OnChat(JsonUtility.FromJson<ChatMessage>(json)); break;
-            //
-            //     // 모르는 종류는 흘린다. 서버가 먼저 새 소식을 붙여도 여기서 죽지 않게.
-            //     default: Debug.Log($"[방] 등록되지 않은 종류(type) : {type}"); break;
-            // }
         }
 
         private void OnWelcome(WelcomeMessage message)
