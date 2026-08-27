@@ -1,16 +1,39 @@
 using UnityEngine;
 
+[RequireComponent(typeof(GasStationMinigameController))]
 public class GasStationMinigameInput : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private GasStationMinigameController controller;
+    private bool IsPressedLocally;
 
-    // Update is called once per frame
-    void Update()
+    public void Awake()
     {
-        
+        controller = GetComponent<GasStationMinigameController>();
+    }
+    
+    public void NotifyPress()
+    {
+        if (IsPressedLocally) return;
+
+        IsPressedLocally = true; 
+        controller.SendFuelPress(); 
+    }
+    
+    public void NotifyRelease()
+    {
+        if (!IsPressedLocally) return; 
+
+        IsPressedLocally = false; 
+        controller.SendFuelRelease(); 
+    }
+    
+    public void NotifyCancel()
+    {
+        NotifyRelease(); 
+    }
+    
+    public void ResetInputState()
+    {
+        IsPressedLocally = false; 
     }
 }

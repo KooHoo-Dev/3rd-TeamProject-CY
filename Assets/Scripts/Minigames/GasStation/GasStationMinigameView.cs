@@ -27,54 +27,69 @@ public class GasStationMinigameView : MonoBehaviour
     
     private Vector2 nozzleIdlePos;
     private Vector2 nozzleActivePos;
-
-    private void Start()
+    
+    private bool isCurrentlyPressed = false;
+    
+    private void Awake()
     {
-        gaugeFill.fillAmount = 0f;
-        gaugeFill.color = originalGaugeColor;
-        
         nozzleIdlePos = fuelNozzle.rectTransform.anchoredPosition;
-        nozzleActivePos = nozzleIdlePos + new Vector2(nozzleMoveDistance, 0f);
-        
-        resultText.text = "";
-        resultText.transform.localScale = Vector3.zero;
-    }
-
-    public void OnFuelButtonDown()
-    {
-        if (isFailed) return;
-
-        isPressing = true;
-        
-        fuelNozzle.rectTransform.DOKill();
-        fuelNozzle.rectTransform.DOAnchorPos(nozzleActivePos, nozzleMoveDuration).SetEase(Ease.OutQuad);
-        
-        fuelButtonRect.DOKill();
-        fuelButtonRect.DOScale(Vector3.one * 0.9f, 0.1f);
+        nozzleActivePos = nozzleIdlePos + new Vector2(nozzleMoveDistance, 0f); 
     }
     
-    public void OnFuelButtonUp()
+    public void Begin(bool isOperator)
     {
-        if (isFailed || !isPressing) return;
-
-        isPressing = false;
+        ResetView();
         
-        RetractNozzleButton();
-        CheckResult();
+        fuelButtonRect.gameObject.SetActive(isOperator);
     }
-
-    private void Update()
+    
+    
+    public void ApplyFuelState(float gaugePercent, bool isPressed)
     {
-        if (isFailed || !isPressing) return;
+        // 서버에서 오는 게이지 퍼센트(0~100)를 fillAmount(0~1) 비율로 변환
+        gaugeFill.fillAmount = gaugePercent / 100f;
         
-        gaugeFill.fillAmount += fillSpeed * Time.deltaTime;
-        
-        if (gaugeFill.fillAmount >= 1.0f)
+        if (isPressed && isCurrentlyPressed == false)
         {
-            isPressing = false;
-            RetractNozzleButton();
-            StartCoroutine(FailRoutine());
+            isCurrentlyPressed = true;
+            fuelNozzle.rectTransform.DOKill();
+            fuelNozzle.rectTransform.DOAnchorPos(nozzleActivePos, nozzleMoveDuration).SetEase(Ease.OutQuad);
+            
+            fuelButtonRect.DOKill();
+            fuelButtonRect.DOScale(Vector3.one * 0.9f, 0.1f);
         }
+        else if (isPressed == false && isCurrentlyPressed)
+        {
+            isCurrentlyPressed = false;
+            RetractNozzleButton();
+        }
+    }
+    
+    public void ApplyAttemptFailed()
+    {
+        StartCoroutine(FailRoutine());
+    }
+    
+    public void ApplyCompleted()
+    {
+        RetractNozzleButton();
+        ShowResultText("Success!", Color.green);
+    }
+    
+    public void ApplyAborted()
+    {
+        RetractNozzleButton();
+        ShowResultText("Pause", Color.gray);
+    }
+    
+    public void ResetView()
+    {
+        StopAllCoroutines();
+        gaugeFill.color = originalGaugeColor;
+        gaugeFill.fillAmount = 0f;
+        resultText.transform.localScale = Vector3.zero;
+        isCurrentlyPressed = false;
+        RetractNozzleButton();
     }
 
     
@@ -87,22 +102,9 @@ public class GasStationMinigameView : MonoBehaviour
         fuelButtonRect.DOScale(Vector3.one, 0.1f);
     }
     
-    private void CheckResult()
-    {
-        if (gaugeFill.fillAmount >= 0.9f && gaugeFill.fillAmount <= 1.0f)
-        {
-            ShowResultText("Success!", Color.green);
-            Debug.Log("주유 성공! 미션 클리어!");
-        }
-        else
-        {
-            StartCoroutine(FailRoutine());
-        }
-    }
 
     private IEnumerator FailRoutine()
     {
-        isFailed = true;
         gaugeFill.color = Color.red;
         
         ShowResultText("Fail!", Color.red);
@@ -113,9 +115,6 @@ public class GasStationMinigameView : MonoBehaviour
         gaugeFill.color = originalGaugeColor;
         
         resultText.transform.DOScale(Vector3.zero, 0.2f);
-        
-        isFailed = false;
-        
         
     }
 
