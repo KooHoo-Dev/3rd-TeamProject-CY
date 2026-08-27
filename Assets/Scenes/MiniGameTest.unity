@@ -2253,7 +2253,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 159407c6b2b39fd44ad2c531884961f0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GasStationMinigame
+  m_EditorClassIdentifier: Assembly-CSharp::GasStationMinigameView
   gaugeFill: {fileID: 779867339}
   fuelNozzle: {fileID: 776996815}
   titleText: {fileID: 2041584744}
