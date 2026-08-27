@@ -1,109 +1,122 @@
 using UnityEngine;
 
-public class MiniGameStartedMessage { public string MiniGameType; public string OperatorId; }
-public class FuelStateMessage { public float GaugePercent; public bool IsPressed; }
-
-[RequireComponent(typeof(GasStationMinigameView))]
-public class GasStationMinigameController : MonoBehaviour
+namespace CY.Minigame
 {
-    private GasStationMinigameView view;
-    //private RoomClient roomClient;
 
-    private bool IsOperator;
-    private bool IsActive;
-    private bool CanSendInput;
-    
-    private string myUserId = "임시_로컬_아이디";
-
-    private void Awake()
+    public class MiniGameStartedMessage
     {
-        view = GetComponent<GasStationMinigameView>();
-        //roomClient = FindObjectOfType<RoomClient>();
-        
-        //if (roomClient == null)
+        public string MiniGameType;
+        public string OperatorId;
+    }
+
+    public class FuelStateMessage
+    {
+        public float GaugePercent;
+        public bool IsPressed;
+    }
+
+    [RequireComponent(typeof(GasStationMinigameView))]
+    public class GasStationMinigameController : MonoBehaviour
+    {
+        private GasStationMinigameView view;
+        //private RoomClient roomClient;
+
+        private bool IsOperator;
+        private bool IsActive;
+        private bool CanSendInput;
+
+        private string myUserId = "임시_로컬_아이디";
+
+        private void Awake()
         {
-            Debug.LogWarning("씬에 RoomClient가 없습니다. 네트워크 연동 시 확인해주세요.");
+            view = GetComponent<GasStationMinigameView>();
+            //roomClient = FindObjectOfType<RoomClient>();
+
+            //if (roomClient == null)
+            {
+                Debug.LogWarning("씬에 RoomClient가 없습니다. 네트워크 연동 시 확인해주세요.");
+            }
         }
-    }
 
-    private void Start()
-    {
-        ResetState();
-    }
-    
-    public void SendFuelPress()
-    {
-        if (!IsActive || !IsOperator || !CanSendInput)
-            return;
+        private void Start()
+        {
+            ResetState();
+        }
 
-        //roomClient.SendFuelPress();
-    }
+        public void SendFuelPress()
+        {
+            if (!IsActive || !IsOperator || !CanSendInput)
+                return;
 
-    public void SendFuelRelease()
-    {
-        if (!IsActive || !IsOperator || !CanSendInput)
-            return;
+            //roomClient.SendFuelPress();
+        }
 
-        //roomClient.SendFuelRelease();
-    }
+        public void SendFuelRelease()
+        {
+            if (!IsActive || !IsOperator || !CanSendInput)
+                return;
 
-    public void HandleMiniGameStarted(MiniGameStartedMessage message)
-    {
-        if (message.MiniGameType != "fuel") return;
+            //roomClient.SendFuelRelease();
+        }
 
-        ResetState();
-        IsActive = true;
-        
-        IsOperator = (myUserId == message.OperatorId);
-        
-        CanSendInput = IsOperator;
-        
-        view.Begin(IsOperator);
-    }
+        public void HandleMiniGameStarted(MiniGameStartedMessage message)
+        {
+            if (message.MiniGameType != "fuel") return;
 
-    public void HandleFuelState(FuelStateMessage message)
-    {
-        if (!IsActive) return;
-        
-        view.ApplyFuelState(message.GaugePercent, message.IsPressed);
+            ResetState();
+            IsActive = true;
 
-    }
+            IsOperator = (myUserId == message.OperatorId);
 
-    public void HandleFuelAttemptFailed()
-    {
-        if (!IsActive) return;
-        
-        view.ApplyAttemptFailed();
+            CanSendInput = IsOperator;
 
-    }
+            view.Begin(IsOperator);
+        }
 
-    public void HandleFuelCompleted()
-    {
-        if (!IsActive) return;
-        
-        CanSendInput = false;
-        view.ApplyCompleted();
+        public void HandleFuelState(FuelStateMessage message)
+        {
+            if (!IsActive) return;
 
-    }
+            view.ApplyFuelState(message.GaugePercent, message.IsPressed);
 
-    public void HandleGameAborted()
-    {
-        if (!IsActive) return;
-        
-        CanSendInput = false; 
-        view.ApplyAborted(); 
-        ResetState();
+        }
 
-    }
+        public void HandleFuelAttemptFailed()
+        {
+            if (!IsActive) return;
 
-    private void ResetState()
-    {
-        IsActive = false; 
-        IsOperator = false; 
-        CanSendInput = false; 
+            view.ApplyAttemptFailed();
 
-        if (view != null)
-            view.ResetView(); 
+        }
+
+        public void HandleFuelCompleted()
+        {
+            if (!IsActive) return;
+
+            CanSendInput = false;
+            view.ApplyCompleted();
+
+        }
+
+        public void HandleGameAborted()
+        {
+            if (!IsActive) return;
+
+            CanSendInput = false;
+            view.ApplyAborted();
+            ResetState();
+
+        }
+
+        private void ResetState()
+        {
+            IsActive = false;
+            IsOperator = false;
+            CanSendInput = false;
+
+            if (view != null)
+                view.ResetView();
+        }
     }
 }
 
