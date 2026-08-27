@@ -18,8 +18,12 @@ namespace CY.Vehicle
         [Header("충돌 데미지")] [SerializeField] private float ignoreSpeed = 3f; // 이 속도 미만 충돌은 무시
         [SerializeField] private float damagePerSpeed = 4f; // 초과 속도 1당 데미지
 
-        [Header("속도 페널티")] [SerializeField, Range(0f, 1f)]
-        private float minSpeedMultiplier = 0.5f;
+        [Header("속도 페널티 (3단계)")] [SerializeField, Range(0f, 1f)]
+        private float damagedThreshold = 0.4f;
+
+        [SerializeField, Range(0f, 1f)] private float severeThreshold = 0.2f;
+        [SerializeField, Range(0f, 1f)] private float damagedMultiplier = 0.6f;
+        [SerializeField, Range(0f, 1f)] private float severeMultiplier = 0.3f;
 
         [Header("내구도 변경 신호")] [SerializeField] private DurabilityChangedEvent onDurabilityChanged;
 
@@ -73,7 +77,14 @@ namespace CY.Vehicle
 
         private void ApplySpeedPenalty()
         {
-            controller.SetSpeedMultiplier(Mathf.Lerp(minSpeedMultiplier, 1f, DurabilityRatio));
+            float ratio = DurabilityRatio;
+
+            float multiplier =
+                ratio > damagedThreshold ? 1f : // 1단계는 페널티 없음
+                ratio > severeThreshold ? damagedMultiplier :
+                severeMultiplier;
+
+            controller.SetSpeedMultiplier(multiplier);
         }
     }
 }
