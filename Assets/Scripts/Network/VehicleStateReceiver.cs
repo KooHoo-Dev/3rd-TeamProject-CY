@@ -42,6 +42,20 @@ namespace CY.Network
         private void Update()
         {
             if (!hasSnapshot) return;
+
+            transform.position = Vector2.SmoothDamp(
+                transform.position,
+                targetPosition,
+                ref smoothVelocity,
+                positionSmoothTime
+            );
+
+            float angle = Mathf.MoveTowardsAngle(
+                transform.eulerAngles.z,
+                targetRotation,
+                rotationSmoothSpeed * Time.deltaTime
+            );
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
     }
 }
