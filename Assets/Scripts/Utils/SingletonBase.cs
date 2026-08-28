@@ -49,18 +49,25 @@ namespace Jay
 
         protected virtual void Awake()
         {
-            if (instance == null)
-            {
-                instance = this as T;
-                DontDestroyOnLoad(gameObject);
+            T self = this as T;
 
-                OnInitialize();
-                isInitialized = true;
-            }
-            else if (instance != this)
+            if (instance != null && instance != self)
             {
                 Debug.LogWarning($"[Singleton] 중복 인스턴스 감지됨: {gameObject.name} 파괴");
                 Destroy(gameObject);
+                return;
+            }
+
+            instance = self;
+
+            // Instance 프로퍼티가 Awake보다 먼저 이 씬의 컴포넌트를 찾은 경우에도
+            // 반드시 씬 전환 대상에서 제외한다.
+            DontDestroyOnLoad(gameObject);
+
+            if (isInitialized == false)
+            {
+                OnInitialize();
+                isInitialized = true;
             }
         }
 
