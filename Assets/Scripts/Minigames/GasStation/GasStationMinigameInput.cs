@@ -39,5 +39,10 @@ namespace CY.Minigame
         {
             IsPressedLocally = false;
         }
+        
+        private void OnDisable()
+        {
+            NotifyCancel();
+        }
     }
 }
