@@ -1,39 +1,43 @@
 using UnityEngine;
 
-[RequireComponent(typeof(GasStationMinigameController))]
-public class GasStationMinigameInput : MonoBehaviour
+namespace CY.Minigame
 {
-    private GasStationMinigameController controller;
-    private bool IsPressedLocally;
 
-    public void Awake()
+    [RequireComponent(typeof(GasStationMinigameController))]
+    public class GasStationMinigameInput : MonoBehaviour
     {
-        controller = GetComponent<GasStationMinigameController>();
-    }
-    
-    public void NotifyPress()
-    {
-        if (IsPressedLocally) return;
+        private GasStationMinigameController controller;
+        private bool IsPressedLocally;
 
-        IsPressedLocally = true; 
-        controller.SendFuelPress(); 
-    }
-    
-    public void NotifyRelease()
-    {
-        if (!IsPressedLocally) return; 
+        public void Awake()
+        {
+            controller = GetComponent<GasStationMinigameController>();
+        }
 
-        IsPressedLocally = false; 
-        controller.SendFuelRelease(); 
-    }
-    
-    public void NotifyCancel()
-    {
-        NotifyRelease(); 
-    }
-    
-    public void ResetInputState()
-    {
-        IsPressedLocally = false; 
+        public void NotifyPress()
+        {
+            if (IsPressedLocally) return;
+
+            IsPressedLocally = true;
+            controller.SendFuelPress();
+        }
+
+        public void NotifyRelease()
+        {
+            if (!IsPressedLocally) return;
+
+            IsPressedLocally = false;
+            controller.SendFuelRelease();
+        }
+
+        public void NotifyCancel()
+        {
+            NotifyRelease();
+        }
+
+        public void ResetInputState()
+        {
+            IsPressedLocally = false;
+        }
     }
 }

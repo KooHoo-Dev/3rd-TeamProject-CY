@@ -1,4 +1,7 @@
-public interface IVehicleInputSource 
+namespace CY.Vehicle
 {
-    VehicleInput Read();
+    public interface IVehicleInputSource
+    {
+        VehicleInput Read();
+    }
 }
