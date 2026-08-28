@@ -78,7 +78,7 @@ public class BarricadeMinigameView : MonoBehaviour
                 
             if (currentStep >= 3)
             {
-                ShowResultText("Success!", Color.green);
+                ShowResultText("미션 성공!", Color.green);
             }
         }
         else
