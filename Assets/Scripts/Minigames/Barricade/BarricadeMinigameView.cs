@@ -13,6 +13,7 @@ public class BarricadeMinigameView : MonoBehaviour
     public TextMeshProUGUI resultText;
     public Image overloadPanel;
     public Button[] fuseButtons;
+    public Image[] rightCircuits;
     
     private List<int> correctSequence = new List<int>(); // 이번 판의 정답 순서
     private int currentStep = 0; // 현재 맞춰야 할 순서 인덱스 (0~2)
@@ -35,9 +36,14 @@ public class BarricadeMinigameView : MonoBehaviour
         isOverloaded = false;
         overloadPanel.gameObject.SetActive(false);
         
-        foreach(Button btn in fuseButtons) 
+        for (int i = 0; i < 3; i++)
         {
-            btn.GetComponent<Image>().color = fuseOffColor;
+            fuseButtons[i].GetComponent<Image>().color = fuseOffColor;
+            
+            // 오른쪽 회로선 투명도를 0으로 
+            Color c = rightCircuits[i].color;
+            c.a = 0f;
+            rightCircuits[i].color = c;
         }
         
         correctSequence.Clear();
@@ -65,11 +71,14 @@ public class BarricadeMinigameView : MonoBehaviour
         if (fuseIndex == correctSequence[currentStep])
         {
             fuseButtons[fuseIndex].GetComponent<Image>().color = fuseOnColor;
+            
+            rightCircuits[fuseIndex].DOFade(1f, 0.3f);
+            
             currentStep++; // 성공
                 
             if (currentStep >= 3)
             {
-                ShowResultText("Success!", Color.green);
+                ShowResultText("미션 성공!", Color.green);
             }
         }
         else
@@ -82,6 +91,14 @@ public class BarricadeMinigameView : MonoBehaviour
     private IEnumerator OverloadRoutine()
     {
         isOverloaded = true;
+        
+        for (int i = 0; i < 3; i++)
+        {
+            fuseButtons[i].GetComponent<Image>().color = fuseOffColor;
+            
+            rightCircuits[i].DOKill(); // 혹시 진행 중인 애니메이션이 있다면 캔슬
+            rightCircuits[i].DOFade(0f, 0.1f); 
+        }
             
         overloadPanel.gameObject.SetActive(true);
         overloadPanel.color = new Color(1, 0, 0, 0.5f);
@@ -93,11 +110,6 @@ public class BarricadeMinigameView : MonoBehaviour
             
         overloadPanel.gameObject.SetActive(false);
         currentStep = 0;
-            
-        foreach(Button btn in fuseButtons)
-        {
-            btn.GetComponent<Image>().color = fuseOffColor;
-        }
             
         isOverloaded = false;
             
