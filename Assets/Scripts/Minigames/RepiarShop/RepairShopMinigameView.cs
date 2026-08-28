@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class RepairShopMinigameView : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class RepairShopMinigameView : MonoBehaviour
     public Button[] oldScrews;
     public Button[] newScrews;
     
-    public Text resultText;
+    public TextMeshProUGUI resultText;
     
     private Vector2 oldPlateOrigin;
     private Vector2 newPlateOrigin;
