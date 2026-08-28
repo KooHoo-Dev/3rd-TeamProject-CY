@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
-namespace Study.Utilities
+namespace Utilities
 {
     // PC 플랫폼에서 사용하는 키보드 마우스 인풋들 묶어놓은
     // 유틸클래스를 작성해 봅시다.
