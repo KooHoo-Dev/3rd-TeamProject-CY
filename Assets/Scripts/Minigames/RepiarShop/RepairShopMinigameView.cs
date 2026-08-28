@@ -14,6 +14,7 @@ public class RepairShopMinigameView : MonoBehaviour
     public Button[] oldScrews;
     public Button[] newScrews;
     
+    public GameObject trashZone;
     public TextMeshProUGUI resultText;
     
     private Vector2 oldPlateOrigin;
@@ -25,13 +26,10 @@ public class RepairShopMinigameView : MonoBehaviour
         newPlateOrigin = newPlateRect.anchoredPosition;
 
         resultText.gameObject.SetActive(false);
+        if (trashZone != null) trashZone.SetActive(false);
 
         foreach (var screw in oldScrews) screw.gameObject.SetActive(true);
-        foreach (var screw in newScrews)
-        {
-            screw.gameObject.SetActive(false);
-            screw.GetComponent<Image>().color = new Color(1, 1, 1, 0.3f); // 초기엔 반투명
-        }
+        foreach (var screw in newScrews) screw.gameObject.SetActive(false);
     }
     
     public void ApplyOldScrewState(int index, bool isVisible)
@@ -44,7 +42,7 @@ public class RepairShopMinigameView : MonoBehaviour
         if (isFastened)
         {
             newScrews[index].GetComponent<Image>().color = Color.white;
-            newScrews[index].interactable = false;
+            newScrews[index].enabled = false;
         }
     }
     
@@ -57,19 +55,35 @@ public class RepairShopMinigameView : MonoBehaviour
         targetRect.DOAnchorPos(originPos, 0.3f).SetEase(Ease.OutBack);
     }
     
+    public void ShowTrashZone()
+    {
+        if (trashZone != null)
+        {
+            trashZone.SetActive(true);
+            
+            CanvasGroup cg = trashZone.GetComponent<CanvasGroup>();
+            if (cg != null)
+            {
+                cg.alpha = 0f;
+                cg.DOFade(1f, 0.5f);
+            }
+        }
+    }
+    
     public void DiscardOldPlate()
     {
         oldPlateRect.gameObject.SetActive(false);
+        if (trashZone != null) trashZone.SetActive(false);
     }
     
     public void AttachNewPlate(RectTransform targetDropZone)
     {
         newPlateRect.position = targetDropZone.position;
         
-        // 부착 완료 후 새 나사 구멍 활성화
         foreach (var screw in newScrews)
         {
             screw.gameObject.SetActive(true);
+            screw.GetComponent<Image>().color = new Color(1, 1, 1, 0f);
         }
     }
     

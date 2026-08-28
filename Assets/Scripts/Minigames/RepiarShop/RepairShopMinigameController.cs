@@ -26,6 +26,8 @@ public class RepairShopMinigameController : MonoBehaviour
         if (oldScrewsRemoved >= 4)
         {
             isOldPlateDetached = true;
+            
+            view.ShowTrashZone();
         }
     }
     
