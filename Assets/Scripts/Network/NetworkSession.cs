@@ -26,6 +26,11 @@ namespace  CY.Network
          public string RoomCode { get; private set; }
          public bool IsBusy { get; private set; }
          
+         public bool IsConnected => 
+             socket != null 
+             && socket.State == WebSocketState.Open 
+             && Me != null;
+         
          private ClientWebSocket socket;
          private readonly SemaphoreSlim sendLock = new SemaphoreSlim(1, 1);
          
@@ -72,6 +77,8 @@ namespace  CY.Network
              await SendAsync(new HelloMessage { NickName = nickName });
              await ReceiveLoopAsync();
 
+             Debug.LogWarning($"[방] 수신 루프 종료. socket={socket?.State}, me={Me?.Id ?? "null"}");
+             
              IsBusy = false;
              Me = null;
              participants.Clear();
@@ -157,6 +164,15 @@ namespace  CY.Network
          private void OnSceneChange(SceneChangeMessage message)
          {
              if (message == null || string.IsNullOrEmpty(message.SceneName)) return;
+             
+             if (IsConnected == false)
+             {
+                 Debug.LogWarning(
+                     $"[방] 씬 전환 취소: 세션이 유효하지 않습니다. " +
+                     $"socket={socket?.State}, me={Me?.Id ?? "null"}");
+                 return;
+             }
+             
              // Build Setting에 등록되지 않은 씬의 경우
              if (Application.CanStreamedLevelBeLoaded(message.SceneName) == false) return;
 

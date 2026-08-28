@@ -15,8 +15,8 @@ namespace CY.Minigame
 
         private void Awake()
         {
-            visiblePosition = Vector2.zero;
-            hiddenPosition = new Vector2(Screen.width, 0);
+            visiblePosition = minigamePanel.anchoredPosition;
+            hiddenPosition = visiblePosition + Vector2.right * minigamePanel.rect.width;
 
             minigamePanel.anchoredPosition = hiddenPosition;
         }

@@ -40,6 +40,12 @@ namespace CY.Minigame
 
         private void Start()
         {
+            Debug.Log(
+                $"[미니게임] 진입: session={session != null}, " +
+                $"me={session?.Me?.Id ?? "null"}, " +
+                $"connected={session?.IsConnected}");
+
+            
             SendReadyAndRequestTemporaryMiniGameAsync().Forget();
         }
 
