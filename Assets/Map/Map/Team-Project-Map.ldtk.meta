@@ -54,6 +54,52 @@ ScriptedImporter:
     _asset: {instanceID: 0}
   - _key: NoCar_1
     _asset: {fileID: 11400000, guid: 61d2d36f678aa614e867bb53a913c616, type: 2}
+  - _key: Yellow_Line_Road_Big_V_H_1
+    _asset: {instanceID: 0}
+  - _key: Yellow_Line_Road_Big_H_H_1
+    _asset: {instanceID: 0}
+  - _key: Center_White_Line_V_1
+    _asset: {instanceID: 0}
+  - _key: Center_White_Line_H_1
+    _asset: {instanceID: 0}
+  - _key: YLU_1
+    _asset: {instanceID: 0}
+  - _key: YLD_1
+    _asset: {instanceID: 0}
+  - _key: YLL_1
+    _asset: {instanceID: 0}
+  - _key: YLR_1
+    _asset: {instanceID: 0}
+  - _key: YLC_1
+    _asset: {instanceID: 0}
+  - _key: YLC2_1
+    _asset: {instanceID: 0}
+  - _key: Dotted_Line_1
+    _asset: {instanceID: 0}
+  - _key: Dotted_Line_D_1
+    _asset: {instanceID: 0}
+  - _key: Dotted_Line_L_1
+    _asset: {instanceID: 0}
+  - _key: Dotted_Line_R_1
+    _asset: {instanceID: 0}
+  - _key: WLU_1
+    _asset: {instanceID: 0}
+  - _key: WLD_1
+    _asset: {instanceID: 0}
+  - _key: WLL_1
+    _asset: {instanceID: 0}
+  - _key: WLR_1
+    _asset: {instanceID: 0}
+  - _key: WLUL_1
+    _asset: {instanceID: 0}
+  - _key: WLUR_1
+    _asset: {instanceID: 0}
+  - _key: WLDL_1
+    _asset: {instanceID: 0}
+  - _key: WLDR_1
+    _asset: {instanceID: 0}
+  - _key: P_1
+    _asset: {instanceID: 0}
   _entities:
   - _key: Entity
     _asset: {instanceID: 0}
@@ -96,3 +142,49 @@ ScriptedImporter:
     _ldtkLayerOrder: -15
   - _ldtkLayerName: NoCar
     _ldtkLayerOrder: -16
+  - _ldtkLayerName: Yellow_Line_Road_Big_V_H
+    _ldtkLayerOrder: -17
+  - _ldtkLayerName: Yellow_Line_Road_Big_H_H
+    _ldtkLayerOrder: -18
+  - _ldtkLayerName: Center_White_Line_V
+    _ldtkLayerOrder: -19
+  - _ldtkLayerName: Center_White_Line_H
+    _ldtkLayerOrder: -20
+  - _ldtkLayerName: YLU
+    _ldtkLayerOrder: -21
+  - _ldtkLayerName: YLD
+    _ldtkLayerOrder: -22
+  - _ldtkLayerName: YLL
+    _ldtkLayerOrder: -23
+  - _ldtkLayerName: YLR
+    _ldtkLayerOrder: -24
+  - _ldtkLayerName: YLC
+    _ldtkLayerOrder: -25
+  - _ldtkLayerName: YLC2
+    _ldtkLayerOrder: -26
+  - _ldtkLayerName: Dotted_Line
+    _ldtkLayerOrder: -27
+  - _ldtkLayerName: Dotted_Line_D
+    _ldtkLayerOrder: -28
+  - _ldtkLayerName: Dotted_Line_L
+    _ldtkLayerOrder: -29
+  - _ldtkLayerName: Dotted_Line_R
+    _ldtkLayerOrder: -30
+  - _ldtkLayerName: WLU
+    _ldtkLayerOrder: -31
+  - _ldtkLayerName: WLD
+    _ldtkLayerOrder: -32
+  - _ldtkLayerName: WLL
+    _ldtkLayerOrder: -33
+  - _ldtkLayerName: WLR
+    _ldtkLayerOrder: -34
+  - _ldtkLayerName: WLUL
+    _ldtkLayerOrder: -35
+  - _ldtkLayerName: WLUR
+    _ldtkLayerOrder: -36
+  - _ldtkLayerName: WLDL
+    _ldtkLayerOrder: -37
+  - _ldtkLayerName: WLDR
+    _ldtkLayerOrder: -38
+  - _ldtkLayerName: P
+    _ldtkLayerOrder: -39

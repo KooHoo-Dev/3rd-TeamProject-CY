@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: 9608c3265e5cff346bcc5f7ecb590821
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 730284253859655604
+    second: Level_0__Soil_0
+  - first:
+      213: -2753588210832158256
+    second: Level_0__Soil_1
+  - first:
+      213: 4270935867879426539
+    second: Level_0__Soil_2
+  - first:
+      213: 6268530538671136044
+    second: Level_0__Soil_3
+  - first:
+      213: 730939649784662349
+    second: Level_0__Soil_4
+  - first:
+      213: 8520722228323759212
+    second: Level_0__Soil_5
+  - first:
+      213: -9194620750857884298
+    second: Level_0__Soil_6
+  - first:
+      213: 4956106387155375866
+    second: Level_0__Soil_7
+  - first:
+      213: 1735416478876951196
+    second: Level_0__Soil_8
+  - first:
+      213: 5781298276777328846
+    second: Level_0__Soil_9
+  - first:
+      213: -8834281294059583287
+    second: Level_0__Soil_10
+  - first:
+      213: 3497432442454521476
+    second: Level_0__Soil_11
+  - first:
+      213: 8689746829408806164
+    second: Level_0__Soil_12
+  - first:
+      213: -2079956384158210601
+    second: Level_0__Soil_13
+  - first:
+      213: 1351026227916352130
+    second: Level_0__Soil_14
+  - first:
+      213: 7976744456060696114
+    second: Level_0__Soil_15
+  - first:
+      213: -8253649243408663783
+    second: Level_0__Soil_16
+  - first:
+      213: -5269545286660396070
+    second: Level_0__Soil_17
+  - first:
+      213: 4472465786893534548
+    second: Level_0__Soil_18
+  - first:
+      213: 6451624211142932021
+    second: Level_0__Soil_19
+  - first:
+      213: -2034322511156900375
+    second: Level_0__Soil_20
+  - first:
+      213: -9073845639878610319
+    second: Level_0__Soil_21
+  - first:
+      213: -875311900262622743
+    second: Level_0__Soil_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Level_0__Soil_0
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bfad50e8ad722a00800000000000000
+      internalID: 730284253859655604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_1
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d155a38c1a49c9d0800000000000000
+      internalID: -2753588210832158256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_2
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be98d6f1b89654b30800000000000000
+      internalID: 4270935867879426539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_3
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d5e25105b4ef650800000000000000
+      internalID: 6268530538671136044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_4
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d49c9a12db1d42a00800000000000000
+      internalID: 730939649784662349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_5
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c643301d8bfaf3670800000000000000
+      internalID: 8520722228323759212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_6
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67d2eac6425266080800000000000000
+      internalID: -9194620750857884298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_7
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af6d0732080a7c440800000000000000
+      internalID: 4956106387155375866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_8
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c92e1d8c710751810800000000000000
+      internalID: 1735416478876951196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_9
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec004efe62c4b3050800000000000000
+      internalID: 5781298276777328846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_10
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c843b518f3566580800000000000000
+      internalID: -8834281294059583287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_11
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 486bd66b640698030800000000000000
+      internalID: 3497432442454521476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_12
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4152dfa73be289870800000000000000
+      internalID: 8689746829408806164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_13
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d5a1fd40b28223e0800000000000000
+      internalID: -2079956384158210601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_14
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28aa03d323fcfb210800000000000000
+      internalID: 1351026227916352130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_15
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2367097f1d613be60800000000000000
+      internalID: 7976744456060696114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_16
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91b74f92eb5257d80800000000000000
+      internalID: -8253649243408663783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_17
+      rect:
+        serializedVersion: 2
+        x: 1487
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adbe5c42b70ded6b0800000000000000
+      internalID: -5269545286660396070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_18
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45580e1efe3611e30800000000000000
+      internalID: 4472465786893534548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_19
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 536fb71b906c88950800000000000000
+      internalID: 6451624211142932021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_20
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ed89e35472a4c3e0800000000000000
+      internalID: -2034322511156900375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_21
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 172fe404779331280800000000000000
+      internalID: -9073845639878610319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Soil_22
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 127
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e99c2dd6744ad3f0800000000000000
+      internalID: -875311900262622743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Level_0__Soil_0: 730284253859655604
+      Level_0__Soil_1: -2753588210832158256
+      Level_0__Soil_10: -8834281294059583287
+      Level_0__Soil_11: 3497432442454521476
+      Level_0__Soil_12: 8689746829408806164
+      Level_0__Soil_13: -2079956384158210601
+      Level_0__Soil_14: 1351026227916352130
+      Level_0__Soil_15: 7976744456060696114
+      Level_0__Soil_16: -8253649243408663783
+      Level_0__Soil_17: -5269545286660396070
+      Level_0__Soil_18: 4472465786893534548
+      Level_0__Soil_19: 6451624211142932021
+      Level_0__Soil_2: 4270935867879426539
+      Level_0__Soil_20: -2034322511156900375
+      Level_0__Soil_21: -9073845639878610319
+      Level_0__Soil_22: -875311900262622743
+      Level_0__Soil_3: 6268530538671136044
+      Level_0__Soil_4: 730939649784662349
+      Level_0__Soil_5: 8520722228323759212
+      Level_0__Soil_6: -9194620750857884298
+      Level_0__Soil_7: 4956106387155375866
+      Level_0__Soil_8: 1735416478876951196
+      Level_0__Soil_9: 5781298276777328846
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
