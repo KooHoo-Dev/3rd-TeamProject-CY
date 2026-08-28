@@ -1,10 +1,17 @@
 using HelloServer;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField] private string sceneName = null;
     [SerializeField] private RoomClient roomClient;
+    [SerializeField] private Button gameStartBtn;
+
+    private void Update()
+    {
+        gameStartBtn.interactable = roomClient.RemoteCount == 3;
+    }
     
     public void OnGameStartButtonClick()
     {
