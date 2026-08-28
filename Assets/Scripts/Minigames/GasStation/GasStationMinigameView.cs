@@ -52,7 +52,7 @@ namespace CY.Minigame
         {
             // 서버에서 오는 게이지 퍼센트(0~100)를 fillAmount(0~1) 비율로 변환
             gaugeFill.fillAmount = Mathf.Clamp01(gaugePercent / 100f);
-
+            
             if (isPressed && isCurrentlyPressed == false)
             {
                 isCurrentlyPressed = true;
@@ -72,8 +72,6 @@ namespace CY.Minigame
 
         public void ApplyAttemptFailed()
         {
-            RetractNozzleButton();
-            
             StartCoroutine(FailRoutine());
         }
 
