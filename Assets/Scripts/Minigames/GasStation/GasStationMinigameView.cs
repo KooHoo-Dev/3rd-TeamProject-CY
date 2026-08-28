@@ -48,7 +48,6 @@ namespace CY.Minigame
                 : "Assignee : OtherPlayer";
         }
 
-
         public void ApplyFuelState(float gaugePercent, bool isPressed)
         {
             // 서버에서 오는 게이지 퍼센트(0~100)를 fillAmount(0~1) 비율로 변환
@@ -73,6 +72,8 @@ namespace CY.Minigame
 
         public void ApplyAttemptFailed()
         {
+            RetractNozzleButton();
+            
             StartCoroutine(FailRoutine());
         }
 
@@ -117,7 +118,7 @@ namespace CY.Minigame
             gaugeFill.color = Color.red;
 
             ShowResultText("Fail!", Color.red);
-
+            
             yield return new WaitForSeconds(0.5f);
 
             gaugeFill.fillAmount = 0f;
