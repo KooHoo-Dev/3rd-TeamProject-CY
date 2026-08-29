@@ -118,6 +118,12 @@
             }
         },
         {
+            "_key": "Soil_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
             "_key": "Yellow_Line_Road_Big_V_H_1",
             "_asset": {
                 "instanceID": 0

@@ -5,6 +5,39 @@ TextureImporter:
   - first:
       213: 1025037942646288477
     second: Level_0__Yellow_Line_Road_H_0
+  - first:
+      213: -1425767931361089768
+    second: Level_0__Yellow_Line_Road_H_1
+  - first:
+      213: -6313247054549127115
+    second: Level_0__Yellow_Line_Road_H_2
+  - first:
+      213: 5233272925217236363
+    second: Level_0__Yellow_Line_Road_H_3
+  - first:
+      213: 6157602252376972028
+    second: Level_0__Yellow_Line_Road_H_4
+  - first:
+      213: -9039511545511869255
+    second: Level_0__Yellow_Line_Road_H_5
+  - first:
+      213: -7817909153016168474
+    second: Level_0__Yellow_Line_Road_H_6
+  - first:
+      213: 3546375260969678876
+    second: Level_0__Yellow_Line_Road_H_7
+  - first:
+      213: 7568150976057213683
+    second: Level_0__Yellow_Line_Road_H_8
+  - first:
+      213: 51318390218382934
+    second: Level_0__Yellow_Line_Road_H_9
+  - first:
+      213: 8686088194893854676
+    second: Level_0__Yellow_Line_Road_H_10
+  - first:
+      213: 5221978302013488328
+    second: Level_0__Yellow_Line_Road_H_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,10 +149,10 @@ TextureImporter:
       name: Level_0__Yellow_Line_Road_H_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2048
-        height: 1024
+        x: 623
+        y: 671
+        width: 146
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,6 +163,248 @@ TextureImporter:
       bones: []
       spriteID: d50bab4f39aa93e00800000000000000
       internalID: 1025037942646288477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_1
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 671
+        width: 242
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8172417de97a63ce0800000000000000
+      internalID: -1425767931361089768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_2
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 671
+        width: 178
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 530715eb047d268a0800000000000000
+      internalID: -6313247054549127115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_3
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 671
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b852e389ff150a840800000000000000
+      internalID: 5233272925217236363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_4
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 431
+        width: 130
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfa1319cf92347550800000000000000
+      internalID: 6157602252376972028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_5
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 431
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b409ba84243d8280800000000000000
+      internalID: -9039511545511869255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_6
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 431
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ef3230eb05318390800000000000000
+      internalID: -7817909153016168474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_7
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 431
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c18b456a281473130800000000000000
+      internalID: 3546375260969678876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_8
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 431
+        width: 114
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f28a660739770960800000000000000
+      internalID: 7568150976057213683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_9
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 431
+        width: 114
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65e5963ddc156b000800000000000000
+      internalID: 51318390218382934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_10
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 431
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d7bc50413f2b8870800000000000000
+      internalID: 8686088194893854676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_H_11
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 463
+        width: 114
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ccbf443991387840800000000000000
+      internalID: 5221978302013488328
       vertices: []
       indices: 
       edges: []
@@ -149,6 +424,17 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Level_0__Yellow_Line_Road_H_0: 1025037942646288477
+      Level_0__Yellow_Line_Road_H_1: -1425767931361089768
+      Level_0__Yellow_Line_Road_H_10: 8686088194893854676
+      Level_0__Yellow_Line_Road_H_11: 5221978302013488328
+      Level_0__Yellow_Line_Road_H_2: -6313247054549127115
+      Level_0__Yellow_Line_Road_H_3: 5233272925217236363
+      Level_0__Yellow_Line_Road_H_4: 6157602252376972028
+      Level_0__Yellow_Line_Road_H_5: -9039511545511869255
+      Level_0__Yellow_Line_Road_H_6: -7817909153016168474
+      Level_0__Yellow_Line_Road_H_7: 3546375260969678876
+      Level_0__Yellow_Line_Road_H_8: 7568150976057213683
+      Level_0__Yellow_Line_Road_H_9: 51318390218382934
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

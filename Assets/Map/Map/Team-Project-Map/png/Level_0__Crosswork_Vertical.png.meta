@@ -47,21 +47,6 @@ TextureImporter:
   - first:
       213: -3712649881755196870
     second: Level_0__Crosswork_Vertical_14
-  - first:
-      213: -7165176811548716935
-    second: Level_0__Crosswork_Vertical_15
-  - first:
-      213: 904666164829037749
-    second: Level_0__Crosswork_Vertical_16
-  - first:
-      213: 3914943255202050666
-    second: Level_0__Crosswork_Vertical_17
-  - first:
-      213: -6971919147610098717
-    second: Level_0__Crosswork_Vertical_18
-  - first:
-      213: 5011268852264164734
-    second: Level_0__Crosswork_Vertical_19
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -153,6 +138,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -161,7 +159,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 223
-        y: 1583
+        y: 863
         width: 34
         height: 98
       alignment: 0
@@ -182,8 +180,8 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_1
       rect:
         serializedVersion: 2
-        x: 1727
-        y: 1583
+        x: 815
+        y: 863
         width: 34
         height: 98
       alignment: 0
@@ -204,8 +202,8 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_2
       rect:
         serializedVersion: 2
-        x: 1855
-        y: 1583
+        x: 1727
+        y: 863
         width: 34
         height: 98
       alignment: 0
@@ -226,10 +224,10 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_3
       rect:
         serializedVersion: 2
-        x: 3343
-        y: 1583
-        width: 34
-        height: 98
+        x: 607
+        y: 671
+        width: 18
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,10 +246,10 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_4
       rect:
         serializedVersion: 2
-        x: 223
-        y: 863
-        width: 34
-        height: 98
+        x: 1039
+        y: 671
+        width: 18
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,10 +268,10 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_5
       rect:
         serializedVersion: 2
-        x: 1727
-        y: 863
-        width: 34
-        height: 98
+        x: 1119
+        y: 671
+        width: 18
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,10 +290,10 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_6
       rect:
         serializedVersion: 2
-        x: 1855
-        y: 863
+        x: 1727
+        y: 671
         width: 34
-        height: 98
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -314,10 +312,10 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_7
       rect:
         serializedVersion: 2
-        x: 3343
-        y: 863
-        width: 34
-        height: 98
+        x: 223
+        y: 431
+        width: 18
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,8 +334,8 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_8
       rect:
         serializedVersion: 2
-        x: 607
-        y: 671
+        x: 543
+        y: 431
         width: 18
         height: 50
       alignment: 0
@@ -358,8 +356,8 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_9
       rect:
         serializedVersion: 2
-        x: 1039
-        y: 671
+        x: 607
+        y: 431
         width: 18
         height: 50
       alignment: 0
@@ -380,8 +378,8 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_10
       rect:
         serializedVersion: 2
-        x: 1119
-        y: 671
+        x: 1039
+        y: 431
         width: 18
         height: 50
       alignment: 0
@@ -402,10 +400,10 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_11
       rect:
         serializedVersion: 2
-        x: 1727
-        y: 671
-        width: 34
-        height: 50
+        x: 1631
+        y: 479
+        width: 18
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,9 +423,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 223
-        y: 431
-        width: 18
-        height: 50
+        y: 143
+        width: 34
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,10 +444,10 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_13
       rect:
         serializedVersion: 2
-        x: 543
-        y: 431
-        width: 18
-        height: 50
+        x: 1023
+        y: 143
+        width: 34
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,72 +466,6 @@ TextureImporter:
       name: Level_0__Crosswork_Vertical_14
       rect:
         serializedVersion: 2
-        x: 607
-        y: 431
-        width: 18
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a32e59e5a940a7cc0800000000000000
-      internalID: -3712649881755196870
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level_0__Crosswork_Vertical_15
-      rect:
-        serializedVersion: 2
-        x: 1039
-        y: 431
-        width: 18
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 970d5c217ad209c90800000000000000
-      internalID: -7165176811548716935
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level_0__Crosswork_Vertical_16
-      rect:
-        serializedVersion: 2
-        x: 223
-        y: 143
-        width: 34
-        height: 98
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5b423f275150e8c00800000000000000
-      internalID: 904666164829037749
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level_0__Crosswork_Vertical_17
-      rect:
-        serializedVersion: 2
         x: 1727
         y: 143
         width: 34
@@ -546,52 +478,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a62312af52ca45630800000000000000
-      internalID: 3914943255202050666
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level_0__Crosswork_Vertical_18
-      rect:
-        serializedVersion: 2
-        x: 1855
-        y: 143
-        width: 34
-        height: 98
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3e3b4fb5974ce3f90800000000000000
-      internalID: -6971919147610098717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level_0__Crosswork_Vertical_19
-      rect:
-        serializedVersion: 2
-        x: 3343
-        y: 143
-        width: 34
-        height: 98
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e7d5f25687a9b8540800000000000000
-      internalID: 5011268852264164734
+      spriteID: a32e59e5a940a7cc0800000000000000
+      internalID: -3712649881755196870
       vertices: []
       indices: 
       edges: []
@@ -617,11 +505,6 @@ TextureImporter:
       Level_0__Crosswork_Vertical_12: -8533303417935167630
       Level_0__Crosswork_Vertical_13: 1062195331041147164
       Level_0__Crosswork_Vertical_14: -3712649881755196870
-      Level_0__Crosswork_Vertical_15: -7165176811548716935
-      Level_0__Crosswork_Vertical_16: 904666164829037749
-      Level_0__Crosswork_Vertical_17: 3914943255202050666
-      Level_0__Crosswork_Vertical_18: -6971919147610098717
-      Level_0__Crosswork_Vertical_19: 5011268852264164734
       Level_0__Crosswork_Vertical_2: 7607065209419552889
       Level_0__Crosswork_Vertical_3: -3446999708357064401
       Level_0__Crosswork_Vertical_4: -3054014172922320189

@@ -14,6 +14,15 @@ TextureImporter:
   - first:
       213: -881900666656751432
     second: Level_0__WLDR_3
+  - first:
+      213: -2778670151111405885
+    second: Level_0__WLDR_4
+  - first:
+      213: -2739209465287116815
+    second: Level_0__WLDR_5
+  - first:
+      213: 8858527327256650612
+    second: Level_0__WLDR_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -105,6 +114,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -134,8 +156,8 @@ TextureImporter:
       name: Level_0__WLDR_1
       rect:
         serializedVersion: 2
-        x: 1327
-        y: 479
+        x: 1247
+        y: 671
         width: 18
         height: 18
       alignment: 0
@@ -156,8 +178,8 @@ TextureImporter:
       name: Level_0__WLDR_2
       rect:
         serializedVersion: 2
-        x: 463
-        y: 367
+        x: 1263
+        y: 543
         width: 18
         height: 18
       alignment: 0
@@ -178,8 +200,8 @@ TextureImporter:
       name: Level_0__WLDR_3
       rect:
         serializedVersion: 2
-        x: 527
-        y: 367
+        x: 1327
+        y: 479
         width: 18
         height: 18
       alignment: 0
@@ -192,6 +214,72 @@ TextureImporter:
       bones: []
       spriteID: 8b08eb4240cd2c3f0800000000000000
       internalID: -881900666656751432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLDR_4
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 351
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ce0607383e2079d0800000000000000
+      internalID: -2778670151111405885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLDR_5
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 351
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f77c28118f5cf9d0800000000000000
+      internalID: -2739209465287116815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLDR_6
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 351
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 473293e6bafcfea70800000000000000
+      internalID: 8858527327256650612
       vertices: []
       indices: 
       edges: []
@@ -214,6 +302,9 @@ TextureImporter:
       Level_0__WLDR_1: 4022554994764822523
       Level_0__WLDR_2: -5799858199085997908
       Level_0__WLDR_3: -881900666656751432
+      Level_0__WLDR_4: -2778670151111405885
+      Level_0__WLDR_5: -2739209465287116815
+      Level_0__WLDR_6: 8858527327256650612
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

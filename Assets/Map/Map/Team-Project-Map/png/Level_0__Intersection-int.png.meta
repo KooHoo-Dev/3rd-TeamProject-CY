@@ -17,18 +17,6 @@ TextureImporter:
   - first:
       213: -441378238839698349
     second: Level_0__Intersection-int_4
-  - first:
-      213: -4533475532930066893
-    second: Level_0__Intersection-int_5
-  - first:
-      213: -7479227812295055698
-    second: Level_0__Intersection-int_6
-  - first:
-      213: -5619878843887292303
-    second: Level_0__Intersection-int_7
-  - first:
-      213: -8272895621132707221
-    second: Level_0__Intersection-int_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -120,6 +108,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -128,8 +129,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7
-        y: 98
-        width: 8
+        y: 53
+        width: 32
         height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -149,10 +150,10 @@ TextureImporter:
       name: Level_0__Intersection-int_1
       rect:
         serializedVersion: 2
-        x: 109
-        y: 98
+        x: 7
+        y: 8
         width: 8
-        height: 8
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +172,10 @@ TextureImporter:
       name: Level_0__Intersection-int_2
       rect:
         serializedVersion: 2
-        x: 210
-        y: 98
-        width: 8
-        height: 8
+        x: 25
+        y: 8
+        width: 92
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,10 +194,10 @@ TextureImporter:
       name: Level_0__Intersection-int_3
       rect:
         serializedVersion: 2
-        x: 7
-        y: 19
-        width: 69
-        height: 42
+        x: 65
+        y: 8
+        width: 6
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,72 +216,6 @@ TextureImporter:
       name: Level_0__Intersection-int_4
       rect:
         serializedVersion: 2
-        x: 81
-        y: 28
-        width: 36
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 35c4f5e84d8efd9f0800000000000000
-      internalID: -441378238839698349
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level_0__Intersection-int_5
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 53
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 33657cda50cd511c0800000000000000
-      internalID: -4533475532930066893
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level_0__Intersection-int_6
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 8
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ea66eed6ee1743890800000000000000
-      internalID: -7479227812295055698
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level_0__Intersection-int_7
-      rect:
-        serializedVersion: 2
         x: 109
         y: 8
         width: 8
@@ -293,30 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1707d5587fd2202b0800000000000000
-      internalID: -5619878843887292303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level_0__Intersection-int_8
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 8
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b6a1086a345c03d80800000000000000
-      internalID: -8272895621132707221
+      spriteID: 35c4f5e84d8efd9f0800000000000000
+      internalID: -441378238839698349
       vertices: []
       indices: 
       edges: []
@@ -340,10 +253,6 @@ TextureImporter:
       Level_0__Intersection-int_2: 5220739651410914623
       Level_0__Intersection-int_3: 631605230893984057
       Level_0__Intersection-int_4: -441378238839698349
-      Level_0__Intersection-int_5: -4533475532930066893
-      Level_0__Intersection-int_6: -7479227812295055698
-      Level_0__Intersection-int_7: -5619878843887292303
-      Level_0__Intersection-int_8: -8272895621132707221
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
