@@ -6,6 +6,7 @@ using CY.Vehicle;
 using Cysharp.Threading.Tasks;
 using HelloServer;
 using Newtonsoft.Json;
+using TMPro;
 using UnityEngine;
 
 namespace  CY.Network
@@ -24,6 +25,8 @@ namespace  CY.Network
         [Header("입력 끊김")]
         [SerializeField] private float inputTimeout = 0.25f;
 
+        [SerializeField] private TMP_Text roleText;
+        
         private readonly Dictionary<string, VehicleRole> roles = new();
         private readonly VehicleInputMerger inputMerger = new();
         private readonly float[] lastInputReceivedAt = new float[4];
@@ -51,7 +54,7 @@ namespace  CY.Network
             session.MessageReceived += HandleMessage;
             RefreshRoles();
         }
-
+        
         private void OnDisable()
         {
             if (session != null) session.MessageReceived -= HandleMessage;
@@ -98,6 +101,7 @@ namespace  CY.Network
             if (users.Count != 4)
             {
                 Session.ClearRole();
+                
                 RolesChanged?.Invoke(roles);
                 return;
             }
@@ -115,6 +119,7 @@ namespace  CY.Network
                 Session.Apply(isHost, myRole);
             }
             
+            UpdateRoleText();
             RolesChanged?.Invoke(roles);
         }
 
@@ -238,6 +243,20 @@ namespace  CY.Network
             return int.TryParse(id.Substring(1), out int order)
                 ? order
                 : int.MaxValue;
+        }
+        
+        private void UpdateRoleText()
+        {
+            if (roleText == null) return;
+            
+            roleText.text = "역할 : " + Session.MyRole switch
+            {
+                VehicleRole.Handle => "핸들",
+                VehicleRole.Accel => "액셀",
+                VehicleRole.Brake => "브레이크",
+                VehicleRole.Gear => "기어·내비게이션",
+                _ => "역할 배정 대기 중"
+            };
         }
         
         private List<VehicleRole> CreateShuffledRoles(List<User> users)
