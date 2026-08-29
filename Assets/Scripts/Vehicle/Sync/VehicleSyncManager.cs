@@ -2,23 +2,48 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CY.Player;
+using CY.Vehicle;
+using Cysharp.Threading.Tasks;
 using HelloServer;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace  CY.Network
 {
     public class VehicleSyncManager : MonoBehaviour
     {
-        private NetworkSession session;
+        [Header("차량 참조")] 
+        [SerializeField] private LocalKeyboardInputSource localInput;
+        [SerializeField] private Rigidbody2D vehicleBody;
+        [SerializeField] private VehicleStateReceiver stateReceiver;
+
+        [Header("전송 주기")] 
+        [SerializeField] private float inputSendPerSecond = 20f;
+        [SerializeField] private float stateSendPerSecond = 15f;
+        
+        [Header("입력 끊김")]
+        [SerializeField] private float inputTimeout = 0.25f;
 
         private readonly Dictionary<string, VehicleRole> roles = new();
-        public IReadOnlyDictionary<string, VehicleRole> Roles => roles;
+        private readonly VehicleInputMerger inputMerger = new();
+        private readonly float[] lastInputReceivedAt = new float[4];
+        
+        private NetworkSession session;
 
+        private float nextInputSendAt;
+        private float nextStateSendAt;
+
+        public IReadOnlyDictionary<string, VehicleRole> Roles => roles;
+        
         public event Action<IReadOnlyDictionary<string, VehicleRole>> RolesChanged;
 
         private void Awake()
         {
             session = NetworkSession.Instance;
+
+            if (localInput == null) localInput = GetComponent<LocalKeyboardInputSource>();
+            if (vehicleBody == null) vehicleBody = GetComponent<Rigidbody2D>();
+            if (stateReceiver == null) stateReceiver = GetComponent<VehicleStateReceiver>();
         }
 
         private void OnEnable()
@@ -29,25 +54,46 @@ namespace  CY.Network
 
         private void OnDisable()
         {
-            if (session != null)
-            {
-                session.MessageReceived -= HandleMessage;
-            }
+            if (session != null) session.MessageReceived -= HandleMessage;
+        }
+
+        private void Update()
+        {
+            SendLocalInput();
         }
 
         private void HandleMessage(string type, string json)
         {
-            if (type != "welcome" && type != "join" && type != "leave") return;
-
-            RefreshRoles();
+            switch (type)
+            {
+                case "welcome":
+                case "join":
+                case "leave":
+                    RefreshRoles();
+                    return;
+                
+                case "vehicle_input":
+                    HandleVehicleInput(JsonConvert.DeserializeObject<VehicleInputMessage>(json));
+                    return;
+                case "vehicle_state":
+                    HandleVehicleState(JsonConvert.DeserializeObject<VehicleStateMessage>(json));
+                    return;
+            }
         }
 
         private void RefreshRoles()
         {
+            roles.Clear();
+
+            if (session == null || session.Me == null)
+            {
+                Session.ClearRole();
+                RolesChanged?.Invoke(roles);
+                return;
+            }
+            
             List<User> users = session.Participants.Values
                 .OrderBy(User => GetJoinOrder(User.Id)).ToList();
-
-            roles.Clear();
 
             if (users.Count != 4)
             {
@@ -70,6 +116,118 @@ namespace  CY.Network
             }
             
             RolesChanged?.Invoke(roles);
+        }
+
+        private void SendLocalInput()
+        {
+            if (localInput == null) return;
+            if (Session.HasAssignedRole == false) return;
+
+            VehicleInput input = localInput.Read();
+
+            if (Session.IsHost) SetInput(Session.MyRole, input);
+
+            if (Time.unscaledTime < nextInputSendAt) return;
+
+            float interval = 1f / Mathf.Max(1f, inputSendPerSecond);
+            nextInputSendAt = Time.unscaledTime + interval;
+
+            session.SendAsync(new VehicleInputMessage
+            {
+                Steer = input.Steer,
+                Accel = input.Accel,
+                Brake = input.Brake,
+                Gear = (int)input.CurrentGear
+            }).Forget();
+        }
+
+        private void HandleVehicleInput(VehicleInputMessage message)
+        {
+            if (message == null) return;
+            if (Session.IsHost == false) return;
+
+            if (roles.TryGetValue(message.UserId, out VehicleRole role) == false) return;
+
+            SetInput(role, new VehicleInput
+            {
+                Steer = Mathf.Clamp(message.Steer, -1f, 1f),
+                Accel = Mathf.Clamp01(message.Accel),
+                Brake = Mathf.Clamp01(message.Brake),
+                CurrentGear = ToGear(message.Gear)
+            });
+        }
+
+        private void HandleVehicleState(VehicleStateMessage message)
+        {
+            if (message == null) return;
+            if (Session.IsHost) return;
+            if (stateReceiver == null) return;
+            
+            if (roles.TryGetValue(message.UserId, out VehicleRole role) == false) return;
+            if (role != VehicleRole.Handle) return;
+            
+            stateReceiver.ApplySnapshot(new VehicleSnapshot
+            {
+                Position = new Vector2(message.PositionX, message.PositionY),
+                Rotation = message.Rotation,
+                Velocity = new Vector2(message.VelocityX, message.VelocityY)
+            });
+        }
+
+        public VehicleInput ReadMergedInput()
+        {
+            if (Session.IsHost == false) return default;
+            
+            ClearTimedOutInputs();
+            return inputMerger.Merge();
+        }
+
+        public void PublishVehicleState(Rigidbody2D body)
+        {
+            if (Session.IsHost == false) return;
+            if (body == null) return;
+
+            if (Time.unscaledTime < nextStateSendAt) return;
+
+            float interval = 1f / Mathf.Max(1f, stateSendPerSecond);
+            nextStateSendAt = Time.unscaledTime + interval;
+            
+            session.SendAsync(new VehicleStateMessage
+            {
+                PositionX = body.position.x,
+                PositionY = body.position.y,
+                Rotation = body.rotation,
+                VelocityX = body.linearVelocity.x,
+                VelocityY = body.linearVelocity.y
+            }).Forget();
+        }
+
+        private void SetInput(VehicleRole role, VehicleInput input)
+        {
+            if (role < VehicleRole.Handle || role > VehicleRole.Gear) return;
+            
+            inputMerger.Set(role, input);
+            lastInputReceivedAt[(int)role] = Time.unscaledTime;
+        }
+
+        private void ClearTimedOutInputs()
+        {
+            for (int i = 0; i < lastInputReceivedAt.Length; i++)
+            {
+                if (Time.unscaledTime - lastInputReceivedAt[i] <= inputTimeout) continue;
+                
+                inputMerger.Set((VehicleRole)i, default);
+            }
+        }
+
+        private static Gear ToGear(int value)
+        {
+            return value switch
+            {
+                1 => Gear.D,
+                2 => Gear.R,
+                _ => Gear.N
+            };
         }
         
         private static int GetJoinOrder(string id)

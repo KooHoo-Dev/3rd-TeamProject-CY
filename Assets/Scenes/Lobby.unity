@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d166746b905e64242a04af48274202ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbyManager
-  sceneName: MiniGameTest
+  sceneName: Vehicle_Sync_Test
   roomClient: {fileID: 755348584}
   gameStartBtn: {fileID: 2043387181}
 --- !u!4 &2025594689

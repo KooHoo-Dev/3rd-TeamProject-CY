@@ -6,20 +6,24 @@ namespace CY.Vehicle
     [RequireComponent(typeof(Rigidbody2D))]
     public class VehicleController : MonoBehaviour
     {
-        [Header("가속")] [SerializeField] private float enginePower = 20f;
+        [Header("가속")] 
+        [SerializeField] private float enginePower = 20f;
         [SerializeField] private float maxSpeed = 12f;
         [SerializeField] private float reverseMaxSpeed = 5f;
 
-        [Header("브레이크")] [SerializeField] private float brakePower = 30f;
+        [Header("브레이크")] 
+        [SerializeField] private float brakePower = 30f;
 
-        [Header("회전")] [SerializeField] private float turnRate = 180f;
+        [Header("회전")] 
+        [SerializeField] private float turnRate = 180f;
         [SerializeField] private float turnSpeedThreshold = 4f;
 
-        [Header("사이드저항")] [SerializeField, Range(0f, 1f)]
+        [Header("사이드저항")] 
+        [SerializeField, Range(0f, 1f)]
         private float sideFriction = 0.9f;
 
         private Rigidbody2D rb;
-        private IVehicleInputSource inputSource;
+        private VehicleSyncManager vehicleSync;
 
         private bool inputEnabled = true;
         private float speedMultiplier = 1f;
@@ -30,24 +34,26 @@ namespace CY.Vehicle
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
-            inputSource = GetComponent<IVehicleInputSource>();
+            vehicleSync = GetComponent<VehicleSyncManager>();
 
-            if (inputSource == null)
-                Debug.LogError($"{name}: IVehicleInputSource 구현체가 붙어있지 않습니다.", this);
+            if (vehicleSync == null)
+                Debug.LogError($"{name}: vehicleSync가 붙어있지 않습니다.", this);
         }
 
         private void FixedUpdate()
         {
-            if (!Session.IsHost) return;
-            if (inputSource == null) return;
+            if (Session.IsHost == false) return;
+            if (vehicleSync == null) return;
 
-            VehicleInput input = inputEnabled ? inputSource.Read() : default;
+            VehicleInput input = inputEnabled ? vehicleSync.ReadMergedInput() : default;
 
             ApplyEngine(input);
             ApplyBrake(input);
             ApplySteering(input);
             KillSideVelocity();
             ClampSpeed(input);
+            
+            vehicleSync.PublishVehicleState(rb);
         }
 
         private void ApplyEngine(VehicleInput input)
