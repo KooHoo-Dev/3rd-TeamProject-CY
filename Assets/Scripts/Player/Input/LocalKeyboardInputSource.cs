@@ -1,3 +1,4 @@
+using CY.Network;
 using CY.Vehicle;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,10 +7,7 @@ namespace CY.Player
 {
     public class LocalKeyboardInputSource : MonoBehaviour, IVehicleInputSource
     {
-        [Header("역할")] [SerializeField] private VehicleRole role = VehicleRole.Handle;
-        [SerializeField] private bool readAllRoles = true;
-
-        public VehicleRole Role => role;
+        public VehicleRole Role => Session.MyRole;
         public VehicleInput Read() => current;
 
         [SerializeField] private VehicleInput current;
@@ -36,11 +34,17 @@ namespace CY.Player
                 CurrentGear = gear,
             };
 
-            current = readAllRoles ? full : MaskToRole(full);
+            if (Session.HasAssignedRole == false)
+            {
+                current = default;
+                return;
+            }
+
+            current = MaskToRole(full, Session.MyRole);
         }
 
         /// <summary>자기 역할이 담당하는 필드만 남기고 나머지는 비운다.</summary>
-        private VehicleInput MaskToRole(VehicleInput full)
+        private VehicleInput MaskToRole(VehicleInput full, VehicleRole role)
         {
             VehicleInput masked = default;
 
