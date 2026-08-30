@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace CY.Minigame
 {
@@ -10,6 +11,7 @@ namespace CY.Minigame
         private int oldScrewsRemoved = 0;
         private int newScrewsFastened = 0;
 
+        private bool isGameStarted = false;
         private bool isOldPlateDetached = false; // 나사 4개가 풀렸는지
         private bool isOldPlateDiscarded = false; // 기존 번호판을 버렸는지
         private bool isNewPlateAttached = false; // 새 번호판을 제자리에 놨는지
@@ -17,6 +19,26 @@ namespace CY.Minigame
         private void Start()
         {
             view.InitializeView();
+            StartCoroutine(ShowExplanationRoutine());
+        }
+        
+        private IEnumerator ShowExplanationRoutine()
+        {
+            yield return new WaitForSeconds(1.5f);
+            view.ShowExplanationPanel();
+        }
+        
+        public void OnGameStartButtonClicked()
+        {
+            view.HideExplanationPanel();
+            StartCoroutine(StartGameRoutine());
+        }
+        
+        private IEnumerator StartGameRoutine()
+        {
+            yield return new WaitForSeconds(1f);
+            view.FadeInGameTexts(); // DOTween 호출
+            isGameStarted = true;  
         }
 
         public void RequestRemoveOldScrew(int index)
@@ -48,8 +70,8 @@ namespace CY.Minigame
         }
 
         // 드래그 권한
-        public bool CanDragOldPlate() => isOldPlateDetached && !isOldPlateDiscarded;
-        public bool CanDragNewPlate() => isOldPlateDiscarded && !isNewPlateAttached;
+        public bool CanDragOldPlate() => isGameStarted && isOldPlateDetached && isOldPlateDiscarded == false;
+        public bool CanDragNewPlate() => isGameStarted && isOldPlateDiscarded && isNewPlateAttached == false;
 
         public void HandlePlateDropped(bool isOldPlate, GameObject droppedOnZone)
         {

@@ -8,7 +8,9 @@ namespace CY.Minigame
 
     public class RepairShopMinigameView : MonoBehaviour
     {
-        [Header("UI")] public RectTransform oldPlateRect;
+        [Header("UI")]
+        public GameObject explanationPanel;
+        public RectTransform oldPlateRect;
         public RectTransform newPlateRect;
         public CanvasGroup oldPlateCanvasGroup;
         public CanvasGroup newPlateCanvasGroup;
@@ -17,6 +19,8 @@ namespace CY.Minigame
         public Button[] newScrews;
 
         public GameObject trashZone;
+        public TextMeshProUGUI titleText; 
+        public TextMeshProUGUI noticeText;
         public TextMeshProUGUI resultText;
 
         private Vector2 oldPlateOrigin;
@@ -32,6 +36,43 @@ namespace CY.Minigame
 
             foreach (var screw in oldScrews) screw.gameObject.SetActive(true);
             foreach (var screw in newScrews) screw.gameObject.SetActive(false);
+            
+            SetTextAlpha(titleText, 0f);
+            SetTextAlpha(noticeText, 0f);
+        }
+        
+        public void ShowExplanationPanel()
+        {
+            if (explanationPanel != null)
+            {
+                explanationPanel.SetActive(true);
+                
+                CanvasGroup cg = explanationPanel.GetComponent<CanvasGroup>();
+                
+                cg.alpha = 0f;
+                cg.DOFade(1f, 0.5f);
+            }
+        }
+
+        public void HideExplanationPanel()
+        {
+            if (explanationPanel != null) explanationPanel.SetActive(false);
+        }
+        
+        public void FadeInGameTexts()
+        {
+            if (titleText != null) titleText.DOFade(1f, 1f); 
+            if (noticeText != null) noticeText.DOFade(1f, 1f);
+        }
+        
+        private void SetTextAlpha(TextMeshProUGUI txt, float alpha)
+        {
+            if (txt != null)
+            {
+                Color c = txt.color;
+                c.a = alpha;
+                txt.color = c;
+            }
         }
 
         public void ApplyOldScrewState(int index, bool isVisible)
