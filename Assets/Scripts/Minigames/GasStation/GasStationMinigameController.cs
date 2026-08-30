@@ -4,6 +4,7 @@ using CY.Network;
 using CY.Stages;
 using Cysharp.Threading.Tasks;
 using HelloServer;
+using System.Collections;
 
 namespace CY.Minigame
 {
@@ -64,9 +65,31 @@ namespace CY.Minigame
             
             IsActive = true;
             IsOperator = session.Me.Id == message.OperatorId;
-            CanSendInput = IsOperator;
+            CanSendInput = false;
 
             view.Begin(IsOperator);
+            
+            StartCoroutine(ShowExplanationRoutine());
+        }
+        
+        private IEnumerator ShowExplanationRoutine()
+        {
+            yield return new WaitForSeconds(1.5f);
+            view.ShowExplanationPanel();
+        }
+        
+        public void OnGameStartButtonClicked()
+        {
+            view.HideExplanationPanel();
+            StartCoroutine(StartGameRoutine());
+        }
+        
+        private IEnumerator StartGameRoutine()
+        {
+            yield return new WaitForSeconds(1.0f);
+            view.FadeInGameTexts();
+            
+            CanSendInput = IsOperator; 
         }
 
         public void HandleFuelState(FuelStateMessage message)
