@@ -1,77 +1,103 @@
 using UnityEngine;
+using System.Collections;
 
-public class RepairShopMinigameController : MonoBehaviour
+namespace CY.Minigame
 {
-    public RepairShopMinigameView view;
-    
-    private int oldScrewsRemoved = 0;
-    private int newScrewsFastened = 0;
-    
-    private bool isOldPlateDetached = false; // 나사 4개가 풀렸는지
-    private bool isOldPlateDiscarded = false; // 기존 번호판을 버렸는지
-    private bool isNewPlateAttached = false;  // 새 번호판을 제자리에 놨는지
 
-    private void Start()
+    public class RepairShopMinigameController : MonoBehaviour
     {
-        view.InitializeView();
-    }
-    
-    public void RequestRemoveOldScrew(int index)
-    {
-        if (isOldPlateDetached) return;
+        public RepairShopMinigameView view;
 
-        oldScrewsRemoved++;
-        view.ApplyOldScrewState(index, false);
+        private int oldScrewsRemoved = 0;
+        private int newScrewsFastened = 0;
 
-        if (oldScrewsRemoved >= 4)
+        private bool isGameStarted = false;
+        private bool isOldPlateDetached = false; // 나사 4개가 풀렸는지
+        private bool isOldPlateDiscarded = false; // 기존 번호판을 버렸는지
+        private bool isNewPlateAttached = false; // 새 번호판을 제자리에 놨는지
+
+        private void Start()
         {
-            isOldPlateDetached = true;
-            
-            view.ShowTrashZone();
+            view.InitializeView();
+            StartCoroutine(ShowExplanationRoutine());
         }
-    }
-    
-    public void RequestFastenNewScrew(int index)
-    {
-        if (!isNewPlateAttached || newScrewsFastened >= 4) return;
-
-        newScrewsFastened++;
-        view.ApplyNewScrewState(index, true);
-
-        if (newScrewsFastened >= 4)
+        
+        private IEnumerator ShowExplanationRoutine()
         {
-            view.ShowGameClear();
+            yield return new WaitForSeconds(1.5f);
+            view.ShowExplanationPanel();
         }
-    }
-    
-    // 드래그 권한
-    public bool CanDragOldPlate() => isOldPlateDetached && !isOldPlateDiscarded;
-    public bool CanDragNewPlate() => isOldPlateDiscarded && !isNewPlateAttached;
-    
-    public void HandlePlateDropped(bool isOldPlate, GameObject droppedOnZone)
-    {
-        if (isOldPlate)
+        
+        public void OnGameStartButtonClicked()
         {
-            if (droppedOnZone != null && droppedOnZone.CompareTag("TrashZone"))
+            view.HideExplanationPanel();
+            StartCoroutine(StartGameRoutine());
+        }
+        
+        private IEnumerator StartGameRoutine()
+        {
+            yield return new WaitForSeconds(1f);
+            view.FadeInGameTexts(); // DOTween 호출
+            isGameStarted = true;  
+        }
+
+        public void RequestRemoveOldScrew(int index)
+        {
+            if (isOldPlateDetached) return;
+
+            oldScrewsRemoved++;
+            view.ApplyOldScrewState(index, false);
+
+            if (oldScrewsRemoved >= 4)
             {
-                isOldPlateDiscarded = true;
-                view.DiscardOldPlate();
+                isOldPlateDetached = true;
+
+                view.ShowTrashZone();
+            }
+        }
+
+        public void RequestFastenNewScrew(int index)
+        {
+            if (!isNewPlateAttached || newScrewsFastened >= 4) return;
+
+            newScrewsFastened++;
+            view.ApplyNewScrewState(index, true);
+
+            if (newScrewsFastened >= 4)
+            {
+                view.ShowGameClear();
+            }
+        }
+
+        // 드래그 권한
+        public bool CanDragOldPlate() => isGameStarted && isOldPlateDetached && isOldPlateDiscarded == false;
+        public bool CanDragNewPlate() => isGameStarted && isOldPlateDiscarded && isNewPlateAttached == false;
+
+        public void HandlePlateDropped(bool isOldPlate, GameObject droppedOnZone)
+        {
+            if (isOldPlate)
+            {
+                if (droppedOnZone != null && droppedOnZone.CompareTag("TrashZone"))
+                {
+                    isOldPlateDiscarded = true;
+                    view.DiscardOldPlate();
+                }
+                else
+                {
+                    view.SnapBackPlate(true); // 오답 위치 시 제자리 복귀
+                }
             }
             else
             {
-                view.SnapBackPlate(true); // 오답 위치 시 제자리 복귀
-            }
-        }
-        else
-        {
-            if (droppedOnZone != null && droppedOnZone.CompareTag("DropZone"))
-            {
-                isNewPlateAttached = true;
-                view.AttachNewPlate(droppedOnZone.GetComponent<RectTransform>());
-            }
-            else
-            {
-                view.SnapBackPlate(false); 
+                if (droppedOnZone != null && droppedOnZone.CompareTag("DropZone"))
+                {
+                    isNewPlateAttached = true;
+                    view.AttachNewPlate(droppedOnZone.GetComponent<RectTransform>());
+                }
+                else
+                {
+                    view.SnapBackPlate(false);
+                }
             }
         }
     }

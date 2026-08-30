@@ -9,11 +9,14 @@ namespace CY.Minigame
     public class GasStationMinigameView : MonoBehaviour
     {
         [Header("UI")] 
+        public GameObject explanationPanel;
+        
         public Image gaugeFill;
         public Image fuelNozzle;
 
         public TextMeshProUGUI titleText;
         public TextMeshProUGUI assigneeText;
+        public TextMeshProUGUI noticeText;
         public TextMeshProUGUI resultText;
         public RectTransform fuelButtonRect;
 
@@ -46,6 +49,41 @@ namespace CY.Minigame
             assigneeText.text = isOperator
                 ? "Assignee : You"
                 : "Assignee : OtherPlayer";
+        }
+        
+        public void ShowExplanationPanel()
+        {
+            if (explanationPanel != null)
+            {
+                explanationPanel.SetActive(true);
+                CanvasGroup cg = explanationPanel.GetComponent<CanvasGroup>();
+                if (cg == null) cg = explanationPanel.AddComponent<CanvasGroup>();
+                
+                cg.alpha = 0f;
+                cg.DOFade(1f, 0.5f);
+            }
+        }
+
+        public void HideExplanationPanel()
+        {
+            if (explanationPanel != null) explanationPanel.SetActive(false);
+        }
+
+        public void FadeInGameTexts()
+        {
+            if (titleText != null) titleText.DOFade(1f, 1f);
+            if (assigneeText != null) assigneeText.DOFade(1f, 1f);
+            if (noticeText != null) noticeText.DOFade(1f, 1f);
+        }
+
+        private void SetTextAlpha(TextMeshProUGUI txt, float alpha)
+        {
+            if (txt != null)
+            {
+                Color c = txt.color;
+                c.a = alpha;
+                txt.color = c;
+            }
         }
 
         public void ApplyFuelState(float gaugePercent, bool isPressed)
@@ -96,6 +134,11 @@ namespace CY.Minigame
             
             resultText.transform.localScale = Vector3.zero;
             isCurrentlyPressed = false;
+            
+            if (explanationPanel != null) explanationPanel.SetActive(false);
+            SetTextAlpha(titleText, 0f);
+            SetTextAlpha(assigneeText, 0f);
+            SetTextAlpha(noticeText, 0f);
             
             RetractNozzleButton();
         }
