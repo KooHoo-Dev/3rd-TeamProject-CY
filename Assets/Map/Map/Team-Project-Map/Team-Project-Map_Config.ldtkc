@@ -96,11 +96,33 @@
             }
         },
         {
+            "_key": "Wall_Grass_1",
+            "_asset": {
+                "fileID": 11400000,
+                "guid": "260cde9d234895a45adc7a69f087a63c",
+                "type": 2
+            }
+        },
+        {
             "_key": "Grass_1",
             "_asset": {
                 "fileID": 11400000,
                 "guid": "16498181fd3524c478168bb76e1e50fb",
                 "type": 2
+            }
+        },
+        {
+            "_key": "Wall_Sand_1",
+            "_asset": {
+                "fileID": 11400000,
+                "guid": "9af699fd6ba11e34da2418133ce7eed6",
+                "type": 2
+            }
+        },
+        {
+            "_key": "Sand_1",
+            "_asset": {
+                "instanceID": 0
             }
         },
         {
@@ -114,6 +136,14 @@
             "_asset": {
                 "fileID": 11400000,
                 "guid": "61d2d36f678aa614e867bb53a913c616",
+                "type": 2
+            }
+        },
+        {
+            "_key": "Cement_1",
+            "_asset": {
+                "fileID": 11400000,
+                "guid": "546765a4ecdd6a64ba6c8b3ccede80c8",
                 "type": 2
             }
         },
@@ -257,6 +287,12 @@
         },
         {
             "_key": "P_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
+            "_key": "Swimming_Pool_Walk_1",
             "_asset": {
                 "instanceID": 0
             }

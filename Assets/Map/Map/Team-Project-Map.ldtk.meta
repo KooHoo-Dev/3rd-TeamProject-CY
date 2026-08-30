@@ -48,12 +48,20 @@ ScriptedImporter:
     _asset: {instanceID: 0}
   - _key: Down_Yellow_Line_1
     _asset: {instanceID: 0}
+  - _key: Wall_Grass_1
+    _asset: {fileID: 11400000, guid: 260cde9d234895a45adc7a69f087a63c, type: 2}
   - _key: Grass_1
     _asset: {fileID: 11400000, guid: 16498181fd3524c478168bb76e1e50fb, type: 2}
+  - _key: Wall_Sand_1
+    _asset: {fileID: 11400000, guid: 9af699fd6ba11e34da2418133ce7eed6, type: 2}
+  - _key: Sand_1
+    _asset: {instanceID: 0}
   - _key: SideWalk_1
     _asset: {instanceID: 0}
   - _key: NoCar_1
     _asset: {fileID: 11400000, guid: 61d2d36f678aa614e867bb53a913c616, type: 2}
+  - _key: Cement_1
+    _asset: {fileID: 11400000, guid: 546765a4ecdd6a64ba6c8b3ccede80c8, type: 2}
   - _key: Soil_1
     _asset: {instanceID: 0}
   - _key: Yellow_Line_Road_Big_V_H_1
@@ -102,6 +110,8 @@ ScriptedImporter:
     _asset: {instanceID: 0}
   - _key: P_1
     _asset: {instanceID: 0}
+  - _key: Swimming_Pool_Walk_1
+    _asset: {instanceID: 0}
   _entities:
   - _key: Entity
     _asset: {instanceID: 0}
@@ -138,12 +148,20 @@ ScriptedImporter:
     _ldtkLayerOrder: -12
   - _ldtkLayerName: Down_Yellow_Line
     _ldtkLayerOrder: -13
+  - _ldtkLayerName: Wall_Grass
+    _ldtkLayerOrder: -14
   - _ldtkLayerName: Grass
     _ldtkLayerOrder: -14
+  - _ldtkLayerName: Wall_Sand
+    _ldtkLayerOrder: -16
+  - _ldtkLayerName: Sand
+    _ldtkLayerOrder: -15
   - _ldtkLayerName: SideWalk
     _ldtkLayerOrder: -15
   - _ldtkLayerName: NoCar
     _ldtkLayerOrder: -16
+  - _ldtkLayerName: Cement
+    _ldtkLayerOrder: -20
   - _ldtkLayerName: Soil
     _ldtkLayerOrder: -17
   - _ldtkLayerName: Yellow_Line_Road_Big_V_H
@@ -192,3 +210,5 @@ ScriptedImporter:
     _ldtkLayerOrder: -38
   - _ldtkLayerName: P
     _ldtkLayerOrder: -39
+  - _ldtkLayerName: Swimming_Pool_Walk
+    _ldtkLayerOrder: -45
