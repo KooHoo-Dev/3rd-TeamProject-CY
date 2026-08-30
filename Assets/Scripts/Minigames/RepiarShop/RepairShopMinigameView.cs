@@ -22,6 +22,7 @@ namespace CY.Minigame
         public TextMeshProUGUI titleText; 
         public TextMeshProUGUI noticeText;
         public TextMeshProUGUI resultText;
+        public TextMeshProUGUI assigneeText;
 
         private Vector2 oldPlateOrigin;
         private Vector2 newPlateOrigin;
@@ -39,6 +40,7 @@ namespace CY.Minigame
             
             SetTextAlpha(titleText, 0f);
             SetTextAlpha(noticeText, 0f);
+            SetTextAlpha(assigneeText, 0f);
         }
         
         public void ShowExplanationPanel()
@@ -63,6 +65,7 @@ namespace CY.Minigame
         {
             if (titleText != null) titleText.DOFade(1f, 1f); 
             if (noticeText != null) noticeText.DOFade(1f, 1f);
+            if (assigneeText != null) assigneeText.DOFade(1f, 1f);
         }
         
         private void SetTextAlpha(TextMeshProUGUI txt, float alpha)

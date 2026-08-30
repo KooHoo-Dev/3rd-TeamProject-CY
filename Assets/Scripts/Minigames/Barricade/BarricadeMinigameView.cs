@@ -10,33 +10,27 @@ namespace CY.Minigame
 
     public class BarricadeMinigameView : MonoBehaviour
     {
-        [Header("UI")] public TextMeshProUGUI titleText;
+        [Header("UI")] 
+        public GameObject explanationPanel;
+        
+        public TextMeshProUGUI titleText;
         public TextMeshProUGUI assigneeText;
         public TextMeshProUGUI resultText;
+        public TextMeshProUGUI noticeText;
+        
         public Image overloadPanel;
         public Button[] fuseButtons;
         public Image[] rightCircuits;
 
-        private List<int> correctSequence = new List<int>(); // 이번 판의 정답 순서
-        private int currentStep = 0; // 현재 맞춰야 할 순서 인덱스 (0~2)
-        private bool isOverloaded = false; // 과부하(쿨타임) 상태인지 확인
-
         private Color fuseOffColor = Color.white;
         private Color fuseOnColor = Color.yellow;
 
-        private void Start()
+        
+        public void InitializeView()
         {
+            explanationPanel.SetActive(false);
             overloadPanel.gameObject.SetActive(false);
-            resultText.transform.localScale = Vector3.zero;
-
-            InitializeGame();
-        }
-
-        public void InitializeGame()
-        {
-            currentStep = 0;
-            isOverloaded = false;
-            overloadPanel.gameObject.SetActive(false);
+            resultText.gameObject.SetActive(false);
 
             for (int i = 0; i < 3; i++)
             {
@@ -47,78 +41,81 @@ namespace CY.Minigame
                 c.a = 0f;
                 rightCircuits[i].color = c;
             }
-
-            correctSequence.Clear();
-            correctSequence.Add(0);
-            correctSequence.Add(1);
-            correctSequence.Add(2);
-
-            for (int i = 0; i < correctSequence.Count; i++) //(Fisher-Yates Shuffle 알고리즘)
-            {
-                int temp = correctSequence[i];
-                int randomIndex = Random.Range(i, correctSequence.Count);
-                correctSequence[i] = correctSequence[randomIndex];
-                correctSequence[randomIndex] = temp;
-            }
-
-            // 정답 테스트용
-            Debug.Log($"정답 순서: {correctSequence[0]} -> {correctSequence[1]} -> {correctSequence[2]}");
+            
+            SetTextAlpha(titleText, 0f);
+            SetTextAlpha(assigneeText, 0f);
+            SetTextAlpha(noticeText, 0f);
 
         }
-
-        public void OnFuseClicked(int fuseIndex)
+        
+        public void ShowExplanationPanel()
         {
-            if (isOverloaded || currentStep >= 3) return;
-
-            if (fuseIndex == correctSequence[currentStep])
+            if (explanationPanel != null)
             {
-                fuseButtons[fuseIndex].GetComponent<Image>().color = fuseOnColor;
-
-                rightCircuits[fuseIndex].DOFade(1f, 0.3f);
-
-                currentStep++; // 성공
-
-                if (currentStep >= 3)
-                {
-                    ShowResultText("미션 성공!", Color.green);
-                }
+                explanationPanel.SetActive(true);
+                CanvasGroup cg = explanationPanel.GetComponent<CanvasGroup>();
+                if (cg == null) cg = explanationPanel.AddComponent<CanvasGroup>();
+                
+                cg.alpha = 0f;
+                cg.DOFade(1f, 0.5f);
             }
-            else
-            {
-                StartCoroutine(OverloadRoutine());
-            }
-
         }
-
-        private IEnumerator OverloadRoutine()
+        
+        public void HideExplanationPanel()
         {
-            isOverloaded = true;
-
+            if (explanationPanel != null) explanationPanel.SetActive(false);
+        }
+        
+        public void FadeInGameTexts()
+        {
+            if (titleText != null) titleText.DOFade(1f, 1f);
+            if (assigneeText != null) assigneeText.DOFade(1f, 1f);
+            if (noticeText != null) noticeText.DOFade(1f, 1f);
+        }
+        
+        private void SetTextAlpha(TextMeshProUGUI txt, float alpha)
+        {
+            if (txt != null)
+            {
+                Color c = txt.color;
+                c.a = alpha;
+                txt.color = c;
+            }
+        }
+        
+        public void SetFuseState(int index, bool isOn)
+        {
+            fuseButtons[index].GetComponent<Image>().color = isOn ? fuseOnColor : fuseOffColor;
+            if (isOn)
+            {
+                rightCircuits[index].DOFade(1f, 0.3f);
+            }
+        }
+        
+        public void ShowOverloadEffect()
+        {
             for (int i = 0; i < 3; i++)
             {
                 fuseButtons[i].GetComponent<Image>().color = fuseOffColor;
-
-                rightCircuits[i].DOKill(); // 혹시 진행 중인 애니메이션이 있다면 캔슬
+                rightCircuits[i].DOKill();
                 rightCircuits[i].DOFade(0f, 0.1f);
             }
 
             overloadPanel.gameObject.SetActive(true);
             overloadPanel.color = new Color(1, 0, 0, 0.5f);
-
             overloadPanel.DOKill();
             overloadPanel.DOFade(0f, 0.2f).SetLoops(4, LoopType.Yoyo);
-
-            yield return new WaitForSeconds(2.0f);
-
-            overloadPanel.gameObject.SetActive(false);
-            currentStep = 0;
-
-            isOverloaded = false;
-
         }
-
-        private void ShowResultText(string message, Color color)
+        
+        public void HideOverloadEffect()
         {
+            overloadPanel.gameObject.SetActive(false);
+        }
+        
+
+        public void ShowResultText(string message, Color color)
+        {
+            resultText.gameObject.SetActive(true);
             resultText.text = message;
             resultText.color = color;
             resultText.transform.localScale = Vector3.zero;
