@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using  DG.Tweening;
 using System.Collections;
+using CY.Network;
 using CY.Stages;
 
 namespace CY.Minigame
@@ -18,7 +19,6 @@ namespace CY.Minigame
         
         public event Action OnGameStartRequested;
 
-        private Vector2 hiddenPosition;
         private Vector2 visiblePosition;
         [SerializeField] private RectTransform currentMiniGamePanel;
         [SerializeField] private GameObject currentExplanationPanel;
@@ -32,15 +32,27 @@ namespace CY.Minigame
         private void Start()
         {
             visiblePosition = Vector2.zero; 
-            hiddenPosition = new Vector2(Screen.width, 0);
+            
+            for (int i = 0; i < minigamePanel.Length; i++)
+            {
+                minigamePanel[i].anchoredPosition = GetHiddenPosition(minigamePanel[i]);
+            }
+
+            for (int i = 0; i < explanationPanel.Length; i++)
+            {
+                explanationPanel[i].SetActive(false);
+            }
             
             currentMiniGamePanel = minigamePanel[0];
             currentExplanationPanel = explanationPanel[0];
-            
-            currentMiniGamePanel.anchoredPosition = hiddenPosition;
-            if (explanationPanel != null) currentExplanationPanel.SetActive(false);
         }
 
+        private Vector2 GetHiddenPosition(RectTransform panel)
+        {
+            return new Vector2(panel.rect.width + 10f, 0f);
+        }
+        
+        
         public void SetCurrentMiniGameType(string missionType)
         {
             switch (missionType)
@@ -71,9 +83,9 @@ namespace CY.Minigame
     
         private IEnumerator ShowExplanationRoutine()
         {
-            yield return new WaitForSeconds(1.0f); 
-        
-            if (explanationPanel != null)
+            yield return new WaitForSeconds(1.0f);
+            
+            if (explanationPanel != null && Session.IsHost)
             {
                 currentExplanationPanel.SetActive(true);
                 CanvasGroup cg = currentExplanationPanel.GetComponent<CanvasGroup>();
@@ -93,7 +105,7 @@ namespace CY.Minigame
     
         public void HideMinigameUI()
         {
-            currentMiniGamePanel.DOAnchorPos(hiddenPosition, slideDuration).SetEase(Ease.InQuad);
+            currentMiniGamePanel.DOAnchorPos(GetHiddenPosition(currentMiniGamePanel), slideDuration).SetEase(Ease.InQuad);
         }
     }
 }
