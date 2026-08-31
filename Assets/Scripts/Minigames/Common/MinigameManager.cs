@@ -116,6 +116,7 @@ namespace CY.Minigame
                     
                     CurrentMiniGameType = message.MiniGameType;
                     MiniGameStartHandler(message);
+                    minigameUI.SetCurrentMiniGameType(message.MiniGameType);
                     minigameUI.ShowMinigameUI();
                     break;
                 }
