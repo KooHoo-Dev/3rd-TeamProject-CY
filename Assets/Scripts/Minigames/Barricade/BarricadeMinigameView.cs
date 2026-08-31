@@ -22,16 +22,27 @@ namespace CY.Minigame
 
         private Color fuseOffColor = Color.white;
         private Color fuseOnColor = Color.yellow;
+        private bool currentIsOperator = false;
 
-        
-        public void InitializeView()
+        public void Begin(bool isOperator)
         {
-            overloadPanel.gameObject.SetActive(false);
+            ResetView();
+            currentIsOperator = isOperator;
+            
+            // 처음에는 입력 불가 상태로 두고 Controller가 MinigameUI 신호를 받으면 풀어줌
+            SetButtonsInteractable(false);
+        }
+        
+        public void ResetView()
+        {
+            StopAllCoroutines();
+            HideOverloadEffect();
             resultText.gameObject.SetActive(false);
 
             for (int i = 0; i < 3; i++)
             {
                 fuseButtons[i].GetComponent<Image>().color = fuseOffColor;
+                rightCircuits[i].DOKill();
 
                 // 오른쪽 회로선 투명도를 0으로 
                 Color c = rightCircuits[i].color;
@@ -42,7 +53,52 @@ namespace CY.Minigame
             SetTextAlpha(titleText, 0f);
             SetTextAlpha(assigneeText, 0f);
             SetTextAlpha(noticeText, 0f);
+            
+            SetButtonsInteractable(false);
 
+        }
+        
+        public void ApplyFuseProgress(int fuseIndex)
+        {
+            fuseButtons[fuseIndex].GetComponent<Image>().color = fuseOnColor;
+            rightCircuits[fuseIndex].DOFade(1f, 0.3f);
+        }
+        
+        public void ApplyAttemptFailed()
+        {
+            StartCoroutine(OverloadRoutine());
+        }
+        
+        public void ApplyAborted()
+        {
+            SetButtonsInteractable(false);
+            ShowResultText("Pause", Color.gray);
+        }
+        
+        private IEnumerator OverloadRoutine()
+        {
+            SetButtonsInteractable(false); // 과부하 중 버튼 잠금
+            ShowOverloadEffect();
+
+            yield return new WaitForSeconds(2.0f);
+
+            HideOverloadEffect();
+            
+            // 과부하가 끝나면 담당자만 버튼 다시 활성화
+            SetButtonsInteractable(currentIsOperator); 
+        }
+        
+        public void EnableInputForOperator()
+        {
+            if (currentIsOperator) SetButtonsInteractable(true);
+        }
+
+        private void SetButtonsInteractable(bool interactable)
+        {
+            foreach (var btn in fuseButtons)
+            {
+                btn.interactable = interactable;
+            }
         }
         
         public void FadeInGameTexts()
@@ -59,15 +115,6 @@ namespace CY.Minigame
                 Color c = txt.color;
                 c.a = alpha;
                 txt.color = c;
-            }
-        }
-        
-        public void SetFuseState(int index, bool isOn)
-        {
-            fuseButtons[index].GetComponent<Image>().color = isOn ? fuseOnColor : fuseOffColor;
-            if (isOn)
-            {
-                rightCircuits[index].DOFade(1f, 0.3f);
             }
         }
         
@@ -88,6 +135,7 @@ namespace CY.Minigame
         
         public void HideOverloadEffect()
         {
+            overloadPanel.DOKill();
             overloadPanel.gameObject.SetActive(false);
         }
         

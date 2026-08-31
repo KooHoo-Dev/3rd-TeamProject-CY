@@ -1,23 +1,48 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using CY.Network;
+
+public class BarricadeFuseClickMessage
+{
+    public string Type { get; set; } = "barricade_fuse_click";
+    public int FuseIndex { get; set; }
+}
+
+public class BarricadeProgressMessage
+{
+    public string Type { get; set; } = "barricade_progress";
+    public int FuseIndex { get; set; }
+}
 
 namespace CY.Minigame
 {
 
     public class BarricadeMinigameController : MonoBehaviour
     {
-        public BarricadeMinigameView view;
+        private const string BarricadeMiniGameType = "barricade";
+        private const float CompletedDisplaySeconds = 2f;
         
-        private List<int> correctSequence = new List<int>(); // 이번 판의 정답 순서
-        private int currentStep = 0; // 현재 맞춰야 할 순서 인덱스 (0~2)
-        private bool isOverloaded = false; // 과부하(쿨타임) 상태인지 확인
-        private bool isGameStarted = false;
+        public BarricadeMinigameView view;
+        private NetworkSession session;
+        private Coroutine completedRoutine;
+        
+        private bool IsOperator;
+        private bool IsActive;
+        private bool CanSendInput;
+
+        public event Action MinigameEnded;
+        
+        private void Awake()
+        {
+            if (view == null) view = GetComponent<BarricadeMinigameView>();
+            session = NetworkSession.Instance;
+        }
         
         private void Start()
         {
-            view.InitializeView();
-            GenerateSequence();
+            ResetState();
         }
         
         private void OnEnable()
@@ -38,54 +63,52 @@ namespace CY.Minigame
 
         private void HandleGameStartSignal()
         {
-            if (!gameObject.activeInHierarchy) return;
+            if (gameObject.activeInHierarchy == false || IsActive == false) return;
             StartCoroutine(StartGameRoutine());
-        }
-        
-        private void GenerateSequence()
-        {
-            correctSequence.Clear();
-            correctSequence.Add(0);
-            correctSequence.Add(1);
-            correctSequence.Add(2);
-
-            for (int i = 0; i < correctSequence.Count; i++)
-            {
-                int temp = correctSequence[i];
-                int randomIndex = Random.Range(i, correctSequence.Count);
-                correctSequence[i] = correctSequence[randomIndex];
-                correctSequence[randomIndex] = temp;
-            }
-
-            Debug.Log($"정답 순서: {correctSequence[0]} -> {correctSequence[1]} -> {correctSequence[2]}");
         }
         
         private IEnumerator StartGameRoutine()
         {
             yield return new WaitForSeconds(1.0f);
             view.FadeInGameTexts(); 
-            isGameStarted = true;   
+            CanSendInput = IsOperator; 
+            view.EnableInputForOperator();   
         }
         
-        public void OnFuseClicked(int fuseIndex)
+        private void ResetState()
         {
-            if (isGameStarted == false || isOverloaded || currentStep >= 3) return;
+            IsActive = false;
+            IsOperator = false;
+            CanSendInput = false;
 
-            if (fuseIndex == correctSequence[currentStep])
-            {
-                view.SetFuseState(fuseIndex, true);
-                currentStep++;
+            if (view != null) view.ResetView();
+        }
+        
+        public void SendFuseClick(int fuseIndex)
+        {
+            if (!IsActive || !IsOperator || !CanSendInput) return;
 
-                if (currentStep >= 3)
-                {
-                    view.ShowResultText("미션 성공!", Color.green);
-                    // TODO: 서버 연동 시 여기에 미션 성공 패킷 전송 로직 추가
-                }
-            }
-            else
+            if (fuseIndex < 0 || fuseIndex > 2) return;
+
+            session.SendAsync(new BarricadeFuseClickMessage
             {
-                StartCoroutine(OverloadRoutine());
-            }
+                FuseIndex = fuseIndex
+            }).Forget();[cite: 15]
+        }
+        
+        public void HandleMiniGameStarted(MiniGameStartedMessage message)
+        {
+            if (message == null || message.MiniGameType != BarricadeMiniGameType) return;
+
+            ResetState();
+
+            if (session == null || session.Me == null) return;
+
+            IsActive = true;
+            IsOperator = session.Me.Id == message.OperatorId;
+            CanSendInput = false; // MinigameUI 신호 전까지 대기
+
+            view.Begin(IsOperator);
         }
         
         private IEnumerator OverloadRoutine()
