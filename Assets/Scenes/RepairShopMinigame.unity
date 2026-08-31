@@ -202,9 +202,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1748047042}
+      - m_Target: {fileID: 944809730}
         m_TargetAssemblyTypeName: MinigameUI, Assembly-CSharp
-        m_MethodName: HideMinigameUI
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -882,8 +882,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 632507702}
-        m_TargetAssemblyTypeName: CY.Minigame.RepairShopMinigameController, Assembly-CSharp
+      - m_Target: {fileID: 944809734}
+        m_TargetAssemblyTypeName: CY.Minigame.MinigameUI, Assembly-CSharp
         m_MethodName: OnGameStartButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -1325,7 +1325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ed494989c34cb40bc74fc29509872f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RepairShopMinigameView
-  explanationPanel: {fileID: 324485118}
   oldPlateRect: {fileID: 499350183}
   newPlateRect: {fileID: 2107889449}
   oldPlateCanvasGroup: {fileID: 499350187}
@@ -2287,6 +2286,7 @@ GameObject:
   - component: {fileID: 944809731}
   - component: {fileID: 944809733}
   - component: {fileID: 944809732}
+  - component: {fileID: 944809734}
   m_Layer: 5
   m_Name: MinigamePanel
   m_TagString: Untagged
@@ -2352,6 +2352,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944809730}
   m_CullTransparentMesh: 1
+--- !u!114 &944809734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944809730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db8735f9b44d2649a5b6309a5fb7527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Minigame.MinigameUI
+  minigamePanel: {fileID: 944809731}
+  slideDuration: 0.5
+  explanationPanel: {fileID: 324485118}
 --- !u!1 &978918849
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,52 +3211,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662717008}
   m_CullTransparentMesh: 1
---- !u!1 &1748047041
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1748047043}
-  - component: {fileID: 1748047042}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1748047042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748047041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db8735f9b44d2649a5b6309a5fb7527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MinigameUI
-  minigamePanel: {fileID: 944809731}
-  slideDuration: 0.5
---- !u!4 &1748047043
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748047041}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760407302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3688,8 +3657,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1748047042}
-        m_TargetAssemblyTypeName: MinigameUI, Assembly-CSharp
+      - m_Target: {fileID: 944809734}
+        m_TargetAssemblyTypeName: CY.Minigame.MinigameUI, Assembly-CSharp
         m_MethodName: ShowMinigameUI
         m_Mode: 1
         m_Arguments:
@@ -3985,4 +3954,3 @@ SceneRoots:
   - {fileID: 37696853}
   - {fileID: 804532867}
   - {fileID: 1050249049}
-  - {fileID: 1748047043}

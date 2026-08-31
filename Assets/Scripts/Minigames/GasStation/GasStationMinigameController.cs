@@ -36,6 +36,22 @@ namespace CY.Minigame
         {
             ResetState();
         }
+        
+        private void OnEnable()
+        {
+            if (MinigameUI.Instance != null)
+            {
+                MinigameUI.Instance.OnGameStartRequested += HandleGameStartSignal;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (MinigameUI.Instance != null)
+            {
+                MinigameUI.Instance.OnGameStartRequested -= HandleGameStartSignal;
+            }
+        }
 
         public void SendFuelPress()
         {
@@ -68,19 +84,12 @@ namespace CY.Minigame
             CanSendInput = false;
 
             view.Begin(IsOperator);
-            
-            StartCoroutine(ShowExplanationRoutine());
         }
         
-        private IEnumerator ShowExplanationRoutine()
+        private void HandleGameStartSignal()
         {
-            yield return new WaitForSeconds(1.5f);
-            view.ShowExplanationPanel();
-        }
-        
-        public void OnGameStartButtonClicked()
-        {
-            view.HideExplanationPanel();
+            if (!IsActive) return; 
+    
             StartCoroutine(StartGameRoutine());
         }
         
