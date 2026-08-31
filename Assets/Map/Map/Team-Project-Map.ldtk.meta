@@ -54,6 +54,8 @@ ScriptedImporter:
     _asset: {fileID: 11400000, guid: 16498181fd3524c478168bb76e1e50fb, type: 2}
   - _key: Full_Grass_1
     _asset: {fileID: 11400000, guid: f2f685082364e5a4296321d61aa9c386, type: 2}
+  - _key: Railroad_Rock_1
+    _asset: {instanceID: 0}
   - _key: Wall_Sand_1
     _asset: {fileID: 11400000, guid: 9af699fd6ba11e34da2418133ce7eed6, type: 2}
   - _key: Sand_1
@@ -158,6 +160,8 @@ ScriptedImporter:
     _ldtkLayerOrder: -14
   - _ldtkLayerName: Full_Grass
     _ldtkLayerOrder: -16
+  - _ldtkLayerName: Railroad_Rock
+    _ldtkLayerOrder: -17
   - _ldtkLayerName: Wall_Sand
     _ldtkLayerOrder: -16
   - _ldtkLayerName: Sand

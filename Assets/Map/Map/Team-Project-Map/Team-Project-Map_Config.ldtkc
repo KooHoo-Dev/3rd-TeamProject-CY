@@ -120,6 +120,12 @@
             }
         },
         {
+            "_key": "Railroad_Rock_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
             "_key": "Wall_Sand_1",
             "_asset": {
                 "fileID": 11400000,
