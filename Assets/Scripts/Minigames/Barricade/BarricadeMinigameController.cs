@@ -18,8 +18,28 @@ namespace CY.Minigame
         {
             view.InitializeView();
             GenerateSequence();
-            
-            StartCoroutine(ShowExplanationRoutine());
+        }
+        
+        private void OnEnable()
+        {
+            if (MinigameUI.Instance != null)
+            {
+                MinigameUI.Instance.OnGameStartRequested += HandleGameStartSignal;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (MinigameUI.Instance != null)
+            {
+                MinigameUI.Instance.OnGameStartRequested -= HandleGameStartSignal;
+            }
+        }
+
+        private void HandleGameStartSignal()
+        {
+            if (!gameObject.activeInHierarchy) return;
+            StartCoroutine(StartGameRoutine());
         }
         
         private void GenerateSequence()
@@ -38,18 +58,6 @@ namespace CY.Minigame
             }
 
             Debug.Log($"정답 순서: {correctSequence[0]} -> {correctSequence[1]} -> {correctSequence[2]}");
-        }
-        
-        private IEnumerator ShowExplanationRoutine()
-        {
-            yield return new WaitForSeconds(1.5f);
-            view.ShowExplanationPanel();
-        }
-        
-        public void OnGameStartButtonClicked()
-        {
-            view.HideExplanationPanel();
-            StartCoroutine(StartGameRoutine());
         }
         
         private IEnumerator StartGameRoutine()

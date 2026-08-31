@@ -11,8 +11,6 @@ namespace CY.Minigame
     public class BarricadeMinigameView : MonoBehaviour
     {
         [Header("UI")] 
-        public GameObject explanationPanel;
-        
         public TextMeshProUGUI titleText;
         public TextMeshProUGUI assigneeText;
         public TextMeshProUGUI resultText;
@@ -28,7 +26,6 @@ namespace CY.Minigame
         
         public void InitializeView()
         {
-            explanationPanel.SetActive(false);
             overloadPanel.gameObject.SetActive(false);
             resultText.gameObject.SetActive(false);
 
@@ -46,24 +43,6 @@ namespace CY.Minigame
             SetTextAlpha(assigneeText, 0f);
             SetTextAlpha(noticeText, 0f);
 
-        }
-        
-        public void ShowExplanationPanel()
-        {
-            if (explanationPanel != null)
-            {
-                explanationPanel.SetActive(true);
-                CanvasGroup cg = explanationPanel.GetComponent<CanvasGroup>();
-                if (cg == null) cg = explanationPanel.AddComponent<CanvasGroup>();
-                
-                cg.alpha = 0f;
-                cg.DOFade(1f, 0.5f);
-            }
-        }
-        
-        public void HideExplanationPanel()
-        {
-            if (explanationPanel != null) explanationPanel.SetActive(false);
         }
         
         public void FadeInGameTexts()

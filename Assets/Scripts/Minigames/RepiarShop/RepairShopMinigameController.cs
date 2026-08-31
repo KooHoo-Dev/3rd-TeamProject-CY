@@ -19,18 +19,27 @@ namespace CY.Minigame
         private void Start()
         {
             view.InitializeView();
-            StartCoroutine(ShowExplanationRoutine());
         }
         
-        private IEnumerator ShowExplanationRoutine()
+        private void OnEnable()
         {
-            yield return new WaitForSeconds(1.5f);
-            view.ShowExplanationPanel();
+            if (MinigameUI.Instance != null)
+            {
+                MinigameUI.Instance.OnGameStartRequested += HandleGameStartSignal;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (MinigameUI.Instance != null)
+            {
+                MinigameUI.Instance.OnGameStartRequested -= HandleGameStartSignal;
+            }
         }
         
-        public void OnGameStartButtonClicked()
+        private void HandleGameStartSignal()
         {
-            view.HideExplanationPanel();
+            if (!gameObject.activeInHierarchy) return;
             StartCoroutine(StartGameRoutine());
         }
         

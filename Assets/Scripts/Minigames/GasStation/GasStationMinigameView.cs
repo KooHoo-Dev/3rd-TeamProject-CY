@@ -9,8 +9,6 @@ namespace CY.Minigame
     public class GasStationMinigameView : MonoBehaviour
     {
         [Header("UI")] 
-        public GameObject explanationPanel;
-        
         public Image gaugeFill;
         public Image fuelNozzle;
 
@@ -49,24 +47,6 @@ namespace CY.Minigame
             assigneeText.text = isOperator
                 ? "Assignee : You"
                 : "Assignee : OtherPlayer";
-        }
-        
-        public void ShowExplanationPanel()
-        {
-            if (explanationPanel != null)
-            {
-                explanationPanel.SetActive(true);
-                CanvasGroup cg = explanationPanel.GetComponent<CanvasGroup>();
-                if (cg == null) cg = explanationPanel.AddComponent<CanvasGroup>();
-                
-                cg.alpha = 0f;
-                cg.DOFade(1f, 0.5f);
-            }
-        }
-
-        public void HideExplanationPanel()
-        {
-            if (explanationPanel != null) explanationPanel.SetActive(false);
         }
 
         public void FadeInGameTexts()
@@ -135,7 +115,6 @@ namespace CY.Minigame
             resultText.transform.localScale = Vector3.zero;
             isCurrentlyPressed = false;
             
-            if (explanationPanel != null) explanationPanel.SetActive(false);
             SetTextAlpha(titleText, 0f);
             SetTextAlpha(assigneeText, 0f);
             SetTextAlpha(noticeText, 0f);
