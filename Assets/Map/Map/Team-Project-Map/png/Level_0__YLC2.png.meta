@@ -20,9 +20,6 @@ TextureImporter:
   - first:
       213: 6651798049127804464
     second: Level_0__YLC2_5
-  - first:
-      213: -1658246250387914487
-    second: Level_0__YLC2_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -114,6 +111,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -143,7 +153,7 @@ TextureImporter:
       name: Level_0__YLC2_1
       rect:
         serializedVersion: 2
-        x: 1231
+        x: 1647
         y: 687
         width: 34
         height: 18
@@ -165,8 +175,8 @@ TextureImporter:
       name: Level_0__YLC2_2
       rect:
         serializedVersion: 2
-        x: 1311
-        y: 687
+        x: 367
+        y: 447
         width: 34
         height: 18
       alignment: 0
@@ -187,8 +197,8 @@ TextureImporter:
       name: Level_0__YLC2_3
       rect:
         serializedVersion: 2
-        x: 1647
-        y: 687
+        x: 447
+        y: 447
         width: 34
         height: 18
       alignment: 0
@@ -209,9 +219,9 @@ TextureImporter:
       name: Level_0__YLC2_4
       rect:
         serializedVersion: 2
-        x: 367
+        x: 815
         y: 447
-        width: 34
+        width: 18
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -231,9 +241,9 @@ TextureImporter:
       name: Level_0__YLC2_5
       rect:
         serializedVersion: 2
-        x: 447
+        x: 943
         y: 447
-        width: 34
+        width: 50
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -245,28 +255,6 @@ TextureImporter:
       bones: []
       spriteID: 03e26eb351fef4c50800000000000000
       internalID: 6651798049127804464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Level_0__YLC2_6
-      rect:
-        serializedVersion: 2
-        x: 815
-        y: 447
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 901418f22d9bcf8e0800000000000000
-      internalID: -1658246250387914487
       vertices: []
       indices: 
       edges: []
@@ -291,7 +279,6 @@ TextureImporter:
       Level_0__YLC2_3: -3514105574722030274
       Level_0__YLC2_4: -1805739461679747303
       Level_0__YLC2_5: 6651798049127804464
-      Level_0__YLC2_6: -1658246250387914487
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

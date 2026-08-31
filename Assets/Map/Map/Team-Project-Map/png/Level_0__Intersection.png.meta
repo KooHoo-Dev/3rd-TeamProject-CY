@@ -74,6 +74,9 @@ TextureImporter:
   - first:
       213: 7109959668387429092
     second: Level_0__Intersection_23
+  - first:
+      213: 6050728686134234525
+    second: Level_0__Intersection_24
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -165,6 +168,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -173,7 +189,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 127
-        y: 1583
+        y: 863
         width: 98
         height: 98
       alignment: 0
@@ -194,9 +210,9 @@ TextureImporter:
       name: Level_0__Intersection_1
       rect:
         serializedVersion: 2
-        x: 1759
-        y: 1583
-        width: 98
+        x: 559
+        y: 863
+        width: 50
         height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -216,9 +232,9 @@ TextureImporter:
       name: Level_0__Intersection_2
       rect:
         serializedVersion: 2
-        x: 3375
-        y: 1583
-        width: 98
+        x: 1423
+        y: 863
+        width: 50
         height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -238,7 +254,7 @@ TextureImporter:
       name: Level_0__Intersection_3
       rect:
         serializedVersion: 2
-        x: 127
+        x: 1759
         y: 863
         width: 98
         height: 98
@@ -260,10 +276,10 @@ TextureImporter:
       name: Level_0__Intersection_4
       rect:
         serializedVersion: 2
-        x: 1759
-        y: 863
-        width: 98
-        height: 98
+        x: 1055
+        y: 671
+        width: 66
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,10 +298,10 @@ TextureImporter:
       name: Level_0__Intersection_5
       rect:
         serializedVersion: 2
-        x: 3375
-        y: 863
-        width: 98
-        height: 98
+        x: 1423
+        y: 671
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,10 +320,10 @@ TextureImporter:
       name: Level_0__Intersection_6
       rect:
         serializedVersion: 2
-        x: 367
-        y: 735
-        width: 34
-        height: 34
+        x: 1759
+        y: 671
+        width: 98
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,9 +342,9 @@ TextureImporter:
       name: Level_0__Intersection_7
       rect:
         serializedVersion: 2
-        x: 767
-        y: 767
-        width: 34
+        x: 975
+        y: 607
+        width: 50
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -348,8 +364,8 @@ TextureImporter:
       name: Level_0__Intersection_8
       rect:
         serializedVersion: 2
-        x: 911
-        y: 767
+        x: 1695
+        y: 575
         width: 34
         height: 34
       alignment: 0
@@ -370,10 +386,10 @@ TextureImporter:
       name: Level_0__Intersection_9
       rect:
         serializedVersion: 2
-        x: 1055
-        y: 671
-        width: 66
-        height: 50
+        x: 895
+        y: 559
+        width: 50
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -392,10 +408,10 @@ TextureImporter:
       name: Level_0__Intersection_10
       rect:
         serializedVersion: 2
-        x: 1423
-        y: 671
+        x: 975
+        y: 559
         width: 50
-        height: 50
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -414,9 +430,9 @@ TextureImporter:
       name: Level_0__Intersection_11
       rect:
         serializedVersion: 2
-        x: 367
-        y: 591
-        width: 34
+        x: 895
+        y: 511
+        width: 50
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -436,9 +452,9 @@ TextureImporter:
       name: Level_0__Intersection_12
       rect:
         serializedVersion: 2
-        x: 447
-        y: 591
-        width: 34
+        x: 975
+        y: 511
+        width: 50
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -458,9 +474,9 @@ TextureImporter:
       name: Level_0__Intersection_13
       rect:
         serializedVersion: 2
-        x: 127
-        y: 431
-        width: 98
+        x: 1423
+        y: 463
+        width: 50
         height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -480,8 +496,8 @@ TextureImporter:
       name: Level_0__Intersection_14
       rect:
         serializedVersion: 2
-        x: 559
-        y: 431
+        x: 1583
+        y: 463
         width: 50
         height: 50
       alignment: 0
@@ -502,7 +518,7 @@ TextureImporter:
       name: Level_0__Intersection_15
       rect:
         serializedVersion: 2
-        x: 1167
+        x: 1695
         y: 479
         width: 34
         height: 34
@@ -524,10 +540,10 @@ TextureImporter:
       name: Level_0__Intersection_16
       rect:
         serializedVersion: 2
-        x: 1311
-        y: 479
-        width: 34
-        height: 34
+        x: 127
+        y: 431
+        width: 98
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -546,8 +562,8 @@ TextureImporter:
       name: Level_0__Intersection_17
       rect:
         serializedVersion: 2
-        x: 1423
-        y: 463
+        x: 559
+        y: 431
         width: 50
         height: 50
       alignment: 0
@@ -568,9 +584,9 @@ TextureImporter:
       name: Level_0__Intersection_18
       rect:
         serializedVersion: 2
-        x: 1583
-        y: 463
-        width: 50
+        x: 415
+        y: 351
+        width: 34
         height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -590,10 +606,10 @@ TextureImporter:
       name: Level_0__Intersection_19
       rect:
         serializedVersion: 2
-        x: 367
-        y: 319
+        x: 479
+        y: 351
         width: 34
-        height: 34
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -612,10 +628,10 @@ TextureImporter:
       name: Level_0__Intersection_20
       rect:
         serializedVersion: 2
-        x: 1167
-        y: 351
-        width: 34
-        height: 34
+        x: 799
+        y: 319
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -656,9 +672,9 @@ TextureImporter:
       name: Level_0__Intersection_22
       rect:
         serializedVersion: 2
-        x: 1759
+        x: 559
         y: 143
-        width: 98
+        width: 50
         height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -678,9 +694,9 @@ TextureImporter:
       name: Level_0__Intersection_23
       rect:
         serializedVersion: 2
-        x: 3375
+        x: 1055
         y: 143
-        width: 98
+        width: 66
         height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -692,6 +708,28 @@ TextureImporter:
       bones: []
       spriteID: 4ea3691f5a6aba260800000000000000
       internalID: 7109959668387429092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Intersection_24
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9d0c419ea188f350800000000000000
+      internalID: 6050728686134234525
       vertices: []
       indices: 
       edges: []
@@ -727,6 +765,7 @@ TextureImporter:
       Level_0__Intersection_21: -7430419870049134330
       Level_0__Intersection_22: 4810034012211708868
       Level_0__Intersection_23: 7109959668387429092
+      Level_0__Intersection_24: 6050728686134234525
       Level_0__Intersection_3: -7783032926491689803
       Level_0__Intersection_4: 9180417866825672758
       Level_0__Intersection_5: 5466793608992106188

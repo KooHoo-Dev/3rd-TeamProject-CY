@@ -5,6 +5,36 @@ TextureImporter:
   - first:
       213: 6307584620313796377
     second: Level_0__WLD_0
+  - first:
+      213: 5071692375845532762
+    second: Level_0__WLD_1
+  - first:
+      213: 2307804739615492114
+    second: Level_0__WLD_2
+  - first:
+      213: -1939401611223511215
+    second: Level_0__WLD_3
+  - first:
+      213: 5796262964010423317
+    second: Level_0__WLD_4
+  - first:
+      213: -5179420837238880625
+    second: Level_0__WLD_5
+  - first:
+      213: -4095404885398248035
+    second: Level_0__WLD_6
+  - first:
+      213: 1545235494313563962
+    second: Level_0__WLD_7
+  - first:
+      213: 56020305455252708
+    second: Level_0__WLD_8
+  - first:
+      213: 2349524052047737774
+    second: Level_0__WLD_9
+  - first:
+      213: -5133984859969835206
+    second: Level_0__WLD_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,6 +126,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -103,10 +146,10 @@ TextureImporter:
       name: Level_0__WLD_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2000
-        height: 1104
+        x: 911
+        y: 767
+        width: 18
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,6 +160,226 @@ TextureImporter:
       bones: []
       spriteID: 91f558c0bca098750800000000000000
       internalID: 6307584620313796377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLD_1
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 671
+        width: 50
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5474584855426640800000000000000
+      internalID: 5071692375845532762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLD_2
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 671
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2188eb3fe28f60020800000000000000
+      internalID: 2307804739615492114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLD_3
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 591
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15fc33e828cd515e0800000000000000
+      internalID: -1939401611223511215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLD_4
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 543
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5141892b476707050800000000000000
+      internalID: 5796262964010423317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLD_5
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 543
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f86ce16b0300f18b0800000000000000
+      internalID: -5179420837238880625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLD_6
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 479
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d95207284f23a27c0800000000000000
+      internalID: -4095404885398248035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLD_7
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 351
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3792ecbe77c17510800000000000000
+      internalID: 1545235494313563962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLD_8
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 351
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e48ed6cb2607c000800000000000000
+      internalID: 56020305455252708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLD_9
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 351
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea3ba815daf2b9020800000000000000
+      internalID: 2349524052047737774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLD_10
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 319
+        width: 130
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3fa34b88fb60c8b0800000000000000
+      internalID: -5133984859969835206
       vertices: []
       indices: 
       edges: []
@@ -136,6 +399,16 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Level_0__WLD_0: 6307584620313796377
+      Level_0__WLD_1: 5071692375845532762
+      Level_0__WLD_10: -5133984859969835206
+      Level_0__WLD_2: 2307804739615492114
+      Level_0__WLD_3: -1939401611223511215
+      Level_0__WLD_4: 5796262964010423317
+      Level_0__WLD_5: -5179420837238880625
+      Level_0__WLD_6: -4095404885398248035
+      Level_0__WLD_7: 1545235494313563962
+      Level_0__WLD_8: 56020305455252708
+      Level_0__WLD_9: 2349524052047737774
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

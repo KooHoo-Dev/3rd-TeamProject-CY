@@ -1,0 +1,676 @@
+fileFormatVersion: 2
+guid: 31299b7565cdfc346aafa746e3bbc234
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2328445741199757313
+    second: sprite_sheet-bike_0
+  - first:
+      213: 5965876171951616973
+    second: sprite_sheet-bike_1
+  - first:
+      213: 2260371423813627585
+    second: sprite_sheet-bike_2
+  - first:
+      213: -5835436227979866145
+    second: sprite_sheet-bike_3
+  - first:
+      213: -5815651027317289592
+    second: sprite_sheet-bike_4
+  - first:
+      213: 3587900003323600732
+    second: sprite_sheet-bike_5
+  - first:
+      213: 8791144227821251727
+    second: sprite_sheet-bike_6
+  - first:
+      213: -3143255536951246513
+    second: sprite_sheet-bike_7
+  - first:
+      213: 3609788064755759609
+    second: sprite_sheet-bike_8
+  - first:
+      213: -4908081608008995354
+    second: sprite_sheet-bike_9
+  - first:
+      213: 5564559450015811315
+    second: sprite_sheet-bike_10
+  - first:
+      213: -4096668909082244227
+    second: sprite_sheet-bike_11
+  - first:
+      213: -58122020143481696
+    second: sprite_sheet-bike_12
+  - first:
+      213: 7627803182889795561
+    second: sprite_sheet-bike_13
+  - first:
+      213: -3546691092690407668
+    second: sprite_sheet-bike_14
+  - first:
+      213: -3040696302165224381
+    second: sprite_sheet-bike_15
+  - first:
+      213: -4820805266931820432
+    second: sprite_sheet-bike_16
+  - first:
+      213: -4324490443643235817
+    second: sprite_sheet-bike_17
+  - first:
+      213: -1241474811575340911
+    second: sprite_sheet-bike_18
+  - first:
+      213: 4006002296178051044
+    second: sprite_sheet-bike_19
+  - first:
+      213: 1101657951008640256
+    second: sprite_sheet-bike_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 600
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sprite_sheet-bike_0
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 3561
+        width: 605
+        height: 1496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fff640d5fe2bfafd0800000000000000
+      internalID: -2328445741199757313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_1
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 3565
+        width: 605
+        height: 1496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc3b42315cc0bc250800000000000000
+      internalID: 5965876171951616973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_2
+      rect:
+        serializedVersion: 2
+        x: 1851
+        y: 3580
+        width: 615
+        height: 1463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ceead085d37e5f10800000000000000
+      internalID: 2260371423813627585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_3
+      rect:
+        serializedVersion: 2
+        x: 2621
+        y: 3668
+        width: 645
+        height: 1499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf80d90bad540fa0800000000000000
+      internalID: -5835436227979866145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_4
+      rect:
+        serializedVersion: 2
+        x: 3404
+        y: 3606
+        width: 645
+        height: 1220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88d0e1b0438aa4fa0800000000000000
+      internalID: -5815651027317289592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_5
+      rect:
+        serializedVersion: 2
+        x: 3666
+        y: 4825
+        width: 120
+        height: 276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5fd9b32b08cac130800000000000000
+      internalID: 3587900003323600732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_6
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1963
+        width: 770
+        height: 1213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8ce284091b600a70800000000000000
+      internalID: 8791144227821251727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_7
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 1955
+        width: 769
+        height: 1213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f41cdb92eb9e064d0800000000000000
+      internalID: -3143255536951246513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_8
+      rect:
+        serializedVersion: 2
+        x: 1776
+        y: 1959
+        width: 855
+        height: 1265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f936329e1b881230800000000000000
+      internalID: 3609788064755759609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_9
+      rect:
+        serializedVersion: 2
+        x: 2705
+        y: 1906
+        width: 644
+        height: 1499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6edeef918cdf2ebb0800000000000000
+      internalID: -4908081608008995354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_10
+      rect:
+        serializedVersion: 2
+        x: 3424
+        y: 1890
+        width: 645
+        height: 1231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f64cb56659493d40800000000000000
+      internalID: 5564559450015811315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_11
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 3120
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7b04cf0555b527c0800000000000000
+      internalID: -4096668909082244227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_12
+      rect:
+        serializedVersion: 2
+        x: 3698
+        y: 3115
+        width: 107
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ac38b3a452813ff0800000000000000
+      internalID: -58122020143481696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_13
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 163
+        width: 549
+        height: 1508
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ef7dbcb4966bd960800000000000000
+      internalID: 7627803182889795561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_14
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 1401
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0f652c0e3f97cec0800000000000000
+      internalID: -3546691092690407668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_15
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 1413
+        width: 93
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 344199fc2d64dc5d0800000000000000
+      internalID: -3040696302165224381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_16
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 1395
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0785235c62f091db0800000000000000
+      internalID: -4820805266931820432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_17
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 177
+        width: 688
+        height: 1503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 712d2188ad25cf3c0800000000000000
+      internalID: -4324490443643235817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_18
+      rect:
+        serializedVersion: 2
+        x: 2701
+        y: 113
+        width: 561
+        height: 1542
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 190f47a8c3565cee0800000000000000
+      internalID: -1241474811575340911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_19
+      rect:
+        serializedVersion: 2
+        x: 3461
+        y: 177
+        width: 570
+        height: 1444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e787191ddd289730800000000000000
+      internalID: 4006002296178051044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet-bike_20
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 172
+        width: 645
+        height: 1226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00dcad1d110e94f00800000000000000
+      internalID: 1101657951008640256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sprite_sheet-bike_0: -2328445741199757313
+      sprite_sheet-bike_1: 5965876171951616973
+      sprite_sheet-bike_10: 5564559450015811315
+      sprite_sheet-bike_11: -4096668909082244227
+      sprite_sheet-bike_12: -58122020143481696
+      sprite_sheet-bike_13: 7627803182889795561
+      sprite_sheet-bike_14: -3546691092690407668
+      sprite_sheet-bike_15: -3040696302165224381
+      sprite_sheet-bike_16: -4820805266931820432
+      sprite_sheet-bike_17: -4324490443643235817
+      sprite_sheet-bike_18: -1241474811575340911
+      sprite_sheet-bike_19: 4006002296178051044
+      sprite_sheet-bike_2: 2260371423813627585
+      sprite_sheet-bike_20: 1101657951008640256
+      sprite_sheet-bike_3: -5835436227979866145
+      sprite_sheet-bike_4: -5815651027317289592
+      sprite_sheet-bike_5: 3587900003323600732
+      sprite_sheet-bike_6: 8791144227821251727
+      sprite_sheet-bike_7: -3143255536951246513
+      sprite_sheet-bike_8: 3609788064755759609
+      sprite_sheet-bike_9: -4908081608008995354
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

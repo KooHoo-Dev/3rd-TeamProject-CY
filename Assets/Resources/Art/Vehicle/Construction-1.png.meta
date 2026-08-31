@@ -1,0 +1,936 @@
+fileFormatVersion: 2
+guid: 3727ae806ddb8f748aef58a677e009b5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1300320847249852883
+    second: Construction Vehicles_0
+  - first:
+      213: -8127030480446308179
+    second: Construction Vehicles_1
+  - first:
+      213: -5354898835823438202
+    second: Construction Vehicles_2
+  - first:
+      213: 4515580918549897108
+    second: Construction Vehicles_3
+  - first:
+      213: -3253359537866743996
+    second: Construction Vehicles_4
+  - first:
+      213: 2803930668854575255
+    second: Construction Vehicles_5
+  - first:
+      213: -6806750911089427871
+    second: Construction Vehicles_6
+  - first:
+      213: 8887717064135818203
+    second: Construction Vehicles_7
+  - first:
+      213: 2389816461821619485
+    second: Construction Vehicles_8
+  - first:
+      213: 808645778562900718
+    second: Construction Vehicles_9
+  - first:
+      213: 6599965715988309820
+    second: Construction Vehicles_10
+  - first:
+      213: 5967742105308738226
+    second: Construction Vehicles_11
+  - first:
+      213: -3809277482543536307
+    second: Construction Vehicles_12
+  - first:
+      213: 6682114160363118481
+    second: Construction Vehicles_13
+  - first:
+      213: -7824671916806791292
+    second: Construction Vehicles_14
+  - first:
+      213: -5675452164221474458
+    second: Construction Vehicles_15
+  - first:
+      213: -7081981624963425191
+    second: Construction Vehicles_16
+  - first:
+      213: -1328120365943463309
+    second: Construction Vehicles_17
+  - first:
+      213: -7069768304986479973
+    second: Construction Vehicles_18
+  - first:
+      213: -6337054368546131723
+    second: Construction Vehicles_19
+  - first:
+      213: 2083276898968923922
+    second: Construction Vehicles_20
+  - first:
+      213: -574610916354017693
+    second: Construction Vehicles_21
+  - first:
+      213: 7325366601602104232
+    second: Construction Vehicles_22
+  - first:
+      213: 5012859539626030885
+    second: Construction Vehicles_23
+  - first:
+      213: -3012118490239875217
+    second: Construction Vehicles_24
+  - first:
+      213: -6291641977052411181
+    second: Construction Vehicles_25
+  - first:
+      213: -2457369842278789940
+    second: Construction Vehicles_26
+  - first:
+      213: -7492159340624239281
+    second: Construction Vehicles_27
+  - first:
+      213: 6354221126463626115
+    second: Construction Vehicles_28
+  - first:
+      213: 9161653404548994390
+    second: Construction Vehicles_29
+  - first:
+      213: -3500441033584255509
+    second: Construction Vehicles_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 600
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Construction Vehicles_0
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 2923
+        width: 546
+        height: 1028
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2633ad241554fde0800000000000000
+      internalID: -1300320847249852883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_1
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 2918
+        width: 565
+        height: 1037
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da0c93e36dcf63f80800000000000000
+      internalID: -8127030480446308179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_2
+      rect:
+        serializedVersion: 2
+        x: 2391
+        y: 2952
+        width: 589
+        height: 970
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 686579a51e39fa5b0800000000000000
+      internalID: -5354898835823438202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_3
+      rect:
+        serializedVersion: 2
+        x: 3262
+        y: 2979
+        width: 660
+        height: 917
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49fd2bcbbe09aae30800000000000000
+      internalID: 4515580918549897108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_4
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 2282
+        width: 118
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44fd2d2ccbeb9d2d0800000000000000
+      internalID: -3253359537866743996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_5
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 2282
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79086e3661099e620800000000000000
+      internalID: 2803930668854575255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_6
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 2283
+        width: 117
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16ab2fd2c109981a0800000000000000
+      internalID: -6806750911089427871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_7
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 2282
+        width: 108
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdb3ef7a493875b70800000000000000
+      internalID: 8887717064135818203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_8
+      rect:
+        serializedVersion: 2
+        x: 1497
+        y: 2283
+        width: 108
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d224509655a2120800000000000000
+      internalID: 2389816461821619485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_9
+      rect:
+        serializedVersion: 2
+        x: 1621
+        y: 2283
+        width: 112
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee26c5c1d03e83b00800000000000000
+      internalID: 808645778562900718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_10
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 2282
+        width: 116
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c376d3fb9d9c79b50800000000000000
+      internalID: 6599965715988309820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_11
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 2282
+        width: 118
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b2b11a83dda1d250800000000000000
+      internalID: 5967742105308738226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_12
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 2283
+        width: 108
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d472912ef4ab22bc0800000000000000
+      internalID: -3809277482543536307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_13
+      rect:
+        serializedVersion: 2
+        x: 2132
+        y: 2283
+        width: 33
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19f1d0dec63abbc50800000000000000
+      internalID: 6682114160363118481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_14
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 2282
+        width: 136
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48f91ca395e296390800000000000000
+      internalID: -7824671916806791292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_15
+      rect:
+        serializedVersion: 2
+        x: 2339
+        y: 2283
+        width: 117
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6696bd3935ebc31b0800000000000000
+      internalID: -5675452164221474458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_16
+      rect:
+        serializedVersion: 2
+        x: 2528
+        y: 2283
+        width: 138
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95c163aeb3fb7bd90800000000000000
+      internalID: -7081981624963425191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_17
+      rect:
+        serializedVersion: 2
+        x: 2681
+        y: 2283
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3726af85091919de0800000000000000
+      internalID: -1328120365943463309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_18
+      rect:
+        serializedVersion: 2
+        x: 2823
+        y: 2282
+        width: 118
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9227f01f2323ed90800000000000000
+      internalID: -7069768304986479973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_19
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 2283
+        width: 116
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f0787080a24e08a0800000000000000
+      internalID: -6337054368546131723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_20
+      rect:
+        serializedVersion: 2
+        x: 3102
+        y: 2283
+        width: 33
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21fe1db4d4949ec10800000000000000
+      internalID: 2083276898968923922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_21
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 2283
+        width: 117
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36638ae7a629608f0800000000000000
+      internalID: -574610916354017693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_22
+      rect:
+        serializedVersion: 2
+        x: 3306
+        y: 2283
+        width: 101
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8abf00adc1ee8a560800000000000000
+      internalID: 7325366601602104232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_23
+      rect:
+        serializedVersion: 2
+        x: 3420
+        y: 2282
+        width: 108
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52776582131419540800000000000000
+      internalID: 5012859539626030885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_24
+      rect:
+        serializedVersion: 2
+        x: 3726
+        y: 2324
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f67cdd7213ec236d0800000000000000
+      internalID: -3012118490239875217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_25
+      rect:
+        serializedVersion: 2
+        x: 4006
+        y: 2324
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dacad7d4f89fa8a0800000000000000
+      internalID: -6291641977052411181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_26
+      rect:
+        serializedVersion: 2
+        x: 4286
+        y: 2324
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccc073de52ba5edd0800000000000000
+      internalID: -2457369842278789940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_27
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 536
+        width: 592
+        height: 1276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f45a77d56c0860890800000000000000
+      internalID: -7492159340624239281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_28
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 657
+        width: 592
+        height: 1035
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38b952bc27abe2850800000000000000
+      internalID: 6354221126463626115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_29
+      rect:
+        serializedVersion: 2
+        x: 2389
+        y: 516
+        width: 593
+        height: 1316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 655146d1b3bb42f70800000000000000
+      internalID: 9161653404548994390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Construction Vehicles_30
+      rect:
+        serializedVersion: 2
+        x: 3296
+        y: 596
+        width: 592
+        height: 1157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed52041d6feb6fc0800000000000000
+      internalID: -3500441033584255509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Construction Vehicles_0: -1300320847249852883
+      Construction Vehicles_1: -8127030480446308179
+      Construction Vehicles_10: 6599965715988309820
+      Construction Vehicles_11: 5967742105308738226
+      Construction Vehicles_12: -3809277482543536307
+      Construction Vehicles_13: 6682114160363118481
+      Construction Vehicles_14: -7824671916806791292
+      Construction Vehicles_15: -5675452164221474458
+      Construction Vehicles_16: -7081981624963425191
+      Construction Vehicles_17: -1328120365943463309
+      Construction Vehicles_18: -7069768304986479973
+      Construction Vehicles_19: -6337054368546131723
+      Construction Vehicles_2: -5354898835823438202
+      Construction Vehicles_20: 2083276898968923922
+      Construction Vehicles_21: -574610916354017693
+      Construction Vehicles_22: 7325366601602104232
+      Construction Vehicles_23: 5012859539626030885
+      Construction Vehicles_24: -3012118490239875217
+      Construction Vehicles_25: -6291641977052411181
+      Construction Vehicles_26: -2457369842278789940
+      Construction Vehicles_27: -7492159340624239281
+      Construction Vehicles_28: 6354221126463626115
+      Construction Vehicles_29: 9161653404548994390
+      Construction Vehicles_3: 4515580918549897108
+      Construction Vehicles_30: -3500441033584255509
+      Construction Vehicles_4: -3253359537866743996
+      Construction Vehicles_5: 2803930668854575255
+      Construction Vehicles_6: -6806750911089427871
+      Construction Vehicles_7: 8887717064135818203
+      Construction Vehicles_8: 2389816461821619485
+      Construction Vehicles_9: 808645778562900718
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

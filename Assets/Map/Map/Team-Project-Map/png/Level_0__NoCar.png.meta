@@ -80,6 +80,15 @@ TextureImporter:
   - first:
       213: 6789386331391969807
     second: Level_0__NoCar_25
+  - first:
+      213: 7014177338106858191
+    second: Level_0__NoCar_26
+  - first:
+      213: -2953005671406090102
+    second: Level_0__NoCar_27
+  - first:
+      213: -5633783506242613134
+    second: Level_0__NoCar_28
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -302,9 +311,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1263
-        y: 719
+        y: 671
         width: 162
-        height: 130
+        height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,10 +354,10 @@ TextureImporter:
       name: Level_0__NoCar_7
       rect:
         serializedVersion: 2
-        x: 239
+        x: 399
         y: 495
-        width: 210
-        height: 98
+        width: 162
+        height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,10 +376,10 @@ TextureImporter:
       name: Level_0__NoCar_8
       rect:
         serializedVersion: 2
-        x: 399
-        y: 495
-        width: 162
-        height: 242
+        x: 735
+        y: 639
+        width: 130
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,9 +398,9 @@ TextureImporter:
       name: Level_0__NoCar_9
       rect:
         serializedVersion: 2
-        x: 623
+        x: 879
         y: 495
-        width: 290
+        width: 162
         height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -411,10 +420,10 @@ TextureImporter:
       name: Level_0__NoCar_10
       rect:
         serializedVersion: 2
-        x: 927
-        y: 495
-        width: 114
-        height: 162
+        x: 1119
+        y: 271
+        width: 354
+        height: 386
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,10 +442,10 @@ TextureImporter:
       name: Level_0__NoCar_11
       rect:
         serializedVersion: 2
-        x: 1135
-        y: 591
-        width: 178
-        height: 66
+        x: 1199
+        y: 383
+        width: 386
+        height: 274
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -455,10 +464,10 @@ TextureImporter:
       name: Level_0__NoCar_12
       rect:
         serializedVersion: 2
-        x: 1343
-        y: 591
-        width: 82
-        height: 66
+        x: 1487
+        y: 527
+        width: 114
+        height: 146
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -477,10 +486,10 @@ TextureImporter:
       name: Level_0__NoCar_13
       rect:
         serializedVersion: 2
-        x: 1487
-        y: 527
+        x: 1615
+        y: 511
         width: 114
-        height: 146
+        height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,10 +508,10 @@ TextureImporter:
       name: Level_0__NoCar_14
       rect:
         serializedVersion: 2
-        x: 1615
-        y: 511
-        width: 114
-        height: 162
+        x: 239
+        y: 495
+        width: 210
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -521,10 +530,10 @@ TextureImporter:
       name: Level_0__NoCar_15
       rect:
         serializedVersion: 2
-        x: 399
-        y: 351
-        width: 146
-        height: 66
+        x: 623
+        y: 495
+        width: 50
+        height: 114
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -543,10 +552,10 @@ TextureImporter:
       name: Level_0__NoCar_16
       rect:
         serializedVersion: 2
-        x: 623
-        y: 351
-        width: 194
-        height: 66
+        x: 703
+        y: 495
+        width: 130
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -565,9 +574,9 @@ TextureImporter:
       name: Level_0__NoCar_17
       rect:
         serializedVersion: 2
-        x: 831
-        y: 351
-        width: 210
+        x: 1727
+        y: 511
+        width: 18
         height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -587,10 +596,10 @@ TextureImporter:
       name: Level_0__NoCar_18
       rect:
         serializedVersion: 2
-        x: 1119
-        y: 271
-        width: 258
-        height: 306
+        x: 239
+        y: 351
+        width: 34
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -609,10 +618,10 @@ TextureImporter:
       name: Level_0__NoCar_19
       rect:
         serializedVersion: 2
-        x: 1311
-        y: 383
-        width: 274
-        height: 194
+        x: 319
+        y: 351
+        width: 50
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -631,10 +640,10 @@ TextureImporter:
       name: Level_0__NoCar_20
       rect:
         serializedVersion: 2
-        x: 1647
-        y: 271
-        width: 82
-        height: 210
+        x: 399
+        y: 351
+        width: 146
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -653,10 +662,10 @@ TextureImporter:
       name: Level_0__NoCar_21
       rect:
         serializedVersion: 2
-        x: 255
-        y: 255
-        width: 98
-        height: 50
+        x: 623
+        y: 351
+        width: 194
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -675,10 +684,10 @@ TextureImporter:
       name: Level_0__NoCar_22
       rect:
         serializedVersion: 2
-        x: 399
-        y: 271
-        width: 146
-        height: 50
+        x: 831
+        y: 351
+        width: 210
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -697,10 +706,10 @@ TextureImporter:
       name: Level_0__NoCar_23
       rect:
         serializedVersion: 2
-        x: 623
+        x: 1407
         y: 271
-        width: 194
-        height: 66
+        width: 178
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -719,10 +728,10 @@ TextureImporter:
       name: Level_0__NoCar_24
       rect:
         serializedVersion: 2
-        x: 831
+        x: 1647
         y: 271
-        width: 210
-        height: 66
+        width: 82
+        height: 210
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -741,10 +750,10 @@ TextureImporter:
       name: Level_0__NoCar_25
       rect:
         serializedVersion: 2
-        x: 1407
-        y: 271
-        width: 178
-        height: 82
+        x: 255
+        y: 255
+        width: 98
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -755,6 +764,72 @@ TextureImporter:
       bones: []
       spriteID: f0ac28d85eeb83e50800000000000000
       internalID: 6789386331391969807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar_26
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 271
+        width: 146
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fca4475502d575160800000000000000
+      internalID: 7014177338106858191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar_27
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 271
+        width: 194
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a884020dcf0d407d0800000000000000
+      internalID: -2953005671406090102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar_28
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 271
+        width: 210
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27054f800c7c0d1b0800000000000000
+      internalID: -5633783506242613134
       vertices: []
       indices: 
       edges: []
@@ -792,6 +867,9 @@ TextureImporter:
       Level_0__NoCar_23: -4178655096866555300
       Level_0__NoCar_24: -8506831472074524766
       Level_0__NoCar_25: 6789386331391969807
+      Level_0__NoCar_26: 7014177338106858191
+      Level_0__NoCar_27: -2953005671406090102
+      Level_0__NoCar_28: -5633783506242613134
       Level_0__NoCar_3: -5934715612963863849
       Level_0__NoCar_4: 5354565440561317890
       Level_0__NoCar_5: 2811123065183419841
