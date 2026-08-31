@@ -9,7 +9,6 @@ namespace CY.Minigame
     public class RepairShopMinigameView : MonoBehaviour
     {
         [Header("UI")]
-        public GameObject explanationPanel;
         public RectTransform oldPlateRect;
         public RectTransform newPlateRect;
         public CanvasGroup oldPlateCanvasGroup;
@@ -41,24 +40,6 @@ namespace CY.Minigame
             SetTextAlpha(titleText, 0f);
             SetTextAlpha(noticeText, 0f);
             SetTextAlpha(assigneeText, 0f);
-        }
-        
-        public void ShowExplanationPanel()
-        {
-            if (explanationPanel != null)
-            {
-                explanationPanel.SetActive(true);
-                
-                CanvasGroup cg = explanationPanel.GetComponent<CanvasGroup>();
-                
-                cg.alpha = 0f;
-                cg.DOFade(1f, 0.5f);
-            }
-        }
-
-        public void HideExplanationPanel()
-        {
-            if (explanationPanel != null) explanationPanel.SetActive(false);
         }
         
         public void FadeInGameTexts()

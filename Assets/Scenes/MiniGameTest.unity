@@ -1297,6 +1297,7 @@ GameObject:
   - component: {fileID: 944809731}
   - component: {fileID: 944809733}
   - component: {fileID: 944809732}
+  - component: {fileID: 944809734}
   m_Layer: 5
   m_Name: MinigamePanel
   m_TagString: Untagged
@@ -1362,6 +1363,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944809730}
   m_CullTransparentMesh: 1
+--- !u!114 &944809734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944809730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db8735f9b44d2649a5b6309a5fb7527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Minigame.MinigameUI
+  minigamePanel: {fileID: 944809731}
+  slideDuration: 0.5
+  explanationPanel: {fileID: 417624920}
 --- !u!1 &1050249046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,8 +1956,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2037806463}
-        m_TargetAssemblyTypeName: CY.Minigame.GasStationMinigameController, Assembly-CSharp
+      - m_Target: {fileID: 944809734}
+        m_TargetAssemblyTypeName: CY.Minigame.MinigameUI, Assembly-CSharp
         m_MethodName: OnGameStartButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -2457,6 +2473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MinigameUI
   minigamePanel: {fileID: 944809731}
   slideDuration: 0.5
+  explanationPanel: {fileID: 417624920}
 --- !u!4 &1748047043
 Transform:
   m_ObjectHideFlags: 0
@@ -2692,7 +2709,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1947093033}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 944809734}
+        m_TargetAssemblyTypeName: CY.Minigame.MinigameUI, Assembly-CSharp
+        m_MethodName: ShowMinigameUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1947093033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2920,7 +2949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159407c6b2b39fd44ad2c531884961f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GasStationMinigameView
-  explanationPanel: {fileID: 417624920}
   gaugeFill: {fileID: 779867339}
   fuelNozzle: {fileID: 776996815}
   titleText: {fileID: 2041584744}
