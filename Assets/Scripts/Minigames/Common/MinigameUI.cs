@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using  DG.Tweening;
 using System.Collections;
+using CY.Stages;
 
 namespace CY.Minigame
 {
@@ -11,14 +12,16 @@ namespace CY.Minigame
         public static MinigameUI Instance { get; private set; }
         
         [Header("Settings")] 
-        public RectTransform minigamePanel;
-        public float slideDuration = 0.5f;
-        public GameObject explanationPanel;
+        [SerializeField] private RectTransform[] minigamePanel;
+        [SerializeField] private GameObject[] explanationPanel;
+        [SerializeField] private float slideDuration = 0.5f;
         
         public event Action OnGameStartRequested;
 
         private Vector2 hiddenPosition;
         private Vector2 visiblePosition;
+        private RectTransform currentMiniGamePanel;
+        private GameObject currentExplanationPanel;
 
         private void Awake()
         {
@@ -30,14 +33,39 @@ namespace CY.Minigame
         {
             visiblePosition = Vector2.zero; 
             hiddenPosition = new Vector2(Screen.width, 0);
-        
-            minigamePanel.anchoredPosition = hiddenPosition;
-            if (explanationPanel != null) explanationPanel.SetActive(false);
+            
+            currentMiniGamePanel = minigamePanel[0];
+            currentExplanationPanel = explanationPanel[0];
+            
+            currentMiniGamePanel.anchoredPosition = hiddenPosition;
+            if (explanationPanel != null) currentExplanationPanel.SetActive(false);
+        }
+
+        public void SetCurrentMiniGameType(string missionType)
+        {
+            switch (missionType)
+            {
+                case "fuel": 
+                    UpdateCurrentPanels(0);
+                    return;
+                case "barricade": 
+                    UpdateCurrentPanels(1);
+                    return;
+                case "license_plate": 
+                    UpdateCurrentPanels(2);
+                    return;
+            }
+        }
+
+        private void UpdateCurrentPanels(int missionTypeIdx)
+        {
+            currentMiniGamePanel = minigamePanel[missionTypeIdx];
+            currentExplanationPanel = explanationPanel[missionTypeIdx];
         }
         
         public void ShowMinigameUI()
         {
-            minigamePanel.DOAnchorPos(visiblePosition, slideDuration).SetEase(Ease.OutQuad)
+            currentMiniGamePanel.DOAnchorPos(visiblePosition, slideDuration).SetEase(Ease.OutQuad)
                 .OnComplete(() => StartCoroutine(ShowExplanationRoutine())); 
         }
     
@@ -47,9 +75,9 @@ namespace CY.Minigame
         
             if (explanationPanel != null)
             {
-                explanationPanel.SetActive(true);
-                CanvasGroup cg = explanationPanel.GetComponent<CanvasGroup>();
-                if (cg == null) cg = explanationPanel.AddComponent<CanvasGroup>();
+                currentExplanationPanel.SetActive(true);
+                CanvasGroup cg = currentExplanationPanel.GetComponent<CanvasGroup>();
+                if (cg == null) cg = currentExplanationPanel.AddComponent<CanvasGroup>();
             
                 cg.alpha = 0f;
                 cg.DOFade(1f, 0.5f);
@@ -58,14 +86,14 @@ namespace CY.Minigame
         
         public void OnGameStartButtonClicked()
         {
-            if (explanationPanel != null) explanationPanel.SetActive(false);
+            if (explanationPanel != null) currentExplanationPanel.SetActive(false);
             
             OnGameStartRequested?.Invoke(); 
         }
     
         public void HideMinigameUI()
         {
-            minigamePanel.DOAnchorPos(hiddenPosition, slideDuration).SetEase(Ease.InQuad);
+            currentMiniGamePanel.DOAnchorPos(hiddenPosition, slideDuration).SetEase(Ease.InQuad);
         }
     }
 }
