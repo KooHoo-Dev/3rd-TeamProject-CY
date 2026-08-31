@@ -34,9 +34,9 @@ namespace CY.Minigame
             visiblePosition = Vector2.zero; 
             hiddenPosition = new Vector2(Screen.width, 0);
             
-            currentMiniGamePanel = minigamePanel[0];
-            currentExplanationPanel = explanationPanel[0];
-            
+            //currentMiniGamePanel = minigamePanel[0];
+            //currentExplanationPanel = explanationPanel[0];
+           
             currentMiniGamePanel.anchoredPosition = hiddenPosition;
             if (explanationPanel != null) currentExplanationPanel.SetActive(false);
         }

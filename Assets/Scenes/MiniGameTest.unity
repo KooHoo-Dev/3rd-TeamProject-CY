@@ -1375,9 +1375,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db8735f9b44d2649a5b6309a5fb7527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Minigame.MinigameUI
-  minigamePanel: {fileID: 944809731}
+  minigamePanel: []
+  explanationPanel: []
   slideDuration: 0.5
-  explanationPanel: {fileID: 417624920}
+  currentMiniGamePanel: {fileID: 944809731}
+  currentExplanationPanel: {fileID: 417624920}
 --- !u!1 &1050249046
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,9 +2473,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db8735f9b44d2649a5b6309a5fb7527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MinigameUI
-  minigamePanel: {fileID: 944809731}
+  minigamePanel: []
+  explanationPanel: []
   slideDuration: 0.5
-  explanationPanel: {fileID: 417624920}
+  currentMiniGamePanel: {fileID: 0}
+  currentExplanationPanel: {fileID: 0}
 --- !u!4 &1748047043
 Transform:
   m_ObjectHideFlags: 0
