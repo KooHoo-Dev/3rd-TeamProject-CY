@@ -69,6 +69,12 @@ namespace CY.Minigame
             StartCoroutine(OverloadRoutine());
         }
         
+        public void ApplyCompleted()
+        {
+            SetButtonsInteractable(false);
+            ShowResultText("Success!", Color.green);
+        }
+        
         public void ApplyAborted()
         {
             SetButtonsInteractable(false);
