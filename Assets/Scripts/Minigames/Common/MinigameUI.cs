@@ -20,8 +20,8 @@ namespace CY.Minigame
 
         private Vector2 hiddenPosition;
         private Vector2 visiblePosition;
-        private RectTransform currentMiniGamePanel;
-        private GameObject currentExplanationPanel;
+        [SerializeField] private RectTransform currentMiniGamePanel;
+        [SerializeField] private GameObject currentExplanationPanel;
 
         private void Awake()
         {
