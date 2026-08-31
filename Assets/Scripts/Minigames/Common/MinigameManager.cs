@@ -3,6 +3,7 @@ using CY.Network;
 using Cysharp.Threading.Tasks;
 using HelloServer;
 using Newtonsoft.Json;
+using CY.Stages;
 using UnityEngine;
 
 namespace CY.Minigame
@@ -32,6 +33,7 @@ namespace CY.Minigame
 
         private void OnEnable()
         {
+            CheckpointZone.MissionReady += HandleCheckpointMission;
             if (session == null) session = NetworkSession.Instance;
             if (session != null) session.MessageReceived += HandleNetworkMessage;
             if (gasStationMinigameController != null)
@@ -51,6 +53,7 @@ namespace CY.Minigame
 
         private void OnDisable()
         {
+            CheckpointZone.MissionReady -= HandleCheckpointMission;
             if (session != null) session.MessageReceived -= HandleNetworkMessage;
             if (gasStationMinigameController != null) 
                 gasStationMinigameController.MinigameEnded -= HandleFuelMiniGameEnded;
@@ -81,6 +84,12 @@ namespace CY.Minigame
             {
                 MiniGameType = miniGameType.Trim().ToLowerInvariant()
             }).Forget();
+        }
+
+        private void HandleCheckpointMission(CheckpointZone checkpoint)
+        {
+            if (checkpoint.MissionType == MissionType.GasStation)
+                RequestMiniGameStart(FuelMiniGameType);
         }
 
         private void HandleNetworkMessage(string type, string json)

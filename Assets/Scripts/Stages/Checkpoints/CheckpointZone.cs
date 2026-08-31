@@ -13,6 +13,8 @@ namespace CY.Stages
     [RequireComponent(typeof(BoxCollider2D))]
     public class CheckpointZone : MonoBehaviour
     {
+        public static event Action<CheckpointZone> MissionReady;
+
         [Header("경유지 설정")] [SerializeField] private MissionType missionType;
         [SerializeField] private float stopSpeedThreshold = 0.05f;
 
@@ -79,6 +81,7 @@ namespace CY.Stages
 
             Debug.Log($"[Checkpoint] {missionType} 미션 시작", this);
             onMissionReady.Invoke(this);
+            MissionReady?.Invoke(this);
         }
 
         /// <summary>차의 네 모서리가 모두 구역 안에 있는지 검사한다.</summary>
