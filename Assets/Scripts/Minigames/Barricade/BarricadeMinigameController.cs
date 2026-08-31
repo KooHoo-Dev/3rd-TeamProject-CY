@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using CY.Network;
+using HelloServer;
 
 public class BarricadeFuseClickMessage
 {
@@ -93,7 +95,7 @@ namespace CY.Minigame
             session.SendAsync(new BarricadeFuseClickMessage
             {
                 FuseIndex = fuseIndex
-            }).Forget();[cite: 15]
+            }).Forget();
         }
         
         public void HandleMiniGameStarted(MiniGameStartedMessage message)
@@ -111,18 +113,65 @@ namespace CY.Minigame
             view.Begin(IsOperator);
         }
         
-        private IEnumerator OverloadRoutine()
+        public void HandleBarricadeProgress(BarricadeProgressMessage message)
         {
-            isOverloaded = true;
-            view.ShowOverloadEffect();
+            if (!IsActive || message == null) return;
 
-            yield return new WaitForSeconds(2.0f);
-
-            view.HideOverloadEffect();
-            
-            currentStep = 0;
-            isOverloaded = false;
+            view.ApplyFuseProgress(message.FuseIndex);
         }
+        
+        public void HandleBarricadeAttemptFailed()
+        {
+            if (!IsActive) return;
+            
+            CanSendInput = IsOperator; 
+            view.ApplyAttemptFailed();
+        }
+        
+        public void HandleBarricadeCompleted()
+        {
+            if (!IsActive || completedRoutine != null) return;
+
+            CanSendInput = false;
+            view.ApplyCompleted();
+
+            completedRoutine = StartCoroutine(FinishAfterCompletedRoutine());
+        }
+        
+        public void HandleGameAborted()
+        {
+            if (!IsActive) return;
+
+            StopCompletedRoutine();
+
+            CanSendInput = false;
+            IsActive = false;
+            IsOperator = false;
+
+            view.ApplyAborted();
+            MinigameEnded?.Invoke();
+        }
+        
+        private IEnumerator FinishAfterCompletedRoutine()
+        {
+            yield return new WaitForSeconds(CompletedDisplaySeconds);
+
+            completedRoutine = null;
+            ResetState();
+            MinigameEnded?.Invoke();
+        }
+        
+        private void StopCompletedRoutine()
+        {
+            if (completedRoutine == null) return;
+
+            StopCoroutine(completedRoutine);
+            completedRoutine = null;
+        }
+        
+        
+        
+        
     }
 
 }
