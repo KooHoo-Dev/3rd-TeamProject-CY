@@ -38,7 +38,7 @@ namespace CY.Minigame
         public void ShowMinigameUI()
         {
             minigamePanel.DOAnchorPos(visiblePosition, slideDuration).SetEase(Ease.OutQuad)
-                .OnComplete(() => StartCoroutine(ShowExplanationRoutine())); // 💡 슬라이드 끝나면 설명창 루틴 시작
+                .OnComplete(() => StartCoroutine(ShowExplanationRoutine())); 
         }
     
         private IEnumerator ShowExplanationRoutine()
