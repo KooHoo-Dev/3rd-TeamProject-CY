@@ -116,10 +116,10 @@ TextureImporter:
       name: Level_0__SideWalk_0
       rect:
         serializedVersion: 2
-        x: 223
-        y: 335
-        width: 146
-        height: 98
+        x: 95
+        y: 111
+        width: 1794
+        height: 882
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

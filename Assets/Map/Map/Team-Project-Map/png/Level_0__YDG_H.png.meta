@@ -23,6 +23,33 @@ TextureImporter:
   - first:
       213: -1980144010925413369
     second: Level_0__YDG_H_6
+  - first:
+      213: 1646035524715108993
+    second: Level_0__YDG_H_7
+  - first:
+      213: 8065937470736830458
+    second: Level_0__YDG_H_8
+  - first:
+      213: -5688628354379491070
+    second: Level_0__YDG_H_9
+  - first:
+      213: -3130030874832167232
+    second: Level_0__YDG_H_10
+  - first:
+      213: -5547136733659798462
+    second: Level_0__YDG_H_11
+  - first:
+      213: -5438470580456757984
+    second: Level_0__YDG_H_12
+  - first:
+      213: 5564851652714486253
+    second: Level_0__YDG_H_13
+  - first:
+      213: 5944086307092725491
+    second: Level_0__YDG_H_14
+  - first:
+      213: 1815071210467168200
+    second: Level_0__YDG_H_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -114,6 +141,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -121,9 +161,9 @@ TextureImporter:
       name: Level_0__YDG_H_0
       rect:
         serializedVersion: 2
-        x: 399
-        y: 735
-        width: 162
+        x: 799
+        y: 767
+        width: 114
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -143,9 +183,9 @@ TextureImporter:
       name: Level_0__YDG_H_1
       rect:
         serializedVersion: 2
-        x: 799
-        y: 767
-        width: 114
+        x: 1471
+        y: 783
+        width: 178
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -165,9 +205,9 @@ TextureImporter:
       name: Level_0__YDG_H_2
       rect:
         serializedVersion: 2
-        x: 223
-        y: 591
-        width: 146
+        x: 399
+        y: 735
+        width: 162
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,9 +227,9 @@ TextureImporter:
       name: Level_0__YDG_H_3
       rect:
         serializedVersion: 2
-        x: 399
+        x: 223
         y: 591
-        width: 50
+        width: 146
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -209,9 +249,9 @@ TextureImporter:
       name: Level_0__YDG_H_4
       rect:
         serializedVersion: 2
-        x: 1199
-        y: 479
-        width: 114
+        x: 399
+        y: 591
+        width: 50
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -231,9 +271,9 @@ TextureImporter:
       name: Level_0__YDG_H_5
       rect:
         serializedVersion: 2
-        x: 399
-        y: 319
-        width: 162
+        x: 1279
+        y: 607
+        width: 34
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -253,9 +293,9 @@ TextureImporter:
       name: Level_0__YDG_H_6
       rect:
         serializedVersion: 2
-        x: 1199
-        y: 351
-        width: 386
+        x: 1727
+        y: 575
+        width: 34
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -267,6 +307,204 @@ TextureImporter:
       bones: []
       spriteID: 70c6ca8638d1584e0800000000000000
       internalID: -1980144010925413369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__YDG_H_7
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 543
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18a5152b694e7d610800000000000000
+      internalID: 1646035524715108993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__YDG_H_8
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 479
+        width: 114
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aff08cbf467ffef60800000000000000
+      internalID: 8065937470736830458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__YDG_H_9
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 479
+        width: 50
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 209defdb6aeed01b0800000000000000
+      internalID: -5688628354379491070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__YDG_H_10
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 415
+        width: 114
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ce9f91c085ef84d0800000000000000
+      internalID: -3130030874832167232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__YDG_H_11
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 319
+        width: 18
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 244efadd78c9403b0800000000000000
+      internalID: -5547136733659798462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__YDG_H_12
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 319
+        width: 18
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 025667242dba684b0800000000000000
+      internalID: -5438470580456757984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__YDG_H_13
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 351
+        width: 130
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de9dac328135a3d40800000000000000
+      internalID: 5564851652714486253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__YDG_H_14
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 351
+        width: 66
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fe7680d003ad7250800000000000000
+      internalID: 5944086307092725491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__YDG_H_15
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 351
+        width: 82
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cf0fe536ad603910800000000000000
+      internalID: 1815071210467168200
       vertices: []
       indices: 
       edges: []
@@ -287,11 +525,20 @@ TextureImporter:
     nameFileIdTable:
       Level_0__YDG_H_0: -1214522935141815181
       Level_0__YDG_H_1: 6474248634325683695
+      Level_0__YDG_H_10: -3130030874832167232
+      Level_0__YDG_H_11: -5547136733659798462
+      Level_0__YDG_H_12: -5438470580456757984
+      Level_0__YDG_H_13: 5564851652714486253
+      Level_0__YDG_H_14: 5944086307092725491
+      Level_0__YDG_H_15: 1815071210467168200
       Level_0__YDG_H_2: -936388438322856518
       Level_0__YDG_H_3: -3584843552495376221
       Level_0__YDG_H_4: 5473506966952702337
       Level_0__YDG_H_5: 4457521879075713595
       Level_0__YDG_H_6: -1980144010925413369
+      Level_0__YDG_H_7: 1646035524715108993
+      Level_0__YDG_H_8: 8065937470736830458
+      Level_0__YDG_H_9: -5688628354379491070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

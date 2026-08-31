@@ -14,6 +14,12 @@ TextureImporter:
   - first:
       213: 5556532302152023707
     second: Level_0__WLUR_3
+  - first:
+      213: -5812341856035226042
+    second: Level_0__WLUR_4
+  - first:
+      213: 3808064405295301393
+    second: Level_0__WLUR_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -105,6 +111,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -156,8 +175,8 @@ TextureImporter:
       name: Level_0__WLUR_2
       rect:
         serializedVersion: 2
-        x: 463
-        y: 399
+        x: 1327
+        y: 623
         width: 18
         height: 18
       alignment: 0
@@ -178,8 +197,8 @@ TextureImporter:
       name: Level_0__WLUR_3
       rect:
         serializedVersion: 2
-        x: 527
-        y: 399
+        x: 1487
+        y: 431
         width: 18
         height: 18
       alignment: 0
@@ -192,6 +211,50 @@ TextureImporter:
       bones: []
       spriteID: b9e31c460b4cc1d40800000000000000
       internalID: 5556532302152023707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLUR_4
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 383
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64eb2e580e9665fa0800000000000000
+      internalID: -5812341856035226042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__WLUR_5
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 383
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1138f6f8666f8d430800000000000000
+      internalID: 3808064405295301393
       vertices: []
       indices: 
       edges: []
@@ -214,6 +277,8 @@ TextureImporter:
       Level_0__WLUR_1: -835497243509201312
       Level_0__WLUR_2: 6863013292725867997
       Level_0__WLUR_3: 5556532302152023707
+      Level_0__WLUR_4: -5812341856035226042
+      Level_0__WLUR_5: 3808064405295301393
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
