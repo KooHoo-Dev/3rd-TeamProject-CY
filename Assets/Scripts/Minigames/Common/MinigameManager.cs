@@ -3,6 +3,7 @@ using CY.Network;
 using Cysharp.Threading.Tasks;
 using HelloServer;
 using Newtonsoft.Json;
+using CY.Stages;
 using UnityEngine;
 
 namespace CY.Minigame
@@ -32,6 +33,7 @@ namespace CY.Minigame
 
         private void OnEnable()
         {
+            CheckpointZone.MissionReady += HandleCheckpointMission;
             if (session == null) session = NetworkSession.Instance;
             if (session != null) session.MessageReceived += HandleNetworkMessage;
             if (gasStationMinigameController != null)
@@ -44,13 +46,13 @@ namespace CY.Minigame
                 $"[미니게임] 진입: session={session != null}, " +
                 $"me={session?.Me?.Id ?? "null"}, " +
                 $"connected={session?.IsConnected}");
-
             
             SendReadyAndRequestTemporaryMiniGameAsync().Forget();
         }
 
         private void OnDisable()
         {
+            CheckpointZone.MissionReady -= HandleCheckpointMission;
             if (session != null) session.MessageReceived -= HandleNetworkMessage;
             if (gasStationMinigameController != null) 
                 gasStationMinigameController.MinigameEnded -= HandleFuelMiniGameEnded;
@@ -83,6 +85,22 @@ namespace CY.Minigame
             }).Forget();
         }
 
+        private void HandleCheckpointMission(CheckpointZone checkpoint)
+        {
+            RequestMiniGameStart(GetMiniGameType(checkpoint.MissionType));
+        }
+
+        private string GetMiniGameType(MissionType missionType)
+        {
+            return missionType switch
+            {
+                MissionType.GasStation => "fuel",
+                MissionType.Barricade => "barricade",
+                MissionType.LicensePlate => "license_plate",
+                _ => null
+            };
+        }
+        
         private void HandleNetworkMessage(string type, string json)
         {
             if (gasStationMinigameController == null) return;
@@ -94,11 +112,11 @@ namespace CY.Minigame
                     MiniGameStartedMessage message =
                         JsonConvert.DeserializeObject<MiniGameStartedMessage>(json);
 
-                    if (message == null || message.MiniGameType != FuelMiniGameType) return;
-
-                    CurrentMiniGameType = FuelMiniGameType;
+                    if (message == null) return;
                     
-                    gasStationMinigameController.HandleMiniGameStarted(message);
+                    CurrentMiniGameType = message.MiniGameType;
+                    MiniGameStartHandler(message);
+                    minigameUI.SetCurrentMiniGameType(message.MiniGameType);
                     minigameUI.ShowMinigameUI();
                     break;
                 }
@@ -118,6 +136,18 @@ namespace CY.Minigame
             }
         }
 
+        private void MiniGameStartHandler(MiniGameStartedMessage message)
+        {
+            switch (message.MiniGameType)
+            {
+                case "fuel":
+                    gasStationMinigameController.HandleMiniGameStarted(message);
+                    return;
+                case "barricade": return;
+                case "license_plate": return;
+            }
+        }
+        
         private void HandleFuelMiniGameEnded()
         {
             CurrentMiniGameType = null;

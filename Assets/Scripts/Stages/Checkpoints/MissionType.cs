@@ -2,8 +2,8 @@ namespace CY.Stages
 {
     public enum MissionType
     {
-        LicensePlate, // 정비소 - 번호판 교체
-        GasStation, // 주유소 - 정량 주유
-        Barricade, // 바리케이드 - 회로 연결
+        GasStation = 0,   // 주유소 - 정량 주유
+        Barricade = 1,    // 바리케이드 - 회로 연결
+        LicensePlate = 2, // 정비소 - 번호판 교체
     }
 }
