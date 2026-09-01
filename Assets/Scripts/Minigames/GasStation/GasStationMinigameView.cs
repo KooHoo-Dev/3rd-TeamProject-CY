@@ -45,8 +45,8 @@ namespace CY.Minigame
 
             fuelButtonRect.gameObject.SetActive(isOperator);
             assigneeText.text = isOperator
-                ? "<담당자>"
-                : "<관전자>";
+                ? "Assignee : You"
+                : "Assignee : OtherPlayer";
         }
 
         public void FadeInGameTexts()

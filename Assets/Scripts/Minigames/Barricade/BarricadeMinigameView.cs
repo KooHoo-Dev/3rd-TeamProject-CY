@@ -29,8 +29,6 @@ namespace CY.Minigame
             ResetView();
             currentIsOperator = isOperator;
             
-            assigneeText.text = isOperator ? "<담당자>" : "<관전자>";
-            
             // 처음에는 입력 불가 상태로 두고 Controller가 MinigameUI 신호를 받으면 풀어줌
             SetButtonsInteractable(false);
         }
@@ -74,13 +72,13 @@ namespace CY.Minigame
         public void ApplyCompleted()
         {
             SetButtonsInteractable(false);
-            ShowResultText("미션 성공!", Color.green);
+            ShowResultText("Success!", Color.green);
         }
         
         public void ApplyAborted()
         {
             SetButtonsInteractable(false);
-            ShowResultText("중지", Color.gray);
+            ShowResultText("Pause", Color.gray);
         }
         
         private IEnumerator OverloadRoutine()
