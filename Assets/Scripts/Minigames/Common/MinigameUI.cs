@@ -22,7 +22,10 @@ namespace CY.Minigame
         private Vector2 visiblePosition;
         [SerializeField] private RectTransform currentMiniGamePanel;
         [SerializeField] private GameObject currentExplanationPanel;
-
+        
+        private bool isOperator;
+        public bool IsOperator { get; set; }
+        
         private void Awake()
         {
             if (Instance == null) Instance = this;
@@ -87,7 +90,7 @@ namespace CY.Minigame
             
             OnGameStartRequested?.Invoke(); 
             
-            if (explanationPanel != null && Session.IsHost)
+            if (explanationPanel != null && IsOperator)
             {
                 currentExplanationPanel.SetActive(true);
                 CanvasGroup cg = currentExplanationPanel.GetComponent<CanvasGroup>();
