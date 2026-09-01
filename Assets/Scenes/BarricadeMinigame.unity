@@ -2254,7 +2254,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB2F4\uB2F9\uC790: "
+  m_text: "<\uB2F4\uB2F9\uC790>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34624c8c7e391ff4d83ab96e4ff941ca, type: 2}
   m_sharedMaterial: {fileID: -8548150044305257271, guid: 34624c8c7e391ff4d83ab96e4ff941ca, type: 2}
@@ -2320,7 +2320,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -18.607422, y: 0, z: 0, w: 0}
+  m_margin: {x: -18.607422, y: 0, z: -41.479004, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

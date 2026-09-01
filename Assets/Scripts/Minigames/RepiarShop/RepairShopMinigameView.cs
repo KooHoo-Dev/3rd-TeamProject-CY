@@ -43,7 +43,7 @@ namespace CY.Minigame
             // 처음엔 조작 불가, MinigameUI 신호 시 활성화
             SetOldScrewsInteractable(false);
             
-            assigneeText.text = isOperator ? "Assignee : You" : "Assignee : OtherPlayer";
+            assigneeText.text = isOperator ? "<담당자>" : "<관전자>";
         }
 
         public void ResetView()
@@ -148,7 +148,7 @@ namespace CY.Minigame
             if (trashZone != null) trashZone.SetActive(false);
         }
 
-        public void AttachNewPlate(RectTransform targetDropZone)
+        public void AttachNewPlate()
         {
             newPlateRect.anchoredPosition = plateSlot.anchoredPosition;
 
@@ -177,7 +177,7 @@ namespace CY.Minigame
             foreach (var screw in newScrews) screw.interactable = false;
             
             resultText.gameObject.SetActive(true);
-            resultText.text = "Pause";
+            resultText.text = "중지";
             resultText.color = Color.gray;
             resultText.transform.localScale = Vector3.zero;
             resultText.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
