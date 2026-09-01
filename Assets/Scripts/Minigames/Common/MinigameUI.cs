@@ -85,6 +85,8 @@ namespace CY.Minigame
         {
             yield return new WaitForSeconds(1.0f);
             
+            OnGameStartRequested?.Invoke(); 
+            
             if (explanationPanel != null && Session.IsHost)
             {
                 currentExplanationPanel.SetActive(true);
@@ -99,8 +101,6 @@ namespace CY.Minigame
         public void OnGameStartButtonClicked()
         {
             if (explanationPanel != null) currentExplanationPanel.SetActive(false);
-            
-            OnGameStartRequested?.Invoke(); 
         }
     
         public void HideMinigameUI()
