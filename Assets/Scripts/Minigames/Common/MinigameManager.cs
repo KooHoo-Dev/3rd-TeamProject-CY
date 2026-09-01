@@ -16,6 +16,7 @@ namespace CY.Minigame
         [SerializeField] private MinigameUI minigameUI;
 
         private NetworkSession session;
+        private CheckpointZone activeCheckpoint;
         
         public string CurrentMiniGameType { get; private set; }
         
@@ -42,6 +43,8 @@ namespace CY.Minigame
                 $"[미니게임] 진입: session={session != null}, " +
                 $"me={session?.Me?.Id ?? "null"}, " +
                 $"connected={session?.IsConnected}");
+
+            SendClientReadyAsync().Forget();
         }
 
         private void OnDisable()
@@ -53,6 +56,17 @@ namespace CY.Minigame
                 gasStationMinigameController.MinigameEnded -= HandleMiniGameEnded;
             if (barricadeMinigameController != null) 
                 barricadeMinigameController.MinigameEnded -= HandleMiniGameEnded;
+        }
+
+        private async UniTaskVoid SendClientReadyAsync()
+        {
+            if (session == null || session.Me == null)
+            {
+                Debug.LogWarning("[미니게임] 서버 참여 정보가 없어 준비 완료 메시지를 보내지 못했습니다.");
+                return;
+            }
+
+            await session.SendAsync(new MinigameClientReadyMessage());
         }
 
         public void RequestMiniGameStart(string miniGameType)
@@ -68,6 +82,7 @@ namespace CY.Minigame
 
         private void HandleCheckpointMission(CheckpointZone checkpoint)
         {
+            activeCheckpoint = checkpoint;
             RequestMiniGameStart(GetMiniGameType(checkpoint.MissionType));
         }
 
@@ -111,6 +126,12 @@ namespace CY.Minigame
                     break;
                 case "fuel_completed":
                     gasStationMinigameController.HandleFuelCompleted();
+                    
+                    if (Session.IsHost && activeCheckpoint != null)
+                    {
+                        activeCheckpoint.CompleteMission();
+                        activeCheckpoint = null;
+                    }
                     break;
                 case "barricade_progress":
                     barricadeMinigameController.HandleBarricadeProgress(
