@@ -1,0 +1,676 @@
+fileFormatVersion: 2
+guid: e48b05145e7f37544ae28b204e4751d7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4654477113824144895
+    second: Level_0__NoCar-int_0
+  - first:
+      213: 9035345506437111726
+    second: Level_0__NoCar-int_1
+  - first:
+      213: 6824012766183739834
+    second: Level_0__NoCar-int_2
+  - first:
+      213: 4217366709334148099
+    second: Level_0__NoCar-int_3
+  - first:
+      213: 4651578425720364188
+    second: Level_0__NoCar-int_4
+  - first:
+      213: -8556663423184422772
+    second: Level_0__NoCar-int_5
+  - first:
+      213: 2057136060791743137
+    second: Level_0__NoCar-int_6
+  - first:
+      213: 9119373374375073026
+    second: Level_0__NoCar-int_7
+  - first:
+      213: -3002634769020869880
+    second: Level_0__NoCar-int_8
+  - first:
+      213: 3519245475128319418
+    second: Level_0__NoCar-int_9
+  - first:
+      213: -6699729975954691872
+    second: Level_0__NoCar-int_10
+  - first:
+      213: -5288280220908424828
+    second: Level_0__NoCar-int_11
+  - first:
+      213: 8622769329472175231
+    second: Level_0__NoCar-int_12
+  - first:
+      213: -3858868361568401006
+    second: Level_0__NoCar-int_13
+  - first:
+      213: -2758285191494509616
+    second: Level_0__NoCar-int_14
+  - first:
+      213: -2565925289650968170
+    second: Level_0__NoCar-int_15
+  - first:
+      213: 773244879474403012
+    second: Level_0__NoCar-int_16
+  - first:
+      213: 5243793637626058322
+    second: Level_0__NoCar-int_17
+  - first:
+      213: 72156050216373534
+    second: Level_0__NoCar-int_18
+  - first:
+      213: -9063332068356718401
+    second: Level_0__NoCar-int_19
+  - first:
+      213: -5214667274535707037
+    second: Level_0__NoCar-int_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 38
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffd6ca84646089040800000000000000
+      internalID: 4654477113824144895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 47
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaf1b16eddef36d70800000000000000
+      internalID: 9035345506437111726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_2
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 30
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab1dc17a473c3be50800000000000000
+      internalID: 6824012766183739834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 45
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3048b657da8178a30800000000000000
+      internalID: 4217366709334148099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_4
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 45
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9cdeeddee9bd8040800000000000000
+      internalID: 4651578425720364188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_5
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 45
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c88b386a3ff904980800000000000000
+      internalID: -8556663423184422772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_6
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 41
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a2632e195a6c8c10800000000000000
+      internalID: 2057136060791743137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_7
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 44
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20518c974c58e8e70800000000000000
+      internalID: 9119373374375073026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_8
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 30
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8032642169f7456d0800000000000000
+      internalID: -3002634769020869880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_9
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 30
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abd9c662d1fd6d030800000000000000
+      internalID: 3519245475128319418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_10
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 16
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e82f246517c503a0800000000000000
+      internalID: -6699729975954691872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_11
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 23
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 481770858214c96b0800000000000000
+      internalID: -5288280220908424828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_12
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 32
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7c725f050b3aa770800000000000000
+      internalID: 8622769329472175231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_13
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 31
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 299c8b99bab827ac0800000000000000
+      internalID: -3858868361568401006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_14
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 15
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dbdfbb7b3a98b9d0800000000000000
+      internalID: -2758285191494509616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_15
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 21
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 699a92e3b80046cd0800000000000000
+      internalID: -2565925289650968170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_16
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 16
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c6267dfe1e1bba00800000000000000
+      internalID: 773244879474403012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_17
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 21
+        width: 15
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2569726d782b5c840800000000000000
+      internalID: 5243793637626058322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_18
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 16
+        width: 15
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1dca8d9b89500100800000000000000
+      internalID: 72156050216373534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_19
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 16
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb00130e083983280800000000000000
+      internalID: -9063332068356718401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__NoCar-int_20
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 16
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36ed1770eb7c1a7b0800000000000000
+      internalID: -5214667274535707037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Level_0__NoCar-int_0: 4654477113824144895
+      Level_0__NoCar-int_1: 9035345506437111726
+      Level_0__NoCar-int_10: -6699729975954691872
+      Level_0__NoCar-int_11: -5288280220908424828
+      Level_0__NoCar-int_12: 8622769329472175231
+      Level_0__NoCar-int_13: -3858868361568401006
+      Level_0__NoCar-int_14: -2758285191494509616
+      Level_0__NoCar-int_15: -2565925289650968170
+      Level_0__NoCar-int_16: 773244879474403012
+      Level_0__NoCar-int_17: 5243793637626058322
+      Level_0__NoCar-int_18: 72156050216373534
+      Level_0__NoCar-int_19: -9063332068356718401
+      Level_0__NoCar-int_2: 6824012766183739834
+      Level_0__NoCar-int_20: -5214667274535707037
+      Level_0__NoCar-int_3: 4217366709334148099
+      Level_0__NoCar-int_4: 4651578425720364188
+      Level_0__NoCar-int_5: -8556663423184422772
+      Level_0__NoCar-int_6: 2057136060791743137
+      Level_0__NoCar-int_7: 9119373374375073026
+      Level_0__NoCar-int_8: -3002634769020869880
+      Level_0__NoCar-int_9: 3519245475128319418
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

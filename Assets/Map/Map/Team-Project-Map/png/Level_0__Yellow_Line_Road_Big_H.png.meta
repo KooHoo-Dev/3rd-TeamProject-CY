@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: 839bb9e6ecd211c46b90601b0e3b0db1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5680561118323408370
+    second: Level_0__Yellow_Line_Road_Big_H_0
+  - first:
+      213: -2744285472469797918
+    second: Level_0__Yellow_Line_Road_Big_H_1
+  - first:
+      213: 5823122854977001032
+    second: Level_0__Yellow_Line_Road_Big_H_2
+  - first:
+      213: -6752196797073011252
+    second: Level_0__Yellow_Line_Road_Big_H_3
+  - first:
+      213: 4685318982313961541
+    second: Level_0__Yellow_Line_Road_Big_H_4
+  - first:
+      213: 7007551127066541632
+    second: Level_0__Yellow_Line_Road_Big_H_5
+  - first:
+      213: 8365070784169523976
+    second: Level_0__Yellow_Line_Road_Big_H_6
+  - first:
+      213: 4502361960124448827
+    second: Level_0__Yellow_Line_Road_Big_H_7
+  - first:
+      213: 5865828422950608522
+    second: Level_0__Yellow_Line_Road_Big_H_8
+  - first:
+      213: -4783593574863250676
+    second: Level_0__Yellow_Line_Road_Big_H_9
+  - first:
+      213: 6228999924855084045
+    second: Level_0__Yellow_Line_Road_Big_H_10
+  - first:
+      213: 3004053471188130630
+    second: Level_0__Yellow_Line_Road_Big_H_11
+  - first:
+      213: -1439430418363141632
+    second: Level_0__Yellow_Line_Road_Big_H_12
+  - first:
+      213: 7783178260572550443
+    second: Level_0__Yellow_Line_Road_Big_H_13
+  - first:
+      213: -3374398332032220095
+    second: Level_0__Yellow_Line_Road_Big_H_14
+  - first:
+      213: -5510418096650656794
+    second: Level_0__Yellow_Line_Road_Big_H_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_0
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 863
+        width: 114
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fdff8e7d3865de40800000000000000
+      internalID: 5680561118323408370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_1
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 863
+        width: 162
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e33c2317e65ae9d0800000000000000
+      internalID: -2744285472469797918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_2
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 863
+        width: 210
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 846dc566263efc050800000000000000
+      internalID: 5823122854977001032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_3
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 863
+        width: 66
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccdcee8a9c06b42a0800000000000000
+      internalID: -6752196797073011252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_4
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 863
+        width: 130
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 548e7306ac8950140800000000000000
+      internalID: 4685318982313961541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_5
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 863
+        width: 130
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04e703a5f92df3160800000000000000
+      internalID: 7007551127066541632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_6
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 863
+        width: 162
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80b3c63ee83b61470800000000000000
+      internalID: 8365070784169523976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_7
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 863
+        width: 258
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b300373295a9b7e30800000000000000
+      internalID: 4502361960124448827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_8
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 863
+        width: 34
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e5c574fdb976150800000000000000
+      internalID: 5865828422950608522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_9
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 143
+        width: 114
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0b5f6cfcf24d9db0800000000000000
+      internalID: -4783593574863250676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_10
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 143
+        width: 162
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d041ce2dd6ad17650800000000000000
+      internalID: 6228999924855084045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_11
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 143
+        width: 210
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64b927447ba80b920800000000000000
+      internalID: 3004053471188130630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_12
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 143
+        width: 194
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 002b29239ad160ce0800000000000000
+      internalID: -1439430418363141632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_13
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 143
+        width: 258
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2538f41467630c60800000000000000
+      internalID: 7783178260572550443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_14
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 143
+        width: 178
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1448c88689abb21d0800000000000000
+      internalID: -3374398332032220095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Yellow_Line_Road_Big_H_15
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 143
+        width: 98
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e3e041cfef0783b0800000000000000
+      internalID: -5510418096650656794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Level_0__Yellow_Line_Road_Big_H_0: 5680561118323408370
+      Level_0__Yellow_Line_Road_Big_H_1: -2744285472469797918
+      Level_0__Yellow_Line_Road_Big_H_10: 6228999924855084045
+      Level_0__Yellow_Line_Road_Big_H_11: 3004053471188130630
+      Level_0__Yellow_Line_Road_Big_H_12: -1439430418363141632
+      Level_0__Yellow_Line_Road_Big_H_13: 7783178260572550443
+      Level_0__Yellow_Line_Road_Big_H_14: -3374398332032220095
+      Level_0__Yellow_Line_Road_Big_H_15: -5510418096650656794
+      Level_0__Yellow_Line_Road_Big_H_2: 5823122854977001032
+      Level_0__Yellow_Line_Road_Big_H_3: -6752196797073011252
+      Level_0__Yellow_Line_Road_Big_H_4: 4685318982313961541
+      Level_0__Yellow_Line_Road_Big_H_5: 7007551127066541632
+      Level_0__Yellow_Line_Road_Big_H_6: 8365070784169523976
+      Level_0__Yellow_Line_Road_Big_H_7: 4502361960124448827
+      Level_0__Yellow_Line_Road_Big_H_8: 5865828422950608522
+      Level_0__Yellow_Line_Road_Big_H_9: -4783593574863250676
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

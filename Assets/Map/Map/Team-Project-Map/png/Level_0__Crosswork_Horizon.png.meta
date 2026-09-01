@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: 0c150fada19c84445bdb949d569cd0cd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3571043509599811440
+    second: Level_0__Crosswork_Horizon_0
+  - first:
+      213: -434844808458308436
+    second: Level_0__Crosswork_Horizon_1
+  - first:
+      213: -3690480715514759499
+    second: Level_0__Crosswork_Horizon_2
+  - first:
+      213: -8094603114689885894
+    second: Level_0__Crosswork_Horizon_3
+  - first:
+      213: -2723817008210451484
+    second: Level_0__Crosswork_Horizon_4
+  - first:
+      213: 20902315158190236
+    second: Level_0__Crosswork_Horizon_5
+  - first:
+      213: -8539063524107631319
+    second: Level_0__Crosswork_Horizon_6
+  - first:
+      213: 2016297963162923812
+    second: Level_0__Crosswork_Horizon_7
+  - first:
+      213: 3722716763639213995
+    second: Level_0__Crosswork_Horizon_8
+  - first:
+      213: -5318100682531460986
+    second: Level_0__Crosswork_Horizon_9
+  - first:
+      213: -6254281098148062539
+    second: Level_0__Crosswork_Horizon_10
+  - first:
+      213: -2939194170880241749
+    second: Level_0__Crosswork_Horizon_11
+  - first:
+      213: -2402900574294641191
+    second: Level_0__Crosswork_Horizon_12
+  - first:
+      213: 3733766960276162663
+    second: Level_0__Crosswork_Horizon_13
+  - first:
+      213: 2731566725528939768
+    second: Level_0__Crosswork_Horizon_14
+  - first:
+      213: -5008197533074753658
+    second: Level_0__Crosswork_Horizon_15
+  - first:
+      213: -1975512832586668004
+    second: Level_0__Crosswork_Horizon_16
+  - first:
+      213: 6400833620350739680
+    second: Level_0__Crosswork_Horizon_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_0
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 831
+        width: 98
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 098c6d429da117ec0800000000000000
+      internalID: -3571043509599811440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_1
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 847
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca47b6b53fe17f9f0800000000000000
+      internalID: -434844808458308436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_2
+      rect:
+        serializedVersion: 2
+        x: 1423
+        y: 847
+        width: 50
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b6305d9757c8ccc0800000000000000
+      internalID: -3690480715514759499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_3
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 831
+        width: 98
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a39832faa513aaf80800000000000000
+      internalID: -8094603114689885894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_4
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 719
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e3e278ccde033ad0800000000000000
+      internalID: -2723817008210451484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_5
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 655
+        width: 66
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c98bcfd7b824a4000800000000000000
+      internalID: 20902315158190236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_6
+      rect:
+        serializedVersion: 2
+        x: 1423
+        y: 655
+        width: 50
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 925c11b77f62f7980800000000000000
+      internalID: -8539063524107631319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_7
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 479
+        width: 50
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4237baf80545bfb10800000000000000
+      internalID: 2016297963162923812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_8
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 479
+        width: 66
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baf6b183c2fb9a330800000000000000
+      internalID: 3722716763639213995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_9
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 479
+        width: 98
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68823f11b9f4236b0800000000000000
+      internalID: -5318100682531460986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_10
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 415
+        width: 98
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bad1735a745439a0800000000000000
+      internalID: -6254281098148062539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_11
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 415
+        width: 50
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bafc8ce5972e537d0800000000000000
+      internalID: -2939194170880241749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_12
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 239
+        width: 98
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d5f596a8ae27aed0800000000000000
+      internalID: -2402900574294641191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_13
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 239
+        width: 50
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 768c95d944101d330800000000000000
+      internalID: 3733766960276162663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_14
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 239
+        width: 66
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fced63e67978e520800000000000000
+      internalID: 2731566725528939768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_15
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 239
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6877714d0ee4f7ab0800000000000000
+      internalID: -5008197533074753658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_16
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 239
+        width: 50
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c182274ab819594e0800000000000000
+      internalID: -1975512832586668004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_0__Crosswork_Horizon_17
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 239
+        width: 98
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e4226fb34454d850800000000000000
+      internalID: 6400833620350739680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Level_0__Crosswork_Horizon_0: -3571043509599811440
+      Level_0__Crosswork_Horizon_1: -434844808458308436
+      Level_0__Crosswork_Horizon_10: -6254281098148062539
+      Level_0__Crosswork_Horizon_11: -2939194170880241749
+      Level_0__Crosswork_Horizon_12: -2402900574294641191
+      Level_0__Crosswork_Horizon_13: 3733766960276162663
+      Level_0__Crosswork_Horizon_14: 2731566725528939768
+      Level_0__Crosswork_Horizon_15: -5008197533074753658
+      Level_0__Crosswork_Horizon_16: -1975512832586668004
+      Level_0__Crosswork_Horizon_17: 6400833620350739680
+      Level_0__Crosswork_Horizon_2: -3690480715514759499
+      Level_0__Crosswork_Horizon_3: -8094603114689885894
+      Level_0__Crosswork_Horizon_4: -2723817008210451484
+      Level_0__Crosswork_Horizon_5: 20902315158190236
+      Level_0__Crosswork_Horizon_6: -8539063524107631319
+      Level_0__Crosswork_Horizon_7: 2016297963162923812
+      Level_0__Crosswork_Horizon_8: 3722716763639213995
+      Level_0__Crosswork_Horizon_9: -5318100682531460986
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,988 @@
+fileFormatVersion: 2
+guid: d9b7acd3e4b268a4d913d3c5a6bfa223
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6441155787871521025
+    second: Stop Sign_0
+  - first:
+      213: -6663556653156340013
+    second: Stop Sign_1
+  - first:
+      213: -9096747024246489277
+    second: Stop Sign_2
+  - first:
+      213: 3423850415337403992
+    second: Stop Sign_3
+  - first:
+      213: -7753944086957838403
+    second: Stop Sign_4
+  - first:
+      213: -5830580548253062047
+    second: Stop Sign_5
+  - first:
+      213: 3479298086254111639
+    second: Stop Sign_6
+  - first:
+      213: -3471472485449364094
+    second: Stop Sign_7
+  - first:
+      213: -9047385037361930763
+    second: Stop Sign_8
+  - first:
+      213: -6714913977775267263
+    second: Stop Sign_9
+  - first:
+      213: 6051542287402493722
+    second: Stop Sign_10
+  - first:
+      213: 4702892447549760031
+    second: Stop Sign_11
+  - first:
+      213: -7971762005679825502
+    second: Stop Sign_12
+  - first:
+      213: 8958035665075342446
+    second: Stop Sign_13
+  - first:
+      213: 4279381537103672352
+    second: Stop Sign_14
+  - first:
+      213: 2735842649695802995
+    second: Stop Sign_15
+  - first:
+      213: 1529900706650424824
+    second: Stop Sign_16
+  - first:
+      213: -5346187033807758983
+    second: Stop Sign_17
+  - first:
+      213: 9057455944794140729
+    second: Stop Sign_18
+  - first:
+      213: -5904697218852533202
+    second: Stop Sign_19
+  - first:
+      213: 2978208782593438213
+    second: Stop Sign_20
+  - first:
+      213: -5814841557198468580
+    second: Stop Sign_21
+  - first:
+      213: 5344258539813043177
+    second: Stop Sign_22
+  - first:
+      213: -5576314200197345809
+    second: Stop Sign_23
+  - first:
+      213: -6772000239968197928
+    second: Stop Sign_24
+  - first:
+      213: -272500677870072694
+    second: Stop Sign_25
+  - first:
+      213: 1388858529798139062
+    second: Stop Sign_26
+  - first:
+      213: 8386399140577261133
+    second: Stop Sign_27
+  - first:
+      213: 1449332259985013937
+    second: Stop Sign_28
+  - first:
+      213: -80186727589351720
+    second: Stop Sign_29
+  - first:
+      213: -4585427191708365979
+    second: Stop Sign_30
+  - first:
+      213: -5006647225851621179
+    second: Stop Sign_31
+  - first:
+      213: 1236968905738871908
+    second: Stop Sign_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 600
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stop Sign_0
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 1492
+        width: 461
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff677f800fa6c96a0800000000000000
+      internalID: -6441155787871521025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_1
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 1447
+        width: 366
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3deeceb678a4683a0800000000000000
+      internalID: -6663556653156340013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_2
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 1459
+        width: 459
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34f323037ccd1c180800000000000000
+      internalID: -9096747024246489277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_3
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 830
+        width: 380
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 856724affc5f38f20800000000000000
+      internalID: 3423850415337403992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_4
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 816
+        width: 872
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbf23a06fe4746490800000000000000
+      internalID: -7753944086957838403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_5
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 1003
+        width: 688
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16ce21312ed951fa0800000000000000
+      internalID: -5830580548253062047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_6
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 310
+        width: 381
+        height: 349
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79b6fd2ec23f84030800000000000000
+      internalID: 3479298086254111639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_7
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 309
+        width: 518
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28d8f39ca2ad2dfc0800000000000000
+      internalID: -3471472485449364094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_8
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 309
+        width: 388
+        height: 405
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fd9bdd5e3b317280800000000000000
+      internalID: -9047385037361930763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_9
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 108
+        width: 51
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14266697055dfc2a0800000000000000
+      internalID: -6714913977775267263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_10
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 140
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1761efd5a56bf350800000000000000
+      internalID: 6051542287402493722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_11
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 127
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f12221993c7044140800000000000000
+      internalID: 4702892447549760031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_12
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 97
+        width: 25
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ad9f7921bc9e5190800000000000000
+      internalID: -7971762005679825502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_13
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 130
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6c8816c9f5515c70800000000000000
+      internalID: 8958035665075342446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_14
+      rect:
+        serializedVersion: 2
+        x: 1255
+        y: 97
+        width: 31
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 024fd69b5da636b30800000000000000
+      internalID: 4279381537103672352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_15
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 97
+        width: 30
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3765b70156aa7f520800000000000000
+      internalID: 2735842649695802995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_16
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 130
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f58481469c4b3510800000000000000
+      internalID: 1529900706650424824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_17
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 97
+        width: 29
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 979d613d7378ec5b0800000000000000
+      internalID: -5346187033807758983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_18
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 97
+        width: 30
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 930743e713c82bd70800000000000000
+      internalID: 9057455944794140729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_19
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 121
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2cce04f92d4e0ea0800000000000000
+      internalID: -5904697218852533202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_20
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 97
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5023e69cb19b45920800000000000000
+      internalID: 2978208782593438213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_21
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 96
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1a810e79688d4fa0800000000000000
+      internalID: -5814841557198468580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_22
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 96
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eb776da3de9a2a40800000000000000
+      internalID: 5344258539813043177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_23
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 85
+        width: 33
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed454d87c3fc92b0800000000000000
+      internalID: -5576314200197345809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_24
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 97
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d2e5dd49a50502a0800000000000000
+      internalID: -6772000239968197928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_25
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 97
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8c4086c312e73cf0800000000000000
+      internalID: -272500677870072694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_26
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 97
+        width: 8
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bca3ef6977364310800000000000000
+      internalID: 1388858529798139062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_27
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 86
+        width: 30
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d46bfb6d599726470800000000000000
+      internalID: 8386399140577261133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_28
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 97
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bcbbe5f2001d1410800000000000000
+      internalID: 1449332259985013937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_29
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 97
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dee55a989e13eef0800000000000000
+      internalID: -80186727589351720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_30
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 86
+        width: 30
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56b4ec6834a4d50c0800000000000000
+      internalID: -4585427191708365979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_31
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 94
+        width: 48
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c05b6bdfd0d48ab0800000000000000
+      internalID: -5006647225851621179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stop Sign_32
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 97
+        width: 11
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 464e4c08aa89a2110800000000000000
+      internalID: 1236968905738871908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Stop Sign_0: -6441155787871521025
+      Stop Sign_1: -6663556653156340013
+      Stop Sign_10: 6051542287402493722
+      Stop Sign_11: 4702892447549760031
+      Stop Sign_12: -7971762005679825502
+      Stop Sign_13: 8958035665075342446
+      Stop Sign_14: 4279381537103672352
+      Stop Sign_15: 2735842649695802995
+      Stop Sign_16: 1529900706650424824
+      Stop Sign_17: -5346187033807758983
+      Stop Sign_18: 9057455944794140729
+      Stop Sign_19: -5904697218852533202
+      Stop Sign_2: -9096747024246489277
+      Stop Sign_20: 2978208782593438213
+      Stop Sign_21: -5814841557198468580
+      Stop Sign_22: 5344258539813043177
+      Stop Sign_23: -5576314200197345809
+      Stop Sign_24: -6772000239968197928
+      Stop Sign_25: -272500677870072694
+      Stop Sign_26: 1388858529798139062
+      Stop Sign_27: 8386399140577261133
+      Stop Sign_28: 1449332259985013937
+      Stop Sign_29: -80186727589351720
+      Stop Sign_3: 3423850415337403992
+      Stop Sign_30: -4585427191708365979
+      Stop Sign_31: -5006647225851621179
+      Stop Sign_32: 1236968905738871908
+      Stop Sign_4: -7753944086957838403
+      Stop Sign_5: -5830580548253062047
+      Stop Sign_6: 3479298086254111639
+      Stop Sign_7: -3471472485449364094
+      Stop Sign_8: -9047385037361930763
+      Stop Sign_9: -6714913977775267263
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
