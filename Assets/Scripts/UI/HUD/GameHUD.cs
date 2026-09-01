@@ -1,6 +1,7 @@
 using CY.Core;
 using CY.Network;
 using CY.Player;
+using CY.Vehicle;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,9 @@ namespace CY.UI
         [Header("상태 공급자")]
         [SerializeField] private HostRoundStatus hostStatus;
         [SerializeField] private NetworkRoundStatus networkStatus;
-
+        
+        // 상단
+        
         [Header("역할")]
         [SerializeField] private TMP_Text roleText;
         
@@ -32,6 +35,25 @@ namespace CY.UI
         [SerializeField] private float fillSmoothTime = 0.18f;
         [SerializeField] private float shakeAmplitude = 3f;
         [SerializeField] private float shakeSpeed     = 18f;
+        
+        // 하단
+        
+        [Header("미션")]
+        [SerializeField] private TMP_Text missionText;
+        
+        [Header("기어")]
+        [SerializeField] private TMP_Text gearText;
+        [SerializeField] private Color gearNormalColor  = Color.white;
+        [SerializeField] private Color gearReverseColor = new Color(1f, 0.5f, 0.3f);
+        
+        [Header("속도")]
+        [SerializeField] private Image speedFill;
+        [SerializeField] private TMP_Text speedText;
+        [SerializeField] private float topSpeedDisplay = 120f;   // 최고속일 때 화면에 뜰 숫자
+        [SerializeField] private float speedSmoothTime = 0.1f;
+
+        private float shownRatio;
+        private float speedVelocity;
 
         private IRoundStatusProvider Status =>
             Session.IsHost ? (IRoundStatusProvider)hostStatus : networkStatus;
@@ -63,6 +85,9 @@ namespace CY.UI
             UpdateRole();
             UpdateTime(s);
             UpdateDurability(s);
+            UpdateMission(s);
+            UpdateSpeed(s);
+            UpdateGear(s);
         }
 
         private void UpdateRole()
@@ -123,6 +148,30 @@ namespace CY.UI
                 }
                 durabilityGroup.anchoredPosition = durabilityBasePos + offset;
             }
+        }
+        
+        private void UpdateMission(IRoundStatusProvider s)
+        {
+            if (missionText == null) return;
+            missionText.text = $"미션  {s.ClearedCheckpoints} / {s.TotalCheckpoints}";
+        }
+        
+        private void UpdateSpeed(IRoundStatusProvider s)
+        {
+            shownRatio = Mathf.SmoothDamp(shownRatio, s.SpeedRatio, ref speedVelocity, speedSmoothTime);
+
+            if (speedFill != null)
+                speedFill.fillAmount = shownRatio;
+
+            if (speedText != null)
+                speedText.text = $"{Mathf.RoundToInt(shownRatio * topSpeedDisplay)}";
+        }
+        
+        private void UpdateGear(IRoundStatusProvider s)
+        {
+            if (gearText == null) return;
+            gearText.text = s.CurrentGear.ToString();      // D / N / R
+            gearText.color = s.CurrentGear == Gear.R ? gearReverseColor : gearNormalColor;
         }
     }
 }

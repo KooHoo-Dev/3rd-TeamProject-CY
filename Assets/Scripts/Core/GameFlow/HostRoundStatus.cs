@@ -9,13 +9,16 @@ namespace CY.Core
         [SerializeField] private RoundTimer timer;
         [SerializeField] private RoundManager roundManager;
         [SerializeField] private VehicleDamage damage;
+        [SerializeField] private VehicleController controller;
 
         public float RemainingTime => timer != null ? timer.RemainingTime : 0f;
         public float DurabilityRatio => damage != null ? damage.DurabilityRatio : 1f;
+        public float SpeedRatio      => controller != null ? controller.SpeedRatio : 0f;
 
         public int ClearedCheckpoints => roundManager != null ? roundManager.ClearedCount : 0;
         public int TotalCheckpoints   => roundManager != null ? roundManager.TotalCheckpoints : 0;
 
         public RoundPhase Phase => roundManager != null ? roundManager.Phase : RoundPhase.Waiting;
+        public Gear CurrentGear => controller != null ? controller.LastInput.CurrentGear : Gear.N;
     }
 }

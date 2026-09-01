@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 1816095486014640178}
   - component: {fileID: 5365187702399678965}
   - component: {fileID: 3159230363147768910}
-  - component: {fileID: 745939253515065187}
+  - component: {fileID: 1794819349686774827}
+  - component: {fileID: 6057686804518454704}
+  - component: {fileID: 2648415858165447863}
   m_Layer: 0
   m_Name: Vehicle
   m_TagString: Untagged
@@ -123,7 +125,40 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &745939253515065187
+--- !u!114 &1794819349686774827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460622424888676623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96b6d140e4e92f47a01877ac0df2117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleSyncManager
+  localInput: {fileID: 0}
+  vehicleBody: {fileID: 0}
+  stateReceiver: {fileID: 0}
+  inputSendPerSecond: 20
+  stateSendPerSecond: 15
+  inputTimeout: 0.25
+  roleText: {fileID: 0}
+--- !u!114 &6057686804518454704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460622424888676623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78d4829632a434da4d6ae3c39e34597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleStateReceiver
+  positionSmoothTime: 0.08
+  rotationSmoothSpeed: 720
+--- !u!61 &2648415858165447863
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,17 +192,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0008840412, y: 0.0013471842}
+  m_Offset: {x: 0.00000047683716, y: -0.0991354}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6000366, y: 1.200468}
+  m_Size: {x: 1.0360498, y: 2.532092}
   m_EdgeRadius: 0
 --- !u!1 &5184633544966975882
 GameObject:
@@ -269,9 +304,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 6386414477260155612}
     m_Modifications:
     - target: {fileID: 891072147840905758, guid: 8e1d9f71605334fef873052dd3b39291, type: 3}
+      propertyPath: m_Size.x
+      value: 5.016
+      objectReference: {fileID: 0}
+    - target: {fileID: 891072147840905758, guid: 8e1d9f71605334fef873052dd3b39291, type: 3}
+      propertyPath: m_Size.y
+      value: 5.016
+      objectReference: {fileID: 0}
+    - target: {fileID: 891072147840905758, guid: 8e1d9f71605334fef873052dd3b39291, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4429787163560934215, guid: 58df14a0907a540498a779759f99bd44, type: 3}
+      objectReference: {fileID: 21300000, guid: 58df14a0907a540498a779759f99bd44, type: 3}
     - target: {fileID: 891072147840905758, guid: 8e1d9f71605334fef873052dd3b39291, type: 3}
       propertyPath: m_SortingOrder
       value: 10
@@ -338,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6535049921007704031, guid: 8e1d9f71605334fef873052dd3b39291, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayTest.unity
     guid: 613b275cbeec387418939e0812303241
+  - enabled: 1
+    path: Assets/Scenes/Dev_VehicleMapTest.unity
+    guid: 57c7a8a5b00bc4047b29b7cbab6266f4
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
