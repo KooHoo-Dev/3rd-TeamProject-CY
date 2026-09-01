@@ -1,12 +1,29 @@
 using UnityEngine;
 using System.Collections;
+using System;
+using CY.Network; 
+using Cysharp.Threading.Tasks;
+
+public class LicensePlateScrewMessage { public string Type { get; set; } public int ScrewIndex { get; set; } }
+public class LicensePlateDragMessage { public string Type { get; set; } = "license_plate_drag"; public bool IsOldPlate { get; set; } public float AnchoredX { get; set; } public float AnchoredY { get; set; } }
+public class LicensePlateDropMessage { public string Type { get; set; } = "license_plate_drop"; public bool IsOldPlate { get; set; } public bool IsValidDrop { get; set; } }
+public class LicensePlateDropResultMessage { public string Type { get; set; } = "license_plate_plate_snap_back"; public bool IsOldPlate { get; set; } }
 
 namespace CY.Minigame
 {
 
     public class RepairShopMinigameController : MonoBehaviour
     {
+        private const string LicensePlateMiniGameType = "license_plate";
+        private const float CompletedDisplaySeconds = 2f;
+        
         public RepairShopMinigameView view;
+        private NetworkSession session;
+        private Coroutine completedRoutine;
+        
+        private bool IsOperator;
+        private bool IsActive;
+        private bool CanSendInput;
 
         private int oldScrewsRemoved = 0;
         private int newScrewsFastened = 0;
