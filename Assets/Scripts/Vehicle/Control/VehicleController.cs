@@ -30,6 +30,12 @@ namespace CY.Vehicle
 
         public void SetInputEnabled(bool value) => inputEnabled = value;
         public void SetSpeedMultiplier(float value) => speedMultiplier = Mathf.Clamp01(value);
+        
+        // HUD 표시용
+        public VehicleInput LastInput { get; private set; }
+        public float MaxSpeed => maxSpeed;
+        public float SpeedRatio =>
+            rb != null ? Mathf.Clamp01(rb.linearVelocity.magnitude / maxSpeed) : 0f;
 
         private void Awake()
         {
@@ -46,7 +52,8 @@ namespace CY.Vehicle
             if (vehicleSync == null) return;
 
             VehicleInput input = inputEnabled ? vehicleSync.ReadMergedInput() : default;
-
+            LastInput = input;
+            
             ApplyEngine(input);
             ApplyBrake(input);
             ApplySteering(input);

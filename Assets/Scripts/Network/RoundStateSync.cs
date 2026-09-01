@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using HelloServer;
 using Newtonsoft.Json;
 using UnityEngine;
+using CY.Vehicle;
 
 namespace CY.Network
 {
@@ -23,6 +24,8 @@ namespace CY.Network
         private RoundPhase lastPhase = RoundPhase.Waiting;
         private int lastCleared = -1;
         private float lastDurability = -1f;
+        
+        private Gear lastGear = Gear.N;
         
         private void Awake()
         {
@@ -59,6 +62,7 @@ namespace CY.Network
             if (hostStatus.Phase != lastPhase) return true;
             if (hostStatus.ClearedCheckpoints != lastCleared) return true;
             if (Mathf.Abs(hostStatus.DurabilityRatio - lastDurability) > durabilityEpsilon) return true;
+            if (hostStatus.CurrentGear != lastGear) return true;
 
             return Time.unscaledTime >= nextSendAt;
         }
@@ -69,6 +73,7 @@ namespace CY.Network
             lastCleared = hostStatus.ClearedCheckpoints;
             lastDurability = hostStatus.DurabilityRatio;
             nextSendAt = Time.unscaledTime + 1f / Mathf.Max(1f, sendPerSecond);
+            lastGear = hostStatus.CurrentGear;
 
             if (session == null) return;
 
@@ -76,9 +81,11 @@ namespace CY.Network
             {
                 RemainingTime = hostStatus.RemainingTime,
                 DurabilityRatio = hostStatus.DurabilityRatio,
+                SpeedRatio = hostStatus.SpeedRatio,
                 Cleared = hostStatus.ClearedCheckpoints,
                 Total = hostStatus.TotalCheckpoints,
                 Phase = hostStatus.Phase.ToString(),
+                Gear = hostStatus.CurrentGear.ToString(),
             }).Forget();
         }
         
@@ -95,11 +102,14 @@ namespace CY.Network
 
             if (Enum.TryParse(m.Phase, out RoundPhase phase) == false)
                 phase = RoundPhase.Waiting;
+            
+            if (Enum.TryParse(m.Gear, out Gear gear) == false)
+                gear = Gear.N;
 
             if (m.DurabilityRatio < 0f || m.DurabilityRatio > 1f)
                 Debug.LogWarning($"[RoundState] 내구도 비율 범위 밖: {m.DurabilityRatio}", this);
 
-            networkStatus.Apply(m.RemainingTime, m.DurabilityRatio, m.Cleared, m.Total, phase);
+            networkStatus.Apply(m.RemainingTime, m.DurabilityRatio, m.SpeedRatio, m.Cleared, m.Total, phase, gear);
         }
     }
 }

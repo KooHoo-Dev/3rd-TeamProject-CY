@@ -97,7 +97,6 @@ namespace CY.Core
         private void Finish(bool success)
         {
             finished = true;
-            Phase = success ? RoundPhase.Success : RoundPhase.Failed;
             timer.StopRound();
             vehicle.SetInputEnabled(false);
 
