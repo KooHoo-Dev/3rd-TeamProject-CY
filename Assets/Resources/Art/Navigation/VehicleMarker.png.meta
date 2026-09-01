@@ -1,27 +1,24 @@
 fileFormatVersion: 2
-guid: 63d595d327e7448ad8c0c02b9a8de601
+guid: 58df14a0907a540498a779759f99bd44
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4729661183403767426
-    second: vehicleMarker_0
+      213: -4429787163560934215
+    second: VehicleMarker_0
   - first:
-      213: -986064728241131730
-    second: vehicleMarker_1
+      213: -3861932429139056465
+    second: VehicleMarker_1
   - first:
-      213: 2874816389532926180
-    second: vehicleMarker_2
+      213: -7165320241959591385
+    second: VehicleMarker_2
   - first:
-      213: -8479735881680933452
-    second: vehicleMarker_3
-  - first:
-      213: 7270365613170879763
-    second: vehicleMarker_4
+      213: 1108896869490511349
+    second: VehicleMarker_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -63,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 250
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -112,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vehicleMarker_0
+      name: VehicleMarker_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 71
-        width: 1056
-        height: 1141
+        x: 104
+        y: 168
+        width: 1107
+        height: 982
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e79c347663edc5eb0800000000000000
-      internalID: -4729661183403767426
+      spriteID: 9b48d557b0c3682c0800000000000000
+      internalID: -4429787163560934215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vehicleMarker_1
+      name: VehicleMarker_1
       rect:
         serializedVersion: 2
-        x: 1029
-        y: 775
-        width: 7
-        height: 13
+        x: 1163
+        y: 467
+        width: 6
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,19 +146,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e2f25a3aa5bc052f0800000000000000
-      internalID: -986064728241131730
+      spriteID: fa8ea96cae8a76ac0800000000000000
+      internalID: -3861932429139056465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vehicleMarker_2
+      name: VehicleMarker_2
       rect:
         serializedVersion: 2
-        x: 1035
-        y: 773
-        width: 7
+        x: 88
+        y: 168
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7222514143baf8c90800000000000000
+      internalID: -7165320241959591385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VehicleMarker_3
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 146
+        width: 15
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -171,52 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e0c49c564665e720800000000000000
-      internalID: 2874816389532926180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vehicleMarker_3
-      rect:
-        serializedVersion: 2
-        x: 1034
-        y: 401
-        width: 10
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4bd2647a42de15a80800000000000000
-      internalID: -8479735881680933452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vehicleMarker_4
-      rect:
-        serializedVersion: 2
-        x: 946
-        y: 111
-        width: 10
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 31de340510785e460800000000000000
-      internalID: 7270365613170879763
+      spriteID: 5fd468ed3d7936f00800000000000000
+      internalID: 1108896869490511349
       vertices: []
       indices: 
       edges: []
@@ -235,11 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      vehicleMarker_0: -4729661183403767426
-      vehicleMarker_1: -986064728241131730
-      vehicleMarker_2: 2874816389532926180
-      vehicleMarker_3: -8479735881680933452
-      vehicleMarker_4: 7270365613170879763
+      VehicleMarker_0: -4429787163560934215
+      VehicleMarker_1: -3861932429139056465
+      VehicleMarker_2: -7165320241959591385
+      VehicleMarker_3: 1108896869490511349
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
