@@ -27,6 +27,9 @@ namespace  CY.Network
 
         [SerializeField] private TMP_Text roleText;
         
+        [Header("로컬 테스트")]
+        [SerializeField] private bool localTestMode = false;
+        
         private readonly Dictionary<string, VehicleRole> roles = new();
         private readonly VehicleInputMerger inputMerger = new();
         private readonly float[] lastInputReceivedAt = new float[4];
@@ -51,6 +54,12 @@ namespace  CY.Network
 
         private void OnEnable()
         {
+            if (localTestMode)
+            {
+                Session.Apply(true, VehicleRole.Handle);   // 호스트로 고정
+                return;                                   // 서버 구독도 안 함
+            }
+            
             session.MessageReceived += HandleMessage;
             RefreshRoles();
         }
@@ -86,6 +95,8 @@ namespace  CY.Network
 
         private void RefreshRoles()
         {
+            if (localTestMode) return;   // 서버 역할 배정 무시
+            
             roles.Clear();
 
             if (session == null || session.Me == null)
@@ -126,6 +137,15 @@ namespace  CY.Network
         private void SendLocalInput()
         {
             if (localInput == null) return;
+            
+            if (localTestMode)
+            {
+                VehicleInput localTestInput = localInput.Read();
+                for (int i = 0; i < 4; i++)
+                    inputMerger.Set((VehicleRole)i, localTestInput);   // 네 역할 모두 같은 입력
+                return;                                       // 네트워크 전송 안 함
+            }
+            
             if (Session.HasAssignedRole == false) return;
 
             VehicleInput input = localInput.Read();

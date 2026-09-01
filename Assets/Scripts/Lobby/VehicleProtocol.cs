@@ -1,4 +1,6 @@
-﻿namespace HelloServer
+﻿using CY.Core;
+
+namespace HelloServer
 {
     // 클라이언트 -> 서버 -> 호스트
     public class VehicleInputMessage
@@ -27,5 +29,16 @@
 
         public float VelocityX { get; set; }
         public float VelocityY { get; set; }
+    }
+    
+    public class RoundStateMessage
+    {
+        public string Type { get; set; } = "round_state";
+
+        public float RemainingTime { get; set; }
+        public float DurabilityRatio { get; set; }
+        public int Cleared { get; set; }
+        public int Total { get; set; }
+        public string Phase { get; set; }   // "Playing" / "Success" / "Failed"
     }
 }
