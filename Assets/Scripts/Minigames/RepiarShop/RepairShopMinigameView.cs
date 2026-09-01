@@ -11,6 +11,8 @@ namespace CY.Minigame
         [Header("UI")]
         public RectTransform oldPlateRect;
         public RectTransform newPlateRect;
+        [SerializeField] private RectTransform plateSlot;
+        
         public CanvasGroup oldPlateCanvasGroup;
         public CanvasGroup newPlateCanvasGroup;
 
@@ -25,21 +27,60 @@ namespace CY.Minigame
 
         private Vector2 oldPlateOrigin;
         private Vector2 newPlateOrigin;
-
-        public void InitializeView()
+        private bool currentIsOperator;
+        
+        private void Awake()
         {
             oldPlateOrigin = oldPlateRect.anchoredPosition;
             newPlateOrigin = newPlateRect.anchoredPosition;
+        }
+        
+        public void Begin(bool isOperator)
+        {
+            ResetView();
+            currentIsOperator = isOperator;
+            
+            // 처음엔 조작 불가, MinigameUI 신호 시 활성화
+            SetOldScrewsInteractable(false);
+            
+            assigneeText.text = isOperator ? "<담당자>" : "<관전자>";
+        }
 
+        public void ResetView()
+        {
+            StopAllCoroutines();
+            
+            oldPlateRect.DOKill();
+            newPlateRect.DOKill();
+            oldPlateRect.anchoredPosition = oldPlateOrigin;
+            newPlateRect.anchoredPosition = newPlateOrigin;
+            
+            oldPlateRect.gameObject.SetActive(true);
+            newPlateRect.gameObject.SetActive(true);
+            
             resultText.gameObject.SetActive(false);
             if (trashZone != null) trashZone.SetActive(false);
 
             foreach (var screw in oldScrews) screw.gameObject.SetActive(true);
-            foreach (var screw in newScrews) screw.gameObject.SetActive(false);
+            foreach (var screw in newScrews)
+            {
+                screw.gameObject.SetActive(false);
+                screw.GetComponent<Image>().color = new Color(1, 1, 1, 0f);
+            }
             
             SetTextAlpha(titleText, 0f);
             SetTextAlpha(noticeText, 0f);
             SetTextAlpha(assigneeText, 0f);
+        }
+        
+        public void EnableInputForOperator()
+        {
+            if (currentIsOperator) SetOldScrewsInteractable(true);
+        }
+        
+        private void SetOldScrewsInteractable(bool interactable)
+        {
+            foreach (var screw in oldScrews) screw.interactable = interactable;
         }
         
         public void FadeInGameTexts()
@@ -59,18 +100,22 @@ namespace CY.Minigame
             }
         }
 
-        public void ApplyOldScrewState(int index, bool isVisible)
+        public void ApplyOldScrewRemoved(int index)
         {
-            oldScrews[index].gameObject.SetActive(isVisible);
+            oldScrews[index].gameObject.SetActive(false);
         }
 
-        public void ApplyNewScrewState(int index, bool isFastened)
+        public void ApplyNewScrewFastened(int index)
         {
-            if (isFastened)
-            {
-                newScrews[index].GetComponent<Image>().color = Color.white;
-                newScrews[index].enabled = false;
-            }
+            newScrews[index].GetComponent<Image>().color = Color.white;
+            newScrews[index].interactable = false;
+        }
+        
+        public void ApplyPlateDrag(bool isOldPlate, Vector2 anchoredPosition)
+        {
+            RectTransform plate = isOldPlate ? oldPlateRect : newPlateRect;
+            plate.DOKill();
+            plate.anchoredPosition = anchoredPosition;
         }
 
         public void SnapBackPlate(bool isOldPlate)
@@ -103,21 +148,37 @@ namespace CY.Minigame
             if (trashZone != null) trashZone.SetActive(false);
         }
 
-        public void AttachNewPlate(RectTransform targetDropZone)
+        public void AttachNewPlate()
         {
-            newPlateRect.position = targetDropZone.position;
+            newPlateRect.anchoredPosition = plateSlot.anchoredPosition;
 
             foreach (var screw in newScrews)
             {
                 screw.gameObject.SetActive(true);
-                screw.GetComponent<Image>().color = new Color(1, 1, 1, 0f);
+                screw.interactable = currentIsOperator;
             }
         }
 
-        public void ShowGameClear()
+        public void ApplyCompleted()
         {
+            SetOldScrewsInteractable(false);
+            foreach (var screw in newScrews) screw.interactable = false;
+            
             resultText.gameObject.SetActive(true);
             resultText.text = "미션 완료!";
+            resultText.color = Color.green;
+            resultText.transform.localScale = Vector3.zero;
+            resultText.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
+        }
+        
+        public void ApplyAborted()
+        {
+            SetOldScrewsInteractable(false);
+            foreach (var screw in newScrews) screw.interactable = false;
+            
+            resultText.gameObject.SetActive(true);
+            resultText.text = "중지";
+            resultText.color = Color.gray;
             resultText.transform.localScale = Vector3.zero;
             resultText.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
         }

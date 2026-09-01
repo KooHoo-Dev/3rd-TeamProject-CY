@@ -19,6 +19,7 @@ namespace CY.Core
         public int ClearedCount { get; private set; }
         public int TotalCheckpoints => checkpoints.Length;
         public bool IsFinished => finished;
+        public RoundPhase Phase { get; private set; } = RoundPhase.Waiting;
 
         private bool finished;
         private VehicleDamage damage;
@@ -49,7 +50,8 @@ namespace CY.Core
             damage?.ResetDurability();
             vehicle.SetInputEnabled(true);
             timer.StartRound();
-
+            Phase = RoundPhase.Playing;
+            
             Debug.Log("[Round] 라운드 시작", this);
         }
 
@@ -95,17 +97,18 @@ namespace CY.Core
         private void Finish(bool success)
         {
             finished = true;
-
             timer.StopRound();
             vehicle.SetInputEnabled(false);
 
             if (success)
             {
+                Phase = RoundPhase.Success;
                 onRoundSucceeded.Invoke();
                 Debug.Log($"[Round] 성공! 남은 시간 {timer.RemainingTime:0.#}초 / 걸린 시간 {timer.ElapsedTime:0.#}초", this);
             }
             else
             {
+                Phase = RoundPhase.Failed;
                 onRoundFailed.Invoke();
                 Debug.Log($"[Round] 실패. 경유지 {ClearedCount}/{TotalCheckpoints}", this);
             }

@@ -1,24 +1,46 @@
 using UnityEngine;
 using System.Collections;
+using System;
+using CY.Network; 
+using Cysharp.Threading.Tasks;
+using HelloServer;
+
+public class LicensePlateScrewMessage { public string Type { get; set; } public int ScrewIndex { get; set; } }
+public class LicensePlateDragMessage { public string Type { get; set; } = "license_plate_drag"; public bool IsOldPlate { get; set; } public float AnchoredX { get; set; } public float AnchoredY { get; set; } }
+public class LicensePlateDropMessage { public string Type { get; set; } = "license_plate_drop"; public bool IsOldPlate { get; set; } public bool IsValidDrop { get; set; } }
+public class LicensePlateDropResultMessage { public string Type { get; set; } = "license_plate_plate_snap_back"; public bool IsOldPlate { get; set; } }
 
 namespace CY.Minigame
 {
 
     public class RepairShopMinigameController : MonoBehaviour
     {
+        private const string LicensePlateMiniGameType = "license_plate";
+        private const float CompletedDisplaySeconds = 2f;
+        
         public RepairShopMinigameView view;
+        private NetworkSession session;
+        private Coroutine completedRoutine;
+        
+        private bool IsOperator;
+        private bool IsActive;
+        private bool CanSendInput;
 
-        private int oldScrewsRemoved = 0;
-        private int newScrewsFastened = 0;
+        private int oldScrewsRemoved;
+        private bool isOldPlateDiscarded; // 기존 번호판을 버렸는지
+        private bool isNewPlateAttached; // 새 번호판을 제자리에 놨는지
 
-        private bool isGameStarted = false;
-        private bool isOldPlateDetached = false; // 나사 4개가 풀렸는지
-        private bool isOldPlateDiscarded = false; // 기존 번호판을 버렸는지
-        private bool isNewPlateAttached = false; // 새 번호판을 제자리에 놨는지
-
+        public event Action MinigameEnded;
+        
+        private void Awake()
+        {
+            if (view == null) view = GetComponent<RepairShopMinigameView>();
+            session = NetworkSession.Instance;
+        }
+        
         private void Start()
         {
-            view.InitializeView();
+            ResetState();
         }
         
         private void OnEnable()
@@ -39,7 +61,7 @@ namespace CY.Minigame
         
         private void HandleGameStartSignal()
         {
-            if (!gameObject.activeInHierarchy) return;
+            if (!gameObject.activeInHierarchy || !IsActive) return;
             StartCoroutine(StartGameRoutine());
         }
         
@@ -47,67 +69,171 @@ namespace CY.Minigame
         {
             yield return new WaitForSeconds(1f);
             view.FadeInGameTexts(); // DOTween 호출
-            isGameStarted = true;  
+            CanSendInput = IsOperator;  
+            view.EnableInputForOperator();
+        }
+        
+        private void ResetState()
+        {
+            IsOperator = false;
+            IsActive = false;
+            CanSendInput = false;
+
+            oldScrewsRemoved = 0;
+            isOldPlateDiscarded = false;
+            isNewPlateAttached = false;
+
+            if (view != null) view.ResetView();
         }
 
-        public void RequestRemoveOldScrew(int index)
+        public void RequestRemoveOldScrew(int screwIndex)
         {
-            if (isOldPlateDetached) return;
+            if (!IsActive || !IsOperator || !CanSendInput) return;
+
+            session.SendAsync(new LicensePlateScrewMessage
+            {
+                Type = "license_plate_remove_old_screw",
+                ScrewIndex = screwIndex
+            }).Forget();
+        }
+
+        public void RequestFastenNewScrew(int screwIndex)
+        {
+            if (!IsActive || !IsOperator || !CanSendInput || !isNewPlateAttached) return;
+
+            session.SendAsync(new LicensePlateScrewMessage
+            {
+                Type = "license_plate_fasten_new_screw",
+                ScrewIndex = screwIndex
+            }).Forget();
+        }
+        
+        public void SendPlateDrag(bool isOldPlate, Vector2 anchoredPosition)
+        {
+            bool canDrag = isOldPlate ? CanDragOldPlate() : CanDragNewPlate();
+            if (!canDrag) return;
+
+            session.SendAsync(new LicensePlateDragMessage
+            {
+                IsOldPlate = isOldPlate,
+                AnchoredX = anchoredPosition.x,
+                AnchoredY = anchoredPosition.y
+            }).Forget();
+        }
+
+        public void HandlePlateDropped(bool isOldPlate, bool isValidDrop)
+        {
+            session.SendAsync(new LicensePlateDropMessage
+            {
+                IsOldPlate = isOldPlate,
+                IsValidDrop = isValidDrop
+            }).Forget();
+        }
+        
+        // 드래그 권한
+        public bool CanDragOldPlate()
+        {
+            return IsActive && IsOperator && CanSendInput && oldScrewsRemoved == 4 && isOldPlateDiscarded == false;
+        }
+
+        public bool CanDragNewPlate()
+        {
+            return IsActive && IsOperator && CanSendInput && isOldPlateDiscarded && isNewPlateAttached == false;
+        }
+        
+        public void HandleMiniGameStarted(MiniGameStartedMessage message)
+        {
+            if (message == null || message.MiniGameType != LicensePlateMiniGameType) return;
+
+            ResetState();
+
+            if (session == null || session.Me == null) return;
+
+            IsActive = true;
+            IsOperator = session.Me.Id == message.OperatorId;
+            CanSendInput = false; // MinigameUI 신호 전 대기
+
+            view.Begin(IsOperator);
+        }
+        
+        public void HandlePlateDrag(LicensePlateDragMessage message)
+        {
+            if (!IsActive || message == null) return;
+            view.ApplyPlateDrag(message.IsOldPlate, new Vector2(message.AnchoredX, message.AnchoredY));
+        }
+        
+        public void HandlePlateSnapBack(LicensePlateDropResultMessage message)
+        {
+            if (!IsActive || message == null) return;
+            view.SnapBackPlate(message.IsOldPlate);
+        }
+        
+        public void HandleOldScrewRemoved(LicensePlateScrewMessage message)
+        {
+            if (!IsActive || message == null) return;
 
             oldScrewsRemoved++;
-            view.ApplyOldScrewState(index, false);
+            view.ApplyOldScrewRemoved(message.ScrewIndex);
 
-            if (oldScrewsRemoved >= 4)
-            {
-                isOldPlateDetached = true;
-
-                view.ShowTrashZone();
-            }
+            if (oldScrewsRemoved == 4) view.ShowTrashZone();
         }
 
-        public void RequestFastenNewScrew(int index)
+        public void HandleOldPlateDiscarded()
         {
-            if (!isNewPlateAttached || newScrewsFastened >= 4) return;
-
-            newScrewsFastened++;
-            view.ApplyNewScrewState(index, true);
-
-            if (newScrewsFastened >= 4)
-            {
-                view.ShowGameClear();
-            }
+            if (!IsActive) return;
+            isOldPlateDiscarded = true;
+            view.DiscardOldPlate();
         }
 
-        // 드래그 권한
-        public bool CanDragOldPlate() => isGameStarted && isOldPlateDetached && isOldPlateDiscarded == false;
-        public bool CanDragNewPlate() => isGameStarted && isOldPlateDiscarded && isNewPlateAttached == false;
-
-        public void HandlePlateDropped(bool isOldPlate, GameObject droppedOnZone)
+        public void HandleNewPlateAttached()
         {
-            if (isOldPlate)
-            {
-                if (droppedOnZone != null && droppedOnZone.CompareTag("TrashZone"))
-                {
-                    isOldPlateDiscarded = true;
-                    view.DiscardOldPlate();
-                }
-                else
-                {
-                    view.SnapBackPlate(true); // 오답 위치 시 제자리 복귀
-                }
-            }
-            else
-            {
-                if (droppedOnZone != null && droppedOnZone.CompareTag("DropZone"))
-                {
-                    isNewPlateAttached = true;
-                    view.AttachNewPlate(droppedOnZone.GetComponent<RectTransform>());
-                }
-                else
-                {
-                    view.SnapBackPlate(false);
-                }
-            }
+            if (!IsActive) return;
+            isNewPlateAttached = true;
+            view.AttachNewPlate();
+        }
+
+        public void HandleNewScrewFastened(LicensePlateScrewMessage message)
+        {
+            if (!IsActive || message == null) return;
+            view.ApplyNewScrewFastened(message.ScrewIndex);
+        }
+
+        public void HandleLicensePlateCompleted()
+        {
+            if (!IsActive || completedRoutine != null) return;
+
+            CanSendInput = false;
+            view.ApplyCompleted();
+            completedRoutine = StartCoroutine(FinishAfterCompletedRoutine());
+        }
+
+        public void HandleGameAborted()
+        {
+            if (!IsActive) return;
+
+            StopCompletedRoutine();
+            CanSendInput = false;
+            IsActive = false;
+            IsOperator = false;
+
+            view.ApplyAborted();
+            MinigameEnded?.Invoke();
+        }
+
+        private IEnumerator FinishAfterCompletedRoutine()
+        {
+            yield return new WaitForSeconds(CompletedDisplaySeconds);
+            completedRoutine = null;
+            ResetState();
+            MinigameEnded?.Invoke();
+        }
+
+        private void StopCompletedRoutine()
+        {
+            if (completedRoutine == null) return;
+            StopCoroutine(completedRoutine);
+            completedRoutine = null;
         }
     }
+    
 }

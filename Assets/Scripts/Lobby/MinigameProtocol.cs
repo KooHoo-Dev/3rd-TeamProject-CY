@@ -12,6 +12,12 @@
         public string Type { get; set; } = "minigame_start_request";
         public string MiniGameType { get; set; }
     }
+    
+    public class BarricadeFuseClickMessage
+    {
+        public string Type { get; set; } = "barricade_fuse_click";
+        public int FuseIndex { get; set; }
+    }
 
     #endregion
 
@@ -29,6 +35,12 @@
         public string Type { get; set; } = "fuel_state";
         public float GaugePercent { get; set; }
         public bool IsPressed { get; set; }
+    }
+    
+    public class BarricadeProgressMessage
+    {
+        public string Type { get; set; } = "barricade_progress";
+        public int FuseIndex { get; set; }
     }
 
     #endregion

@@ -3,25 +3,20 @@ using CY.Network;
 using Cysharp.Threading.Tasks;
 using HelloServer;
 using Newtonsoft.Json;
+using CY.Stages;
 using UnityEngine;
 
 namespace CY.Minigame
 {
     public class MinigameManager : MonoBehaviour
     {
-        // 임시용 필드, 실제 동작은 CheckPointZone.cs의 이벤트로부터 수신
-        private const string FuelMiniGameType = "fuel";
-
         [Header("미니게임 참조")] 
         [SerializeField] private GasStationMinigameController gasStationMinigameController;
+        [SerializeField] private BarricadeMinigameController barricadeMinigameController;
         [SerializeField] private MinigameUI minigameUI;
 
-        [Header("MiniGameTest 임시 시작 설정")]
-        // 실제 CheckpointZone 연동 전까지 주유 미니게임을 자동 요청한다.
-        [SerializeField] private bool requestTemporaryMiniGameOnStart = true;
-        [SerializeField] private string temporaryMiniGameType = FuelMiniGameType;
-        
         private NetworkSession session;
+        private CheckpointZone activeCheckpoint;
         
         public string CurrentMiniGameType { get; private set; }
         
@@ -32,10 +27,14 @@ namespace CY.Minigame
 
         private void OnEnable()
         {
+            CheckpointZone.MissionReady += HandleCheckpointMission;
             if (session == null) session = NetworkSession.Instance;
             if (session != null) session.MessageReceived += HandleNetworkMessage;
+            
             if (gasStationMinigameController != null)
-                gasStationMinigameController.MinigameEnded += HandleFuelMiniGameEnded;
+                gasStationMinigameController.MinigameEnded += HandleMiniGameEnded;
+            if (barricadeMinigameController != null)
+                barricadeMinigameController.MinigameEnded += HandleMiniGameEnded;
         }
 
         private void Start()
@@ -45,18 +44,21 @@ namespace CY.Minigame
                 $"me={session?.Me?.Id ?? "null"}, " +
                 $"connected={session?.IsConnected}");
 
-            
-            SendReadyAndRequestTemporaryMiniGameAsync().Forget();
+            SendClientReadyAsync().Forget();
         }
 
         private void OnDisable()
         {
+            CheckpointZone.MissionReady -= HandleCheckpointMission;
             if (session != null) session.MessageReceived -= HandleNetworkMessage;
+            
             if (gasStationMinigameController != null) 
-                gasStationMinigameController.MinigameEnded -= HandleFuelMiniGameEnded;
+                gasStationMinigameController.MinigameEnded -= HandleMiniGameEnded;
+            if (barricadeMinigameController != null) 
+                barricadeMinigameController.MinigameEnded -= HandleMiniGameEnded;
         }
 
-        private async UniTaskVoid SendReadyAndRequestTemporaryMiniGameAsync()
+        private async UniTaskVoid SendClientReadyAsync()
         {
             if (session == null || session.Me == null)
             {
@@ -65,13 +67,8 @@ namespace CY.Minigame
             }
 
             await session.SendAsync(new MinigameClientReadyMessage());
-
-            if (!requestTemporaryMiniGameOnStart) return;
-
-            RequestMiniGameStart(temporaryMiniGameType);
         }
 
-        // 추후 CheckPointZone 이벤트가 호출할 공용 시작 요청 이벤트
         public void RequestMiniGameStart(string miniGameType)
         {
             if (session == null || session.Me == null) return;
@@ -83,9 +80,27 @@ namespace CY.Minigame
             }).Forget();
         }
 
+        private void HandleCheckpointMission(CheckpointZone checkpoint)
+        {
+            activeCheckpoint = checkpoint;
+            RequestMiniGameStart(GetMiniGameType(checkpoint.MissionType));
+        }
+
+        private string GetMiniGameType(MissionType missionType)
+        {
+            return missionType switch
+            {
+                MissionType.GasStation => "fuel",
+                MissionType.Barricade => "barricade",
+                MissionType.LicensePlate => "license_plate",
+                _ => null
+            };
+        }
+        
         private void HandleNetworkMessage(string type, string json)
         {
-            if (gasStationMinigameController == null) return;
+            if (gasStationMinigameController == null
+                && barricadeMinigameController == null) return;
 
             switch (type)
             {
@@ -94,11 +109,11 @@ namespace CY.Minigame
                     MiniGameStartedMessage message =
                         JsonConvert.DeserializeObject<MiniGameStartedMessage>(json);
 
-                    if (message == null || message.MiniGameType != FuelMiniGameType) return;
-
-                    CurrentMiniGameType = FuelMiniGameType;
+                    if (message == null) return;
                     
-                    gasStationMinigameController.HandleMiniGameStarted(message);
+                    CurrentMiniGameType = message.MiniGameType;
+                    HandleMiniGameStarted(message);
+                    minigameUI.SetCurrentMiniGameType(message.MiniGameType);
                     minigameUI.ShowMinigameUI();
                     break;
                 }
@@ -111,14 +126,58 @@ namespace CY.Minigame
                     break;
                 case "fuel_completed":
                     gasStationMinigameController.HandleFuelCompleted();
+                    
+                    if (Session.IsHost && activeCheckpoint != null)
+                    {
+                        activeCheckpoint.CompleteMission();
+                        activeCheckpoint = null;
+                    }
+                    break;
+                case "barricade_progress":
+                    barricadeMinigameController.HandleBarricadeProgress(
+                        JsonConvert.DeserializeObject<BarricadeProgressMessage>(json));
+                    break;
+                case "barricade_attempt_failed":
+                    barricadeMinigameController.HandleBarricadeAttemptFailed();
+                    break;
+                case "barricade_completed":
+                    barricadeMinigameController.HandleBarricadeCompleted();
                     break;
                 case "game_aborted":
-                    gasStationMinigameController.HandleGameAborted();
+                    HandleGameAborted();
                     break;
             }
         }
 
-        private void HandleFuelMiniGameEnded()
+        private void HandleMiniGameStarted(MiniGameStartedMessage message)
+        {
+            switch (message.MiniGameType)
+            {
+                case "fuel":
+                    gasStationMinigameController.HandleMiniGameStarted(message);
+                    return;
+                case "barricade": 
+                    barricadeMinigameController.HandleMiniGameStarted(message);
+                    return;
+                case "license_plate": return;
+            }
+        }
+
+        private void HandleGameAborted()
+        {
+            switch (CurrentMiniGameType) 
+            {
+                case "fuel":
+                    gasStationMinigameController.HandleGameAborted();
+                    break;
+                case "barricade":
+                    barricadeMinigameController.HandleGameAborted();
+                    break;
+                case "license_plate": return;
+            }
+        }
+        
+        private void HandleMiniGameEnded()
         {
             CurrentMiniGameType = null;
             minigameUI.HideMinigameUI();
