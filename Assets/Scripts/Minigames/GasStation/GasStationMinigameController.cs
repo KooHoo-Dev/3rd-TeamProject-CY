@@ -88,8 +88,8 @@ namespace CY.Minigame
         
         private void HandleGameStartSignal()
         {
-            if (!IsActive) return; 
-    
+            if (!IsActive) return;
+            MinigameUI.Instance.IsOperator = IsOperator;
             StartCoroutine(StartGameRoutine());
         }
         
