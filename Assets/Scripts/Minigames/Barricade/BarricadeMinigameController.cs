@@ -6,21 +6,8 @@ using Cysharp.Threading.Tasks;
 using CY.Network;
 using HelloServer;
 
-public class BarricadeFuseClickMessage
-{
-    public string Type { get; set; } = "barricade_fuse_click";
-    public int FuseIndex { get; set; }
-}
-
-public class BarricadeProgressMessage
-{
-    public string Type { get; set; } = "barricade_progress";
-    public int FuseIndex { get; set; }
-}
-
 namespace CY.Minigame
 {
-
     public class BarricadeMinigameController : MonoBehaviour
     {
         private const string BarricadeMiniGameType = "barricade";
@@ -168,10 +155,6 @@ namespace CY.Minigame
             StopCoroutine(completedRoutine);
             completedRoutine = null;
         }
-        
-        
-        
-        
     }
 
 }
