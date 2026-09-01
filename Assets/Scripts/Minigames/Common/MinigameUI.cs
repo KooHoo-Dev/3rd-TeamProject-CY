@@ -55,7 +55,6 @@ namespace CY.Minigame
             return new Vector2(panel.rect.width + 10f, 0f);
         }
         
-        
         public void SetCurrentMiniGameType(string missionType)
         {
             switch (missionType)

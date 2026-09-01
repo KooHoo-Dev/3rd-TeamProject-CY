@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 1026652957360876668}
   - component: {fileID: 1077173432193647917}
   m_Layer: 5
-  m_Name: MinigamePanel
+  m_Name: GasStationMinigamePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
