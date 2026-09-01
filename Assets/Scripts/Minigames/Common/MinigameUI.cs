@@ -45,9 +45,6 @@ namespace CY.Minigame
             {
                 explanationPanel[i].SetActive(false);
             }
-            
-            currentMiniGamePanel = minigamePanel[0];
-            currentExplanationPanel = explanationPanel[0];
         }
 
         private Vector2 GetHiddenPosition(RectTransform panel)
