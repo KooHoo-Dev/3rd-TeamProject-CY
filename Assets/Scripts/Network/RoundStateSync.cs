@@ -1,11 +1,11 @@
 using System;
-using CY.Network;
+using CY.Core;
 using Cysharp.Threading.Tasks;
 using HelloServer;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace CY.Core
+namespace CY.Network
 {
     public class RoundStateSync : MonoBehaviour
     {
