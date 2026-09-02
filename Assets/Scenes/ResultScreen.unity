@@ -707,7 +707,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9060166380758743516, guid: d1535bd09cc4a8b4ca118dd5a39f377c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1690328716}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9060166380758743523, guid: d1535bd09cc4a8b4ca118dd5a39f377c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2056249738}
   m_SourcePrefab: {fileID: 100100000, guid: d1535bd09cc4a8b4ca118dd5a39f377c, type: 3}
 --- !u!1 &960931679
 GameObject:
@@ -1058,6 +1061,84 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 871535431682943294, guid: 8f8084c36d2e97047ad682e68537711c, type: 3}
   m_PrefabInstance: {fileID: 1690328715}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1697442480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1697442482}
+  - component: {fileID: 1697442481}
+  m_Layer: 0
+  m_Name: RoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1697442481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697442480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5355a7cf4465441eb96b6f2e31a7a74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Core.RoundManager
+  timer: {fileID: 0}
+  vehicle: {fileID: 0}
+  startPoint: {fileID: 0}
+  checkpoints: []
+  onRoundSucceeded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2056249738}
+        m_TargetAssemblyTypeName: ResultUI, Assembly-CSharp
+        m_MethodName: OnRoundSuccess
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRoundFailed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2056249738}
+        m_TargetAssemblyTypeName: ResultUI, Assembly-CSharp
+        m_MethodName: OnRoundFail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &1697442482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697442480}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 991.01013, y: 516.8294, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1931024516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,11 +1276,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931024516}
   m_CullTransparentMesh: 1
+--- !u!1 &2056249734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9060166380758743523, guid: d1535bd09cc4a8b4ca118dd5a39f377c, type: 3}
+  m_PrefabInstance: {fileID: 839388164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2056249735 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9060166380758743516, guid: d1535bd09cc4a8b4ca118dd5a39f377c, type: 3}
   m_PrefabInstance: {fileID: 839388164}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2056249738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056249734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba88a8977a451064f82582c85eef0528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResultUI
+  resultPanel: {fileID: 2056249734}
+  resultText: {fileID: 1479768199}
+  remainTimeText: {fileID: 1931024518}
+  remainDurabilityText: {fileID: 126113086}
+  roundTimer: {fileID: 0}
+  vehicleDamage: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1207,3 +1311,4 @@ SceneRoots:
   - {fileID: 99564660}
   - {fileID: 960931683}
   - {fileID: 597451236}
+  - {fileID: 1697442482}
