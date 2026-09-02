@@ -559,6 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Minigame.MinigameManager
   gasStationMinigameController: {fileID: 2037806463}
+  barricadeMinigameController: {fileID: 0}
   minigameUI: {fileID: 1748047042}
 --- !u!1 &804532866
 GameObject:
@@ -1174,8 +1175,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4757769930132843495, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 4757769930132843495, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8339120034311701240, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 4757769930132843495, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461018144190451057, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 71af22741a8268048a854d92fabf71f1, type: 2}
+    - target: {fileID: 7461018144190451057, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3685992774424356273, guid: 71af22741a8268048a854d92fabf71f1, type: 2}
+    - target: {fileID: 7461018144190451057, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7821542462486764797, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622620998411380985, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 8622620998411380985, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8339120034311701240, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 8622620998411380985, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

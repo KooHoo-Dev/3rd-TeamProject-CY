@@ -1327,6 +1327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RepairShopMinigameView
   oldPlateRect: {fileID: 499350183}
   newPlateRect: {fileID: 2107889449}
+  plateSlot: {fileID: 0}
   oldPlateCanvasGroup: {fileID: 499350187}
   newPlateCanvasGroup: {fileID: 2107889452}
   oldScrews:
@@ -1403,7 +1404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -630, y: 363}
+  m_AnchoredPosition: {x: -630, y: 385.8}
   m_SizeDelta: {x: 587.1993, y: 245.3129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &633326332
@@ -1428,8 +1429,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uBBF8\uC158 : \uBC88\uD638\uD310 \uAD50\uCCB4"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34624c8c7e391ff4d83ab96e4ff941ca, type: 2}
-  m_sharedMaterial: {fileID: -8548150044305257271, guid: 34624c8c7e391ff4d83ab96e4ff941ca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 71af22741a8268048a854d92fabf71f1, type: 2}
+  m_sharedMaterial: {fileID: 3685992774424356273, guid: 71af22741a8268048a854d92fabf71f1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2178,8 +2179,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB2F4\uB2F9\uC790 : "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34624c8c7e391ff4d83ab96e4ff941ca, type: 2}
-  m_sharedMaterial: {fileID: -8548150044305257271, guid: 34624c8c7e391ff4d83ab96e4ff941ca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+  m_sharedMaterial: {fileID: 8339120034311701240, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2272,7 +2273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -630, y: 273.3}
+  m_AnchoredPosition: {x: -630, y: 284.3}
   m_SizeDelta: {x: 587.1993, y: 245.3129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &944809730
@@ -2364,9 +2365,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db8735f9b44d2649a5b6309a5fb7527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Minigame.MinigameUI
-  minigamePanel: {fileID: 944809731}
+  minigamePanel:
+  - {fileID: 0}
+  explanationPanel:
+  - {fileID: 0}
   slideDuration: 0.5
-  explanationPanel: {fileID: 324485118}
+  currentMiniGamePanel: {fileID: 0}
+  currentExplanationPanel: {fileID: 0}
 --- !u!1 &978918849
 GameObject:
   m_ObjectHideFlags: 0
@@ -3245,7 +3250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 804, y: -570}
+  m_AnchoredPosition: {x: 792.5, y: -570}
   m_SizeDelta: {x: 587.1993, y: 245.3129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1760407304
@@ -3268,10 +3273,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB098\uC0AC\uB97C \uD074\uB9AD\uD558\uC138\uC694"
+  m_text: "\uB098\uC0AC\uB97C \uD074\uB9AD\uD558\uC138\uC694."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34624c8c7e391ff4d83ab96e4ff941ca, type: 2}
-  m_sharedMaterial: {fileID: -8548150044305257271, guid: 34624c8c7e391ff4d83ab96e4ff941ca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+  m_sharedMaterial: {fileID: 8339120034311701240, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3407,8 +3412,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uBC84\uB9AC\uC138\uC694"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34624c8c7e391ff4d83ab96e4ff941ca, type: 2}
-  m_sharedMaterial: {fileID: -8548150044305257271, guid: 34624c8c7e391ff4d83ab96e4ff941ca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+  m_sharedMaterial: {fileID: 8339120034311701240, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
