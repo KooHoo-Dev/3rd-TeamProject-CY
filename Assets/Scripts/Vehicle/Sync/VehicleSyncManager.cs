@@ -90,7 +90,10 @@ namespace  CY.Network
 
             if (session == null || session.Me == null)
             {
-                Session.ClearRole();
+                // 서버에 붙은 적이 없으면 기본값(호스트)을 그대로 둔다. 씬을 혼자 재생해도 돌아가야 한다.
+                // 붙었다가 끊긴 경우에만 역할을 지운다.
+                if (Session.HasAssignedRole) Session.ClearRole();
+
                 RolesChanged?.Invoke(roles);
                 return;
             }

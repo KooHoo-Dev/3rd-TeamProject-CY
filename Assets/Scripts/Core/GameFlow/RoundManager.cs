@@ -46,6 +46,9 @@ namespace CY.Core
             finished = false;
             ClearedCount = 0;
 
+            foreach (CheckpointZone zone in checkpoints)
+                if (zone != null) zone.ResetZone();
+
             MoveVehicleToStart();
             damage?.ResetDurability();
             vehicle.SetInputEnabled(true);
