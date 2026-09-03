@@ -21,11 +21,10 @@ namespace HelloServer
         // 서버가 알려 준 자리. 네트워크는 이것만 건드리고 그리는 일은 Update 가 한다.
         private Vector2 target;
 
-        public void Setup(User user, Color color)
+        public void Setup(User user)
         {
             User = user;
             label.text = $"{user.NickName} ({user.Id})";
-            body.color = color;
 
             // 처음 나타날 때 원점에서 날아오지 않게 지금 자리를 목표로 둔다.
             target = transform.position;

@@ -77,7 +77,7 @@ namespace HelloServer
 
         private void OnWelcome(WelcomeMessage message)
         {
-            localPlayer.Setup(Me, ColorOf(Me.Id));
+            localPlayer.Setup(Me);
             
             if (characterSprites != null && characterSprites.Length > 0)
             {
@@ -137,7 +137,7 @@ namespace HelloServer
             if (remotes.ContainsKey(user.Id)) return;
 
             RemotePlayer remote = Instantiate(remotePrefab, Vector3.zero, Quaternion.identity);
-            remote.Setup(user, ColorOf(user.Id));
+            remote.Setup(user);
             
             remote.SetSprite(GetNextRemoteSprite());
             remotes[user.Id] = remote;

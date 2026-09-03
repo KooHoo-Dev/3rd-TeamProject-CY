@@ -16,10 +16,9 @@ namespace HelloServer
 
         public bool CanMove { get; set; } = true;
 
-        public void Setup(User user, Color color)
+        public void Setup(User user)
         {
             label.text = $"{user.NickName} ({user.Id})";
-            body.color = color;
         }
 
         private void Update()
