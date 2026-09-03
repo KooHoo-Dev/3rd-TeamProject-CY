@@ -57,5 +57,14 @@ namespace HelloServer
         {
             transform.position = new Vector3(next.x, next.y, transform.position.z);
         }
+        
+        public void SetSprite(Sprite newSprite)
+        {
+            if (body != null && newSprite != null)
+            {
+                body.sprite = newSprite;
+            }
+        }
+        
     }
 }

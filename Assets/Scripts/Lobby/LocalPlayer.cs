@@ -33,5 +33,13 @@ namespace HelloServer
 
             transform.Translate(new Vector3(x, y) * (speed * Time.deltaTime));
         }
+        
+        public void SetSprite(Sprite newSprite)
+        {
+            if (body != null && newSprite != null)
+            {
+                body.sprite = newSprite;
+            }
+        }
     }
 }
