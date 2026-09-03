@@ -20,6 +20,7 @@ public class ResultUI : MonoBehaviour
     public RoundTimer roundTimer; 
     public VehicleDamage vehicleDamage;
     
+    [ContextMenu("테스트: 성공 화면 띄우기")]
     public void OnRoundSuccess()
     {
         resultPanel.SetActive(true);
@@ -29,6 +30,7 @@ public class ResultUI : MonoBehaviour
         UpdateResultData(true);
     }
     
+    [ContextMenu("테스트: 실패 화면 띄우기")]
     public void OnRoundFail()
     {
         resultPanel.SetActive(true);
@@ -83,5 +85,7 @@ public class ResultUI : MonoBehaviour
     {
         SceneManager.LoadScene("Lobby");
     }
+    
+    
 
 }
