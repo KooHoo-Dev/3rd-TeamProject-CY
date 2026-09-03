@@ -86,16 +86,19 @@ namespace CY.Network
 
          private async UniTask ReceiveLoopAsync()
          {
+             ClientWebSocket receivingSocket = socket;
+             if (receivingSocket == null) return;
+             
              byte[] buffer = new byte[4096];
              StringBuilder builder = new StringBuilder();
 
-             while (socket.State == WebSocketState.Open)
+             while (receivingSocket.State == WebSocketState.Open)
              {
                  WebSocketReceiveResult result;
 
                  try
                  {
-                     result = await socket
+                     result = await receivingSocket
                          .ReceiveAsync(new ArraySegment<byte>(buffer), destroyCancellationToken)
                          .AsUniTask();
                  }
@@ -106,6 +109,10 @@ namespace CY.Network
                  catch (WebSocketException)
                  {
                      Debug.LogWarning("[방] 연결이 끊겼다");
+                     return;
+                 }
+                 catch (ObjectDisposedException)
+                 {
                      return;
                  }
                  

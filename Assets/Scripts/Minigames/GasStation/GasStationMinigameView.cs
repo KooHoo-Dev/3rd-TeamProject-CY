@@ -23,9 +23,6 @@ namespace CY.Minigame
         public float nozzleMoveDistance = 50f;
         public float nozzleMoveDuration = 0.2f;
 
-        private bool isPressing = false;
-        private bool isFailed = false;
-
         private Color originalGaugeColor = Color.green;
 
         private Vector2 nozzleIdlePos;
