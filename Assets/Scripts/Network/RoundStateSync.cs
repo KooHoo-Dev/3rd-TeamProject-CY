@@ -45,8 +45,7 @@ namespace CY.Network
             if (session != null) session.MessageReceived -= HandleMessage;
         }
         
-        // ───────────────── 송신 (호스트)
-
+        #region 호스트에서 보낼 때
         private void Update()
         {
             if (Session.IsHost == false) return;
@@ -56,7 +55,6 @@ namespace CY.Network
             Send();
         }
         
-        /// <summary>값이 바뀌었거나 주기가 됐으면 보낸다.</summary>
         private bool ShouldSend()
         {
             if (hostStatus.Phase != lastPhase) return true;
@@ -88,9 +86,9 @@ namespace CY.Network
                 Gear = hostStatus.CurrentGear.ToString(),
             }).Forget();
         }
+        #endregion
         
-        // ───────────────── 수신 (비호스트)
-
+        #region 호스트가 아닌 유저가 받을 때
         private void HandleMessage(string type, string json)
         {
             if (type != "round_state") return;
@@ -100,16 +98,23 @@ namespace CY.Network
             RoundStateMessage m = JsonConvert.DeserializeObject<RoundStateMessage>(json);
             if (m == null) return;
 
-            if (Enum.TryParse(m.Phase, out RoundPhase phase) == false)
+            if (Enum.TryParse(m.Phase, out RoundPhase phase) == false
+                || Enum.IsDefined(typeof(RoundPhase), phase) == false)
+            {
                 phase = RoundPhase.Waiting;
+            }
             
-            if (Enum.TryParse(m.Gear, out Gear gear) == false)
+            if (Enum.TryParse(m.Gear, out Gear gear) == false
+                || Enum.IsDefined(typeof(Gear), gear) == false)
+            {
                 gear = Gear.N;
+            }
 
             if (m.DurabilityRatio < 0f || m.DurabilityRatio > 1f)
                 Debug.LogWarning($"[RoundState] 내구도 비율 범위 밖: {m.DurabilityRatio}", this);
 
             networkStatus.Apply(m.RemainingTime, m.DurabilityRatio, m.SpeedRatio, m.Cleared, m.Total, phase, gear);
         }
+        #endregion
     }
 }

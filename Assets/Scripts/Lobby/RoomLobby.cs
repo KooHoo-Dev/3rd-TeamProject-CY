@@ -8,7 +8,7 @@ namespace HelloServer
 {
     // 방 코드를 받아 들어가고, 들어간 뒤에는 채팅을 그린다. RoomClient 와 같은 오브젝트에 붙인다.
     [RequireComponent(typeof(RoomClient))]
-    [RequireComponent(typeof(VehicleSyncManager))]
+    [RequireComponent(typeof(VehicleRoleAssigner))]
     public class RoomLobby : MonoBehaviour
     {
         [Header("처음 값")]
@@ -16,7 +16,7 @@ namespace HelloServer
         [SerializeField] private string roomCode = "ABCD";
 
         private RoomClient client;
-        private VehicleSyncManager vehicleSync;
+        private VehicleRoleAssigner roleAssigner;
         
         private string typing = "";
 
@@ -25,7 +25,7 @@ namespace HelloServer
         private void Awake()
         {
             client = GetComponent<RoomClient>();
-            vehicleSync = GetComponent<VehicleSyncManager>();
+            roleAssigner = GetComponent<VehicleRoleAssigner>();
         }
 
         private void OnGUI()
@@ -73,7 +73,7 @@ namespace HelloServer
         {
             GUI.Box(new Rect(420, 46, 280, 120), "역할");
 
-            if (vehicleSync == null || vehicleSync.Roles.Count == 0)
+            if (roleAssigner == null || roleAssigner.Roles.Count == 0)
             {
                 GUI.Label(new Rect(435, 75, 250, 22), "4명 입장을 기다리는 중...");
                 return;
@@ -81,7 +81,7 @@ namespace HelloServer
 
             int line = 0;
 
-            foreach (var assignment in vehicleSync.Roles.OrderBy(pair => pair.Value))
+            foreach (var assignment in roleAssigner.Roles.OrderBy(pair => pair.Value))
             {
                 if (!NetworkSession.Instance.Participants.TryGetValue(
                         assignment.Key,
