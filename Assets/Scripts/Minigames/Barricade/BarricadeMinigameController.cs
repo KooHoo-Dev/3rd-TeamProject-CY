@@ -53,6 +53,8 @@ namespace CY.Minigame
         private void HandleGameStartSignal()
         {
             if (gameObject.activeInHierarchy == false || IsActive == false) return;
+
+            MinigameUI.Instance.IsOperator = IsOperator;
             StartCoroutine(StartGameRoutine());
         }
         

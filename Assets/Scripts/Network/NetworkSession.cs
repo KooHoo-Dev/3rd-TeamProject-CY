@@ -218,6 +218,9 @@ namespace CY.Network
          protected override void OnDispose()
          {
              base.OnDispose();
+             
+             socket?.Abort();
+             socket?.Dispose();
              socket = null;
          }
     }
