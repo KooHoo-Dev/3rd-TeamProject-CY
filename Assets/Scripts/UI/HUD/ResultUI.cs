@@ -1,4 +1,5 @@
 using CY.Core;
+using CY.Network;
 using CY.Vehicle;
 using UnityEngine;
 using TMPro;
@@ -19,6 +20,8 @@ public class ResultUI : MonoBehaviour
     
     public RoundTimer roundTimer; 
     public VehicleDamage vehicleDamage;
+    public HostRoundStatus hostStatus;
+    public NetworkRoundStatus networkStatus;
     
     [ContextMenu("테스트: 성공 화면 띄우기")]
     public void OnRoundSuccess()
@@ -42,38 +45,39 @@ public class ResultUI : MonoBehaviour
 
     private void UpdateResultData(bool isSuccess)
     {
-        float timePercent = 0f;
-        float hpPercent = 0f;
-        
-        if (roundTimer != null)
-        {
-            remainTimeText.text = $"남은 시간 : {roundTimer.RemainingTime:0.#}초 / {roundTimer.Duration:0.#}초";
-            
-            if (roundTimer.Duration > 0)
-                timePercent = (roundTimer.RemainingTime / roundTimer.Duration) * 100f;
-        }
+        IRoundStatusProvider status = GetStatus();
 
-        if (vehicleDamage != null)
-        {
-            remainDurabilityText.text = $"최종 내구도 : {vehicleDamage.Durability:0.#}"; 
-            hpPercent = (vehicleDamage.Durability / vehicleDamage.MaxDurability) * 100f; 
-        }
-        
+        float remainingTime = status.RemainingTime;
+        float durabilityRatio = status.DurabilityRatio;
+
+        remainTimeText.text =
+            $"남은 시간 : {remainingTime:0.#}초 / {roundTimer.Duration:0.#}초";
+
+        remainDurabilityText.text =
+            $"최종 내구도 : {durabilityRatio * vehicleDamage.MaxDurability:0.#}";
+
+        float timePercent = remainingTime / roundTimer.Duration * 100f;
+        float hpPercent = durabilityRatio * 100f;
+
         int starCount = 0;
-        
+
         if (isSuccess)
         {
             if (timePercent >= 35f && hpPercent >= 65f) starCount = 3;
             else if (timePercent >= 15f && hpPercent >= 35f) starCount = 2;
             else starCount = 1;
         }
-        
+
         for (int i = 0; i < starImages.Length; i++)
         {
-            if (i < starCount) starImages[i].sprite = fullStarSprite;
-            else starImages[i].sprite = emptyStarSprite;
+            starImages[i].sprite =
+                i < starCount ? fullStarSprite : emptyStarSprite;
         }
-        
+    }
+
+    private IRoundStatusProvider GetStatus()
+    {
+        return Session.IsHost ? hostStatus : networkStatus;
     }
     
     public void OnRetryButtonClicked()

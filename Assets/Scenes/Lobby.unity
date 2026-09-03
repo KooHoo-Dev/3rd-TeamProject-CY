@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HelloServer.RoomLobby
   nickName: chan
-  roomCode: ABCD
+  roomCode: ABCD1
 --- !u!114 &755348586
 MonoBehaviour:
   m_ObjectHideFlags: 0
