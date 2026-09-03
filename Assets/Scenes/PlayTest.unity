@@ -380,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &104189748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4943,19 +4943,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1422027406643644006, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1422027406643644006, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1422027406643644006, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1422027406643644006, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -112.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3676139103547177260, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -5087,35 +5087,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8894142663500649848, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8894142663500649848, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8894142663500649848, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8894142663500649848, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9109665819849950959, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9109665819849950959, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9109665819849950959, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9109665819849950959, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -63.7
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7801350827841218494, guid: 192790468b67d86479c8c0a7c341b7d2, type: 3}
@@ -5564,8 +5564,6 @@ MonoBehaviour:
   - {fileID: 822902977}
   - {fileID: 555739128}
   slideDuration: 0.5
-  currentMiniGamePanel: {fileID: 0}
-  currentExplanationPanel: {fileID: 0}
 --- !u!1 &913891791
 GameObject:
   m_ObjectHideFlags: 0
@@ -5730,13 +5728,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle
       objectReference: {fileID: 0}
+    - target: {fileID: 1561339190350370149, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561339190350370149, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6386414477260155612, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.020664
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 6386414477260155612, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.659752
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 6386414477260155612, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6240,7 +6246,7 @@ Transform:
   m_GameObject: {fileID: 1600064667}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -35.26, y: -20.29, z: 0}
+  m_LocalPosition: {x: -35, y: -20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
