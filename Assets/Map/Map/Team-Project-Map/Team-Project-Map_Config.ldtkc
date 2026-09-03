@@ -112,6 +112,20 @@
             }
         },
         {
+            "_key": "Full_Grass_1",
+            "_asset": {
+                "fileID": 11400000,
+                "guid": "f2f685082364e5a4296321d61aa9c386",
+                "type": 2
+            }
+        },
+        {
+            "_key": "Railroad_Rock_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
             "_key": "Wall_Sand_1",
             "_asset": {
                 "fileID": 11400000,
@@ -293,6 +307,12 @@
         },
         {
             "_key": "Swimming_Pool_Walk_1",
+            "_asset": {
+                "instanceID": 0
+            }
+        },
+        {
+            "_key": "Road_Area_1",
             "_asset": {
                 "instanceID": 0
             }
