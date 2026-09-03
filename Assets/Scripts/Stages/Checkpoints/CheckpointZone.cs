@@ -106,6 +106,21 @@ namespace CY.Stages
             return zone.OverlapPoint(world);
         }
 
+        public void ResetZone()
+        {
+            completed = false;
+
+            vehicleBody = null;
+            vehicleInput = null;
+            vehicleBox = null;
+
+            if (lockedVehicle != null)
+            {
+                lockedVehicle.SetInputEnabled(true);
+                lockedVehicle = null;
+            }
+        }
+
         [ContextMenu("미션 완료 (테스트)")]
         public void CompleteMission()
         {
