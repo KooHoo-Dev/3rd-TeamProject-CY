@@ -13,6 +13,9 @@ namespace CY.Vehicle
     [RequireComponent(typeof(VehicleController))]
     public class VehicleDamage : MonoBehaviour
     {
+        // 사운드 매니저 구독용 static 이벤트 추가
+        public static event Action OnCrash;
+        
         [Header("내구도")] [SerializeField] private float maxDurability = 100f;
 
         [Header("충돌 데미지")] [SerializeField] private float ignoreSpeed = 3f; // 이 속도 미만 충돌은 무시
@@ -55,10 +58,12 @@ namespace CY.Vehicle
         {
             if (!Session.IsHost) return;
             if (IsDestroyed) return;
-
+            
             // 충돌 직전의 상대 속도. 벽은 정지해 있으므로 사실상 차의 속도
             float impactSpeed = collision.relativeVelocity.magnitude;
             if (impactSpeed < ignoreSpeed) return;
+            
+            OnCrash?.Invoke();
 
             float damage = (impactSpeed - ignoreSpeed) * damagePerSpeed;
             durability = Mathf.Max(0f, durability - damage);
