@@ -13,17 +13,19 @@ namespace CY.Vehicle
     [RequireComponent(typeof(VehicleController))]
     public class VehicleDamage : MonoBehaviour
     {
-        // 사운드 매니저 구독용 static 이벤트 추가
-        public static event Action OnCrash;
+        // 충돌 세기별 static 이벤트 선언
+        public static event Action OnMiddleCrash;
+        public static event Action OnHardCrash;
         
         [Header("내구도")] [SerializeField] private float maxDurability = 100f;
 
-        [Header("충돌 데미지")] [SerializeField] private float ignoreSpeed = 3f; // 이 속도 미만 충돌은 무시
-        [SerializeField] private float damagePerSpeed = 4f; // 초과 속도 1당 데미지
+        [Header("충돌 데미지")] 
+        [SerializeField] private float ignoreSpeed = 3f;                   // 이 속도 미만 충돌은 무시
+        [SerializeField] private float hardCrashSpeedThreshold = 10f;       // 강한 충돌 기준 속도
+        [SerializeField] private float damagePerSpeed = 4f;                // 초과 속도 1당 데미지
 
-        [Header("속도 페널티 (3단계)")] [SerializeField, Range(0f, 1f)]
-        private float damagedThreshold = 0.4f;
-
+        [Header("속도 페널티 (3단계)")] 
+        [SerializeField, Range(0f, 1f)] private float damagedThreshold = 0.4f;
         [SerializeField, Range(0f, 1f)] private float severeThreshold = 0.2f;
         [SerializeField, Range(0f, 1f)] private float damagedMultiplier = 0.6f;
         [SerializeField, Range(0f, 1f)] private float severeMultiplier = 0.3f;
@@ -61,9 +63,19 @@ namespace CY.Vehicle
             
             // 충돌 직전의 상대 속도. 벽은 정지해 있으므로 사실상 차의 속도
             float impactSpeed = collision.relativeVelocity.magnitude;
+            
+            // ignoreSpeed 미만 충돌은 데미지와 사운드 모두 무시
             if (impactSpeed < ignoreSpeed) return;
             
-            OnCrash?.Invoke();
+            // --- [충돌 세기 구분 사운드 이벤트 발송] ---
+            if (impactSpeed >= hardCrashSpeedThreshold)
+            {
+                OnHardCrash?.Invoke();
+            }
+            else
+            {
+                OnMiddleCrash?.Invoke();
+            }
 
             float damage = (impactSpeed - ignoreSpeed) * damagePerSpeed;
             durability = Mathf.Max(0f, durability - damage);
