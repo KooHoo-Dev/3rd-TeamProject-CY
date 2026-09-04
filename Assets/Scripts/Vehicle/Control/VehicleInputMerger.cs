@@ -11,7 +11,7 @@ namespace CY.Vehicle
             int index = (int)role;
             if (index < 0 || index >= byRole.Length) return;
             
-            byRole[(int)role] = input;
+            byRole[index] = input;
         }
 
         public VehicleInput Merge()

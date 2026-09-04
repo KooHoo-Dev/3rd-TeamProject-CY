@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 804532870}
   - component: {fileID: 804532869}
   - component: {fileID: 804532868}
+  - component: {fileID: 804532871}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -665,6 +666,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &804532871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804532866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a9ff9ca3239034b93122ee1b3ef15d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.UI.UIClickSound
 --- !u!224 &944809731 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1026652957360876668, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}

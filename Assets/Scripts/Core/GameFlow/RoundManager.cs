@@ -8,12 +8,14 @@ namespace CY.Core
 {
     public class RoundManager : MonoBehaviour
     {
-        [Header("참조")] [SerializeField] private RoundTimer timer;
+        [Header("참조")] 
+        [SerializeField] private RoundTimer timer;
         [SerializeField] private VehicleController vehicle;
         [SerializeField] private Transform startPoint;
         [SerializeField] private CheckpointZone[] checkpoints;
 
-        [Header("결과 신호")] [SerializeField] private UnityEvent onRoundSucceeded;
+        [Header("결과 신호")] 
+        [SerializeField] private UnityEvent onRoundSucceeded;
         [SerializeField] private UnityEvent onRoundFailed;
 
         public int ClearedCount { get; private set; }
@@ -26,6 +28,14 @@ namespace CY.Core
 
         private void Start()
         {
+            // --- [1. BGM 재생 (모든 플레이어 공통)] ---
+            // 호스트 여부 검사 전에 호출해야 클라이언트 플레이어도 인게임 BGM을 듣는다.
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.StopBgm();       // 혹시 남아있는 로비 BGM 즉시 정지
+                SoundManager.Instance.PlayInGameBgm(); // 인게임 BGM 4종 중 1개 무작위 재생
+            }
+            
             if (!Session.IsHost)
             {
                 enabled = false;
@@ -106,12 +116,20 @@ namespace CY.Core
             if (success)
             {
                 Phase = RoundPhase.Success;
+                
+                if (SoundManager.Instance != null)
+                    SoundManager.Instance.PlayGameClearBgm();
+                
                 onRoundSucceeded.Invoke();
                 Debug.Log($"[Round] 성공! 남은 시간 {timer.RemainingTime:0.#}초 / 걸린 시간 {timer.ElapsedTime:0.#}초", this);
             }
             else
             {
                 Phase = RoundPhase.Failed;
+                
+                if (SoundManager.Instance != null)
+                    SoundManager.Instance.PlayGameOverBgm();
+                
                 onRoundFailed.Invoke();
                 Debug.Log($"[Round] 실패. 경유지 {ClearedCount}/{TotalCheckpoints}", this);
             }
