@@ -58,16 +58,12 @@ namespace CY.Vehicle
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!Session.IsHost) return;
             if (IsDestroyed) return;
-            
-            // 충돌 직전의 상대 속도. 벽은 정지해 있으므로 사실상 차의 속도
+    
             float impactSpeed = collision.relativeVelocity.magnitude;
-            
-            // ignoreSpeed 미만 충돌은 데미지와 사운드 모두 무시
             if (impactSpeed < ignoreSpeed) return;
-            
-            // --- [충돌 세기 구분 사운드 이벤트 발송] ---
+    
+            // [수정] 호스트 검사(Session.IsHost)보다 앞으로 빼서 모든 클라이언트에서 충돌 효과음 발화
             if (impactSpeed >= hardCrashSpeedThreshold)
             {
                 OnHardCrash?.Invoke();
@@ -76,6 +72,9 @@ namespace CY.Vehicle
             {
                 OnMiddleCrash?.Invoke();
             }
+
+            // 데미지 계산 및 라운드 처리만 호스트가 담당
+            if (!Session.IsHost) return;
 
             float damage = (impactSpeed - ignoreSpeed) * damagePerSpeed;
             durability = Mathf.Max(0f, durability - damage);

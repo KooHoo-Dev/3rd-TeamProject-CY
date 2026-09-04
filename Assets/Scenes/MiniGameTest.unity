@@ -935,8 +935,6 @@ MonoBehaviour:
   explanationPanel:
   - {fileID: 0}
   slideDuration: 0.5
-  currentMiniGamePanel: {fileID: 0}
-  currentExplanationPanel: {fileID: 0}
 --- !u!4 &1748047043
 Transform:
   m_ObjectHideFlags: 0
@@ -1220,6 +1218,18 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3458501912565519287, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: failSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 12501155bd40ef34dad8a23c05aac4eb, type: 3}
+    - target: {fileID: 3458501912565519287, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: successSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 7acb8e4083dd9e34aa76d019e63c77fd, type: 3}
+    - target: {fileID: 3458501912565519287, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: fuelingLoopSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a3719bd4981695479059c095f245411, type: 3}
     - target: {fileID: 4757769930132843495, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
       propertyPath: m_fontAsset
       value: 

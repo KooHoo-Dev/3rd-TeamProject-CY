@@ -11,11 +11,27 @@ namespace CY.Vehicle
         [SerializeField] private AudioSource sfxSource;
         [SerializeField] private AudioSource accelLoopSource;
         [SerializeField] private AudioSource brakeLoopSource;
+        [SerializeField] private AudioSource miniGameLoopSource; // [추가] 미니게임 루프용 소스
 
         [Header("Audio Clips")]
         [SerializeField] private AudioClip accelClip;
         [SerializeField] private AudioClip brakeClip;
         [SerializeField] private AudioClip uiClickClip; // 공용 버튼 클릭음
+        
+        [Header("Audio Clips - Minigame 1: Fuel (주유)")]
+        [SerializeField] private AudioClip fuelLoopClip;
+        [SerializeField] private AudioClip fuelSuccessClip;
+        [SerializeField] private AudioClip fuelFailClip;
+
+        [Header("Audio Clips - Minigame 2 (예정)")]
+        [SerializeField] private AudioClip minigame2LoopClip;
+        [SerializeField] private AudioClip minigame2SuccessClip;
+        [SerializeField] private AudioClip minigame2FailClip;
+
+        [Header("Audio Clips - Minigame 3 (예정)")]
+        [SerializeField] private AudioClip minigame3LoopClip;
+        [SerializeField] private AudioClip minigame3SuccessClip;
+        [SerializeField] private AudioClip minigame3FailClip;
 
         [Header("Crash Clips (Random)")]
         [SerializeField] private AudioClip[] middleCrashClips;
@@ -50,6 +66,7 @@ namespace CY.Vehicle
 
             if (accelLoopSource != null) accelLoopSource.loop = true;
             if (brakeLoopSource != null) brakeLoopSource.loop = true;
+            if (miniGameLoopSource != null) miniGameLoopSource.loop = true;
         }
         
         private void Update()
@@ -179,21 +196,72 @@ namespace CY.Vehicle
                 sfxSource.PlayOneShot(uiClickClip);
             }
         }
+        
+        // --- 범용 미니게임 제어 메서드 ---
+
+        public void StartMiniGameLoop(AudioClip clip)
+        {
+            if (miniGameLoopSource == null || clip == null) return;
+
+            // 클립이 바뀌었거나, 현재 재생 중이 아니면 무조건 리셋 후 다시 재생
+            if (miniGameLoopSource.clip != clip)
+            {
+                miniGameLoopSource.clip = clip;
+                miniGameLoopSource.time = 0f; // 재생 위치 초기화
+            }
+
+            if (!miniGameLoopSource.isPlaying)
+            {
+                miniGameLoopSource.time = 0f; // 항상 시작점부터 재생
+                miniGameLoopSource.Play();
+            }
+        }
+
+        public void StopMiniGameLoop()
+        {
+            if (miniGameLoopSource != null && miniGameLoopSource.isPlaying)
+            {
+                miniGameLoopSource.Stop();
+            }
+        }
+
+        // --- 1. 주유 미니게임 전용 호출 메서드 ---
+
+        public void StartFuelLoopSound() => StartMiniGameLoop(fuelLoopClip);
+        
+        public void StopFuelLoopSound() => StopMiniGameLoop();
+
+        public void PlayFuelSuccessSound()
+        {
+            StopMiniGameLoop();
+            if (fuelSuccessClip != null && sfxSource != null)
+            {
+                sfxSource.PlayOneShot(fuelSuccessClip);
+            }
+        }
+
+        public void PlayFuelFailSound()
+        {
+            StopMiniGameLoop();
+            if (fuelFailClip != null && sfxSource != null)
+            {
+                sfxSource.PlayOneShot(fuelFailClip);
+            }
+        }
 
         private void StartAccelSound()
         {
             if (accelLoopSource == null || accelClip == null) return;
+    
+            activeAccelCount++; // 카운트 증가 추가
             if (accelLoopSource.clip != accelClip) accelLoopSource.clip = accelClip;
-            
-            // 1명이라도 액셀을 누르고 있으면 소리 재생
             if (!accelLoopSource.isPlaying) accelLoopSource.Play();
         }
 
         private void StopAccelSound()
         {
-            activeAccelCount = Mathf.Max(0, activeAccelCount - 1); // 카운트 차감
+            activeAccelCount = Mathf.Max(0, activeAccelCount - 1);
 
-            // 누르고 있는 플레이어가 0명이 되었을 때만 최종 정지
             if (activeAccelCount == 0 && accelLoopSource != null)
             {
                 accelLoopSource.Stop();
@@ -203,17 +271,16 @@ namespace CY.Vehicle
         private void StartBrakeSound()
         {
             if (brakeLoopSource == null || brakeClip == null) return;
+    
+            activeBrakeCount++; // 카운트 증가 추가
             if (brakeLoopSource.clip != brakeClip) brakeLoopSource.clip = brakeClip;
-            
-            // 1명이라도 브레이크를 누르고 있으면 소리 재생
             if (!brakeLoopSource.isPlaying) brakeLoopSource.Play();
         }
 
         private void StopBrakeSound()
         {
-            activeBrakeCount = Mathf.Max(0, activeBrakeCount - 1); // 카운트 차감
+            activeBrakeCount = Mathf.Max(0, activeBrakeCount - 1);
 
-            // 누르고 있는 플레이어가 0명이 되었을 때만 최종 정지
             if (activeBrakeCount == 0 && brakeLoopSource != null)
             {
                 brakeLoopSource.Stop();
