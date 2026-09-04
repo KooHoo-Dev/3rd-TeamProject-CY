@@ -51,6 +51,8 @@ namespace CY.Vehicle
             VehicleInput input = inputEnabled ? inputSource.Read() : default;
             LastInput = input;
             
+            VehicleSoundEvents.Raise(input);
+            
             ApplyEngine(input);
             ApplyBrake(input);
             ApplySteering(input);
