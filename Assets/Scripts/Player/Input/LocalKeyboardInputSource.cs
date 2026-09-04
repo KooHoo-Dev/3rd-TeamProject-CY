@@ -12,6 +12,11 @@ namespace CY.Player
 
         [SerializeField] private VehicleInput current;
         private Gear gear = Gear.N;
+        
+        // 켜면 네 역할을 다 조작한다. VehicleInputInstaller 가 로컬 테스트 모드일 때 켜 준다.
+        private bool readAllRoles;
+
+        public void SetReadAllRoles(bool value) => readAllRoles = value;
 
         private void Update()
         {
@@ -33,6 +38,12 @@ namespace CY.Player
                 Brake = kb.kKey.isPressed ? 1f : 0f,
                 CurrentGear = gear,
             };
+
+            if (readAllRoles)
+            {
+                current = full; 
+                return;
+            }
 
             if (Session.HasAssignedRole == false)
             {

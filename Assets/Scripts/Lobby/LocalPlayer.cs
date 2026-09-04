@@ -16,10 +16,9 @@ namespace HelloServer
 
         public bool CanMove { get; set; } = true;
 
-        public void Setup(User user, Color color)
+        public void Setup(User user)
         {
             label.text = $"{user.NickName} ({user.Id})";
-            body.color = color;
         }
 
         private void Update()
@@ -32,6 +31,14 @@ namespace HelloServer
             float y = (keyboard.upArrowKey.isPressed ? 1 : 0) - (keyboard.downArrowKey.isPressed ? 1 : 0);
 
             transform.Translate(new Vector3(x, y) * (speed * Time.deltaTime));
+        }
+        
+        public void SetSprite(Sprite newSprite)
+        {
+            if (body != null && newSprite != null)
+            {
+                body.sprite = newSprite;
+            }
         }
     }
 }

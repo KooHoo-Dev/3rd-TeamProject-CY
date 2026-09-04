@@ -9,13 +9,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6386414477260155612}
-  - component: {fileID: 8230711318777794247}
   - component: {fileID: 1816095486014640178}
   - component: {fileID: 5365187702399678965}
   - component: {fileID: 3159230363147768910}
-  - component: {fileID: 1794819349686774827}
-  - component: {fileID: 6057686804518454704}
   - component: {fileID: 2648415858165447863}
+  - component: {fileID: 1208793051512610699}
+  - component: {fileID: 1250891581107857433}
+  - component: {fileID: 8230711318777794247}
+  - component: {fileID: 6794909149444539796}
+  - component: {fileID: 4406404586919104557}
+  - component: {fileID: 6270798626651040001}
+  - component: {fileID: 6057686804518454704}
   m_Layer: 0
   m_Name: Vehicle
   m_TagString: Untagged
@@ -40,23 +44,6 @@ Transform:
   - {fileID: 5828137999606656934}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8230711318777794247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460622424888676623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cacb1ac2d02c43a58176892a7898769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalKeyboardInputSource
-  current:
-    Steer: 0
-    Accel: 0
-    Brake: 0
-    CurrentGear: 0
 --- !u!114 &1816095486014640178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,39 +112,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &1794819349686774827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460622424888676623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96b6d140e4e92f47a01877ac0df2117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleSyncManager
-  localInput: {fileID: 0}
-  vehicleBody: {fileID: 0}
-  stateReceiver: {fileID: 0}
-  inputSendPerSecond: 20
-  stateSendPerSecond: 15
-  inputTimeout: 0.25
-  roleText: {fileID: 0}
---- !u!114 &6057686804518454704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460622424888676623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78d4829632a434da4d6ae3c39e34597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleStateReceiver
-  positionSmoothTime: 0.08
-  rotationSmoothSpeed: 720
 --- !u!61 &2648415858165447863
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -204,6 +158,119 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0360498, y: 2.532092}
   m_EdgeRadius: 0
+--- !u!114 &1208793051512610699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460622424888676623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1cb4605318424ea0162e9d8b92cf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleRoleAssigner
+--- !u!114 &1250891581107857433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460622424888676623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d115338a55427289355c12160d4441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleInputInstaller
+  mode: 1
+  controller: {fileID: 1816095486014640178}
+  localInput: {fileID: 8230711318777794247}
+  networkInput: {fileID: 6794909149444539796}
+  networkOnly:
+  - {fileID: 1208793051512610699}
+  - {fileID: 4406404586919104557}
+  - {fileID: 6270798626651040001}
+  - {fileID: 6057686804518454704}
+  - {fileID: 6794909149444539796}
+  localTestRole: 3
+--- !u!114 &8230711318777794247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460622424888676623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cacb1ac2d02c43a58176892a7898769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LocalKeyboardInputSource
+  current:
+    Steer: 0
+    Accel: 0
+    Brake: 0
+    CurrentGear: 0
+  readAllRoles: 0
+--- !u!114 &6794909149444539796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460622424888676623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d71566e18c4c32b46dc196f793293a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.NetworkInputSource
+  roleAssigner: {fileID: 1208793051512610699}
+  localInput: {fileID: 8230711318777794247}
+  inputTimeout: 0.25
+--- !u!114 &4406404586919104557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460622424888676623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8496f48a95cf41a3b9f195f7c7c0e5e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleInputSender
+  localInput: {fileID: 8230711318777794247}
+  sendPerSecond: 20
+--- !u!114 &6270798626651040001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460622424888676623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c422c0f47947109a70bff9b9489ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleStateSender
+  body: {fileID: 3159230363147768910}
+  sendPerSecond: 15
+--- !u!114 &6057686804518454704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460622424888676623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78d4829632a434da4d6ae3c39e34597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleStateReceiver
+  roleAssigner: {fileID: 1208793051512610699}
+  body: {fileID: 3159230363147768910}
+  positionSmoothTime: 0.08
+  rotationSmoothSpeed: 720
+  snapDistance: 5
 --- !u!1 &5184633544966975882
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 891072147840905758, guid: 8e1d9f71605334fef873052dd3b39291, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5266661233371990237, guid: 8e1d9f71605334fef873052dd3b39291, type: 3}
       propertyPath: m_LocalScale.x

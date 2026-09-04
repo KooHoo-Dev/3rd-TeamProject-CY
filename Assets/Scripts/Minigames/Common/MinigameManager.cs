@@ -142,6 +142,12 @@ namespace CY.Minigame
                     break;
                 case "barricade_completed":
                     barricadeMinigameController.HandleBarricadeCompleted();
+                    
+                    if (Session.IsHost && activeCheckpoint != null)
+                    {
+                        activeCheckpoint.CompleteMission();
+                        activeCheckpoint = null;
+                    }
                     break;
                 case "game_aborted":
                     HandleGameAborted();

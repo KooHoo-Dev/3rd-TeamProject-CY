@@ -1104,6 +1104,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 804532867}
     m_Modifications:
+    - target: {fileID: 29586873406777480, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 29586873406777480, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8339120034311701240, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 29586873406777480, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 958033303107265552, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
       propertyPath: m_Name
       value: MinigamePanel
@@ -1188,9 +1200,101 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1639621008951143744, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontSize
+      value: 43.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639621008951143744, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 1639621008951143744, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 43.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639621008951143744, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8339120034311701240, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 1639621008951143744, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757769930132843495, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 4757769930132843495, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8339120034311701240, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 4757769930132843495, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257341958940425150, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d59d3db463d1b74fbc39d6ad9fe822e, type: 2}
+    - target: {fileID: 5257341958940425150, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257341958940425150, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.97351444
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257341958940425150, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257341958940425150, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8433492759497568795, guid: 4d59d3db463d1b74fbc39d6ad9fe822e, type: 2}
+    - target: {fileID: 5257341958940425150, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278253823
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257341958940425150, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461018144190451057, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 71af22741a8268048a854d92fabf71f1, type: 2}
+    - target: {fileID: 7461018144190451057, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3685992774424356273, guid: 71af22741a8268048a854d92fabf71f1, type: 2}
+    - target: {fileID: 7461018144190451057, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7821542462486764797, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622620998411380985, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 8622620998411380985, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8339120034311701240, guid: 57129761e6495b64bb239f856a4718f5, type: 2}
+    - target: {fileID: 8622620998411380985, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713248241968648756, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 920.5685
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713248241968648756, guid: 07b4041d8398d784297b8dc3805cb68d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.4768
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

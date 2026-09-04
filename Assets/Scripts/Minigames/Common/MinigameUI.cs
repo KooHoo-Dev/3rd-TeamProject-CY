@@ -20,8 +20,8 @@ namespace CY.Minigame
         public event Action OnGameStartRequested;
 
         private Vector2 visiblePosition;
-        [SerializeField] private RectTransform currentMiniGamePanel;
-        [SerializeField] private GameObject currentExplanationPanel;
+        private RectTransform currentMiniGamePanel;
+        private GameObject currentExplanationPanel;
         
         private bool isOperator;
         public bool IsOperator { get; set; }

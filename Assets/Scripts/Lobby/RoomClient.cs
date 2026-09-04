@@ -15,6 +15,10 @@ namespace HelloServer
 
         [Header("보내기")]
         [SerializeField] private float sendPerSecond = 20f;
+        
+        [Header("캐릭터 에셋")]
+        [SerializeField] private Sprite[] characterSprites;
+        private int remoteSpriteIndex = 1;
 
         private NetworkSession session;
         
@@ -73,7 +77,12 @@ namespace HelloServer
 
         private void OnWelcome(WelcomeMessage message)
         {
-            localPlayer.Setup(Me, ColorOf(Me.Id));
+            localPlayer.Setup(Me);
+            
+            if (characterSprites != null && characterSprites.Length > 0)
+            {
+                localPlayer.SetSprite(characterSprites[0]);
+            }
 
             foreach (User user in message.Users)
             {
@@ -128,7 +137,9 @@ namespace HelloServer
             if (remotes.ContainsKey(user.Id)) return;
 
             RemotePlayer remote = Instantiate(remotePrefab, Vector3.zero, Quaternion.identity);
-            remote.Setup(user, ColorOf(user.Id));
+            remote.Setup(user);
+            
+            remote.SetSprite(GetNextRemoteSprite());
             remotes[user.Id] = remote;
         }
 
@@ -174,6 +185,22 @@ namespace HelloServer
 
             return Color.HSVToRGB(Mathf.Abs(hash % 360) / 360f, 0.65f, 0.95f);
         }
+        
+        private Sprite GetNextRemoteSprite()
+        {
+            if (characterSprites == null || characterSprites.Length <= 1) return null;
+            
+            Sprite selected = characterSprites[remoteSpriteIndex];
+            
+            remoteSpriteIndex++;
+            if (remoteSpriteIndex >= characterSprites.Length)
+            {
+                remoteSpriteIndex = 1; 
+            }
+    
+            return selected;
+        }
+        
 
     }
 }
