@@ -88,6 +88,9 @@ namespace CY.Network
         {
             for (int i = 0; i < lastReceivedAt.Length; i++)
             {
+                // 기어는 누르는 입력이 아니라 상태라서, 끊겨도 마지막 값을 유지한다
+                if ((VehicleRole)i == VehicleRole.Gear) continue;
+                
                 if (Time.unscaledTime - lastReceivedAt[i] <= inputTimeout) continue;
 
                 merger.Set((VehicleRole)i, default);
