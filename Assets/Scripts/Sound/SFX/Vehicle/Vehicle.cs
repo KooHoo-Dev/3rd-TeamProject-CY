@@ -14,23 +14,26 @@ namespace CY.Vehicle
         public static event Action OnBrakeStart;
         public static event Action OnBrakeStop;
 
-        [SerializeField] private VehicleSyncManager vehicleSync;
+        private VehicleInputMerger vehicleMerger;
 
         private bool isAccelling = false;
         private bool isBraking = false;
 
         private void Awake()
         {
-            if (vehicleSync == null)
-                vehicleSync = GetComponent<VehicleSyncManager>();
+            if (vehicleMerger == null)
+                vehicleMerger = new VehicleInputMerger();
         }
+        
+        // 네트워크 수신부에서 Set()을 호출할 수 있도록 프로퍼티 제공
+        public VehicleInputMerger Merger => vehicleMerger; 
 
         private void Update()
         {
-            if (vehicleSync == null) return;
+            if (vehicleMerger == null) return;
 
             // 역할별 입력이 병합된 최신 VehicleInput 데이터를 읽어옴
-            VehicleInput input = vehicleSync.ReadMergedInput();
+            VehicleInput input = vehicleMerger.Merge();
 
             // --- [1. 액셀 제어] ---
             // Accel 역할을 맡은 플레이어가 입력을 주면 input.Accel > 0f가 됨

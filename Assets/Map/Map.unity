@@ -145,6 +145,7 @@ MonoBehaviour:
   body: {fileID: 0}
   positionSmoothTime: 0.08
   rotationSmoothSpeed: 720
+  snapDistance: 5
 --- !u!114 &779268007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d5f87e9649804489058a7a98b4c74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Vehicle
-  vehicleSync: {fileID: 0}
 --- !u!1001 &1034833811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -257,9 +257,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1460622424888676623, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
       insertIndex: 4
       addedObject: {fileID: 779268006}
-    - targetCorrespondingSourceObject: {fileID: 1460622424888676623, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 779268005}
     - targetCorrespondingSourceObject: {fileID: 1460622424888676623, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
       insertIndex: 6
       addedObject: {fileID: 779268007}
