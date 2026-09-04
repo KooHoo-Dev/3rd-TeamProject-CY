@@ -429,7 +429,19 @@ namespace CY.UI
             if (path == null) { ClearLine(previewLine); return; }
 
             SetPreviewStyle(drawPreviewColor, drawPreviewWidth);
-            SetLine(previewLine, path, 0);
+
+            // 새 경로를 시작할 때는 확정선처럼 차 위치를 0번 점으로 넣는다
+            bool fromCar = confirmed.Count == 0 && vehicle != null;
+            int offset = fromCar ? 1 : 0;
+
+            previewLine.positionCount = path.Count + offset;
+
+            if (fromCar)
+                previewLine.SetPosition(0, new Vector3(vehicle.position.x, vehicle.position.y, lineZ));
+
+            for (int i = 0; i < path.Count; i++)
+                previewLine.SetPosition(i + offset,
+                    new Vector3(path[i].Position.x, path[i].Position.y, lineZ));
         }
 
         private void RedrawErasePreview(int index)
