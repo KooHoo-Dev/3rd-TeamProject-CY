@@ -16816,41 +16816,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6386414477260155612, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
   m_PrefabInstance: {fileID: 1034833811}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &779268001 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 3159230363147768910, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
-  m_PrefabInstance: {fileID: 1034833811}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &779268004 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8230711318777794247, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
-  m_PrefabInstance: {fileID: 1034833811}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624452761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cacb1ac2d02c43a58176892a7898769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalKeyboardInputSource
---- !u!114 &779268005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624452761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96b6d140e4e92f47a01877ac0df2117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleSyncManager
-  localInput: {fileID: 779268004}
-  vehicleBody: {fileID: 779268001}
-  stateReceiver: {fileID: 779268006}
-  inputSendPerSecond: 20
-  stateSendPerSecond: 15
-  inputTimeout: 0.25
-  roleText: {fileID: 0}
 --- !u!114 &779268006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16863,8 +16828,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78d4829632a434da4d6ae3c39e34597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleStateReceiver
+  roleAssigner: {fileID: 0}
+  body: {fileID: 0}
   positionSmoothTime: 0.08
   rotationSmoothSpeed: 720
+  snapDistance: 5
 --- !u!1 &799973698
 GameObject:
   m_ObjectHideFlags: 0
@@ -33394,9 +33362,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1460622424888676623, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
       insertIndex: 4
       addedObject: {fileID: 779268006}
-    - targetCorrespondingSourceObject: {fileID: 1460622424888676623, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 779268005}
   m_SourcePrefab: {fileID: 100100000, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
 --- !u!1 &1041454718
 GameObject:

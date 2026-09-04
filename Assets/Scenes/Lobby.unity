@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 755348582}
   - component: {fileID: 755348584}
   - component: {fileID: 755348585}
-  - component: {fileID: 755348586}
+  - component: {fileID: 755348587}
   m_Layer: 0
   m_Name: RoomClient
   m_TagString: Untagged
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HelloServer.RoomLobby
   nickName: chan
   roomCode: ABCD1
---- !u!114 &755348586
+--- !u!114 &755348587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -419,16 +419,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 755348580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96b6d140e4e92f47a01877ac0df2117, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d1cb4605318424ea0162e9d8b92cf15, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleSyncManager
-  localInput: {fileID: 0}
-  vehicleBody: {fileID: 0}
-  stateReceiver: {fileID: 0}
-  inputSendPerSecond: 20
-  stateSendPerSecond: 15
-  inputTimeout: 0.25
-  roleText: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.VehicleRoleAssigner
 --- !u!1 &857312252
 GameObject:
   m_ObjectHideFlags: 0

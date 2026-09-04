@@ -1,4 +1,3 @@
-using CY.Network;
 using UnityEngine;
 
 namespace CY.Vehicle
@@ -23,7 +22,6 @@ namespace CY.Vehicle
         private float sideFriction = 0.9f;
 
         private Rigidbody2D rb;
-        private VehicleSyncManager vehicleSync;
 
         private bool inputEnabled = true;
         private float speedMultiplier = 1f;
@@ -36,22 +34,21 @@ namespace CY.Vehicle
         public float MaxSpeed => maxSpeed;
         public float SpeedRatio =>
             rb != null ? Mathf.Clamp01(rb.linearVelocity.magnitude / maxSpeed) : 0f;
+        
+        private IVehicleInputSource inputSource;
+        public void SetInputSource(IVehicleInputSource source) => inputSource = source;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
-            vehicleSync = GetComponent<VehicleSyncManager>();
-
-            if (vehicleSync == null)
-                Debug.LogError($"{name}: vehicleSync가 붙어있지 않습니다.", this);
         }
 
         private void FixedUpdate()
         {
-            if (Session.IsHost == false) return;
-            if (vehicleSync == null) return;
-
-            VehicleInput input = inputEnabled ? vehicleSync.ReadMergedInput() : default;
+            if (inputSource == null) return;
+            if (rb.simulated == false) return; // 내 물리로 움직이는 상태가 아닐 경우 (비호스트)
+            
+            VehicleInput input = inputEnabled ? inputSource.Read() : default;
             LastInput = input;
             
             ApplyEngine(input);
@@ -59,8 +56,6 @@ namespace CY.Vehicle
             ApplySteering(input);
             KillSideVelocity();
             ClampSpeed(input);
-            
-            vehicleSync.PublishVehicleState(rb);
         }
 
         private void ApplyEngine(VehicleInput input)
