@@ -72,7 +72,7 @@ namespace CY.Vehicle
             {
                 OnMiddleCrash?.Invoke();
             }
-
+ 
             // 데미지 계산 및 라운드 처리만 호스트가 담당
             if (!Session.IsHost) return;
 
