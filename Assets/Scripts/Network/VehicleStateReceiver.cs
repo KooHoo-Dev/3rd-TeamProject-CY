@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using CY.Player;
+using CY.Vehicle;
 using HelloServer;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -106,7 +107,12 @@ namespace CY.Network
             if (roleAssigner == null) return;
             if (roleAssigner.TryGetRole(message.UserId, out VehicleRole role) == false) return;
             if (role != VehicleRole.Handle) return;
-
+            
+            VehicleSoundEvents.RaiseFromState(
+                message.Rotation,
+                new Vector2(message.VelocityX, message.VelocityY)
+            );
+            
             ApplySnapshot(new VehicleSnapshot
             {
                 Position = new Vector2(message.PositionX, message.PositionY),
