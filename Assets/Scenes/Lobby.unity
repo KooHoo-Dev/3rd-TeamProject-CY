@@ -1168,9 +1168,9 @@ MonoBehaviour:
   fuelLoopClip: {fileID: 8300000, guid: 4a3719bd4981695479059c095f245411, type: 3}
   fuelSuccessClip: {fileID: 8300000, guid: 7acb8e4083dd9e34aa76d019e63c77fd, type: 3}
   fuelFailClip: {fileID: 8300000, guid: 12501155bd40ef34dad8a23c05aac4eb, type: 3}
-  minigame2LoopClip: {fileID: 0}
-  minigame2SuccessClip: {fileID: 0}
-  minigame2FailClip: {fileID: 0}
+  barricadeButtonClickClip: {fileID: 8300000, guid: 50e56b03651c6594d94090b5ced22e18, type: 3}
+  barricadeSuccessClip: {fileID: 8300000, guid: 856bcd09b6996984ebaee9cee4b6f3cc, type: 3}
+  barricadeFailClip: {fileID: 8300000, guid: 5f2cea899a3b3ef469bf4451f34af1df, type: 3}
   minigame3LoopClip: {fileID: 0}
   minigame3SuccessClip: {fileID: 0}
   minigame3FailClip: {fileID: 0}
@@ -1242,7 +1242,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

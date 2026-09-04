@@ -23,10 +23,10 @@ namespace CY.Vehicle
         [SerializeField] private AudioClip fuelSuccessClip;
         [SerializeField] private AudioClip fuelFailClip;
 
-        [Header("Audio Clips - Minigame 2 (예정)")]
-        [SerializeField] private AudioClip minigame2LoopClip;
-        [SerializeField] private AudioClip minigame2SuccessClip;
-        [SerializeField] private AudioClip minigame2FailClip;
+        [Header("Audio Clips - Minigame 2: Barricade (바리케이드)")]
+        [SerializeField] private AudioClip barricadeButtonClickClip;
+        [SerializeField] private AudioClip barricadeSuccessClip;
+        [SerializeField] private AudioClip barricadeFailClip;
 
         [Header("Audio Clips - Minigame 3 (예정)")]
         [SerializeField] private AudioClip minigame3LoopClip;
@@ -246,6 +246,35 @@ namespace CY.Vehicle
             if (fuelFailClip != null && sfxSource != null)
             {
                 sfxSource.PlayOneShot(fuelFailClip);
+            }
+        }
+        
+        // --- 2. 바리케이드 미니게임 전용 호출 메서드 ---
+
+        /// <summary> 바리케이드 버튼 클릭 효과음 </summary>
+        public void PlayBarricadeButtonClickSound()
+        {
+            if (barricadeButtonClickClip != null && sfxSource != null)
+            {
+                sfxSource.PlayOneShot(barricadeButtonClickClip);
+            }
+        }
+
+        /// <summary> 바리케이드 해체 성공 효과음 </summary>
+        public void PlayBarricadeSuccessSound()
+        {
+            if (barricadeSuccessClip != null && sfxSource != null)
+            {
+                sfxSource.PlayOneShot(barricadeSuccessClip);
+            }
+        }
+
+        /// <summary> 바리케이드 해체 실패 효과음 </summary>
+        public void PlayBarricadeFailSound()
+        {
+            if (barricadeFailClip != null && sfxSource != null)
+            {
+                sfxSource.PlayOneShot(barricadeFailClip);
             }
         }
 
