@@ -1189,7 +1189,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7e78baca13e8330428a1c7b0e42e5132, type: 3}
   - {fileID: 8300000, guid: 5946b49224d93534e811b7421922c096, type: 3}
   - {fileID: 8300000, guid: 28cb9ebb77bed2549b4bb235671e70c4, type: 3}
-  - {fileID: 8300000, guid: 2b5625258432db746b00e5d166f7c412, type: 3}
+  - {fileID: 8300000, guid: 81f95706cf4790c479463624a1745da3, type: 3}
   gameClearBgm: {fileID: 8300000, guid: f5a1c15abacf694418ca5009517d0c68, type: 3}
   gameOverBgm: {fileID: 8300000, guid: 3f88b8d127c60b343886a1b043dafbf7, type: 3}
 --- !u!4 &1614525081
