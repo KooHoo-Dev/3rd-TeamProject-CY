@@ -537,8 +537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6a06d9a580b754aade698e0071636a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HelloServer.RoomLobby
-  nickName: chan
-  roomCode: ABCD1
+  nickName: JYH
+  roomCode: ABCD4
 --- !u!114 &755348587
 MonoBehaviour:
   m_ObjectHideFlags: 0
