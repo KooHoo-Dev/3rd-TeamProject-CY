@@ -13,16 +13,14 @@ namespace CY.Vehicle
     [RequireComponent(typeof(VehicleController))]
     public class VehicleDamage : MonoBehaviour
     {
-        // 충돌 세기별 static 이벤트 선언
         public static event Action OnMiddleCrash;
         public static event Action OnHardCrash;
         
         [Header("내구도")] [SerializeField] private float maxDurability = 100f;
-
         [Header("충돌 데미지")] 
-        [SerializeField] private float ignoreSpeed = 3f;                   // 이 속도 미만 충돌은 무시
-        [SerializeField] private float hardCrashSpeedThreshold = 10f;       // 강한 충돌 기준 속도
-        [SerializeField] private float damagePerSpeed = 4f;                // 초과 속도 1당 데미지
+        [SerializeField] private float ignoreSpeed = 3f;                   
+        [SerializeField] private float hardCrashSpeedThreshold = 10f;       
+        [SerializeField] private float damagePerSpeed = 4f;                
 
         [Header("속도 페널티 (3단계)")] 
         [SerializeField, Range(0f, 1f)] private float damagedThreshold = 0.4f;
@@ -46,6 +44,34 @@ namespace CY.Vehicle
             controller = GetComponent<VehicleController>();
             ResetDurability();
         }
+        
+        // [추가] 인게임에서 차가 켜질 때 네트워크 구독
+        private void OnEnable()
+        {
+            if (NetworkSession.Instance != null)
+                NetworkSession.Instance.MessageReceived += OnNetworkMessageReceived;
+        }
+
+        // [추가] 차가 꺼질 때 네트워크 구독 해제
+        private void OnDisable()
+        {
+            if (NetworkSession.Instance != null)
+                NetworkSession.Instance.MessageReceived -= OnNetworkMessageReceived;
+        }
+
+        // [추가] 비호스트 클라이언트가 충돌 패킷을 받아서 자기 차에서 소리 이벤트를 발생시킴!
+        private void OnNetworkMessageReceived(string type, string json)
+        {
+            if (Session.IsHost) return;
+
+            if (type == "vehicle_crash")
+            {
+                if (json.Contains("\"isHard\":true") || json.Contains("\"isHard\": true"))
+                    OnHardCrash?.Invoke();
+                else
+                    OnMiddleCrash?.Invoke();
+            }
+        }
 
         public void Bind(RoundManager manager) => roundManager = manager;
 
@@ -63,18 +89,17 @@ namespace CY.Vehicle
             float impactSpeed = collision.relativeVelocity.magnitude;
             if (impactSpeed < ignoreSpeed) return;
     
-            // [수정] 호스트 검사(Session.IsHost)보다 앞으로 빼서 모든 클라이언트에서 충돌 효과음 발화
-            if (impactSpeed >= hardCrashSpeedThreshold)
-            {
-                OnHardCrash?.Invoke();
-            }
-            else
-            {
-                OnMiddleCrash?.Invoke();
-            }
+            bool isHard = impactSpeed >= hardCrashSpeedThreshold;
+
+            if (isHard) OnHardCrash?.Invoke();
+            else OnMiddleCrash?.Invoke();
  
-            // 데미지 계산 및 라운드 처리만 호스트가 담당
+            // 데미지 처리 및 네트워크 송신은 호스트만
             if (!Session.IsHost) return;
+
+            // [핵심] 호스트가 비호스트들에게 충돌 발생 알림!
+            _ = NetworkSession.Instance?.SendAsync
+                (new { type = "vehicle_crash", isHard = isHard });
 
             float damage = (impactSpeed - ignoreSpeed) * damagePerSpeed;
             durability = Mathf.Max(0f, durability - damage);
@@ -82,11 +107,8 @@ namespace CY.Vehicle
             ApplySpeedPenalty();
             onDurabilityChanged.Invoke(DurabilityRatio);
 
-            Debug.Log($"[Damage] 충돌 속도 {impactSpeed:0.#} → 데미지 {damage:0.#} / 내구도 {durability:0.#}", this);
-
             if (IsDestroyed)
             {
-                Debug.Log("[Damage] 차량 파괴 — 라운드 실패", this);
                 roundManager?.FailRound();
             }
         }
@@ -94,12 +116,7 @@ namespace CY.Vehicle
         private void ApplySpeedPenalty()
         {
             float ratio = DurabilityRatio;
-
-            float multiplier =
-                ratio > damagedThreshold ? 1f : // 1단계는 페널티 없음
-                ratio > severeThreshold ? damagedMultiplier :
-                severeMultiplier;
-
+            float multiplier = ratio > damagedThreshold ? 1f : ratio > severeThreshold ? damagedMultiplier : severeMultiplier;
             controller.SetSpeedMultiplier(multiplier);
         }
     }

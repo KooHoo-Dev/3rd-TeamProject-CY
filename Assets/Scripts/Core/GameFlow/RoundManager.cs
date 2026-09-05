@@ -25,6 +25,55 @@ namespace CY.Core
 
         private bool finished;
         private VehicleDamage damage;
+        
+        // [추가] 인게임 씬에서 시작할 때 네트워크 구독
+        private void OnEnable()
+        {
+            if (NetworkSession.Instance != null)
+                NetworkSession.Instance.MessageReceived += OnNetworkMessageReceived;
+        }
+
+        // [추가] 네트워크 구독 해제
+        private void OnDisable()
+        {
+            if (NetworkSession.Instance != null)
+                NetworkSession.Instance.MessageReceived -= OnNetworkMessageReceived;
+        }
+        
+        // [추가] BGM이 1초에 수십 번씩 다시 시작되는 것을 막아줄 자물쇠
+        private bool hasPlayedEndBgm = false;
+
+        // [추가] 비호스트 클라이언트가 성공/실패 패킷을 받아 BGM 재생
+        private void OnNetworkMessageReceived(string type, string json)
+        {
+            Debug.Log($"[네트워크 수신 테스트] 패킷 도착! 타입: {type} / 내용: {json}");
+            
+            if (Session.IsHost) return;
+
+            // 서버가 이미 잘 보내주고 있는 'round_state'를 활용해서 BGM을 틉니다!
+            if (type == "round_state")
+            {
+                // 텍스트에 Success가 포함되어 있다면 클리어 BGM 재생
+                if (json.Contains("\"Phase\":\"Success\"") || json.Contains("\"Phase\": \"Success\""))
+                {
+                    // 자물쇠가 열려있을 때(false)만 들어와서 딱 한 번 노래를 틉니다!
+                    if (!hasPlayedEndBgm)
+                    {
+                        hasPlayedEndBgm = true; // 자물쇠 잠금!
+                        if (SoundManager.Instance != null) SoundManager.Instance.PlayGameClearBgm();
+                    }
+                }
+                // 텍스트에 Failed가 포함되어 있다면 게임오버 BGM 재생
+                else if (json.Contains("\"Phase\":\"Failed\"") || json.Contains("\"Phase\": \"Failed\""))
+                {
+                    if (!hasPlayedEndBgm)
+                    {
+                        hasPlayedEndBgm = true; // 자물쇠 잠금!
+                        if (SoundManager.Instance != null) SoundManager.Instance.PlayGameOverBgm();
+                    }
+                }
+            }
+        }
 
         private void Start()
         {
@@ -38,7 +87,7 @@ namespace CY.Core
             
             if (!Session.IsHost)
             {
-                enabled = false;
+                //enabled = false;
                 return;
             }
 
@@ -112,6 +161,14 @@ namespace CY.Core
             finished = true;
             timer.StopRound();
             vehicle.SetInputEnabled(false);
+            
+            // 호스트가 비호스트(클라이언트)들에게 게임 종료/성공 여부를 방송
+            if (Session.IsHost && NetworkSession.Instance != null)
+            {
+                string msgType = success ? "round_success" : "round_failed";
+                _ = NetworkSession.Instance.SendAsync
+                    (new { type = msgType });
+            }
 
             if (success)
             {

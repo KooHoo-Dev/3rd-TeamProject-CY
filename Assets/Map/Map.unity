@@ -158,6 +158,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d5f87e9649804489058a7a98b4c74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Vehicle
+--- !u!114 &779268008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624452761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d71566e18c4c32b46dc196f793293a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.NetworkInputSource
+  roleAssigner: {fileID: 0}
+  localInput: {fileID: 0}
+  targetVehicle: {fileID: 779268007}
+  inputTimeout: 0.25
 --- !u!1001 &1034833811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,7 +274,10 @@ PrefabInstance:
       insertIndex: 4
       addedObject: {fileID: 779268006}
     - targetCorrespondingSourceObject: {fileID: 1460622424888676623, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
-      insertIndex: 6
+      insertIndex: 5
+      addedObject: {fileID: 779268008}
+    - targetCorrespondingSourceObject: {fileID: 1460622424888676623, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
+      insertIndex: 7
       addedObject: {fileID: 779268007}
   m_SourcePrefab: {fileID: 100100000, guid: d8190f0a1cd2d8a47af3541ba00f8299, type: 3}
 --- !u!1 &1138230153
