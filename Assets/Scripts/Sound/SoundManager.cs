@@ -72,7 +72,7 @@ namespace CY.Vehicle
                 PlayNextRandomInGameBgm();
             }
 
-            // [추가] 네트워크 세션이 준비되면 안전하게 구독 (DontDestroyOnLoad 보호)
+            // 네트워크 세션이 준비되면 안전하게 구독 (DontDestroyOnLoad 보호)
             if (!isNetworkSubscribed && CY.Network.NetworkSession.Instance != null)
             {
                 CY.Network.NetworkSession.Instance.MessageReceived += OnNetworkMessageReceived;
@@ -86,6 +86,9 @@ namespace CY.Vehicle
             VehicleSoundEvents.BrakeChanged += HandleBrake;
             VehicleDamage.OnMiddleCrash += PlayMiddleCrashSound;
             VehicleDamage.OnHardCrash += PlayHardCrashSound;
+            
+            // 클라이언트(비호스트)용 네트워크 충돌 이벤트 구독
+            CY.Network.RoundStateSync.OnNetworkCrash += PlayNetworkCrashSound;
         }
 
         private void OnDisable()
@@ -94,6 +97,16 @@ namespace CY.Vehicle
             VehicleSoundEvents.BrakeChanged -= HandleBrake;
             VehicleDamage.OnMiddleCrash -= PlayMiddleCrashSound;
             VehicleDamage.OnHardCrash -= PlayHardCrashSound;
+            
+            // 구독 해제
+            CY.Network.RoundStateSync.OnNetworkCrash -= PlayNetworkCrashSound;
+        }
+        
+        // 네트워크로 전달받은 충돌 처리
+        private void PlayNetworkCrashSound(bool isHard)
+        {
+            if (isHard) PlayHardCrashSound();
+            else PlayMiddleCrashSound();
         }
 
         private void OnDestroy()
