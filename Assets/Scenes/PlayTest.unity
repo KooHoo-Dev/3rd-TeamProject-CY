@@ -2533,6 +2533,22 @@ PrefabInstance:
       propertyPath: m_RaycastPadding.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4269551351873274425, guid: cdec8f1737117db41b65dc28e9e7de1d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 587.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269551351873274425, guid: cdec8f1737117db41b65dc28e9e7de1d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 143.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269551351873274425, guid: cdec8f1737117db41b65dc28e9e7de1d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -630
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269551351873274425, guid: cdec8f1737117db41b65dc28e9e7de1d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 335.05002
+      objectReference: {fileID: 0}
     - target: {fileID: 4580008118889892131, guid: cdec8f1737117db41b65dc28e9e7de1d, type: 3}
       propertyPath: plateSlot
       value: 
@@ -2604,6 +2620,10 @@ PrefabInstance:
     - target: {fileID: 6140592364823652724, guid: cdec8f1737117db41b65dc28e9e7de1d, type: 3}
       propertyPath: m_Name
       value: MinigamePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153622232113053070, guid: cdec8f1737117db41b65dc28e9e7de1d, type: 3}
+      propertyPath: m_margin.w
+      value: 1.3139267
       objectReference: {fileID: 0}
     - target: {fileID: 6460532161660845607, guid: cdec8f1737117db41b65dc28e9e7de1d, type: 3}
       propertyPath: m_RaycastPadding.w
