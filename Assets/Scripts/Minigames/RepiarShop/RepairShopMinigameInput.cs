@@ -70,7 +70,7 @@ namespace CY.Minigame
                 ? droppedOn != null && droppedOn.CompareTag("TrashZone")
                 : droppedOn != null && droppedOn.CompareTag("DropZone"); 
             
-            controller.HandlePlateDropped(isOldPlate, droppedOn);
+            controller.HandlePlateDropped(isOldPlate, isValidDrop);
         }
 
 
