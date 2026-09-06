@@ -19,7 +19,8 @@ namespace CY.Minigame
         
         public event Action OnGameStartRequested;
 
-        private Vector2 visiblePosition;
+        private Vector2[] visiblePositions;
+        private int currentPanelIndex;
         private RectTransform currentMiniGamePanel;
         private GameObject currentExplanationPanel;
         
@@ -34,10 +35,11 @@ namespace CY.Minigame
 
         private void Start()
         {
-            visiblePosition = Vector2.zero; 
+            visiblePositions = new Vector2[minigamePanel.Length];
             
             for (int i = 0; i < minigamePanel.Length; i++)
             {
+                visiblePositions[i] = minigamePanel[i].anchoredPosition;
                 minigamePanel[i].anchoredPosition = GetHiddenPosition(minigamePanel[i]);
             }
 
@@ -46,6 +48,7 @@ namespace CY.Minigame
                 explanationPanel[i].SetActive(false);
             }
             
+            currentPanelIndex = 0;
             currentMiniGamePanel = minigamePanel[0];
             currentExplanationPanel = explanationPanel[0];
         }
@@ -73,13 +76,14 @@ namespace CY.Minigame
 
         private void UpdateCurrentPanels(int missionTypeIdx)
         {
+            currentPanelIndex = missionTypeIdx;
             currentMiniGamePanel = minigamePanel[missionTypeIdx];
             currentExplanationPanel = explanationPanel[missionTypeIdx];
         }
         
         public void ShowMinigameUI()
         {
-            currentMiniGamePanel.DOAnchorPos(visiblePosition, slideDuration).SetEase(Ease.OutQuad)
+            currentMiniGamePanel.DOAnchorPos(visiblePositions[currentPanelIndex], slideDuration).SetEase(Ease.OutQuad)
                 .OnComplete(() => StartCoroutine(ShowExplanationRoutine())); 
         }
     
