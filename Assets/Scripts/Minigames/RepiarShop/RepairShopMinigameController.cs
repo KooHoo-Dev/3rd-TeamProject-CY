@@ -5,11 +5,6 @@ using CY.Network;
 using Cysharp.Threading.Tasks;
 using HelloServer;
 
-public class LicensePlateScrewMessage { public string Type { get; set; } public int ScrewIndex { get; set; } }
-public class LicensePlateDragMessage { public string Type { get; set; } = "license_plate_drag"; public bool IsOldPlate { get; set; } public float AnchoredX { get; set; } public float AnchoredY { get; set; } }
-public class LicensePlateDropMessage { public string Type { get; set; } = "license_plate_drop"; public bool IsOldPlate { get; set; } public bool IsValidDrop { get; set; } }
-public class LicensePlateDropResultMessage { public string Type { get; set; } = "license_plate_plate_snap_back"; public bool IsOldPlate { get; set; } }
-
 namespace CY.Minigame
 {
 
@@ -62,6 +57,8 @@ namespace CY.Minigame
         private void HandleGameStartSignal()
         {
             if (!gameObject.activeInHierarchy || !IsActive) return;
+
+            MinigameUI.Instance.IsOperator = IsOperator;
             StartCoroutine(StartGameRoutine());
         }
         
@@ -123,6 +120,9 @@ namespace CY.Minigame
 
         public void HandlePlateDropped(bool isOldPlate, bool isValidDrop)
         {
+            bool canDrag = isOldPlate ? CanDragOldPlate() : CanDragNewPlate();
+            if (!canDrag) return;
+
             session.SendAsync(new LicensePlateDropMessage
             {
                 IsOldPlate = isOldPlate,
@@ -158,7 +158,8 @@ namespace CY.Minigame
         
         public void HandlePlateDrag(LicensePlateDragMessage message)
         {
-            if (!IsActive || message == null) return;
+            if (!IsActive || IsOperator || message == null) return;
+
             view.ApplyPlateDrag(message.IsOldPlate, new Vector2(message.AnchoredX, message.AnchoredY));
         }
         

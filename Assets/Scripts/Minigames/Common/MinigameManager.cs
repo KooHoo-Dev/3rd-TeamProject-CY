@@ -13,6 +13,7 @@ namespace CY.Minigame
         [Header("미니게임 참조")] 
         [SerializeField] private GasStationMinigameController gasStationMinigameController;
         [SerializeField] private BarricadeMinigameController barricadeMinigameController;
+        [SerializeField] private RepairShopMinigameController repairShopMinigameController;
         [SerializeField] private MinigameUI minigameUI;
 
         private NetworkSession session;
@@ -35,6 +36,8 @@ namespace CY.Minigame
                 gasStationMinigameController.MinigameEnded += HandleMiniGameEnded;
             if (barricadeMinigameController != null)
                 barricadeMinigameController.MinigameEnded += HandleMiniGameEnded;
+            if (repairShopMinigameController != null)
+                repairShopMinigameController.MinigameEnded += HandleMiniGameEnded;
         }
 
         private void Start()
@@ -56,6 +59,8 @@ namespace CY.Minigame
                 gasStationMinigameController.MinigameEnded -= HandleMiniGameEnded;
             if (barricadeMinigameController != null) 
                 barricadeMinigameController.MinigameEnded -= HandleMiniGameEnded;
+            if (repairShopMinigameController != null)
+                repairShopMinigameController.MinigameEnded -= HandleMiniGameEnded;
         }
 
         private async UniTaskVoid SendClientReadyAsync()
@@ -100,7 +105,8 @@ namespace CY.Minigame
         private void HandleNetworkMessage(string type, string json)
         {
             if (gasStationMinigameController == null
-                && barricadeMinigameController == null) return;
+                && barricadeMinigameController == null
+                && repairShopMinigameController == null) return;
 
             switch (type)
             {
@@ -117,6 +123,7 @@ namespace CY.Minigame
                     minigameUI.ShowMinigameUI();
                     break;
                 }
+                // 주유소
                 case "fuel_state":
                     gasStationMinigameController.HandleFuelState(
                         JsonConvert.DeserializeObject<FuelStateMessage>(json));
@@ -126,13 +133,9 @@ namespace CY.Minigame
                     break;
                 case "fuel_completed":
                     gasStationMinigameController.HandleFuelCompleted();
-                    
-                    if (Session.IsHost && activeCheckpoint != null)
-                    {
-                        activeCheckpoint.CompleteMission();
-                        activeCheckpoint = null;
-                    }
+                    CompleteActiveCheckpoint();
                     break;
+                // 바리케이드
                 case "barricade_progress":
                     barricadeMinigameController.HandleBarricadeProgress(
                         JsonConvert.DeserializeObject<BarricadeProgressMessage>(json));
@@ -142,12 +145,38 @@ namespace CY.Minigame
                     break;
                 case "barricade_completed":
                     barricadeMinigameController.HandleBarricadeCompleted();
-                    
-                    if (Session.IsHost && activeCheckpoint != null)
-                    {
-                        activeCheckpoint.CompleteMission();
-                        activeCheckpoint = null;
-                    }
+                    CompleteActiveCheckpoint();
+                    break;
+                // 번호판
+                case "license_plate_drag":
+                    repairShopMinigameController.HandlePlateDrag(
+                        JsonConvert.DeserializeObject<LicensePlateDragMessage>(json));
+                    break;
+                case "license_plate_plate_snap_back":
+                    repairShopMinigameController.HandlePlateSnapBack(
+                        JsonConvert.DeserializeObject<LicensePlateDropResultMessage>(json));
+                    break;
+
+                case "license_plate_old_screw_removed":
+                    repairShopMinigameController.HandleOldScrewRemoved(
+                        JsonConvert.DeserializeObject<LicensePlateScrewMessage>(json));
+                    break;
+
+                case "license_plate_old_plate_discarded":
+                    repairShopMinigameController.HandleOldPlateDiscarded();
+                    break;
+
+                case "license_plate_new_plate_attached":
+                    repairShopMinigameController.HandleNewPlateAttached();
+                    break;
+
+                case "license_plate_new_screw_fastened":
+                    repairShopMinigameController.HandleNewScrewFastened(
+                        JsonConvert.DeserializeObject<LicensePlateScrewMessage>(json));
+                    break;
+                case "license_plate_completed":
+                    repairShopMinigameController.HandleLicensePlateCompleted();
+                    CompleteActiveCheckpoint();
                     break;
                 case "game_aborted":
                     HandleGameAborted();
@@ -155,6 +184,14 @@ namespace CY.Minigame
             }
         }
 
+        private void CompleteActiveCheckpoint()
+        {
+            if (!Session.IsHost || activeCheckpoint == null) return;
+
+            activeCheckpoint.CompleteMission();
+            activeCheckpoint = null;
+        }
+        
         private void HandleMiniGameStarted(MiniGameStartedMessage message)
         {
             switch (message.MiniGameType)
@@ -165,7 +202,9 @@ namespace CY.Minigame
                 case "barricade": 
                     barricadeMinigameController.HandleMiniGameStarted(message);
                     return;
-                case "license_plate": return;
+                case "license_plate":
+                    repairShopMinigameController.HandleMiniGameStarted(message);
+                    return;
             }
         }
 
@@ -179,7 +218,9 @@ namespace CY.Minigame
                 case "barricade":
                     barricadeMinigameController.HandleGameAborted();
                     break;
-                case "license_plate": return;
+                case "license_plate":
+                    repairShopMinigameController.HandleGameAborted();
+                    break;
             }
         }
         

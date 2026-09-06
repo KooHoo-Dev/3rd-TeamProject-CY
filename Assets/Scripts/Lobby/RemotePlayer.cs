@@ -3,9 +3,6 @@ using UnityEngine;
 
 namespace HelloServer
 {
-    // 남의 캐릭터. 프리팹으로 만들어 두고 RoomClient 가 접속자마다 하나씩 찍어 낸다.
-    //   LocalPlayer  : 입력으로 움직인다
-    //   RemotePlayer : 받은 자리로 다가간다
     public class RemotePlayer : MonoBehaviour
     {
         [Header("모양")]
@@ -18,7 +15,6 @@ namespace HelloServer
 
         public User User { get; private set; }
 
-        // 서버가 알려 준 자리. 네트워크는 이것만 건드리고 그리는 일은 Update 가 한다.
         private Vector2 target;
 
         public void Setup(User user)
@@ -29,9 +25,10 @@ namespace HelloServer
             // 처음 나타날 때 원점에서 날아오지 않게 지금 자리를 목표로 둔다.
             target = transform.position;
         }
-
-        public void SetTarget(Vector2 position)
+        
+        public void SetPosition(Vector3 position)
         {
+            transform.position = position;
             target = position;
         }
 
