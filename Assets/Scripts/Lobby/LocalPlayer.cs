@@ -14,7 +14,7 @@ namespace HelloServer
         [Header("움직임")]
         [SerializeField] private float speed = 5f;
 
-        public bool CanMove { get; set; } = true;
+        public bool CanMove { get; set; } = false;
 
         public void Setup(User user)
         {
