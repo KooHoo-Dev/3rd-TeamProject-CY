@@ -82,11 +82,19 @@ public class ResultUI : MonoBehaviour
     
     public void OnRetryButtonClicked()
     {
+        // 다시 하기 버튼 클릭음
+        CY.Vehicle.SoundManager.Instance?.PlayUIClick();
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnQuitButtonClicked()
     {
+        // 게임 종료(로비로 이동) 버튼 클릭음
+        CY.Vehicle.SoundManager.Instance?.PlayUIClick();
+        
+        SceneManager.LoadScene("Lobby");
+        
         SceneManager.LoadScene("Lobby");
     }
     

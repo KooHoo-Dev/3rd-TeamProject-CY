@@ -59,7 +59,7 @@ namespace CY.Vehicle
                 NetworkSession.Instance.MessageReceived -= OnNetworkMessageReceived;
         }
 
-        // [추가] 비호스트 클라이언트가 충돌 패킷을 받아서 자기 차에서 소리 이벤트를 발생시킴!
+        // [추가] 비호스트 클라이언트가 충돌 패킷을 받아서 자기 차에서 소리 이벤트를 발생시킴
         private void OnNetworkMessageReceived(string type, string json)
         {
             if (Session.IsHost) return;
@@ -97,7 +97,7 @@ namespace CY.Vehicle
             // 데미지 처리 및 네트워크 송신은 호스트만
             if (!Session.IsHost) return;
 
-            // [핵심] 호스트가 비호스트들에게 충돌 발생 알림!
+            // 호스트가 비호스트들에게 충돌 발생 알림
             _ = NetworkSession.Instance?.SendAsync
                 (new { type = "vehicle_crash", isHard = isHard });
 
