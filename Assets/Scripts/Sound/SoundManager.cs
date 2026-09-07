@@ -16,7 +16,8 @@ namespace CY.Vehicle
         [Header("Audio Clips")]
         [SerializeField] private AudioClip accelClip;
         [SerializeField] private AudioClip brakeClip;
-        [SerializeField] private AudioClip uiClickClip; 
+        [SerializeField] private AudioClip uiClickClip;
+        [SerializeField] private AudioClip gearShiftClip;
         
         [Header("Audio Clips - Minigame 1: Fuel")]
         [SerializeField] private AudioClip fuelLoopClip;
@@ -85,6 +86,7 @@ namespace CY.Vehicle
         {
             VehicleSoundEvents.AccelChanged += HandleAccel;
             VehicleSoundEvents.BrakeChanged += HandleBrake;
+            VehicleSoundEvents.GearChanged += HandleGearChanged;
             VehicleDamage.OnMiddleCrash += PlayMiddleCrashSound;
             VehicleDamage.OnHardCrash += PlayHardCrashSound;
             
@@ -96,6 +98,7 @@ namespace CY.Vehicle
         {
             VehicleSoundEvents.AccelChanged -= HandleAccel;
             VehicleSoundEvents.BrakeChanged -= HandleBrake;
+            VehicleSoundEvents.GearChanged -= HandleGearChanged;
             VehicleDamage.OnMiddleCrash -= PlayMiddleCrashSound;
             VehicleDamage.OnHardCrash -= PlayHardCrashSound;
             
@@ -294,6 +297,14 @@ namespace CY.Vehicle
             int randomIndex = Random.Range(0, clips.Length);
             AudioClip selectedClip = clips[randomIndex];
             if (selectedClip != null) sfxSource.PlayOneShot(selectedClip);
+        }
+        
+        private void HandleGearChanged(Gear gear)
+        {
+            if (gearShiftClip != null && sfxSource != null)
+            {
+                sfxSource.PlayOneShot(gearShiftClip);
+            }
         }
     }
 }

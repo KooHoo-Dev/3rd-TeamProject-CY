@@ -1298,6 +1298,7 @@ MonoBehaviour:
   accelClip: {fileID: 8300000, guid: c3cd1e1b976d5514a98763674e7f916a, type: 3}
   brakeClip: {fileID: 8300000, guid: c1c9fd5da34771e4da1f09f34f402b1f, type: 3}
   uiClickClip: {fileID: 8300000, guid: 71ddda618a41a174080d2a42b63dd966, type: 3}
+  gearShiftClip: {fileID: 8300000, guid: 62907329d98b3e543ae8c251edf282a7, type: 3}
   fuelLoopClip: {fileID: 8300000, guid: 4a3719bd4981695479059c095f245411, type: 3}
   fuelSuccessClip: {fileID: 8300000, guid: 856bcd09b6996984ebaee9cee4b6f3cc, type: 3}
   fuelFailClip: {fileID: 8300000, guid: 12501155bd40ef34dad8a23c05aac4eb, type: 3}
