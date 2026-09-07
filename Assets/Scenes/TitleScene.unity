@@ -573,7 +573,7 @@ MonoBehaviour:
   pressAnyKeyGroup: {fileID: 866951481}
   fadePanel: {fileID: 1318318753}
   shakeContainer: {fileID: 2037796385}
-  nextSceneName: Lobby
+  nextSceneName: Intro
 --- !u!4 &1307040560
 Transform:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ namespace Intro
         {
             yield return fadeImage
                 .DOFade(0f, duration)
-                .SetUpdate(true)
+                .SetEase(Ease.InOutSine)
                 .WaitForCompletion();
         }
         
