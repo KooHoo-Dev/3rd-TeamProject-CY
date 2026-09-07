@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: networkStatus
       value: 
       objectReference: {fileID: 101307423}
+    - target: {fileID: 3118735837278648948, guid: a4f49431ac72cda4383d45f75d08ed36, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -25.899902
+      objectReference: {fileID: 0}
     - target: {fileID: 4869135124381263023, guid: a4f49431ac72cda4383d45f75d08ed36, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -267,6 +271,14 @@ PrefabInstance:
     - target: {fileID: 4869135124381263023, guid: a4f49431ac72cda4383d45f75d08ed36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554535657433991913, guid: a4f49431ac72cda4383d45f75d08ed36, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 61.899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020181563717356440, guid: a4f49431ac72cda4383d45f75d08ed36, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -27.600098
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -2210,8 +2222,41 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3173655723734744792, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1311986173}
   m_SourcePrefab: {fileID: 100100000, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+--- !u!1 &1311986170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4358591310043350323, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+  m_PrefabInstance: {fileID: 1311986169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1311986171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2779733168569193969, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+  m_PrefabInstance: {fileID: 1311986169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1311986172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3173655723734744792, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+  m_PrefabInstance: {fileID: 1311986169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1311986173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311986172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5413ac4b747a08e43a4ad858c358824b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BarricadeController
+  barricadeMinigameController: {fileID: 555739130}
+  barricadeOpened: {fileID: 1311986170}
+  barricadeClosed: {fileID: 1311986171}
 --- !u!1 &1312829342
 GameObject:
   m_ObjectHideFlags: 0

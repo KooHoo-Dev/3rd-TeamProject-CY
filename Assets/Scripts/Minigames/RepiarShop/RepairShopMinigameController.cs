@@ -7,7 +7,6 @@ using HelloServer;
 
 namespace CY.Minigame
 {
-
     public class RepairShopMinigameController : MonoBehaviour
     {
         private const string LicensePlateMiniGameType = "license_plate";
