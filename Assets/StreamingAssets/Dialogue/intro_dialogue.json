@@ -15,25 +15,25 @@
           "id": "opening_002",
           "characterId": "sharp",
           "positionId": "left2",
-          "text": "찾는 데 오래걸리나보지! 그만 좀 찡찡대!"
+          "text": "찾는 데 오래걸리나보지! <delay>그만 좀 찡찡대!"
         },
         {
           "id": "opening_003",
           "characterId": "leader",
           "positionId": "left",
-          "text": "오기로 한 시간이 한참 지났잖아. 갑자기 마음 바꾸 자수라도 했으면 어떡해!"
+          "text": "오기로 한 시간이 한참 지났잖아. <delay>갑자기 마음 바꿔서 자수라도 했으면 어떡할건데!"
         },
         {
           "id": "opening_004",
           "characterId": "sharp",
           "positionId": "left2",
-          "text": "애도 아니고 맡겼으면 신경 좀 꺼. 넌 이리 와서 계획이나 다시 봐."
+          "text": "애도 아니고 알아서 잘 하겠지. <delay>넌 이리 와서 계획이나 다시 봐."
         },
         {
           "id": "opening_005",
           "characterId": "leader",
           "positionId": "left",
-          "text": "이미 백 번은 봤어. 지금은 차가 없는 게 문제지."
+          "text": "이미 백 번은 봤어. <delay>지금은 차가 없는 게 문제지."
         },
         {
           "id": "opening_006",
@@ -57,13 +57,13 @@
           "id": "opening_009",
           "characterId": "leader",
           "positionId": "left",
-          "text": "왜 이제와! 차는? 제대로 구한거야?"
+          "text": "왜 이제와! <delay>차는? <delay>제대로 구한거야?"
         },
         {
           "id": "opening_010",
           "characterId": "leader",
           "positionId": "left",
-          "text": "잠깐, 그거… 차가 왜 그래?"
+          "text": "잠깐, <delay>그거… 차가 왜 그래?"
         },
         {
           "id": "opening_011",
@@ -75,7 +75,7 @@
           "id": "opening_012",
           "characterId": "sharp",
           "positionId": "left2",
-          "text": "차가 왜 이렇게 낡았냐… 안에서 냄새 날 거 같아."
+          "text": "차가 왜 이렇게 낡았어… 안에서 냄새 날 거 같아."
         },
         {
           "id": "opening_013",
@@ -87,7 +87,7 @@
           "id": "opening_014",
           "characterId": "leader",
           "positionId": "left",
-          "text": "운전석은? 뭔데 저게. 왜 네 개야?"
+          "text": "운전석은? 뭔데 저게. <delay>왜 네 개야?"
         },
         {
           "id": "opening_015",
@@ -123,7 +123,8 @@
           "id": "opening_020",
           "characterId": "leader",
           "positionId": "left",
-          "text": "누가 이딴 차로 도망을 가!"
+          "shake": true,
+          "text": "<size=150%>누가 이딴 차로 도망을 가!</size>"
         },
         {
           "id": "opening_021",
@@ -147,19 +148,19 @@
           "id": "opening_024",
           "characterId": "sharp",
           "positionId": "left2",
-          "text": "그럴 줄 알았다. 차 구할 돈도 없으면서 시작하자고 했냐?"
+          "text": "그럴 줄 알았다. <delay>차 구할 돈도 없으면서 시작하자고 했냐?"
         },
         {
           "id": "opening_025",
           "characterId": "driver",
           "positionId": "right",
-          "text": "중고차 사이트를 몇 개를 뒤졌는지 알아? “급매”, “무사고”, “범죄용”까지 검색했어!"
+          "text": "중고차 사이트를 몇 개를 뒤졌는지 알아? <delay>“급매”, “무사고”, “범죄용”까지 검색했어!"
         },
         {
           "id": "opening_026",
           "characterId": "leader",
           "positionId": "left",
-          "text": "범죄용은 뭔데? 꼬리잡히고 싶어서 환장했어?"
+          "text": "범죄용은 뭔데?! 꼬리잡히고 싶어서 환장했어?"
         },
         {
           "id": "opening_027",
@@ -171,7 +172,7 @@
           "id": "opening_028",
           "characterId": "driver",
           "positionId": "right",
-          "text": "겨우 찾은 게 이거야. “대학 동아리 차량 개조 프로젝트” 작품이라고 했고, 작동이 되는 건 확인했어."
+          "text": "겨우 찾은 게 이거야. <delay>“대학 동아리 차량 개조 프로젝트” 작품이라고 했고, 작동이 되는 건 확인했어."
         },
         {
           "id": "opening_029",
@@ -201,7 +202,7 @@
           "id": "opening_033",
           "characterId": "sharp",
           "positionId": "left2",
-          "text": "3일 안에 익숙해져야지 뭐. 다른 방법 있어?"
+          "text": "3일 안에 익숙해져야지 뭐. <delay>다른 방법 있어?"
         },
         {
           "id": "opening_034",
@@ -213,7 +214,7 @@
           "id": "opening_035",
           "characterId": "driver",
           "positionId": "right",
-          "text": "연습하면 돼. 넷이 호흡만 맞으면 직진은 할 수 있어."
+          "text": "연습하면 돼. <delay>넷이 호흡만 맞으면 직진은 할 수 있어."
         },
         {
           "id": "opening_036",
@@ -243,7 +244,7 @@
           "id": "opening_040",
           "characterId": "leader",
           "positionId": "left",
-          "text": "어딜?! 여태 한 마디도 안 하고 있다가 갑자기 뭐야!"
+          "text": "어딜?! <delay>여태 한 마디도 안 하고 있다가 갑자기 뭐야!"
         },
         {
           "id": "opening_041",
