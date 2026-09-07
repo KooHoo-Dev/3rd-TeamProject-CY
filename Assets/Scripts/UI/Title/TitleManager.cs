@@ -18,6 +18,8 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
+        CY.Vehicle.SoundManager.Instance?.PlayTitleBgm();
+        
         titleRect.localScale = Vector3.one * 5f; 
         titleCanvasGroup.alpha = 0f;
         pressAnyKeyGroup.alpha = 0f;

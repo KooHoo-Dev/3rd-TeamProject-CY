@@ -40,6 +40,7 @@ namespace CY.Vehicle
         [SerializeField] private AudioClip[] hardCrashClips;
         
         [Header("BGM Clips")]
+        [SerializeField] private AudioClip titleBgm; 
         [SerializeField] private AudioClip lobbyBgm;             
         [SerializeField] private AudioClip[] inGameBgms;         
         [SerializeField] private AudioClip gameClearBgm;         
@@ -158,6 +159,11 @@ namespace CY.Vehicle
         
         // --- BGM 제어 메서드 ---
 
+        // 타이틀 BGM 재생
+        public void PlayTitleBgm()
+        {
+            if (titleBgm != null) PlayBgmSingle(titleBgm, true);
+        }
         public void PlayLobbyBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(lobbyBgm, isLoop: true); }
         public void PlayGameClearBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(gameClearBgm, isLoop: false); }
         public void PlayGameOverBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(gameOverBgm, isLoop: false); }
