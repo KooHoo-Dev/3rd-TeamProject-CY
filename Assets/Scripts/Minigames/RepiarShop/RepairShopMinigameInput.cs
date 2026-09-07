@@ -31,6 +31,9 @@ namespace CY.Minigame
             // Controller에 권한이 있는지 물어보고 없으면 무시
             if (isOldPlate && !controller.CanDragOldPlate()) return;
             if (!isOldPlate && !controller.CanDragNewPlate()) return;
+            
+            // 2. 번호판을 꽉 잡는 효과음
+            CY.Vehicle.SoundManager.Instance?.PlayRepairShopPlateGrabSound();
 
             isDragging = true;
             canvasGroup.alpha = 0.8f;
@@ -56,6 +59,9 @@ namespace CY.Minigame
         public void OnEndDrag(PointerEventData eventData)
         {
             if (!isDragging) return;
+            
+            // 3. 번호판을 떼거나 놓는 효과음
+            CY.Vehicle.SoundManager.Instance?.PlayRepairShopPlateDropSound();
 
             isDragging = false;
             canvasGroup.alpha = 1f;

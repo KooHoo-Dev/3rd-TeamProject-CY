@@ -28,10 +28,11 @@ namespace CY.Vehicle
         [SerializeField] private AudioClip barricadeSuccessClip;
         [SerializeField] private AudioClip barricadeFailClip;
 
-        [Header("Audio Clips - Minigame 3")]
-        [SerializeField] private AudioClip minigame3LoopClip;
-        [SerializeField] private AudioClip minigame3SuccessClip;
-        [SerializeField] private AudioClip minigame3FailClip;
+        [Header("Audio Clips - Minigame 3: RepairShop (차량 정비소)")]
+        [SerializeField] private AudioClip repairShopDrillingClip;
+        [SerializeField] private AudioClip repairShopPlateGrabClip;
+        [SerializeField] private AudioClip repairShopPlateDropClip;
+        [SerializeField] private AudioClip repairShopSuccessClip;
 
         [Header("Crash Clips (Random)")]
         [SerializeField] private AudioClip[] middleCrashClips;
@@ -236,6 +237,34 @@ namespace CY.Vehicle
                 sfxSource.PlayOneShot(barricadeFailClip);
             }
         }
+        
+        // 3. 번호판 교체 미니 게임 호출 메서드
+
+        public void PlayRepairShopDrillingSound()
+        {
+            if (repairShopDrillingClip != null && sfxSource != null)
+                sfxSource.PlayOneShot(repairShopDrillingClip);
+        }
+
+        public void PlayRepairShopPlateGrabSound()
+        {
+            if (repairShopPlateGrabClip != null && sfxSource != null)
+                sfxSource.PlayOneShot(repairShopPlateGrabClip);
+        }
+
+        public void PlayRepairShopPlateDropSound()
+        {
+            if (repairShopPlateDropClip != null && sfxSource != null)
+                sfxSource.PlayOneShot(repairShopPlateDropClip);
+        }
+
+        public void PlayRepairShopSuccessSound()
+        {
+            if (repairShopSuccessClip != null && sfxSource != null)
+                sfxSource.PlayOneShot(repairShopSuccessClip);
+        }
+        
+        
 
         private void HandleAccel(bool on) { if (on) StartAccelSound(); else StopAccelSound(); }
         private void HandleBrake(bool on) { if (on) StartBrakeSound(); else StopBrakeSound(); }

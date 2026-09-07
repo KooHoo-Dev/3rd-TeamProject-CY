@@ -1299,14 +1299,15 @@ MonoBehaviour:
   brakeClip: {fileID: 8300000, guid: c1c9fd5da34771e4da1f09f34f402b1f, type: 3}
   uiClickClip: {fileID: 8300000, guid: 71ddda618a41a174080d2a42b63dd966, type: 3}
   fuelLoopClip: {fileID: 8300000, guid: 4a3719bd4981695479059c095f245411, type: 3}
-  fuelSuccessClip: {fileID: 8300000, guid: 7acb8e4083dd9e34aa76d019e63c77fd, type: 3}
+  fuelSuccessClip: {fileID: 8300000, guid: 856bcd09b6996984ebaee9cee4b6f3cc, type: 3}
   fuelFailClip: {fileID: 8300000, guid: 12501155bd40ef34dad8a23c05aac4eb, type: 3}
   barricadeButtonClickClip: {fileID: 8300000, guid: 50e56b03651c6594d94090b5ced22e18, type: 3}
   barricadeSuccessClip: {fileID: 8300000, guid: 856bcd09b6996984ebaee9cee4b6f3cc, type: 3}
   barricadeFailClip: {fileID: 8300000, guid: 5f2cea899a3b3ef469bf4451f34af1df, type: 3}
-  minigame3LoopClip: {fileID: 0}
-  minigame3SuccessClip: {fileID: 0}
-  minigame3FailClip: {fileID: 0}
+  repairShopDrillingClip: {fileID: 8300000, guid: f7fe26e08075bdc4d961ce888fea4bfb, type: 3}
+  repairShopPlateGrabClip: {fileID: 8300000, guid: 6ac508a70796ec34796ebfa85d8e0277, type: 3}
+  repairShopPlateDropClip: {fileID: 8300000, guid: 6ac508a70796ec34796ebfa85d8e0277, type: 3}
+  repairShopSuccessClip: {fileID: 8300000, guid: 856bcd09b6996984ebaee9cee4b6f3cc, type: 3}
   middleCrashClips:
   - {fileID: 8300000, guid: 565c3f5f199d0db4f8a4a64b64d05ee8, type: 3}
   - {fileID: 8300000, guid: 97bc6b91c059c304798b4a944990a855, type: 3}
@@ -1323,7 +1324,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5946b49224d93534e811b7421922c096, type: 3}
   - {fileID: 8300000, guid: 28cb9ebb77bed2549b4bb235671e70c4, type: 3}
   - {fileID: 8300000, guid: 81f95706cf4790c479463624a1745da3, type: 3}
-  gameClearBgm: {fileID: 8300000, guid: f5a1c15abacf694418ca5009517d0c68, type: 3}
+  gameClearBgm: {fileID: 8300000, guid: 813c030c9c733c8489eea4002313a680, type: 3}
   gameOverBgm: {fileID: 8300000, guid: 3f88b8d127c60b343886a1b043dafbf7, type: 3}
 --- !u!4 &1614525081
 Transform:
