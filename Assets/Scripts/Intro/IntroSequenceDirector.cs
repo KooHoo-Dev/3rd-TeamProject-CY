@@ -12,6 +12,9 @@ namespace Intro
         [SerializeField] private Image FadeImage;
         [SerializeField] private string nextSceneName = "Lobby";
         
+        private Coroutine introRoutine;
+        private bool isTransitioning;
+        
         private void Start()
         {
             StartCoroutine(PlayIntro());
@@ -23,6 +26,24 @@ namespace Intro
             yield return fade.FadeIn(1f);
             yield return dialogue.PlayGroup("opening");
             yield return fade.FadeOut(Color.black, 1f);
+
+            SceneManager.LoadScene(nextSceneName);
+        }
+        
+        public void SkipIntro()
+        {
+            if (isTransitioning) return;
+            if (introRoutine != null) StopCoroutine(introRoutine);
+
+            StartCoroutine(TransitionToNextScene());
+        }
+        
+        private IEnumerator TransitionToNextScene()
+        {
+            if (isTransitioning) yield break;
+            isTransitioning = true;
+            
+            yield return fade.FadeOut(Color.black, 0.5f);
 
             SceneManager.LoadScene(nextSceneName);
         }
