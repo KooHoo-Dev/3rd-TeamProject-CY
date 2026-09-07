@@ -106,6 +106,9 @@ namespace CY.Minigame
         
         public void OnGameStartButtonClicked()
         {
+            // 미니게임 설명창의 '게임 시작' 버튼을 누르면 소리가 난다
+            CY.Vehicle.SoundManager.Instance?.PlayUIClick();
+            
             if (explanationPanel != null) currentExplanationPanel.SetActive(false);
         }
     

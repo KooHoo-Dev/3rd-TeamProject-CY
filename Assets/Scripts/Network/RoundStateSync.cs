@@ -10,6 +10,9 @@ namespace CY.Network
 {
     public class RoundStateSync : MonoBehaviour
     {
+        // 클라이언트에서 충돌을 감지했을 때 발화할 이벤트
+        public static event Action<bool> OnNetworkCrash;
+        
         [Header("상태 공급자")]
         [SerializeField] private HostRoundStatus hostStatus;
         [SerializeField] private NetworkRoundStatus networkStatus;
@@ -26,6 +29,9 @@ namespace CY.Network
         private float lastDurability = -1f;
         
         private Gear lastGear = Gear.N;
+        
+        // 비호스트 클라이언트가 이전 내구도를 기억하기 위한 변수
+        private float lastClientDurability = -1f;
         
         private void Awake()
         {
@@ -112,6 +118,24 @@ namespace CY.Network
 
             if (m.DurabilityRatio < 0f || m.DurabilityRatio > 1f)
                 Debug.LogWarning($"[RoundState] 내구도 비율 범위 밖: {m.DurabilityRatio}", this);
+            
+            // ----------------------------------------------------
+            // 내구도 깎임 감지 -> 사운드 이벤트 발화
+            // ----------------------------------------------------
+            if (lastClientDurability < 0f)
+            {
+                lastClientDurability = m.DurabilityRatio; // 최초 1회 초기화
+            }
+            else if (m.DurabilityRatio < lastClientDurability) 
+            {
+                // 이전보다 내구도가 줄어들었다면 무언가에 부딪힌 것이다!
+                float dropAmount = lastClientDurability - m.DurabilityRatio;
+                bool isHardCrash = dropAmount >= 0.1f; // 한 번에 내구도가 10% 이상 깎이면 강한 충돌음 재생
+                
+                OnNetworkCrash?.Invoke(isHardCrash);
+            }
+            lastClientDurability = m.DurabilityRatio;
+            // ----------------------------------------------------
 
             networkStatus.Apply(m.RemainingTime, m.DurabilityRatio, m.SpeedRatio, m.Cleared, m.Total, phase, gear);
         }

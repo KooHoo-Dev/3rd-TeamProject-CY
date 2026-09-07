@@ -7,7 +7,6 @@ using HelloServer;
 
 namespace CY.Minigame
 {
-
     public class RepairShopMinigameController : MonoBehaviour
     {
         private const string LicensePlateMiniGameType = "license_plate";
@@ -172,6 +171,9 @@ namespace CY.Minigame
         public void HandleOldScrewRemoved(LicensePlateScrewMessage message)
         {
             if (!IsActive || message == null) return;
+            
+            // 1. 나사 빼는 드릴 효과음
+            CY.Vehicle.SoundManager.Instance?.PlayRepairShopDrillingSound();
 
             oldScrewsRemoved++;
             view.ApplyOldScrewRemoved(message.ScrewIndex);
@@ -196,12 +198,19 @@ namespace CY.Minigame
         public void HandleNewScrewFastened(LicensePlateScrewMessage message)
         {
             if (!IsActive || message == null) return;
+            
+            // 1. 나사 조이는 드릴 효과음
+            CY.Vehicle.SoundManager.Instance?.PlayRepairShopDrillingSound();
+            
             view.ApplyNewScrewFastened(message.ScrewIndex);
         }
 
         public void HandleLicensePlateCompleted()
         {
             if (!IsActive || completedRoutine != null) return;
+            
+            // 4. 미니게임 클리어 성공 효과음
+            CY.Vehicle.SoundManager.Instance?.PlayRepairShopSuccessSound();
 
             CanSendInput = false;
             view.ApplyCompleted();

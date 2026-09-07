@@ -80,6 +80,9 @@ namespace CY.Minigame
             if (!IsActive || !IsOperator || !CanSendInput) return;
 
             if (fuseIndex < 0 || fuseIndex > 2) return;
+            
+            // [추가] 버튼 클릭 효과음
+            CY.Vehicle.SoundManager.Instance?.PlayBarricadeButtonClickSound();
 
             session.SendAsync(new BarricadeFuseClickMessage
             {
@@ -105,13 +108,16 @@ namespace CY.Minigame
         public void HandleBarricadeProgress(BarricadeProgressMessage message)
         {
             if (!IsActive || message == null) return;
-
+            
             view.ApplyFuseProgress(message.FuseIndex);
         }
         
         public void HandleBarricadeAttemptFailed()
         {
             if (!IsActive) return;
+            
+            // [추가] 해체 실패 효과음
+            CY.Vehicle.SoundManager.Instance?.PlayBarricadeFailSound();
             
             CanSendInput = IsOperator; 
             view.ApplyAttemptFailed();
@@ -120,6 +126,9 @@ namespace CY.Minigame
         public void HandleBarricadeCompleted()
         {
             if (!IsActive || completedRoutine != null) return;
+            
+            // [추가] 해체 성공 효과음
+            CY.Vehicle.SoundManager.Instance?.PlayBarricadeSuccessSound();
 
             CanSendInput = false;
             view.ApplyCompleted();

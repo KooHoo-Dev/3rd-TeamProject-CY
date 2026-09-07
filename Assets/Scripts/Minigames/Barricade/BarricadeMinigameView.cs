@@ -62,6 +62,13 @@ namespace CY.Minigame
         
         public void ApplyFuseProgress(int fuseIndex)
         {
+            // [추가] 진행 상황 갱신 시 (관전자 수신용) 클릭음 재생
+            // 담당자는 SendFuseClick에서 선제 재생되었을 수 있으므로 중복을 피하려면 조건에 맞게 활용 가능
+            if (!currentIsOperator)
+            {
+                CY.Vehicle.SoundManager.Instance?.PlayBarricadeButtonClickSound();
+            }
+            
             fuseButtons[fuseIndex].GetComponent<Image>().color = fuseOnColor;
             rightCircuits[fuseIndex].DOFade(1f, 0.3f);
         }

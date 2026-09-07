@@ -23,10 +23,14 @@ public class ResultUI : MonoBehaviour
     public HostRoundStatus hostStatus;
     public NetworkRoundStatus networkStatus;
     
+    [SerializeField] private Button retryButton;
+    
     [ContextMenu("테스트: 성공 화면 띄우기")]
     public void OnRoundSuccess()
     {
         resultPanel.SetActive(true);
+        UpdateRetryButtonState();
+        
         resultText.text = "성공!";
         resultText.color = Color.green;
         
@@ -37,10 +41,20 @@ public class ResultUI : MonoBehaviour
     public void OnRoundFail()
     {
         resultPanel.SetActive(true);
+        UpdateRetryButtonState();
+        
         resultText.text = "실패...";
         resultText.color = Color.red;
         
         UpdateResultData(false);
+    }
+
+    private void UpdateRetryButtonState()
+    {
+        if (retryButton.interactable != null)
+        {
+            retryButton.interactable = Session.IsHost;
+        }
     }
 
     private void UpdateResultData(bool isSuccess)
@@ -82,14 +96,23 @@ public class ResultUI : MonoBehaviour
     
     public void OnRetryButtonClicked()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        CY.Vehicle.SoundManager.Instance?.PlayUIClick();
+
+        if (Session.IsHost == false) return;
+        
+        NetworkSession session = NetworkSession.Instance;
+        if (session == null || session.IsConnected == false) return;
+        
+        session.RequestSceneChange(SceneManager.GetActiveScene().name);
     }
 
     public void OnQuitButtonClicked()
     {
+        // 게임 종료(로비로 이동) 버튼 클릭음
+        CY.Vehicle.SoundManager.Instance?.PlayUIClick();
+        
+        SceneManager.LoadScene("Lobby");
+        
         SceneManager.LoadScene("Lobby");
     }
-    
-    
-
 }
