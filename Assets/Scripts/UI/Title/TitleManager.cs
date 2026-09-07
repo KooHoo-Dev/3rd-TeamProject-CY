@@ -11,7 +11,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private CanvasGroup fadePanel;  
     [SerializeField] private RectTransform shakeContainer;
     
-    [SerializeField] private string nextSceneName = "Lobby"; 
+    [SerializeField] private string nextSceneName = "Intro"; 
 
     private bool isTransitioning = false;
     private bool canStart = false; // 연출 도중에 씬이 넘어가는 것 방지
