@@ -1,11 +1,28 @@
 using CY.Vehicle;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace CY.UI
 {
     public class UIClickSound : MonoBehaviour
     {
+        private void OnEnable()
+        {
+            // 씬이 넘어갈 때마다 버튼들을 새로 찾아서 연결해 줍니다.
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            RegisterAllButtons();
+        }
+
         private void Start()
         {
             RegisterAllButtons();
@@ -13,7 +30,6 @@ namespace CY.UI
 
         public void RegisterAllButtons()
         {
-            // 현재 씬에 활성화/비활성화된 모든 버튼을 수집
             Button[] allButtons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
             foreach (Button btn in allButtons)

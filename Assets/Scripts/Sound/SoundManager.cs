@@ -11,32 +11,45 @@ namespace CY.Vehicle
         [SerializeField] private AudioSource sfxSource;
         [SerializeField] private AudioSource accelLoopSource;
         [SerializeField] private AudioSource brakeLoopSource;
+        [SerializeField] private AudioSource miniGameLoopSource; 
 
         [Header("Audio Clips")]
         [SerializeField] private AudioClip accelClip;
         [SerializeField] private AudioClip brakeClip;
-        [SerializeField] private AudioClip uiClickClip; // 공용 버튼 클릭음
+        [SerializeField] private AudioClip uiClickClip; 
+        
+        [Header("Audio Clips - Minigame 1: Fuel")]
+        [SerializeField] private AudioClip fuelLoopClip;
+        [SerializeField] private AudioClip fuelSuccessClip;
+        [SerializeField] private AudioClip fuelFailClip;
+
+        [Header("Audio Clips - Minigame 2: Barricade (바리케이드)")]
+        [SerializeField] private AudioClip barricadeButtonClickClip;
+        [SerializeField] private AudioClip barricadeSuccessClip;
+        [SerializeField] private AudioClip barricadeFailClip;
+
+        [Header("Audio Clips - Minigame 3: RepairShop (차량 정비소)")]
+        [SerializeField] private AudioClip repairShopDrillingClip;
+        [SerializeField] private AudioClip repairShopPlateGrabClip;
+        [SerializeField] private AudioClip repairShopPlateDropClip;
+        [SerializeField] private AudioClip repairShopSuccessClip;
 
         [Header("Crash Clips (Random)")]
         [SerializeField] private AudioClip[] middleCrashClips;
         [SerializeField] private AudioClip[] hardCrashClips;
         
         [Header("BGM Clips")]
-        [SerializeField] private AudioClip lobbyBgm;             // 로비 BGM
-        [SerializeField] private AudioClip[] inGameBgms;         // 인게임 BGM 배열 (4개)
-        [SerializeField] private AudioClip gameClearBgm;         // 게임 클리어 BGM
-        [SerializeField] private AudioClip gameOverBgm;          // 게임 오버 BGM
+        [SerializeField] private AudioClip lobbyBgm;             
+        [SerializeField] private AudioClip[] inGameBgms;         
+        [SerializeField] private AudioClip gameClearBgm;         
+        [SerializeField] private AudioClip gameOverBgm;          
 
         private bool isPlayingInGameBgmList = false;
         private int lastInGameBgmIndex = -1;
-        
-        // [추가] 동시 입력 중인 플레이어 수 카운팅 변수
-        private int activeAccelCount = 0;
-        private int activeBrakeCount = 0;
+        private bool isNetworkSubscribed = false; // [안전장치 추가]
 
         private void Awake()
         {
-            // 중복 방지 및 씬 이동 시 유지 처리
             if (Instance == null)
             {
                 Instance = this;
@@ -44,107 +57,122 @@ namespace CY.Vehicle
             }
             else
             {
-                Destroy(gameObject); // 이미 존재하면 새로 생긴 것은 파괴
+                Destroy(gameObject); 
                 return;
             }
 
             if (accelLoopSource != null) accelLoopSource.loop = true;
             if (brakeLoopSource != null) brakeLoopSource.loop = true;
+            if (miniGameLoopSource != null) miniGameLoopSource.loop = true;
         }
         
         private void Update()
         {
-            // 인게임 BGM 모드일 때, 재생 중인 곡이 끝나면 다음 곡을 랜덤 재생
-            if (isPlayingInGameBgmList && bgmSource != null)
+            if (isPlayingInGameBgmList && bgmSource != null && !bgmSource.isPlaying)
             {
-                if (!bgmSource.isPlaying)
-                {
-                    PlayNextRandomInGameBgm();
-                }
+                PlayNextRandomInGameBgm();
+            }
+
+            // 네트워크 세션이 준비되면 안전하게 구독 (DontDestroyOnLoad 보호)
+            if (!isNetworkSubscribed && CY.Network.NetworkSession.Instance != null)
+            {
+                CY.Network.NetworkSession.Instance.MessageReceived += OnNetworkMessageReceived;
+                isNetworkSubscribed = true;
             }
         }
 
         private void OnEnable()
         {
-            // static 이벤트 구독
-            Vehicle.OnAccelStart += StartAccelSound;
-            Vehicle.OnAccelStop += StopAccelSound;
-            Vehicle.OnBrakeStart += StartBrakeSound;
-            Vehicle.OnBrakeStop += StopBrakeSound;
-
+            VehicleSoundEvents.AccelChanged += HandleAccel;
+            VehicleSoundEvents.BrakeChanged += HandleBrake;
             VehicleDamage.OnMiddleCrash += PlayMiddleCrashSound;
             VehicleDamage.OnHardCrash += PlayHardCrashSound;
+            
+            // 클라이언트(비호스트)용 네트워크 충돌 이벤트 구독
+            CY.Network.RoundStateSync.OnNetworkCrash += PlayNetworkCrashSound;
         }
 
         private void OnDisable()
         {
-            // static 이벤트 해제
-            Vehicle.OnAccelStart -= StartAccelSound;
-            Vehicle.OnAccelStop -= StopAccelSound;
-            Vehicle.OnBrakeStart -= StartBrakeSound;
-            Vehicle.OnBrakeStop -= StopBrakeSound;
-
+            VehicleSoundEvents.AccelChanged -= HandleAccel;
+            VehicleSoundEvents.BrakeChanged -= HandleBrake;
             VehicleDamage.OnMiddleCrash -= PlayMiddleCrashSound;
             VehicleDamage.OnHardCrash -= PlayHardCrashSound;
+            
+            // 구독 해제
+            CY.Network.RoundStateSync.OnNetworkCrash -= PlayNetworkCrashSound;
+        }
+        
+        // 네트워크로 전달받은 충돌 처리
+        private void PlayNetworkCrashSound(bool isHard)
+        {
+            if (isHard) PlayHardCrashSound();
+            else PlayMiddleCrashSound();
+        }
+
+        private void OnDestroy()
+        {
+            if (isNetworkSubscribed && CY.Network.NetworkSession.Instance != null)
+            {
+                CY.Network.NetworkSession.Instance.MessageReceived -= OnNetworkMessageReceived;
+                isNetworkSubscribed = false;
+            }
+        }
+
+        // SON 파싱을 안전하게 도와줄 작은 클래스 (메서드 바로 위에 추가)
+        private class NetCrashMsg { public bool isHard; }
+
+        // [수정] 충돌음과 BGM 패킷을 모두 안전하게 수신하는 메서드
+        private void OnNetworkMessageReceived(string type, string json)
+        {
+            // 호스트는 이미 자기 화면에서 다 재생했으므로 튕겨낸다
+            if (Network.Session.IsHost) return; 
+
+            if (type == "vehicle_crash")
+            {
+                // 띄어쓰기 오류가 없도록 완벽하게 JSON으로 변환해서 읽는다
+                var msg = Newtonsoft.Json.JsonConvert.DeserializeObject<NetCrashMsg>(json);
+                if (msg != null && msg.isHard)
+                {
+                    PlayHardCrashSound();
+                }
+                else
+                {
+                    PlayMiddleCrashSound();
+                }
+            }
+            else if (type == "round_success")
+            {
+                // 비호스트 화면에도 게임 클리어 BGM 재생
+                PlayGameClearBgm();
+            }
+            else if (type == "round_failed")
+            {
+                // 비호스트 화면에도 게임 오버 BGM 재생 (인게임 BGM을 자동으로 덮어씀)
+                PlayGameOverBgm();
+            }
         }
         
         // --- BGM 제어 메서드 ---
 
-        /// <summary> 로비 BGM 재생 (반복 재생) </summary>
-        public void PlayLobbyBgm()
-        {
-            isPlayingInGameBgmList = false;
-            PlayBgmSingle(lobbyBgm, isLoop: true);
-        }
+        public void PlayLobbyBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(lobbyBgm, isLoop: true); }
+        public void PlayGameClearBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(gameClearBgm, isLoop: false); }
+        public void PlayGameOverBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(gameOverBgm, isLoop: false); }
+        public void StopBgm() { isPlayingInGameBgmList = false; if (bgmSource != null) bgmSource.Stop(); }
 
-        /// <summary> 인게임 BGM 랜덤 순환 재생 시작 </summary>
         public void PlayInGameBgm()
         {
-            // 1. 기존 재생 중이던 로비 BGM을 무조건 먼저 강제 정지
-            if (bgmSource != null)
-            {
-                bgmSource.Stop();
-            }
-
-            // 2. 인게임 BGM 배열 예외 검사
-            if (inGameBgms == null || inGameBgms.Length == 0)
-            {
-                Debug.LogError("[SoundManager] InGameBgms 배열이 비어있습니다! SoundManager 인스펙터에서 4개의 BGM을 등록했는지 확인하세요.");
-                return;
-            }
+            if (bgmSource != null) bgmSource.Stop();
+            if (inGameBgms == null || inGameBgms.Length == 0) return;
             
             isPlayingInGameBgmList = true;
             lastInGameBgmIndex = -1;
             PlayNextRandomInGameBgm();
         }
 
-        /// <summary> 게임 클리어 BGM 재생 </summary>
-        public void PlayGameClearBgm()
-        {
-            isPlayingInGameBgmList = false;
-            PlayBgmSingle(gameClearBgm, isLoop: false);
-        }
-
-        /// <summary> 게임 오버 BGM 재생 </summary>
-        public void PlayGameOverBgm()
-        {
-            isPlayingInGameBgmList = false;
-            PlayBgmSingle(gameOverBgm, isLoop: false);
-        }
-
-        /// <summary> BGM 정지 </summary>
-        public void StopBgm()
-        {
-            isPlayingInGameBgmList = false;
-            if (bgmSource != null) bgmSource.Stop();
-        }
-
-        // --- 내부 BGM 처리 로직 ---
-
         private void PlayBgmSingle(AudioClip clip, bool isLoop)
         {
             if (bgmSource == null || clip == null) return;
-
             bgmSource.Stop();
             bgmSource.clip = clip;
             bgmSource.loop = isLoop;
@@ -154,71 +182,108 @@ namespace CY.Vehicle
         private void PlayNextRandomInGameBgm()
         {
             if (inGameBgms == null || inGameBgms.Length == 0 || bgmSource == null) return;
-
             int randomIndex = Random.Range(0, inGameBgms.Length);
-
-            // 2개 이상일 때 이전 곡 연속 재생 방지
-            if (inGameBgms.Length > 1 && randomIndex == lastInGameBgmIndex)
-            {
-                randomIndex = (randomIndex + 1) % inGameBgms.Length;
-            }
-
+            if (inGameBgms.Length > 1 && randomIndex == lastInGameBgmIndex) randomIndex = (randomIndex + 1) % inGameBgms.Length;
             lastInGameBgmIndex = randomIndex;
-
             bgmSource.Stop();
             bgmSource.clip = inGameBgms[randomIndex];
-            bgmSource.loop = false; // 끝나고 다음 곡을 틀기 위해 loop는 false
+            bgmSource.loop = false; 
             bgmSource.Play();
         }
 
-        // --- 공용 UI 클릭음 ---
-        public void PlayUIClick()
+        public void PlayUIClick() { if (uiClickClip != null && sfxSource != null) sfxSource.PlayOneShot(uiClickClip); }
+        
+        public void StartMiniGameLoop(AudioClip clip)
         {
-            if (uiClickClip != null && sfxSource != null)
+            if (miniGameLoopSource == null || clip == null) return;
+            if (miniGameLoopSource.clip != clip) { miniGameLoopSource.clip = clip; miniGameLoopSource.time = 0f; }
+            if (!miniGameLoopSource.isPlaying) { miniGameLoopSource.time = 0f; miniGameLoopSource.Play(); }
+        }
+
+        // 주유소 미니게임 호출 메서드
+        public void StopMiniGameLoop() { if (miniGameLoopSource != null && miniGameLoopSource.isPlaying) miniGameLoopSource.Stop(); }
+        public void StartFuelLoopSound() => StartMiniGameLoop(fuelLoopClip);
+        public void StopFuelLoopSound() => StopMiniGameLoop();
+        public void PlayFuelSuccessSound() { StopMiniGameLoop(); 
+            if (fuelSuccessClip != null && sfxSource != null) sfxSource.PlayOneShot(fuelSuccessClip); }
+        public void PlayFuelFailSound() { StopMiniGameLoop(); 
+            if (fuelFailClip != null && sfxSource != null) sfxSource.PlayOneShot(fuelFailClip); }
+        
+        // --- 2. 바리케이드 미니게임 전용 호출 메서드 ---
+
+        /// <summary> 바리케이드 버튼 클릭 효과음 </summary>
+        public void PlayBarricadeButtonClickSound()
+        {
+            if (barricadeButtonClickClip != null && sfxSource != null)
             {
-                sfxSource.PlayOneShot(uiClickClip);
+                sfxSource.PlayOneShot(barricadeButtonClickClip);
             }
         }
+
+        /// <summary> 바리케이드 해체 성공 효과음 </summary>
+        public void PlayBarricadeSuccessSound()
+        {
+            if (barricadeSuccessClip != null && sfxSource != null)
+            {
+                sfxSource.PlayOneShot(barricadeSuccessClip);
+            }
+        }
+
+        /// <summary> 바리케이드 해체 실패 효과음 </summary>
+        public void PlayBarricadeFailSound()
+        {
+            if (barricadeFailClip != null && sfxSource != null)
+            {
+                sfxSource.PlayOneShot(barricadeFailClip);
+            }
+        }
+        
+        // 3. 번호판 교체 미니 게임 호출 메서드
+
+        public void PlayRepairShopDrillingSound()
+        {
+            if (repairShopDrillingClip != null && sfxSource != null)
+                sfxSource.PlayOneShot(repairShopDrillingClip);
+        }
+
+        public void PlayRepairShopPlateGrabSound()
+        {
+            if (repairShopPlateGrabClip != null && sfxSource != null)
+                sfxSource.PlayOneShot(repairShopPlateGrabClip);
+        }
+
+        public void PlayRepairShopPlateDropSound()
+        {
+            if (repairShopPlateDropClip != null && sfxSource != null)
+                sfxSource.PlayOneShot(repairShopPlateDropClip);
+        }
+
+        public void PlayRepairShopSuccessSound()
+        {
+            if (repairShopSuccessClip != null && sfxSource != null)
+                sfxSource.PlayOneShot(repairShopSuccessClip);
+        }
+        
+        
+
+        private void HandleAccel(bool on) { if (on) StartAccelSound(); else StopAccelSound(); }
+        private void HandleBrake(bool on) { if (on) StartBrakeSound(); else StopBrakeSound(); }
 
         private void StartAccelSound()
         {
             if (accelLoopSource == null || accelClip == null) return;
             if (accelLoopSource.clip != accelClip) accelLoopSource.clip = accelClip;
-            
-            // 1명이라도 액셀을 누르고 있으면 소리 재생
             if (!accelLoopSource.isPlaying) accelLoopSource.Play();
         }
-
-        private void StopAccelSound()
-        {
-            activeAccelCount = Mathf.Max(0, activeAccelCount - 1); // 카운트 차감
-
-            // 누르고 있는 플레이어가 0명이 되었을 때만 최종 정지
-            if (activeAccelCount == 0 && accelLoopSource != null)
-            {
-                accelLoopSource.Stop();
-            }
-        }
+        private void StopAccelSound() { if (accelLoopSource != null) accelLoopSource.Stop(); }
 
         private void StartBrakeSound()
         {
             if (brakeLoopSource == null || brakeClip == null) return;
             if (brakeLoopSource.clip != brakeClip) brakeLoopSource.clip = brakeClip;
-            
-            // 1명이라도 브레이크를 누르고 있으면 소리 재생
             if (!brakeLoopSource.isPlaying) brakeLoopSource.Play();
         }
-
-        private void StopBrakeSound()
-        {
-            activeBrakeCount = Mathf.Max(0, activeBrakeCount - 1); // 카운트 차감
-
-            // 누르고 있는 플레이어가 0명이 되었을 때만 최종 정지
-            if (activeBrakeCount == 0 && brakeLoopSource != null)
-            {
-                brakeLoopSource.Stop();
-            }
-        }
+        private void StopBrakeSound() { if (brakeLoopSource != null) brakeLoopSource.Stop(); }
 
         private void PlayMiddleCrashSound() => PlayRandomClip(middleCrashClips);
         private void PlayHardCrashSound() => PlayRandomClip(hardCrashClips);
@@ -226,14 +291,9 @@ namespace CY.Vehicle
         private void PlayRandomClip(AudioClip[] clips)
         {
             if (clips == null || clips.Length == 0 || sfxSource == null) return;
-
             int randomIndex = Random.Range(0, clips.Length);
             AudioClip selectedClip = clips[randomIndex];
-
-            if (selectedClip != null)
-            {
-                sfxSource.PlayOneShot(selectedClip);
-            }
+            if (selectedClip != null) sfxSource.PlayOneShot(selectedClip);
         }
     }
 }

@@ -96,6 +96,8 @@ public class ResultUI : MonoBehaviour
     
     public void OnRetryButtonClicked()
     {
+        CY.Vehicle.SoundManager.Instance?.PlayUIClick();
+
         if (Session.IsHost == false) return;
         
         NetworkSession session = NetworkSession.Instance;
@@ -106,6 +108,11 @@ public class ResultUI : MonoBehaviour
 
     public void OnQuitButtonClicked()
     {
+        // 게임 종료(로비로 이동) 버튼 클릭음
+        CY.Vehicle.SoundManager.Instance?.PlayUIClick();
+        
+        SceneManager.LoadScene("Lobby");
+        
         SceneManager.LoadScene("Lobby");
     }
 }

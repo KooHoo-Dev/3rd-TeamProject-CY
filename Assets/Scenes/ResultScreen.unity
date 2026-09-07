@@ -477,6 +477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CY.Vehicle.VehicleDamage
   maxDurability: 100
   ignoreSpeed: 3
+  hardCrashSpeedThreshold: 10
   damagePerSpeed: 4
   damagedThreshold: 0.4
   severeThreshold: 0.2
@@ -558,7 +559,6 @@ GameObject:
   - component: {fileID: 960931682}
   - component: {fileID: 960931681}
   - component: {fileID: 960931680}
-  - component: {fileID: 960931684}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged

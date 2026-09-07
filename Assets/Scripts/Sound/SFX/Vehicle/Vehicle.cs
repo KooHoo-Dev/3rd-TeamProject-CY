@@ -40,11 +40,13 @@ namespace CY.Vehicle
             if (input.Accel > 0f && !isAccelling)
             {
                 isAccelling = true;
+                Debug.Log("[SoundCheck] OnAccelStart 이벤트 발화!");
                 OnAccelStart?.Invoke();
             }
             else if (input.Accel <= 0f && isAccelling)
             {
                 isAccelling = false;
+                Debug.Log("[SoundCheck] OnAccelStop 이벤트 발화!");
                 OnAccelStop?.Invoke();
             }
 
@@ -53,11 +55,13 @@ namespace CY.Vehicle
             if (input.Brake > 0f && !isBraking)
             {
                 isBraking = true;
+                Debug.Log("[SoundCheck] OnBrakeStart 이벤트 발화!");
                 OnBrakeStart?.Invoke();
             }
             else if (input.Brake <= 0f && isBraking)
             {
                 isBraking = false;
+                Debug.Log("[SoundCheck] OnBrakeStop 이벤트 발화!");
                 OnBrakeStop?.Invoke();
             }
         }

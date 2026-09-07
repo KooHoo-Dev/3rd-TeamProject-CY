@@ -77,11 +77,17 @@ namespace CY.Minigame
 
                 fuelButtonRect.DOKill();
                 fuelButtonRect.DOScale(Vector3.one * 0.9f, 0.1f);
+                
+                // [소리] 주유 루프음 시작
+                CY.Vehicle.SoundManager.Instance?.StartFuelLoopSound();
             }
             else if (isPressed == false && isCurrentlyPressed)
             {
                 isCurrentlyPressed = false;
                 RetractNozzleButton();
+                
+                // [소리] 주유 루프음 멈춤
+                CY.Vehicle.SoundManager.Instance?.StopFuelLoopSound();
             }
         }
 
@@ -93,6 +99,7 @@ namespace CY.Minigame
         public void ApplyCompleted()
         {
             RetractNozzleButton();
+            
             ShowResultText("Success!", Color.green);
         }
 
@@ -105,6 +112,9 @@ namespace CY.Minigame
         public void ResetView()
         {
             StopAllCoroutines();
+            
+            // [소리] 뷰 리셋 시 주유음 정지
+            CY.Vehicle.SoundManager.Instance?.StopFuelLoopSound();
             
             gaugeFill.color = originalGaugeColor;
             gaugeFill.fillAmount = 0f;
@@ -132,6 +142,11 @@ namespace CY.Minigame
 
         private IEnumerator FailRoutine()
         {
+            // 실패 시점에 강제로 눌림 상태 해제 및 소리 정지
+            isCurrentlyPressed = false;
+            RetractNozzleButton();
+            CY.Vehicle.SoundManager.Instance?.StopFuelLoopSound();
+            
             gaugeFill.color = Color.red;
 
             ShowResultText("Fail!", Color.red);
@@ -155,7 +170,5 @@ namespace CY.Minigame
             resultText.transform.localScale = Vector3.zero;
             resultText.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.OutBack);
         }
-
-
     }
 }
