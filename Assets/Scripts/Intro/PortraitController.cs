@@ -34,5 +34,16 @@ namespace Intro
 
             yield return slot.Hide();
         }
+        
+        public void SetSpeaker(string speakerPositionId)
+        {
+            foreach (PortraitSlot slot in slots)
+            {
+                if (slot.IsVisible == false) continue;
+
+                bool isSpeaker = slot.PositionId == speakerPositionId;
+                slot.SetSpeaking(isSpeaker);
+            }
+        }
     }
 }

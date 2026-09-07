@@ -24,6 +24,7 @@ namespace Intro
         public string characterId;
         public string positionId;
         public bool hideAfter;
+        public bool shake;
         public string text;
     }
 }
