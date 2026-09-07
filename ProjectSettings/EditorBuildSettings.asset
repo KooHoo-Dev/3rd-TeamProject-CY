@@ -6,23 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScene.unity
+    guid: 4514c7130bd9403498d7f1166f98a350
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 6c149addc082bb043b257a43eb8e4908
+  - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/MiniGameTest.unity
-    guid: b6f85b0ba3f2489428a42e896a454374
-  - enabled: 1
-    path: Assets/Scenes/Vehicle_Sync_Test.unity
-    guid: 2d14073e21313124ab642c3e06137285
-  - enabled: 1
     path: Assets/Scenes/PlayTest.unity
     guid: 613b275cbeec387418939e0812303241
-  - enabled: 1
-    path: Assets/Scenes/Dev_VehicleMapTest.unity
-    guid: 57c7a8a5b00bc4047b29b7cbab6266f4
-  - enabled: 1
-    path: Assets/Map/Map.unity
-    guid: 915593724e28a224f8aede3f5df3603c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
