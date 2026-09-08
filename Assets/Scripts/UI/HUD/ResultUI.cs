@@ -65,21 +65,33 @@ public class ResultUI : MonoBehaviour
         float durabilityRatio = status.DurabilityRatio;
 
         remainTimeText.text =
-            $"남은 시간 : {remainingTime:0.#}초 / {roundTimer.Duration:0.#}초";
+            $"남은 시간 : {remainingTime:0}초";
 
         remainDurabilityText.text =
-            $"최종 내구도 : {durabilityRatio * vehicleDamage.MaxDurability:0.#}";
-
-        float timePercent = remainingTime / roundTimer.Duration * 100f;
-        float hpPercent = durabilityRatio * 100f;
+            $"최종 내구도 : {durabilityRatio * vehicleDamage.MaxDurability:0}%";
 
         int starCount = 0;
 
         if (isSuccess)
         {
-            if (timePercent >= 35f && hpPercent >= 65f) starCount = 3;
-            else if (timePercent >= 15f && hpPercent >= 35f) starCount = 2;
-            else starCount = 1;
+            float elapsedTime = roundTimer.Duration - remainingTime;
+
+            if (elapsedTime <= 300f) 
+            {
+                starCount = 3;
+            }
+            else if (elapsedTime <= 420f) 
+            {
+                starCount = 2;
+            }
+            else if (elapsedTime <= 600f) 
+            {
+                starCount = 1;
+            }
+            else 
+            {
+                starCount = 0;
+            }
         }
 
         for (int i = 0; i < starImages.Length; i++)
