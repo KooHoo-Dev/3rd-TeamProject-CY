@@ -3973,7 +3973,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1250891581107857433, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1460622424888676623, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: m_Name
@@ -6522,7 +6522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9634855e62934e7ea63edb7b0bfa9647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoundTimer
-  roundDuration: 1000
+  roundDuration: 1100
   onTimeExpired:
     m_PersistentCalls:
       m_Calls:
