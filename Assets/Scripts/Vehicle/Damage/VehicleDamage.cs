@@ -20,7 +20,11 @@ namespace CY.Vehicle
         [Header("충돌 데미지")] 
         [SerializeField] private float ignoreSpeed = 3f;                   
         [SerializeField] private float hardCrashSpeedThreshold = 10f;       
-        [SerializeField] private float damagePerSpeed = 4f;                
+        [SerializeField] private float damagePerSpeed = 4f;
+        [Tooltip("완전히 부서졌을 때의 감속. 클수록 빨리 선다")]
+        [SerializeField] private float wreckLinearDamping = 3f;
+        [Tooltip("한 번 깎인 뒤 이 시간 동안은 다시 안 깎인다")]
+        [SerializeField] private float damageCooldown = 0.5f;
 
         [Header("속도 페널티 (3단계)")] 
         [SerializeField, Range(0f, 1f)] private float damagedThreshold = 0.4f;
@@ -36,12 +40,17 @@ namespace CY.Vehicle
         public bool IsDestroyed => durability <= 0f;
 
         private float durability;
+        private float nextDamageAt;
         private VehicleController controller;
         private RoundManager roundManager;
+        private Rigidbody2D body;
+        private float baseLinearDamping;
 
         private void Awake()
         {
             controller = GetComponent<VehicleController>();
+            body = GetComponent<Rigidbody2D>();
+            baseLinearDamping = body.linearDamping;
             ResetDurability();
         }
         
@@ -78,6 +87,8 @@ namespace CY.Vehicle
         public void ResetDurability()
         {
             durability = maxDurability;
+            controller.SetInputEnabled(true);
+            body.linearDamping = baseLinearDamping;
             ApplySpeedPenalty();
             onDurabilityChanged.Invoke(DurabilityRatio);
         }
@@ -88,6 +99,9 @@ namespace CY.Vehicle
     
             float impactSpeed = collision.relativeVelocity.magnitude;
             if (impactSpeed < ignoreSpeed) return;
+            // 잘게 쪼개진 콜라이더를 연달아 스쳐도 한 번만 친다
+            if (Time.time < nextDamageAt) return;
+            nextDamageAt = Time.time + damageCooldown;
     
             bool isHard = impactSpeed >= hardCrashSpeedThreshold;
 
@@ -109,6 +123,8 @@ namespace CY.Vehicle
 
             if (IsDestroyed)
             {
+                controller.SetInputEnabled(false);
+                body.linearDamping = wreckLinearDamping; // 감속
                 roundManager?.FailRound();
             }
         }
