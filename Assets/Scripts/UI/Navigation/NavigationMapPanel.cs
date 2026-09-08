@@ -23,7 +23,7 @@ namespace CY.UI
         [SerializeField] private Camera mapCamera;
 
         /// <summary>내비게이션 담당만 지도를 연다. 역할 배정 전(로컬 테스트)에는 누구나 열린다.</summary>
-        public bool CanUse => Session.MyRole == VehicleRole.Gear;
+        public bool CanUse => Session.MyRole == VehicleRole.Brake;
 
         public bool IsOpen => isOpen;
 

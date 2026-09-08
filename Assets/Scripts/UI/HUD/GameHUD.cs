@@ -100,8 +100,8 @@ namespace CY.UI
         {
             VehicleRole.Handle => "핸들",
             VehicleRole.Accel => "액셀",
-            VehicleRole.Brake => "브레이크",
-            VehicleRole.Gear => "기어·네이게이션",
+            VehicleRole.Brake => "브레이크·네이게이션",
+            VehicleRole.Gear => "기어",
             _ => "대기중",
         };
 
