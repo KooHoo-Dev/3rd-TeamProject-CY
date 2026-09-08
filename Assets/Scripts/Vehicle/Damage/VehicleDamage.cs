@@ -15,6 +15,7 @@ namespace CY.Vehicle
     {
         public static event Action OnMiddleCrash;
         public static event Action OnHardCrash;
+        public event Action Destroyed;
         
         [Header("내구도")] [SerializeField] private float maxDurability = 100f;
         [Header("충돌 데미지")] 
@@ -109,6 +110,7 @@ namespace CY.Vehicle
 
             if (IsDestroyed)
             {
+                Destroyed?.Invoke();
                 roundManager?.FailRound();
             }
         }
