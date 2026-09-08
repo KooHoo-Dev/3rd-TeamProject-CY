@@ -24,6 +24,9 @@ namespace CY.Network
         [Tooltip("이만큼 벌어지면 보간 없이 즉시 옮긴다. 재시작 리스폰이나 통신 지연으로 크게 벌어졌을 때.")]
         [SerializeField] private float snapDistance = 5f;
         
+        [SerializeField] private Transform startPoint;
+        private int expectedSceneVersion;
+        
         private NetworkSession session;
         private Vector2 targetPosition;
         private float targetRotation;
@@ -46,8 +49,15 @@ namespace CY.Network
         private void OnEnable()
         {
             session = NetworkSession.Instance;
+            
+            expectedSceneVersion = session != null ? session.CurrentSceneVersion : 0;
+            
+            hasSnapshot = false;
+            smoothVelocity = Vector2.zero;
+            
             if (session != null) session.MessageReceived += HandleMessage;
             if (roleAssigner != null) roleAssigner.RolesChanged += OnRolesChanged;
+            MoveToStartPointIfClient();
         }
 
         private void OnDisable()
@@ -86,12 +96,38 @@ namespace CY.Network
             VehicleStateMessage message = JsonConvert.DeserializeObject<VehicleStateMessage>(json);
             if (message == null) return;
             
+            if (message.SceneVersion != expectedSceneVersion) return;
+            
             ApplySnapshot(new VehicleSnapshot
             {
                 Position = new Vector2(message.PositionX, message.PositionY),
                 Rotation = message.Rotation,
                 Velocity = new Vector2(message.VelocityX, message.VelocityY)
             });
+        }
+        
+        private void MoveToStartPointIfClient()
+        {
+            if (Session.IsHost) return;
+            if (startPoint == null) return;
+
+            targetPosition = startPoint.position;
+            targetRotation = startPoint.eulerAngles.z;
+            smoothVelocity = Vector2.zero;
+
+            if (body != null)
+            {
+                body.position = targetPosition;
+                body.rotation = targetRotation;
+                body.linearVelocity = Vector2.zero;
+                body.angularVelocity = 0f;
+            }
+            else
+            {
+                transform.SetPositionAndRotation(
+                    targetPosition,
+                    Quaternion.Euler(0f, 0f, targetRotation));
+            }
         }
     }
 }
