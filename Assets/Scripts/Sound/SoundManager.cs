@@ -1,3 +1,4 @@
+using CY.Network;
 using UnityEngine;
 
 namespace CY.Vehicle
@@ -5,7 +6,8 @@ namespace CY.Vehicle
     public class SoundManager : MonoBehaviour
     {
         public static SoundManager Instance { get; private set; }
-
+        private NetworkSession networkSession;
+        
         [Header("Audio Sources")]
         [SerializeField] private AudioSource bgmSource;
         [SerializeField] private AudioSource sfxSource;
@@ -75,12 +77,7 @@ namespace CY.Vehicle
                 PlayNextRandomInGameBgm();
             }
 
-            // 네트워크 세션이 준비되면 안전하게 구독 (DontDestroyOnLoad 보호)
-            if (!isNetworkSubscribed && CY.Network.NetworkSession.Instance != null)
-            {
-                CY.Network.NetworkSession.Instance.MessageReceived += OnNetworkMessageReceived;
-                isNetworkSubscribed = true;
-            }
+            TrySubscribeNetworkSession();
         }
 
         private void OnEnable()
@@ -107,6 +104,20 @@ namespace CY.Vehicle
             CY.Network.RoundStateSync.OnNetworkCrash -= PlayNetworkCrashSound;
         }
         
+        private void TrySubscribeNetworkSession()
+        {
+            if (isNetworkSubscribed) return;
+
+            if (CY.Network.NetworkSession.IsInitialized == false) return;
+
+            networkSession = CY.Network.NetworkSession.Instance;
+
+            if (networkSession == null) return;
+
+            networkSession.MessageReceived += OnNetworkMessageReceived;
+            isNetworkSubscribed = true;
+        }
+        
         // 네트워크로 전달받은 충돌 처리
         private void PlayNetworkCrashSound(bool isHard)
         {
@@ -116,11 +127,13 @@ namespace CY.Vehicle
 
         private void OnDestroy()
         {
-            if (isNetworkSubscribed && CY.Network.NetworkSession.Instance != null)
+            if (isNetworkSubscribed && networkSession != null)
             {
-                CY.Network.NetworkSession.Instance.MessageReceived -= OnNetworkMessageReceived;
-                isNetworkSubscribed = false;
+                networkSession.MessageReceived -= OnNetworkMessageReceived;
             }
+
+            isNetworkSubscribed = false;
+            networkSession = null;
         }
 
         // SON 파싱을 안전하게 도와줄 작은 클래스 (메서드 바로 위에 추가)

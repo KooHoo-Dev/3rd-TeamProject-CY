@@ -17,7 +17,7 @@ namespace CY.Network
     {
         [Header("서버")]
         // 웹소켓 주소. http 가 아니라 ws로 시작.
-        [SerializeField] private string url = "ws://localhost:5000/room";
+        [SerializeField] private string url = "ws://34.50.63.204:5001/room";
         
          private string nickName = "";
          private string roomCode = "ABCD";
