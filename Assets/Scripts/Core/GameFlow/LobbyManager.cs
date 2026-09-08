@@ -30,7 +30,11 @@ namespace CY.Core
             // 클릭하자마자 최우선으로 로비 BGM을 즉시 정지
             if (SoundManager.Instance != null)
             {
-                SoundManager.Instance.StopBgm();
+                SoundManager.Instance.PlayUIClick();
+                
+                // 로비 BGM을 강제로 끄지 않고, 튜토리얼 BGM을 틀라고 명령
+                // (PlayTutorialBgm 안에서 기존 BGM을 알아서 교체)
+                SoundManager.Instance.PlayTutorialBgm();
             }
             
             if (roomClient == null)
