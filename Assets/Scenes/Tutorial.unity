@@ -934,6 +934,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1169654532}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &384763403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 384763407}
+  - component: {fileID: 384763406}
+  - component: {fileID: 384763405}
+  - component: {fileID: 384763404}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &384763404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384763403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0076e6f2bc5b4cc096e60154944b22b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.RoundStateSync
+  hostStatus: {fileID: 384763406}
+  networkStatus: {fileID: 384763405}
+  sendPerSecond: 5
+  durabilityEpsilon: 0.001
+--- !u!114 &384763405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384763403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd113d5f766ca4672b129ed30c1285ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Network.NetworkRoundStatus
+--- !u!114 &384763406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384763403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab6af994f8ac4f88a50d2f370478b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Core.HostRoundStatus
+  timer: {fileID: 0}
+  roundManager: {fileID: 0}
+  damage: {fileID: 1780331059}
+  controller: {fileID: 1780331058}
+--- !u!4 &384763407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384763403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &417609141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,6 +1848,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1250891581107857433, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1460622424888676623, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: m_Name
       value: Vehicle
@@ -1999,6 +2081,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6386414477260155612, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
   m_PrefabInstance: {fileID: 1079342929}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1780331058 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1816095486014640178, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+  m_PrefabInstance: {fileID: 1079342929}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a7d1c5c76824a3d82a3e6db3fb01fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleController
+--- !u!114 &1780331059 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5365187702399678965, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+  m_PrefabInstance: {fileID: 1079342929}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9c170d74a0420e8992e6fb1fd73535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleDamage
 --- !u!1 &1786963965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,3 +2379,4 @@ SceneRoots:
   - {fileID: 417609145}
   - {fileID: 1002622122}
   - {fileID: 972777280}
+  - {fileID: 384763407}
