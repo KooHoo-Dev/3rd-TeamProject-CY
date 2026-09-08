@@ -55,7 +55,7 @@ namespace CY.Minigame
 
         private Vector2 GetHiddenPosition(RectTransform panel)
         {
-            return new Vector2(panel.rect.width + 10f, 0f);
+            return new Vector2(panel.rect.width + 10f, panel.anchoredPosition.y);
         }
         
         public void SetCurrentMiniGameType(string missionType)
@@ -83,7 +83,7 @@ namespace CY.Minigame
         
         public void ShowMinigameUI()
         {
-            currentMiniGamePanel.DOAnchorPos(visiblePositions[currentPanelIndex], slideDuration).SetEase(Ease.OutQuad)
+            currentMiniGamePanel.DOAnchorPos(visiblePositions[currentPanelIndex],slideDuration, snapping: true).SetEase(Ease.OutQuad)
                 .OnComplete(() => StartCoroutine(ShowExplanationRoutine())); 
         }
     
@@ -114,7 +114,8 @@ namespace CY.Minigame
     
         public void HideMinigameUI()
         {
-            currentMiniGamePanel.DOAnchorPos(GetHiddenPosition(currentMiniGamePanel), slideDuration).SetEase(Ease.InQuad);
+            currentMiniGamePanel.DOAnchorPos(GetHiddenPosition(currentMiniGamePanel), slideDuration , snapping: true)
+                .SetEase(Ease.InQuad);
         }
     }
 }

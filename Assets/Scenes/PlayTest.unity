@@ -4012,13 +4012,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1816095486014640178, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: maxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816095486014640178, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: turnRate
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816095486014640178, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: enginePower
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 6057686804518454704, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
-      propertyPath: startPoint
-      value: 
-      objectReference: {fileID: 1600064668}
+    - target: {fileID: 5365187702399678965, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: damageCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365187702399678965, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: damagePerSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6386414477260155612, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24
@@ -6510,7 +6522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9634855e62934e7ea63edb7b0bfa9647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoundTimer
-  roundDuration: 300
+  roundDuration: 1100
   onTimeExpired:
     m_PersistentCalls:
       m_Calls:
