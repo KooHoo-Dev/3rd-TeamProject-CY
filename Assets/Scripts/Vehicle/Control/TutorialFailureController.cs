@@ -22,6 +22,12 @@ namespace CY.Vehicle
             if (retryButton != null)
                 retryButton.gameObject.SetActive(false);
         }
+        
+        private void Start()
+        {
+            // 4명 모두 튜토리얼 씬에 들어오자마자 각자의 컴퓨터에서 튜토리얼 음악을 틉니다
+            CY.Vehicle.SoundManager.Instance?.PlayTutorialBgm();
+        }
 
         private void OnEnable()
         {
@@ -78,6 +84,8 @@ namespace CY.Vehicle
         // RestartButton의 On Click()에 연결할 메서드
         public void OnRetryButtonClicked()
         {
+            CY.Vehicle.SoundManager.Instance?.PlayUIClick();
+            
             if (tutorialFailed == false) return;
             if (Session.IsHost == false) return;
 
