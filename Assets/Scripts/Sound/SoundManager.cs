@@ -16,7 +16,8 @@ namespace CY.Vehicle
         [Header("Audio Clips")]
         [SerializeField] private AudioClip accelClip;
         [SerializeField] private AudioClip brakeClip;
-        [SerializeField] private AudioClip uiClickClip; 
+        [SerializeField] private AudioClip uiClickClip;
+        [SerializeField] private AudioClip gearShiftClip;
         
         [Header("Audio Clips - Minigame 1: Fuel")]
         [SerializeField] private AudioClip fuelLoopClip;
@@ -39,6 +40,7 @@ namespace CY.Vehicle
         [SerializeField] private AudioClip[] hardCrashClips;
         
         [Header("BGM Clips")]
+        [SerializeField] private AudioClip titleBgm; 
         [SerializeField] private AudioClip lobbyBgm;             
         [SerializeField] private AudioClip[] inGameBgms;         
         [SerializeField] private AudioClip gameClearBgm;         
@@ -85,6 +87,7 @@ namespace CY.Vehicle
         {
             VehicleSoundEvents.AccelChanged += HandleAccel;
             VehicleSoundEvents.BrakeChanged += HandleBrake;
+            VehicleSoundEvents.GearChanged += HandleGearChanged;
             VehicleDamage.OnMiddleCrash += PlayMiddleCrashSound;
             VehicleDamage.OnHardCrash += PlayHardCrashSound;
             
@@ -96,6 +99,7 @@ namespace CY.Vehicle
         {
             VehicleSoundEvents.AccelChanged -= HandleAccel;
             VehicleSoundEvents.BrakeChanged -= HandleBrake;
+            VehicleSoundEvents.GearChanged -= HandleGearChanged;
             VehicleDamage.OnMiddleCrash -= PlayMiddleCrashSound;
             VehicleDamage.OnHardCrash -= PlayHardCrashSound;
             
@@ -155,6 +159,11 @@ namespace CY.Vehicle
         
         // --- BGM 제어 메서드 ---
 
+        // 타이틀 BGM 재생
+        public void PlayTitleBgm()
+        {
+            if (titleBgm != null) PlayBgmSingle(titleBgm, true);
+        }
         public void PlayLobbyBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(lobbyBgm, isLoop: true); }
         public void PlayGameClearBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(gameClearBgm, isLoop: false); }
         public void PlayGameOverBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(gameOverBgm, isLoop: false); }
@@ -294,6 +303,14 @@ namespace CY.Vehicle
             int randomIndex = Random.Range(0, clips.Length);
             AudioClip selectedClip = clips[randomIndex];
             if (selectedClip != null) sfxSource.PlayOneShot(selectedClip);
+        }
+        
+        private void HandleGearChanged(Gear gear)
+        {
+            if (gearShiftClip != null && sfxSource != null)
+            {
+                sfxSource.PlayOneShot(gearShiftClip);
+            }
         }
     }
 }
