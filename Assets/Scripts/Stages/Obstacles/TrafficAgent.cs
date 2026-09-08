@@ -1,3 +1,4 @@
+using CY.Network;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,6 +7,10 @@ namespace CY.Stages
     [RequireComponent(typeof(Rigidbody2D))]
     public class TrafficAgent : MonoBehaviour
     {
+        [Header("네트워크")]
+        [SerializeField] private float networkPositionSmoothTime = 0.08f;
+        [SerializeField] private float networkRotationSmoothSpeed = 720f;
+        
         [Header("경로")] 
         [SerializeField] private ObstaclePath path;
         [SerializeField] private float speed = 6f;
@@ -37,6 +42,13 @@ namespace CY.Stages
         private int index;
         private int direction = 1;
         
+        private Vector2 networkTargetPosition;
+        private float networkTargetRotation;
+        private Vector2 networkSmoothVelocity;
+        private bool hasNetworkState;
+
+        public string NetworkId => gameObject.name;
+        
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -65,8 +77,28 @@ namespace CY.Stages
             if (first.sqrMagnitude > 0.001f) heading = first.normalized;
         }
 
+        public void ApplyNetworkState(Vector2 position, float rotation)
+        {
+            if (hasNetworkState == false)
+            {
+                rb.position = position;
+                rb.rotation = rotation;
+                networkSmoothVelocity = Vector2.zero;
+            }
+
+            networkTargetPosition = position;
+            networkTargetRotation = rotation;
+            hasNetworkState = true;
+        }
+        
         private void FixedUpdate()
         {
+            if (Session.IsHost == false)
+            {
+                MoveFromNetworkState();
+                return;
+            }
+            
             Vector2 position = rb.position;
             Vector2 target = path.PointAt(index);
 
@@ -93,6 +125,28 @@ namespace CY.Stages
             }
         }
 
+        private void MoveFromNetworkState()
+        {
+            if (hasNetworkState == false)
+                return;
+
+            Vector2 position = Vector2.SmoothDamp(
+                rb.position,
+                networkTargetPosition,
+                ref networkSmoothVelocity,
+                networkPositionSmoothTime,
+                Mathf.Infinity,
+                Time.fixedDeltaTime);
+
+            float rotation = Mathf.MoveTowardsAngle(
+                rb.rotation,
+                networkTargetRotation,
+                networkRotationSmoothSpeed * Time.fixedDeltaTime);
+
+            rb.MovePosition(position);
+            rb.MoveRotation(rotation);
+        }
+        
         /// <summary>
         /// 앞의 정지 기물에서 멀어지는 방향을 구한다. Rigidbody2D 가 없는 콜라이더가 정지 기물임.
         /// </summary>

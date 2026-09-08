@@ -288,6 +288,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 819663056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &72156267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 72156269}
+  - component: {fileID: 72156268}
+  m_Layer: 0
+  m_Name: TrafficStateSync
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &72156268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72156267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc2dd1cb0e948eb87e438b9b673daae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficStateSync
+  sendPerSecond: 10
+--- !u!4 &72156269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72156267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &80342199
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,6 +931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 1375472917}
   speed: 2
   arriveRadius: 1.5
@@ -1141,6 +1188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 663592613}
   speed: 3
   arriveRadius: 1.5
@@ -1730,6 +1779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 1643685953}
   speed: 1.5
   arriveRadius: 1.5
@@ -1879,6 +1930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 663592613}
   speed: 3
   arriveRadius: 1.5
@@ -3573,6 +3626,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 663592613}
   speed: 3
   arriveRadius: 1.5
@@ -3640,6 +3695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 663592613}
   speed: 3
   arriveRadius: 1.5
@@ -3973,7 +4030,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1250891581107857433, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: mode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1460622424888676623, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: m_Name
@@ -4155,6 +4212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 1621798540}
   speed: 4
   arriveRadius: 1.5
@@ -4662,6 +4721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 819663055}
   speed: 6
   arriveRadius: 1.5
@@ -5186,6 +5247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 504773048}
   speed: 2
   arriveRadius: 1.5
@@ -6522,22 +6585,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9634855e62934e7ea63edb7b0bfa9647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoundTimer
-  roundDuration: 1100
-  onTimeExpired:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1656292727}
-        m_TargetAssemblyTypeName: RoundManager, Assembly-CSharp
-        m_MethodName: FailRound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &1312829344
 Transform:
   m_ObjectHideFlags: 0
@@ -7224,6 +7271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 663592613}
   speed: 3
   arriveRadius: 1.5
@@ -7311,6 +7360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 819663055}
   speed: 4.5
   arriveRadius: 1.5
@@ -7367,6 +7418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 1550524553}
   speed: 4
   arriveRadius: 1.5
@@ -7516,6 +7569,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 663592613}
   speed: 3
   arriveRadius: 1.5
@@ -8247,6 +8302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc76657a86ab44980608eaaabd2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
+  networkPositionSmoothTime: 0.08
+  networkRotationSmoothSpeed: 720
   path: {fileID: 663592613}
   speed: 3
   arriveRadius: 1.5
@@ -9815,7 +9872,7 @@ SceneRoots:
   - {fileID: 104189751}
   - {fileID: 495488320}
   - {fileID: 879808666}
-  - {fileID: 1202808973}
+  - {fileID: 72156269}
   - {fileID: 101307425}
   - {fileID: 94732421}
   - {fileID: 353826353}
@@ -9829,3 +9886,4 @@ SceneRoots:
   - {fileID: 1550524552}
   - {fileID: 504773047}
   - {fileID: 2110166030}
+  - {fileID: 1202808973}
