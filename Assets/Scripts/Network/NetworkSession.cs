@@ -31,6 +31,8 @@ namespace CY.Network
              && socket.State == WebSocketState.Open 
              && Me != null;
          
+         public int CurrentSceneVersion { get; private set; }
+         
          private ClientWebSocket socket;
          private readonly SemaphoreSlim sendLock = new SemaphoreSlim(1, 1);
          
@@ -171,7 +173,6 @@ namespace CY.Network
          private void OnSceneChange(SceneChangeMessage message)
          {
              if (message == null || string.IsNullOrEmpty(message.SceneName)) return;
-             
              if (IsConnected == false)
              {
                  Debug.LogWarning(
@@ -179,10 +180,10 @@ namespace CY.Network
                      $"socket={socket?.State}, me={Me?.Id ?? "null"}");
                  return;
              }
-             
              // Build Setting에 등록되지 않은 씬의 경우
              if (Application.CanStreamedLevelBeLoaded(message.SceneName) == false) return;
 
+             CurrentSceneVersion = message.SceneVersion;
              SceneManager.LoadScene(message.SceneName);
          }
 
