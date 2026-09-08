@@ -109,7 +109,7 @@ namespace CY.UI
         {
             if (timeText == null) return;
         
-            int total = Mathf.Max(0, Mathf.CeilToInt(s.RemainingTime));
+            int total = Mathf.FloorToInt(s.ElapsedTime);
             timeText.text = $"{total / 60:00}:{total % 60:00}";
         }
 

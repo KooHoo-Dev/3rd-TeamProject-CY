@@ -2028,6 +2028,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1816095486014640178, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: maxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816095486014640178, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: turnRate
       value: 120
       objectReference: {fileID: 0}

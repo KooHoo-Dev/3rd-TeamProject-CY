@@ -178,7 +178,7 @@ namespace CY.Core
                     SoundManager.Instance.PlayGameClearBgm();
                 
                 onRoundSucceeded.Invoke();
-                Debug.Log($"[Round] 성공! 남은 시간 {timer.RemainingTime:0.#}초 / 걸린 시간 {timer.ElapsedTime:0.#}초", this);
+                Debug.Log($"[Round] 성공! 소요 시간 {timer.ElapsedTime:0.#}초", this);
             }
             else
             {

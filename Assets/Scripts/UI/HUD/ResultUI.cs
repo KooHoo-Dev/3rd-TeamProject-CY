@@ -18,7 +18,6 @@ public class ResultUI : MonoBehaviour
     public Sprite fullStarSprite;
     public Sprite emptyStarSprite;
     
-    public RoundTimer roundTimer; 
     public VehicleDamage vehicleDamage;
     public HostRoundStatus hostStatus;
     public NetworkRoundStatus networkStatus;
@@ -61,16 +60,17 @@ public class ResultUI : MonoBehaviour
     {
         IRoundStatusProvider status = GetStatus();
 
-        float remainingTime = status.RemainingTime;
+        float elapsedTime = status.ElapsedTime;
         float durabilityRatio = status.DurabilityRatio;
 
         remainTimeText.text =
-            $"남은 시간 : {remainingTime:0.#}초 / {roundTimer.Duration:0.#}초";
-
+            $"소요 시간 : {elapsedTime:0.#}초";
+        
         remainDurabilityText.text =
             $"최종 내구도 : {durabilityRatio * vehicleDamage.MaxDurability:0.#}";
 
-        float timePercent = remainingTime / roundTimer.Duration * 100f;
+        // 임시
+        float timePercent = 0.0f;
         float hpPercent = durabilityRatio * 100f;
 
         int starCount = 0;
