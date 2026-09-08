@@ -4011,6 +4011,10 @@ PrefabInstance:
       propertyPath: enginePower
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6057686804518454704, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: startPoint
+      value: 
+      objectReference: {fileID: 1600064668}
     - target: {fileID: 6386414477260155612, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24
