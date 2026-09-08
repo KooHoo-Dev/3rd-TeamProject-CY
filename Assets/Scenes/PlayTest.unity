@@ -4011,6 +4011,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1816095486014640178, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: enginePower
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5365187702399678965, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: damageCooldown
       value: 1
