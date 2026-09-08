@@ -100,13 +100,13 @@ namespace CY.Minigame
         {
             RetractNozzleButton();
             
-            ShowResultText("Success!", Color.green);
+            ShowResultText("미션 성공!", Color.green);
         }
 
         public void ApplyAborted()
         {
             RetractNozzleButton();
-            ShowResultText("Pause", Color.gray);
+            ShowResultText("중지", Color.gray);
         }
 
         public void ResetView()
@@ -149,7 +149,7 @@ namespace CY.Minigame
             
             gaugeFill.color = Color.red;
 
-            ShowResultText("Fail!", Color.red);
+            ShowResultText("실패!", Color.red);
             
             yield return new WaitForSeconds(0.5f);
 
