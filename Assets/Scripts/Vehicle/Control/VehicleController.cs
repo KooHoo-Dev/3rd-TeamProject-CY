@@ -46,18 +46,36 @@ namespace CY.Vehicle
         private void FixedUpdate()
         {
             if (inputSource == null) return;
-            if (rb.simulated == false) return; // 내 물리로 움직이는 상태가 아닐 경우 (비호스트)
             
+            // 호스트와 비호스트 모두 무조건 조작 입력값을 읽어옵니다
             VehicleInput input = inputEnabled ? inputSource.Read() : default;
+            
+            // 이전 조작과 비교해서 '무언가 바뀌었을 때만' 이벤트를 쏩니다
+            // 이렇게 하면 1초에 50번씩 드드드드 쏘는 기관총 현상이 완벽히 사라집니다
+            bool isInputChanged = (input.CurrentGear != LastInput.CurrentGear) ||
+                                  (input.Accel != LastInput.Accel) ||
+                                  (input.Brake != LastInput.Brake);
+
+            if (isInputChanged)
+            {
+                VehicleSoundEvents.Raise(input);
+            }
+            
             LastInput = input;
             
-            VehicleSoundEvents.Raise(input);
+            // 사운드 매니저에게 현재 속도(magnitude)를 실시간으로 알려줍니다
+            CY.Vehicle.SoundManager.Instance?.UpdateVehicleSpeed(rb.linearVelocity.magnitude);
+            
+            // 비호스트(클라이언트)는 실제 물리적인 이동 연산은 하지 않으므로 여기서 함수를 종료합니다
+            if (rb.simulated == false) return; // 내 물리로 움직이는 상태가 아닐 경우 (비호스트)
             
             ApplyEngine(input);
             ApplyBrake(input);
             ApplySteering(input);
             KillSideVelocity();
             ClampSpeed(input);
+            
+            
         }
 
         private void ApplyEngine(VehicleInput input)
