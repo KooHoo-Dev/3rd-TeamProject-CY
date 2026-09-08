@@ -3973,7 +3973,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1250891581107857433, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: mode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1460622424888676623, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: m_Name
@@ -4010,6 +4010,14 @@ PrefabInstance:
     - target: {fileID: 1561339190350370149, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816095486014640178, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: maxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816095486014640178, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: turnRate
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1816095486014640178, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
       propertyPath: enginePower
