@@ -43,7 +43,8 @@ namespace CY.Vehicle
         
         [Header("BGM Clips")]
         [SerializeField] private AudioClip titleBgm; 
-        [SerializeField] private AudioClip lobbyBgm;             
+        [SerializeField] private AudioClip lobbyBgm;
+        [SerializeField] private AudioClip tutorialBgm;
         [SerializeField] private AudioClip[] inGameBgms;         
         [SerializeField] private AudioClip gameClearBgm;         
         [SerializeField] private AudioClip gameOverBgm;          
@@ -178,6 +179,7 @@ namespace CY.Vehicle
             if (titleBgm != null) PlayBgmSingle(titleBgm, true);
         }
         public void PlayLobbyBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(lobbyBgm, isLoop: true); }
+        public void PlayTutorialBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(tutorialBgm, isLoop: true); }
         public void PlayGameClearBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(gameClearBgm, isLoop: false); }
         public void PlayGameOverBgm() { isPlayingInGameBgmList = false; PlayBgmSingle(gameOverBgm, isLoop: false); }
         public void StopBgm() { isPlayingInGameBgmList = false; if (bgmSource != null) bgmSource.Stop(); }

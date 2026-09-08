@@ -369,6 +369,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUDCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 917374310261377199, guid: a4f49431ac72cda4383d45f75d08ed36, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1105805792290426810, guid: a4f49431ac72cda4383d45f75d08ed36, type: 3}
       propertyPath: timeText
       value: 
@@ -883,12 +887,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 1375472917}
-  speed: 3
+  speed: 2
   arriveRadius: 1.5
   startIndex: 10
   spriteAngleOffset: -90
   faceMoveDirection: 1
-  turnRate: 100
+  turnRate: 67
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -1138,12 +1142,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 663592613}
-  speed: 4
+  speed: 3
   arriveRadius: 1.5
   startIndex: 4
   spriteAngleOffset: -180
   faceMoveDirection: 1
-  turnRate: 150
+  turnRate: 100
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -1727,12 +1731,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 1643685953}
-  speed: 3
+  speed: 1.5
   arriveRadius: 1.5
   startIndex: 10
   spriteAngleOffset: -90
   faceMoveDirection: 1
-  turnRate: 100
+  turnRate: 50
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -1876,12 +1880,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 663592613}
-  speed: 4
+  speed: 3
   arriveRadius: 1.5
   startIndex: 9
   spriteAngleOffset: -180
   faceMoveDirection: 1
-  turnRate: 150
+  turnRate: 100
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -3570,12 +3574,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 663592613}
-  speed: 4
+  speed: 3
   arriveRadius: 1.5
   startIndex: 27
   spriteAngleOffset: -180
   faceMoveDirection: 1
-  turnRate: 150
+  turnRate: 100
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -3637,12 +3641,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 663592613}
-  speed: 4
+  speed: 3
   arriveRadius: 1.5
   startIndex: 25
   spriteAngleOffset: -180
   faceMoveDirection: 1
-  turnRate: 150
+  turnRate: 100
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -4055,6 +4059,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7119653537152311833, guid: 9e02555671a3949baa1c0054923b8961, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4136,12 +4144,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 1621798540}
-  speed: 6
+  speed: 4
   arriveRadius: 1.5
   startIndex: 0
   spriteAngleOffset: -90
   faceMoveDirection: 1
-  turnRate: 200
+  turnRate: 133
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -4643,12 +4651,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 819663055}
-  speed: 9
+  speed: 6
   arriveRadius: 1.5
   startIndex: 13
   spriteAngleOffset: -90
   faceMoveDirection: 1
-  turnRate: 300
+  turnRate: 200
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -4725,7 +4733,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.43, y: 1}
+  m_Size: {x: 0.4, y: 0.91}
   m_EdgeRadius: 0
 --- !u!212 &1042600203
 SpriteRenderer:
@@ -5828,6 +5836,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1261323405145269230, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261323405145269230, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1271828585568685288, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60
@@ -5856,6 +5872,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1530220983868079706, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 1.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530220983868079706, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829028399461610874, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829028399461610874, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1838774741769508757, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16
@@ -5864,13 +5896,65 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 27.75
       objectReference: {fileID: 0}
+    - target: {fileID: 2091144009922057251, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091144009922057251, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384747283826542316, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384747283826542316, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590453215493998061, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590453215493998061, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218368880022453613, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3237144883622365232, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3464751261269005060, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464751261269005060, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.92
+      objectReference: {fileID: 0}
     - target: {fileID: 3831851061608900106, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049680452377645498, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049680452377645498, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186038795401797929, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4186038795401797929, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 4457543128590919616, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5891,6 +5975,22 @@ PrefabInstance:
     - target: {fileID: 4457543128590919616, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535378000051589696, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535378000051589696, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554539196085455397, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554539196085455397, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 4627222459113703236, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5932,6 +6032,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5170376113352195250, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5170376113352195250, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95
+      objectReference: {fileID: 0}
     - target: {fileID: 5179926849950095460, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 107.25001
@@ -5968,9 +6076,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 44.25
       objectReference: {fileID: 0}
+    - target: {fileID: 5758972654375245958, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5914423837348596115, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 105
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991533325666379944, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991533325666379944, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 6037694780374722544, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7093,12 +7213,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 663592613}
-  speed: 4
+  speed: 3
   arriveRadius: 1.5
   startIndex: 12
   spriteAngleOffset: -180
   faceMoveDirection: 1
-  turnRate: 150
+  turnRate: 100
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -7180,12 +7300,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 819663055}
-  speed: 9
+  speed: 4.5
   arriveRadius: 1.5
   startIndex: 14
   spriteAngleOffset: -90
   faceMoveDirection: 1
-  turnRate: 300
+  turnRate: 150
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -7236,12 +7356,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 1550524553}
-  speed: 6
+  speed: 4
   arriveRadius: 1.5
   startIndex: 1
   spriteAngleOffset: -90
   faceMoveDirection: 1
-  turnRate: 200
+  turnRate: 133
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -7385,12 +7505,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 663592613}
-  speed: 4
+  speed: 3
   arriveRadius: 1.5
   startIndex: 8
   spriteAngleOffset: -180
   faceMoveDirection: 1
-  turnRate: 150
+  turnRate: 100
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -8116,12 +8236,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CY.Stages.TrafficAgent
   path: {fileID: 663592613}
-  speed: 4
+  speed: 3
   arriveRadius: 1.5
   startIndex: 17
   spriteAngleOffset: -180
   faceMoveDirection: 1
-  turnRate: 150
+  turnRate: 100
   avoidProps: 1
   lookAhead: 4.5
   bodyRadius: 0.8
@@ -9460,6 +9580,10 @@ PrefabInstance:
     - target: {fileID: 4358387477512229264, guid: e01acdc9ef13f4dfab6043cc2dc002a6, type: 3}
       propertyPath: m_Name
       value: Navigation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358387477512229264, guid: e01acdc9ef13f4dfab6043cc2dc002a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4453617515923634053, guid: e01acdc9ef13f4dfab6043cc2dc002a6, type: 3}
       propertyPath: levelOrigin
