@@ -92,6 +92,7 @@
     {
         public string Type { get; set; } = "scene_change";
         public string SceneName { get; set; }
+        public int SceneVersion { get; set; }
     }
 
     #endregion

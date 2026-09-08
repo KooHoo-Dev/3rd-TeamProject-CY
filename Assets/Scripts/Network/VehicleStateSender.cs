@@ -29,6 +29,7 @@ namespace CY.Network
 
             session.SendAsync(new VehicleStateMessage
             {
+                SceneVersion = session.CurrentSceneVersion,
                 PositionX = body.position.x,
                 PositionY = body.position.y,
                 Rotation = body.rotation,
