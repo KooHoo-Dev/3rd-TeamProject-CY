@@ -46,12 +46,12 @@ namespace CY.Network
             }
 
             // 2. [핵심] 호스트/비호스트 상관없이 병합된 4명의 최종 입력으로 사운드를 재생합니다!
-            CY.Vehicle.VehicleSoundEvents.Raise(merger.Merge());
+            //CY.Vehicle.VehicleSoundEvents.Raise(merger.Merge());
         }
         
         public VehicleInput Read()
         {
-            if (Session.IsHost == false) return default;
+            //if (Session.IsHost == false) return default;
             ClearTimedOut();
             return merger.Merge();
         }

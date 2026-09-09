@@ -97,6 +97,11 @@ namespace CY.Network
         #region 호스트가 아닌 유저가 받을 때
         private void HandleMessage(string type, string json)
         {
+            if (type.Contains("round")) 
+            {
+                Debug.Log($"[네트워크 수신 확인] 도착한 패킷 타입: {type}");
+            }
+            
             if (type != "round_state") return;
             if (Session.IsHost) return; // 호스트는 자기 값을 쓴다
             if (networkStatus == null) return;
