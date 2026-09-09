@@ -89,6 +89,7 @@ namespace CY.Network
             lastDurability = hostStatus.DurabilityRatio;
             nextSendAt = Time.unscaledTime + 1f / Mathf.Max(1f, sendPerSecond);
             lastGear = hostStatus.CurrentGear;
+            lastTutorialStopCompleted = tutorialStopCompleted;
 
             if (session == null) return;
 
