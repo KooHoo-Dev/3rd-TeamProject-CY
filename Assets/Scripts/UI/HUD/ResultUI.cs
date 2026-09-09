@@ -63,8 +63,6 @@ public class ResultUI : MonoBehaviour
         float elapsedTime = status.ElapsedTime;
         float durabilityRatio = status.DurabilityRatio;
         
-        float elapsedTime = roundTimer.Duration - remainingTime;
-        
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(elapsedTime % 60f);
 
