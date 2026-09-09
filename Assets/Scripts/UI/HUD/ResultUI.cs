@@ -120,11 +120,13 @@ public class ResultUI : MonoBehaviour
 
     public void OnQuitButtonClicked()
     {
-        // 게임 종료(로비로 이동) 버튼 클릭음
-        CY.Vehicle.SoundManager.Instance?.PlayUIClick();
-        
-        SceneManager.LoadScene("Lobby");
-        
+        SoundManager.Instance?.PlayUIClick();
+
+        // 현재 방 연결과 참가자 상태를 완전히 폐기한다.
+        Session.ClearRole();
+        NetworkSession.ResetInstance();
+
+        // 새 NetworkSession과 빈 RoomClient를 가진 로비를 다시 연다.
         SceneManager.LoadScene("Lobby");
     }
 }
