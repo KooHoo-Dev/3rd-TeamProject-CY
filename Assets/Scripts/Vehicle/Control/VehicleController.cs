@@ -37,45 +37,52 @@ namespace CY.Vehicle
         
         private IVehicleInputSource inputSource;
         public void SetInputSource(IVehicleInputSource source) => inputSource = source;
+        
+        private Vector2 lastPosition;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+            lastPosition = transform.position;
+        }
+        
+        // 비호스트(클라이언트)는 여기서 속도를 계산해야 부드럽게 이어집니다
+        private void Update()
+        {
+            if (rb != null && rb.simulated == false)
+            {
+                float clientSpeed = ((Vector2)transform.position - lastPosition).magnitude / Time.deltaTime;
+                CY.Vehicle.SoundManager.Instance?.UpdateVehicleSpeed(clientSpeed);
+                lastPosition = transform.position;
+            }
         }
 
         private void FixedUpdate()
         {
             if (inputSource == null) return;
             
-            // 호스트와 비호스트 모두 무조건 조작 입력값을 읽어옵니다
+            // 모두가 조작을 읽어옵니다.
             VehicleInput input = inputEnabled ? inputSource.Read() : default;
-            
-            // 이전 조작과 비교해서 '무언가 바뀌었을 때만' 이벤트를 쏩니다
-            // 이렇게 하면 1초에 50번씩 드드드드 쏘는 기관총 현상이 완벽히 사라집니다
-            bool isInputChanged = (input.CurrentGear != LastInput.CurrentGear) ||
-                                  (input.Accel != LastInput.Accel) ||
-                                  (input.Brake != LastInput.Brake);
-
-            if (isInputChanged)
-            {
-                VehicleSoundEvents.Raise(input);
-            }
-            
             LastInput = input;
             
-            // 사운드 매니저에게 현재 속도(magnitude)를 실시간으로 알려줍니다
-            CY.Vehicle.SoundManager.Instance?.UpdateVehicleSpeed(rb.linearVelocity.magnitude);
+            // 모두가 이벤트를 쏩니다 (미니게임 멈춤 현상 완벽 해결)
+            VehicleSoundEvents.Raise(input);
             
-            // 비호스트(클라이언트)는 실제 물리적인 이동 연산은 하지 않으므로 여기서 함수를 종료합니다
-            if (rb.simulated == false) return; // 내 물리로 움직이는 상태가 아닐 경우 (비호스트)
+            if (rb.simulated)
+            {
+                // 호스트는 기존처럼 물리 엔진의 정확한 속도를 사용합니다.
+                CY.Vehicle.SoundManager.Instance?.UpdateVehicleSpeed(rb.linearVelocity.magnitude);
+                lastPosition = transform.position; 
+            }
+
+            // 비호스트(클라이언트)는 물리 연산을 하지 않고 여기서 안전하게 퇴근
+            if (rb.simulated == false) return; 
             
             ApplyEngine(input);
             ApplyBrake(input);
             ApplySteering(input);
             KillSideVelocity();
             ClampSpeed(input);
-            
-            
         }
 
         private void ApplyEngine(VehicleInput input)

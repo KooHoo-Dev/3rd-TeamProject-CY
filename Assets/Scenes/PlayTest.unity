@@ -6251,9 +6251,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1737060583622737041, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1215148250}
-    - targetCorrespondingSourceObject: {fileID: 2021314878692061568, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1311986176}
     - targetCorrespondingSourceObject: {fileID: 3173655723734744792, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1311986173}
@@ -6288,38 +6285,6 @@ MonoBehaviour:
   barricadeMinigameController: {fileID: 555739130}
   barricadeOpened: {fileID: 1311986170}
   barricadeClosed: {fileID: 1311986171}
---- !u!1 &1311986174 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2021314878692061568, guid: f77fec5a200ad3549b2942f87c93a4fa, type: 3}
-  m_PrefabInstance: {fileID: 1311986169}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1311986176
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311986174}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1312829342
 GameObject:
   m_ObjectHideFlags: 0

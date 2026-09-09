@@ -307,7 +307,7 @@ namespace CY.Vehicle
         private void HandleAccel(bool on) 
         { 
             // 밟았지만(on) 현재 기어가 N단이면 소리 내지 않고 돌아가기
-            if (on && currentGear == Gear.N) return;
+            if (on && currentGear == Gear.N) { StopAccelSound(); return; }
             
             // 브레이크를 밟았지만 속도가 0(혹은 0.1 이하)이면 소리 내지 않기
             //if (on && currentSpeed <= 0.1f) return;
@@ -318,10 +318,14 @@ namespace CY.Vehicle
         private void HandleBrake(bool on) 
         { 
             // 밟았지만(on) 현재 기어가 N단이면 소리 내지 않고 돌아가기
-            if (on && currentGear == Gear.N) return; 
+            if (on && currentGear == Gear.N) { StopBrakeSound(); return; }
             
             // 브레이크를 밟았지만 속도가 0(혹은 0.1 이하)이면 소리 내지 않기
-            //if (on && currentSpeed <= 0.1f) return;
+            if (on && currentSpeed <= 0.1f) 
+            { 
+                StopBrakeSound(); 
+                return; 
+            }
 
             if (on) StartBrakeSound(); else StopBrakeSound(); 
         }
@@ -347,8 +351,8 @@ namespace CY.Vehicle
         {
             currentSpeed = Mathf.Abs(speed); // 후진할 수도 있으니 절대값으로 저장
 
-            // 브레이크 소리가 나고 있는데 속도가 0이 되었다면 강제로 소리 끄기
-            if (brakeLoopSource != null && brakeLoopSource.isPlaying && currentSpeed <= 0.01f)
+            // 꾹 누르고 있는 상태에서 차가 완전히 멈추면(0.1 이하) 강제로 끔
+            if (currentSpeed <= 0.1f && brakeLoopSource != null && brakeLoopSource.isPlaying)
             {
                 StopBrakeSound();
             }
@@ -367,24 +371,14 @@ namespace CY.Vehicle
         
         private void HandleGearChanged(Gear gear)
         {
-            // 넘어온 신호가 현재 기어랑 똑같다면 묻지도 따지지도 않고 무시 (중복 호출 차단)
             if (currentGear == gear) return;
-
-            // 방어막을 무사히 통과했다면 상태와 시간을 갱신합니다
+            if (Time.time - lastGearShiftTime < 0.2f) return;
+            
             currentGear = gear;
-
-            // 정상적으로 한 번만 찰칵
-            if (gearShiftClip != null && sfxSource != null)
-            {
-                sfxSource.PlayOneShot(gearShiftClip);
-            }
-
-            // 기어를 N단(중립)으로 바꿨다면 재생 중이던 페달 소리를 즉시 정지
-            if (currentGear == Gear.N)
-            {
-                StopAccelSound();
-                StopBrakeSound();
-            }
+            lastGearShiftTime = Time.time;
+            
+            if (gearShiftClip != null && sfxSource != null) sfxSource.PlayOneShot(gearShiftClip);
+            if (currentGear == Gear.N) { StopAccelSound(); StopBrakeSound(); }
         }
     }
 }
