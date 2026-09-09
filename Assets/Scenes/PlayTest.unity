@@ -945,6 +945,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &190569734
 Rigidbody2D:
   serializedVersion: 5
@@ -1202,6 +1205,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &218153462
 Rigidbody2D:
   serializedVersion: 5
@@ -1793,6 +1799,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &387183136
 Rigidbody2D:
   serializedVersion: 5
@@ -1944,6 +1953,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &480506704
 Rigidbody2D:
   serializedVersion: 5
@@ -3640,6 +3652,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &854419924
 Rigidbody2D:
   serializedVersion: 5
@@ -3709,6 +3724,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &859353890
 Rigidbody2D:
   serializedVersion: 5
@@ -4226,6 +4244,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &934058239
 Rigidbody2D:
   serializedVersion: 5
@@ -4735,6 +4756,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &1042600201
 Rigidbody2D:
   serializedVersion: 5
@@ -5261,6 +5285,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &1215148251
 Rigidbody2D:
   serializedVersion: 5
@@ -7285,6 +7312,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &1443972452
 Rigidbody2D:
   serializedVersion: 5
@@ -7374,6 +7404,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &1476369241
 Rigidbody2D:
   serializedVersion: 5
@@ -7432,6 +7465,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &1479251186
 Rigidbody2D:
   serializedVersion: 5
@@ -7583,6 +7619,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &1500957753
 Rigidbody2D:
   serializedVersion: 5
@@ -8316,6 +8355,9 @@ MonoBehaviour:
   bodyRadius: 0.8
   whiskerAngle: 32
   avoidStrength: 2.5
+  knockImpulse: 6
+  slipTime: 0.8
+  slipGrip: 0.15
 --- !u!50 &1570048298
 Rigidbody2D:
   serializedVersion: 5
