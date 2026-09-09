@@ -52,6 +52,15 @@ namespace CY.Vehicle
         private bool isPlayingInGameBgmList = false;
         private int lastInGameBgmIndex = -1;
         private bool isNetworkSubscribed = false; // [안전장치 추가]
+        
+        // 현재 기어 상태를 기억할 변수
+        private Gear currentGear;
+        
+        // 마지막으로 기어 소리가 난 시간을 기억할 변수 (귀 테러 방지용)
+        private float lastGearShiftTime = 0f;
+        
+        // 자동차의 현재 속도를 기억할 변수
+        private float currentSpeed = 0f;
 
         private void Awake()
         {
@@ -197,6 +206,11 @@ namespace CY.Vehicle
         private void PlayBgmSingle(AudioClip clip, bool isLoop)
         {
             if (bgmSource == null || clip == null) return;
+            
+            // 지금 틀려는 노래가 이미 나오고 있는 노래랑 똑같다면
+            // 처음부터 다시 틀지 않고 그냥 돌아간다(return)
+            if (bgmSource.clip == clip && bgmSource.isPlaying) return;
+            
             bgmSource.Stop();
             bgmSource.clip = clip;
             bgmSource.loop = isLoop;
@@ -214,7 +228,7 @@ namespace CY.Vehicle
             bgmSource.loop = false; 
             bgmSource.Play();
         }
-
+        
         public void PlayUIClick() { if (uiClickClip != null && sfxSource != null) sfxSource.PlayOneShot(uiClickClip); }
         
         public void StartMiniGameLoop(AudioClip clip)
@@ -290,8 +304,31 @@ namespace CY.Vehicle
         
         
 
-        private void HandleAccel(bool on) { if (on) StartAccelSound(); else StopAccelSound(); }
-        private void HandleBrake(bool on) { if (on) StartBrakeSound(); else StopBrakeSound(); }
+        private void HandleAccel(bool on) 
+        { 
+            // 밟았지만(on) 현재 기어가 N단이면 소리 내지 않고 돌아가기
+            if (on && currentGear == Gear.N) { StopAccelSound(); return; }
+            
+            // 브레이크를 밟았지만 속도가 0(혹은 0.1 이하)이면 소리 내지 않기
+            //if (on && currentSpeed <= 0.1f) return;
+
+            if (on) StartAccelSound(); else StopAccelSound(); 
+        }
+
+        private void HandleBrake(bool on) 
+        { 
+            // 밟았지만(on) 현재 기어가 N단이면 소리 내지 않고 돌아가기
+            if (on && currentGear == Gear.N) { StopBrakeSound(); return; }
+            
+            // 브레이크를 밟았지만 속도가 0(혹은 0.1 이하)이면 소리 내지 않기
+            if (on && currentSpeed <= 0.1f) 
+            { 
+                StopBrakeSound(); 
+                return; 
+            }
+
+            if (on) StartBrakeSound(); else StopBrakeSound(); 
+        }
 
         private void StartAccelSound()
         {
@@ -308,6 +345,18 @@ namespace CY.Vehicle
             if (!brakeLoopSource.isPlaying) brakeLoopSource.Play();
         }
         private void StopBrakeSound() { if (brakeLoopSource != null) brakeLoopSource.Stop(); }
+        
+        // 자동차 스크립트에서 매 프레임마다 현재 속도를 넘겨줄 함수
+        public void UpdateVehicleSpeed(float speed)
+        {
+            currentSpeed = Mathf.Abs(speed); // 후진할 수도 있으니 절대값으로 저장
+
+            // 꾹 누르고 있는 상태에서 차가 완전히 멈추면(0.1 이하) 강제로 끔
+            if (currentSpeed <= 0.1f && brakeLoopSource != null && brakeLoopSource.isPlaying)
+            {
+                StopBrakeSound();
+            }
+        }
 
         private void PlayMiddleCrashSound() => PlayRandomClip(middleCrashClips);
         private void PlayHardCrashSound() => PlayRandomClip(hardCrashClips);
@@ -322,10 +371,14 @@ namespace CY.Vehicle
         
         private void HandleGearChanged(Gear gear)
         {
-            if (gearShiftClip != null && sfxSource != null)
-            {
-                sfxSource.PlayOneShot(gearShiftClip);
-            }
+            if (currentGear == gear) return;
+            if (Time.time - lastGearShiftTime < 0.2f) return;
+            
+            currentGear = gear;
+            lastGearShiftTime = Time.time;
+            
+            if (gearShiftClip != null && sfxSource != null) sfxSource.PlayOneShot(gearShiftClip);
+            if (currentGear == Gear.N) { StopAccelSound(); StopBrakeSound(); }
         }
     }
 }
