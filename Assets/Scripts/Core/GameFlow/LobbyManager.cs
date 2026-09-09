@@ -47,5 +47,16 @@ namespace CY.Core
         
             roomClient.RequestSceneChange(sceneName);
         }
+        
+        public void OnGameEndButtonClick()
+        {
+            SoundManager.Instance?.PlayUIClick();
+
+        #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+        }
     }
 }
