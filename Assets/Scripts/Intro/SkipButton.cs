@@ -7,6 +7,8 @@ public class SkipButton : MonoBehaviour
 
     public void OnSkipButtonPressed()
     {
+        CY.Vehicle.SoundManager.Instance?.PlayUIClick();
+        
         introSequenceDirector.SkipIntro();
     }
 }
