@@ -11,5 +11,6 @@ namespace HelloServer
         public int Total { get; set; }
         public string Phase { get; set; }   // "Playing" / "Success" / "Failed"
         public string Gear { get; set; }
+        public bool TutorialStopCompleted { get; set; }
     }
 }

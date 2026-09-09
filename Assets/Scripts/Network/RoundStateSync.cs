@@ -30,6 +30,9 @@ namespace CY.Network
         
         private Gear lastGear = Gear.N;
         
+        private bool tutorialStopCompleted;
+        private bool lastTutorialStopCompleted;
+        
         // 비호스트 클라이언트가 이전 내구도를 기억하기 위한 변수
         private float lastClientDurability = -1f;
         
@@ -61,13 +64,21 @@ namespace CY.Network
             Send();
         }
         
+        public void SetTutorialStopCompleted(bool value)
+        {
+            if (Session.IsHost == false) return;
+
+            tutorialStopCompleted = value;
+        }
+        
         private bool ShouldSend()
         {
             if (hostStatus.Phase != lastPhase) return true;
             if (hostStatus.ClearedCheckpoints != lastCleared) return true;
             if (Mathf.Abs(hostStatus.DurabilityRatio - lastDurability) > durabilityEpsilon) return true;
             if (hostStatus.CurrentGear != lastGear) return true;
-
+            if (tutorialStopCompleted != lastTutorialStopCompleted) return true;
+            
             return Time.unscaledTime >= nextSendAt;
         }
         
@@ -90,6 +101,7 @@ namespace CY.Network
                 Total = hostStatus.TotalCheckpoints,
                 Phase = hostStatus.Phase.ToString(),
                 Gear = hostStatus.CurrentGear.ToString(),
+                TutorialStopCompleted = tutorialStopCompleted,
             }).Forget();
         }
         #endregion
@@ -97,11 +109,6 @@ namespace CY.Network
         #region 호스트가 아닌 유저가 받을 때
         private void HandleMessage(string type, string json)
         {
-            if (type.Contains("round")) 
-            {
-                Debug.Log($"[네트워크 수신 확인] 도착한 패킷 타입: {type}");
-            }
-            
             if (type != "round_state") return;
             if (Session.IsHost) return; // 호스트는 자기 값을 쓴다
             if (networkStatus == null) return;
@@ -142,7 +149,7 @@ namespace CY.Network
             lastClientDurability = m.DurabilityRatio;
             // ----------------------------------------------------
 
-            networkStatus.Apply(m.ElapsedTime, m.DurabilityRatio, m.SpeedRatio, m.Cleared, m.Total, phase, gear);
+            networkStatus.Apply(m.ElapsedTime, m.DurabilityRatio, m.SpeedRatio, m.Cleared, m.Total, phase, gear, m.TutorialStopCompleted);
         }
         #endregion
     }

@@ -14,10 +14,11 @@ namespace CY.Network
         public int TotalCheckpoints { get; private set; }
         public RoundPhase Phase { get; private set; } = RoundPhase.Waiting;
         public Gear CurrentGear { get; private set; } = Gear.N;
-
+        public bool TutorialStopCompleted { get; private set; }
+        
         public void Apply(
             float elapsedTime, float durabilityRatio, float speedRatio, int cleared, int total, RoundPhase phase,
-            Gear gear
+            Gear gear, bool tutorialStopCompleted
             )
         {
             ElapsedTime = elapsedTime;
@@ -27,6 +28,7 @@ namespace CY.Network
             TotalCheckpoints = total;
             Phase = phase;
             CurrentGear = gear;
+            TutorialStopCompleted = tutorialStopCompleted;
             
             if (durabilityRatio < 0f || durabilityRatio > 1f)
                 Debug.LogWarning($"[Net] 내구도 비율 범위 밖: {durabilityRatio}");
