@@ -1,3 +1,4 @@
+using CY.Network;
 using CY.Vehicle;
 using UnityEngine;
 
@@ -100,6 +101,12 @@ namespace CY.Stages
         
         private void FixedUpdate()
         {
+            if (Session.IsHost == false)
+            {
+                MoveFromNetworkState();
+                return;
+            }
+            
             Vector2 position = rb.position;
             Vector2 target = path.PointAt(index);
 
