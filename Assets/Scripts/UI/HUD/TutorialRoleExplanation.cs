@@ -18,34 +18,40 @@ namespace CY.UI
         [Header("Brake Explain Phase")]
         [SerializeField] private GameObject brakeFirst;
         [SerializeField] private GameObject brakeSecond;
-        
-        [Header("buttons")]
+
+        [Header("Buttons")]
         [SerializeField] private Button continueButton;
         [SerializeField] private RectTransform noticePanel;
         [SerializeField] private float hideOffsetY = 900f;
         [SerializeField] private float hideDuration = 0.35f;
-        
+
+        [Header("첫 안내")]
+        [TextArea]
+        [SerializeField] private string firstGuideMessage = "";
+
         [Header("Role Assigner")]
         [SerializeField] private VehicleRoleAssigner roleAssigner;
-        
+
+        private TutorialGuideUI guideUI;
         private VehicleRole currentRole = VehicleRole.None;
         private bool isBrakeSecondPage;
         private bool isClosing;
-        
+
         private void Start()
         {
             if (roleAssigner == null)
                 roleAssigner = FindAnyObjectByType<VehicleRoleAssigner>();
 
-            // 역할이 이후 다시 계산되는 경우에도 안내문을 갱신한다.
+            guideUI = FindAnyObjectByType<TutorialGuideUI>();
+
             if (roleAssigner != null)
                 roleAssigner.RolesChanged += OnRolesChanged;
 
             continueButton.onClick.AddListener(OnContinueButtonClicked);
-            
+
             RefreshExplanation();
         }
-        
+
         private void OnDestroy()
         {
             if (roleAssigner != null)
@@ -62,7 +68,7 @@ namespace CY.UI
         {
             RefreshExplanation();
         }
-        
+
         private void RefreshExplanation()
         {
             currentRole = Session.MyRole;
@@ -81,13 +87,12 @@ namespace CY.UI
 
             continueButton.interactable = Session.HasAssignedRole;
         }
-        
+
         private void OnContinueButtonClicked()
         {
             if (isClosing || !Session.HasAssignedRole)
                 return;
 
-            // 브레이크 역할의 첫 클릭만 두 번째 설명으로 전환한다.
             if (currentRole == VehicleRole.Brake && !isBrakeSecondPage)
             {
                 isBrakeSecondPage = true;
@@ -98,7 +103,7 @@ namespace CY.UI
 
             HideNoticePanel();
         }
-        
+
         private void HideNoticePanel()
         {
             isClosing = true;
@@ -110,8 +115,11 @@ namespace CY.UI
                     noticePanel.anchoredPosition.y + hideOffsetY,
                     hideDuration)
                 .SetEase(Ease.InCubic)
-                .OnComplete(() => noticePanel.gameObject.SetActive(false));
+                .OnComplete(() =>
+                {
+                    noticePanel.gameObject.SetActive(false);
+                    guideUI.Show(firstGuideMessage);
+                });
         }
     }
-
 }
