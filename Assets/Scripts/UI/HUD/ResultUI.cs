@@ -18,7 +18,6 @@ public class ResultUI : MonoBehaviour
     public Sprite fullStarSprite;
     public Sprite emptyStarSprite;
     
-    public RoundTimer roundTimer; 
     public VehicleDamage vehicleDamage;
     public HostRoundStatus hostStatus;
     public NetworkRoundStatus networkStatus;
@@ -61,25 +60,38 @@ public class ResultUI : MonoBehaviour
     {
         IRoundStatusProvider status = GetStatus();
 
-        float remainingTime = status.RemainingTime;
+        float elapsedTime = status.ElapsedTime;
         float durabilityRatio = status.DurabilityRatio;
+        
+        int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
 
         remainTimeText.text =
-            $"남은 시간 : {remainingTime:0.#}초 / {roundTimer.Duration:0.#}초";
+            $"총 소요 시간 : {minutes}분 {seconds}초";
 
         remainDurabilityText.text =
-            $"최종 내구도 : {durabilityRatio * vehicleDamage.MaxDurability:0.#}";
-
-        float timePercent = remainingTime / roundTimer.Duration * 100f;
-        float hpPercent = durabilityRatio * 100f;
+            $"최종 내구도 : {(durabilityRatio * vehicleDamage.MaxDurability):0}%";
 
         int starCount = 0;
 
         if (isSuccess)
         {
-            if (timePercent >= 35f && hpPercent >= 65f) starCount = 3;
-            else if (timePercent >= 15f && hpPercent >= 35f) starCount = 2;
-            else starCount = 1;
+            if (elapsedTime <= 300f) 
+            {
+                starCount = 3;
+            }
+            else if (elapsedTime <= 420f) 
+            {
+                starCount = 2;
+            }
+            else if (elapsedTime <= 600f) 
+            {
+                starCount = 1;
+            }
+            else 
+            {
+                starCount = 0;
+            }
         }
 
         for (int i = 0; i < starImages.Length; i++)

@@ -11,7 +11,7 @@ namespace CY.Core
         [SerializeField] private VehicleDamage damage;
         [SerializeField] private VehicleController controller;
 
-        public float RemainingTime => timer != null ? timer.RemainingTime : 0f;
+        public float ElapsedTime => timer != null ? timer.ElapsedTime : 0f;
         public float DurabilityRatio => damage != null ? damage.DurabilityRatio : 1f;
         public float SpeedRatio      => controller != null ? controller.SpeedRatio : 0f;
 
