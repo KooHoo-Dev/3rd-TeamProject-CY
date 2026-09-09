@@ -1471,11 +1471,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2597932937714386882, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472934887487731954, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3690024367777725820, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736651712694166309, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
+      propertyPath: m_text
+      value: "\uC870\uC791\uD0A4 : Tab\n\n\uC804\uCCB4 \uB9F5\uC758 \uC57D\uB3C4\uB97C
+        \uBCF4\uC5EC\uC8FC\uB294 \uB0B4\uBE44\uAC8C\uC774\uC158\uC744 \uBCFC \uC218
+        \uC788\uC2B5\uB2C8\uB2E4.\n\n\uB0B4\uBE44\uAC8C\uC774\uC158\uC740 \uB2F9\uC2E0\uB9CC
+        \uBCFC \uC218 \uC788\uACE0, \uB2E4\uB978 \uD300\uC6D0\uB4E4\uC5D0\uAC8C \uC5B4\uB290
+        \uBC29\uD5A5\uC73C\uB85C \uAC00\uC57C \uD558\uB294\uC9C0 \uC548\uB0B4\uD574
+        \uC918\uC57C \uD569\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 5428839881860124186, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
       propertyPath: m_text
@@ -1485,6 +1498,26 @@ PrefabInstance:
         \uCEE4\uC9C0\uB2C8, \uCC28\uB7C9\uC758 \uC18D\uB3C4\uB97C \uC798 \uC870\uC808\uD574\uC57C
         \uD569\uB2C8\uB2E4!\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 5498891160470784874, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
+      propertyPath: m_text
+      value: "[\uB0B4\uBE44\uAC8C\uC774\uC158]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5722488600888336154, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798218389336359801, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7611221908272454078, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
+      propertyPath: m_text
+      value: "\uC870\uC791\uD0A4 : \uBC29\uD5A5\uD0A4 \n\n\u2191(\uC0C1) : \uC804\uC9C4
+        \uAE30\uC5B4\n\u2193(\uD558) : \uD6C4\uC9C4 \uAE30\uC5B4\n\u2190(\uC88C)
+        : \uC911\uB9BD \uAE30\uC5B4 \n \n\uCCB4\uD06C\uD3EC\uC778\uD2B8\uC5D0 \uB3C4\uB2EC\uD558\uBA74,
+        \uC911\uB9BD \uAE30\uC5B4\uB97C \uB123\uC5B4 \uC815\uCC28 \uC0C1\uD0DC\uAC00
+        \uB418\uC5B4\uC57C \uBBF8\uC158\uC774 \uC9C4\uD589\uB429\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 8537403989215780107, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1492,9 +1525,9 @@ PrefabInstance:
     - target: {fileID: 8738529862971640010, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
       propertyPath: m_text
       value: "\uC870\uC791\uD0A4 : K\n\n\uCC28\uB7C9\uC744 \uAE09\uC815\uAC70\uC2DC\uD0AC
-        \uC218 \uC788\uC2B5\uB2C8\uB2E4. \n\n\uCC28\uB7C9\uC774 \uBD80\uB52B\uD790
+        \uC218 \uC788\uC2B5\uB2C8\uB2E4. \n\n\uCC28\uB7C9\uC774 \uBD80\uB52A\uD790
         \uC704\uD5D8\uC5D0 \uCC98\uD558\uBA74, \uAE09\uC815\uAC70\uB97C \uD1B5\uD574
-        \uCC28\uB7C9\uC774 \uBD80\uB52B\uD788\uC9C0 \uC54A\uB3C4\uB85D \uC81C\uC5B4\uD574\uC57C
+        \uCC28\uB7C9\uC774 \uBD80\uB52A\uD788\uC9C0 \uC54A\uB3C4\uB85D \uC81C\uC5B4\uD574\uC57C
         \uD569\uB2C8\uB2E4!"
       objectReference: {fileID: 0}
     - target: {fileID: 9077586031071962564, guid: 91bc127658b9a8a4eaa04cf13054dcfd, type: 3}
