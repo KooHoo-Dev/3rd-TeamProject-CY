@@ -1,6 +1,5 @@
-using CY.Network;
+using CY.Vehicle;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace CY.Stages
 {
@@ -36,6 +35,14 @@ namespace CY.Stages
         [SerializeField] private float whiskerAngle = 32f;
         [Tooltip("클수록 기물을 크게 돌아감")]
         [SerializeField] private float avoidStrength = 2.5f;
+        
+        [Header("플레이어 충돌")]
+        [Tooltip("부딪힌 순간 밀치는 세기")]
+        [SerializeField] private float knockImpulse = 4f;
+        [Tooltip("이 시간 동안 플레이어가 옆으로 빠져나갈 수 있다")]
+        [SerializeField] private float slipTime = 0.8f;
+        [Tooltip("빠져나가는 동안의 접지력. 낮을수록 잘 미끄러진다")]
+        [SerializeField, Range(0f, 1f)] private float slipGrip = 0.15f;
         
         private Rigidbody2D rb;
         private Vector2 heading = Vector2.up;
@@ -93,12 +100,6 @@ namespace CY.Stages
         
         private void FixedUpdate()
         {
-            if (Session.IsHost == false)
-            {
-                MoveFromNetworkState();
-                return;
-            }
-            
             Vector2 position = rb.position;
             Vector2 target = path.PointAt(index);
 
@@ -199,6 +200,20 @@ namespace CY.Stages
             Vector3 h = Application.isPlaying ? (Vector3)heading : transform.up;
             Gizmos.DrawLine(transform.position, transform.position + h * lookAhead);
             Gizmos.DrawWireSphere(transform.position + h * lookAhead, bodyRadius);
+        }
+        
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            Rigidbody2D other = collision.rigidbody;
+
+            if (other == null) return; // 정지 기물은 회피가 담당
+            if (other.bodyType != RigidbodyType2D.Dynamic) return; // 다른 AI 는 무시
+
+            // 진행 방향으로 한 번 밀친다
+            other.AddForce(heading * knockImpulse, ForceMode2D.Impulse);
+
+            VehicleController vehicle = other.GetComponent<VehicleController>();
+            if (vehicle != null) vehicle.ApplySlip(slipGrip, slipTime);
         }
     }
 }

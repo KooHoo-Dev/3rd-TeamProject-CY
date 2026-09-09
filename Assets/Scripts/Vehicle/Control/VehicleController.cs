@@ -25,6 +25,9 @@ namespace CY.Vehicle
 
         private bool inputEnabled = true;
         private float speedMultiplier = 1f;
+        
+        private float slipGrip = 1f;
+        private float slipUntil;
 
         public void SetInputEnabled(bool value) => inputEnabled = value;
         public void SetSpeedMultiplier(float value) => speedMultiplier = Mathf.Clamp01(value);
@@ -38,6 +41,12 @@ namespace CY.Vehicle
         private IVehicleInputSource inputSource;
         public void SetInputSource(IVehicleInputSource source) => inputSource = source;
         
+        /// <summary>잠시 옆으로 미끄러지기 쉽게 만든다. ObstacleAI 에게 밀려날 때 빠져나갈 수 있다.</summary>
+        public void ApplySlip(float grip, float duration)
+        {
+            slipGrip = Mathf.Clamp01(grip);
+            slipUntil = Mathf.Max(slipUntil, Time.time + duration); // 연달아 불렸을 때 나중 것이 앞의 시간을 잘라먹지 않게 하기 위해 Max로
+        }
         private Vector2 lastPosition;
 
         private void Awake()
@@ -84,6 +93,7 @@ namespace CY.Vehicle
             KillSideVelocity();
             ClampSpeed(input);
         }
+        
 
         private void ApplyEngine(VehicleInput input)
         {
@@ -123,8 +133,12 @@ namespace CY.Vehicle
 
             float f = Vector2.Dot(rb.linearVelocity, forward);
             float s = Vector2.Dot(rb.linearVelocity, right);
+            
+            // 밀려나는 중이면 접지력을 낮춰서 옆으로 흐를 수 있게 한다
+            float scale = Time.time < slipUntil ? slipGrip : 1f;
+            float friction = sideFriction * scale;
 
-            rb.linearVelocity = forward * f + right * (s * (1f - sideFriction));
+            rb.linearVelocity = forward * f + right * (s * (1f - friction));
         }
 
         private void ClampSpeed(VehicleInput input)
