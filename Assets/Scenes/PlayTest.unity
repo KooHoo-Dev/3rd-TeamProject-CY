@@ -10161,6 +10161,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -996
       objectReference: {fileID: 0}
+    - target: {fileID: 7963125865842158346, guid: e01acdc9ef13f4dfab6043cc2dc002a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7963125865842158346, guid: e01acdc9ef13f4dfab6043cc2dc002a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 7974017844620111137, guid: e01acdc9ef13f4dfab6043cc2dc002a6, type: 3}
       propertyPath: vehicle
       value: 
