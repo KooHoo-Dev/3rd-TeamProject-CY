@@ -105,8 +105,8 @@ namespace HelloServer
             {
                 VehicleRole.Handle => "핸들",
                 VehicleRole.Accel => "액셀",
-                VehicleRole.Brake => "브레이크",
-                VehicleRole.Gear => "기어·내비게이션",
+                VehicleRole.Brake => "브레이크·내비게이션",
+                VehicleRole.Gear => "기어",
                 _ => "미배정"
             };
         }

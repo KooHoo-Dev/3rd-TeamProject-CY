@@ -18,7 +18,6 @@ public class ResultUI : MonoBehaviour
     public Sprite fullStarSprite;
     public Sprite emptyStarSprite;
     
-    public RoundTimer roundTimer; 
     public VehicleDamage vehicleDamage;
     public HostRoundStatus hostStatus;
     public NetworkRoundStatus networkStatus;
@@ -61,7 +60,7 @@ public class ResultUI : MonoBehaviour
     {
         IRoundStatusProvider status = GetStatus();
 
-        float remainingTime = status.RemainingTime;
+        float elapsedTime = status.ElapsedTime;
         float durabilityRatio = status.DurabilityRatio;
         
         float elapsedTime = roundTimer.Duration - remainingTime;

@@ -7,7 +7,7 @@ namespace CY.Network
     /// <summary>비호스트용. 서버에서 받은 값을 보관만 한다.</summary>
     public class NetworkRoundStatus : MonoBehaviour, IRoundStatusProvider
     {
-        public float RemainingTime { get; private set; }
+        public float ElapsedTime { get; private set; }
         public float DurabilityRatio { get; private set; } = 1f;
         public float SpeedRatio { get; private set; }
         public int ClearedCheckpoints { get; private set; }
@@ -16,11 +16,11 @@ namespace CY.Network
         public Gear CurrentGear { get; private set; } = Gear.N;
 
         public void Apply(
-            float remainingTime, float durabilityRatio, float speedRatio, int cleared, int total, RoundPhase phase,
+            float elapsedTime, float durabilityRatio, float speedRatio, int cleared, int total, RoundPhase phase,
             Gear gear
             )
         {
-            RemainingTime = remainingTime;
+            ElapsedTime = elapsedTime;
             DurabilityRatio = durabilityRatio;
             SpeedRatio = speedRatio;
             ClearedCheckpoints = cleared;

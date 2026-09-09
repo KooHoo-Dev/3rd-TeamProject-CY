@@ -83,7 +83,7 @@ namespace CY.Network
 
             session.SendAsync(new RoundStateMessage
             {
-                RemainingTime = hostStatus.RemainingTime,
+                ElapsedTime = hostStatus.ElapsedTime,
                 DurabilityRatio = hostStatus.DurabilityRatio,
                 SpeedRatio = hostStatus.SpeedRatio,
                 Cleared = hostStatus.ClearedCheckpoints,
@@ -137,7 +137,7 @@ namespace CY.Network
             lastClientDurability = m.DurabilityRatio;
             // ----------------------------------------------------
 
-            networkStatus.Apply(m.RemainingTime, m.DurabilityRatio, m.SpeedRatio, m.Cleared, m.Total, phase, gear);
+            networkStatus.Apply(m.ElapsedTime, m.DurabilityRatio, m.SpeedRatio, m.Cleared, m.Total, phase, gear);
         }
         #endregion
     }
