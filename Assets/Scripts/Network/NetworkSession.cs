@@ -35,6 +35,9 @@ namespace CY.Network
          
          private ClientWebSocket socket;
          private readonly SemaphoreSlim sendLock = new SemaphoreSlim(1, 1);
+         private readonly object stateSendGate = new object();
+         private readonly Dictionary<string, string> latestStateMessages = new Dictionary<string, string>();
+         private bool stateSendLoopRunning;
          
          private readonly Dictionary<String, User> participants = new Dictionary<string, User>();
          public IReadOnlyDictionary<String, User> Participants => participants;
@@ -186,16 +189,90 @@ namespace CY.Network
              SceneManager.LoadScene(message.SceneName);
          }
 
-         public async UniTask SendAsync(object message)
+         public UniTask SendAsync(object message)
+         {
+             if (socket == null || socket.State != WebSocketState.Open) return UniTask.CompletedTask;
+
+             string json = JsonConvert.SerializeObject(message);
+             string stateKey = GetStateKey(message);
+
+             if (stateKey == null)
+                 return SendRawAsync(json);
+
+             QueueLatestState(stateKey, json);
+             return UniTask.CompletedTask;
+         }
+
+         private static string GetStateKey(object message)
+         {
+             return message switch
+             {
+                 MoveMessage => "move",
+                 VehicleInputMessage => "vehicle_input",
+                 VehicleStateMessage => "vehicle_state",
+                 TrafficStateMessage => "traffic_state",
+                 RoundStateMessage => "round_state",
+                 LicensePlateDragMessage drag => $"license_plate_drag:{drag.IsOldPlate}",
+                 _ => null
+             };
+         }
+
+         private void QueueLatestState(string stateKey, string json)
+         {
+             bool startLoop = false;
+
+             lock (stateSendGate)
+             {
+                 latestStateMessages[stateKey] = json;
+
+                 if (stateSendLoopRunning == false)
+                 {
+                     stateSendLoopRunning = true;
+                     startLoop = true;
+                 }
+             }
+
+             if (startLoop) SendLatestStatesAsync().Forget();
+         }
+
+         private async UniTaskVoid SendLatestStatesAsync()
+         {
+             while (true)
+             {
+                 List<string> messages;
+
+                 lock (stateSendGate)
+                 {
+                     if (latestStateMessages.Count == 0)
+                     {
+                         stateSendLoopRunning = false;
+                         return;
+                     }
+
+                     messages = new List<string>(latestStateMessages.Values);
+                     latestStateMessages.Clear();
+                 }
+
+                 foreach (string message in messages)
+                     await SendRawAsync(message);
+             }
+         }
+
+         private async UniTask SendRawAsync(string json)
          {
              if (socket == null || socket.State != WebSocketState.Open) return;
 
-             byte[] bytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
+             byte[] bytes = Encoding.UTF8.GetBytes(json);
 
-             await sendLock.WaitAsync();
-             
+             bool locked = false;
+
              try
              {
+                 await sendLock.WaitAsync(destroyCancellationToken);
+                 locked = true;
+
+                 if (socket == null || socket.State != WebSocketState.Open) return;
+
                  await socket
                      .SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, destroyCancellationToken);
              }
@@ -207,9 +284,13 @@ namespace CY.Network
              {
                  // 보내는 순간 끊겼다. 듣는 쪽 루프가 알아서 빠져나온다.
              }
+             catch (ObjectDisposedException)
+             {
+                 // 세션이 정리되는 중이다.
+             }
              finally
              {
-                 sendLock.Release();
+                 if (locked) sendLock.Release();
              }
          }
 
