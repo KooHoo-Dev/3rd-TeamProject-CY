@@ -101,8 +101,7 @@ namespace CY.Network
                  try
                  {
                      result = await receivingSocket
-                         .ReceiveAsync(new ArraySegment<byte>(buffer), destroyCancellationToken)
-                         .AsUniTask();
+                         .ReceiveAsync(new ArraySegment<byte>(buffer), destroyCancellationToken);
                  }
                  catch (OperationCanceledException)
                  {
@@ -198,8 +197,7 @@ namespace CY.Network
              try
              {
                  await socket
-                     .SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, destroyCancellationToken)
-                     .AsUniTask();
+                     .SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, destroyCancellationToken);
              }
              catch (OperationCanceledException)
              {
