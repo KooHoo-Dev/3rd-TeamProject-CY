@@ -46,32 +46,30 @@ namespace CY.Core
         // [추가] 비호스트 클라이언트가 성공/실패 패킷을 받아 BGM 재생
         private void OnNetworkMessageReceived(string type, string json)
         {
-            Debug.Log($"[네트워크 수신 테스트] 패킷 도착! 타입: {type} / 내용: {json}");
+            // Debug.Log($"[네트워크 수신 테스트] 패킷 도착! 타입: {type} / 내용: {json}");
+            
+            if (Session.IsHost || type != "round_state") return;
             
             if (Session.IsHost) return;
 
             // 서버가 이미 잘 보내주고 있는 'round_state'를 활용해서 BGM을 틉니다!
-            if (type == "round_state")
+            if (json.Contains("\"Phase\":\"Success\"") ||
+                json.Contains("\"Phase\": \"Success\""))
             {
-                // 텍스트에 Success가 포함되어 있다면 클리어 BGM 재생
-                if (json.Contains("\"Phase\":\"Success\"") || json.Contains("\"Phase\": \"Success\""))
-                {
-                    // 자물쇠가 열려있을 때(false)만 들어와서 딱 한 번 노래를 틉니다!
-                    if (!hasPlayedEndBgm)
-                    {
-                        hasPlayedEndBgm = true; // 자물쇠 잠금!
-                        if (SoundManager.Instance != null) SoundManager.Instance.PlayGameClearBgm();
-                    }
-                }
-                // 텍스트에 Failed가 포함되어 있다면 게임오버 BGM 재생
-                else if (json.Contains("\"Phase\":\"Failed\"") || json.Contains("\"Phase\": \"Failed\""))
-                {
-                    if (!hasPlayedEndBgm)
-                    {
-                        hasPlayedEndBgm = true; // 자물쇠 잠금!
-                        if (SoundManager.Instance != null) SoundManager.Instance.PlayGameOverBgm();
-                    }
-                }
+                if (hasPlayedEndBgm)
+                    return;
+
+                hasPlayedEndBgm = true;
+                SoundManager.Instance?.PlayGameClearBgm();
+            }
+            else if (json.Contains("\"Phase\":\"Failed\"") ||
+                     json.Contains("\"Phase\": \"Failed\""))
+            {
+                if (hasPlayedEndBgm)
+                    return;
+
+                hasPlayedEndBgm = true;
+                SoundManager.Instance?.PlayGameOverBgm();
             }
         }
 

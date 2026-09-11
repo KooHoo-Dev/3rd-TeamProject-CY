@@ -38,6 +38,7 @@ namespace CY.Network
          private readonly object stateSendGate = new object();
          private readonly Dictionary<string, string> latestStateMessages = new Dictionary<string, string>();
          private bool stateSendLoopRunning;
+         private float sendTimeoutSeconds = 2f;
          
          private readonly Dictionary<String, User> participants = new Dictionary<string, User>();
          public IReadOnlyDictionary<String, User> Participants => participants;
@@ -94,7 +95,7 @@ namespace CY.Network
              ClientWebSocket receivingSocket = socket;
              if (receivingSocket == null) return;
              
-             byte[] buffer = new byte[4096];
+             byte[] buffer = new byte[4096 * 4];
              StringBuilder builder = new StringBuilder();
 
              while (receivingSocket.State == WebSocketState.Open)
@@ -260,10 +261,12 @@ namespace CY.Network
 
          private async UniTask SendRawAsync(string json)
          {
-             if (socket == null || socket.State != WebSocketState.Open) return;
+             ClientWebSocket sendingSocket = socket;
+
+             
+             if (sendingSocket == null || sendingSocket.State != WebSocketState.Open) return;
 
              byte[] bytes = Encoding.UTF8.GetBytes(json);
-
              bool locked = false;
 
              try
@@ -271,18 +274,31 @@ namespace CY.Network
                  await sendLock.WaitAsync(destroyCancellationToken);
                  locked = true;
 
-                 if (socket == null || socket.State != WebSocketState.Open) return;
+                 if (socket != sendingSocket || sendingSocket.State != WebSocketState.Open) return;
 
-                 await socket
-                     .SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, destroyCancellationToken);
+                 // 게임 종료 토큰과 송신 시간 제한을 함께 사용한다.
+                 using CancellationTokenSource timeout =
+                     CancellationTokenSource.CreateLinkedTokenSource(destroyCancellationToken);
+                 
+                 timeout.CancelAfter(TimeSpan.FromSeconds(sendTimeoutSeconds));
+                 
+                 await sendingSocket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, timeout.Token);
              }
              catch (OperationCanceledException)
              {
-                 // 이 오브젝트가 사라졌다.
+                 // 게임 종료가 아닌 송신 타임아웃이면,
+                 // 이 WebSocket은 정상 동작하지 않는 것으로 보고 끊는다.
+                 if (!destroyCancellationToken.IsCancellationRequested)
+                 {
+                     Debug.LogWarning(
+                         $"[방] 송신 {sendTimeoutSeconds:0.#}초 초과. 연결을 재시작합니다.");
+
+                     sendingSocket.Abort();
+                 }
              }
              catch (WebSocketException)
              {
-                 // 보내는 순간 끊겼다. 듣는 쪽 루프가 알아서 빠져나온다.
+                 sendingSocket.Abort();
              }
              catch (ObjectDisposedException)
              {
