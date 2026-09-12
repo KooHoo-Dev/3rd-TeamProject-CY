@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Text;
@@ -37,11 +38,19 @@ namespace CY.Network
          private readonly SemaphoreSlim sendLock = new SemaphoreSlim(1, 1);
          private readonly object stateSendGate = new object();
          private readonly Dictionary<string, string> latestStateMessages = new Dictionary<string, string>();
+         private readonly ConcurrentQueue<ReceivedMessage> eventMessages = new();
+         private readonly ConcurrentDictionary<string, string> latestReceivedStates = new();
+         private struct ReceivedMessage
+         {
+             public string Type;
+             public string Json;
+         }
          private bool stateSendLoopRunning;
          private float sendTimeoutSeconds = 2f;
          
          private readonly Dictionary<String, User> participants = new Dictionary<string, User>();
          public IReadOnlyDictionary<String, User> Participants => participants;
+         
          public event Action<string, string> MessageReceived;
 
          protected override void OnInitialize()
@@ -82,6 +91,7 @@ namespace CY.Network
              Debug.Log($"[방] {full} 에 접속.  : {nickName}");
              await SendAsync(new HelloMessage { NickName = nickName });
              await ReceiveLoopAsync();
+             await UniTask.SwitchToMainThread();
 
              Debug.LogWarning($"[방] 수신 루프 종료. socket={socket?.State}, me={Me?.Id ?? "null"}");
              
@@ -95,6 +105,8 @@ namespace CY.Network
              ClientWebSocket receivingSocket = socket;
              if (receivingSocket == null) return;
              
+             CancellationToken token = destroyCancellationToken;
+             
              byte[] buffer = new byte[4096 * 4];
              StringBuilder builder = new StringBuilder();
 
@@ -105,7 +117,8 @@ namespace CY.Network
                  try
                  {
                      result = await receivingSocket
-                         .ReceiveAsync(new ArraySegment<byte>(buffer), destroyCancellationToken);
+                         .ReceiveAsync(new ArraySegment<byte>(buffer), token)
+                         .ConfigureAwait(false);
                  }
                  catch (OperationCanceledException)
                  {
@@ -130,10 +143,98 @@ namespace CY.Network
                  string json = builder.ToString();
                  builder.Clear();
 
-                 Handle(json);
+                 QueueReceivedMessage(json);
+             }
+         }
+         
+         private void QueueReceivedMessage(string json)
+         {
+             TypeOnly header = JsonConvert.DeserializeObject<TypeOnly>(json);
+
+             if (header == null || string.IsNullOrEmpty(header.Type))
+                 return;
+
+             string stateKey = GetReceivedStateKey(header.Type, json);
+
+             if (stateKey != null)
+             {
+                 latestReceivedStates[stateKey] = json;
+                 return;
+             }
+
+             eventMessages.Enqueue(new ReceivedMessage
+             {
+                 Type = header.Type,
+                 Json = json
+             });
+         }
+
+         private static string GetReceivedStateKey(string type, string json)
+         {
+             switch (type)
+             {
+                 case "vehicle_input":
+                 {
+                     VehicleInputMessage message =
+                         JsonConvert.DeserializeObject<VehicleInputMessage>(json);
+
+                     return $"vehicle_input:{message.UserId}";
+                 }
+
+                 case "vehicle_state":
+                     return "vehicle_state";
+
+                 case "round_state":
+                     return "round_state";
+
+                 case "traffic_state":
+                     return "traffic_state";
+
+                 case "state":
+                     return "state";
+
+                 case "fuel_state":
+                     return "fuel_state";
+
+                 case "barricade_progress":
+                     return "barricade_progress";
+
+                 case "license_plate_drag":
+                 {
+                     LicensePlateDragMessage message =
+                         JsonConvert.DeserializeObject<LicensePlateDragMessage>(json);
+
+                     return $"license_plate_drag:{message.IsOldPlate}";
+                 }
+
+                 default:
+                     return null;
              }
          }
 
+         private void Update()
+         {
+             while (eventMessages.TryDequeue(out ReceivedMessage message))
+             {
+                 if (message.Type == "scene_change")
+                 {
+                     latestReceivedStates.Clear();
+                     Handle(message.Json);
+                     return;
+                 }
+
+                 Handle(message.Json);
+             }
+
+             foreach (string stateKey in latestReceivedStates.Keys)
+             {
+                 if (latestReceivedStates.TryRemove(stateKey, out string json))
+                 {
+                     Handle(json);
+                 }
+             }
+         }
+         
          private void Handle(string json)
          {
              string type = JsonConvert.DeserializeObject<TypeOnly>(json).Type;
