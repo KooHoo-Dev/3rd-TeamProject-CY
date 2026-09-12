@@ -23,9 +23,6 @@ namespace CY.Minigame
         public float nozzleMoveDistance = 50f;
         public float nozzleMoveDuration = 0.2f;
 
-        private bool isPressing = false;
-        private bool isFailed = false;
-
         private Color originalGaugeColor = Color.green;
 
         private Vector2 nozzleIdlePos;
@@ -45,8 +42,8 @@ namespace CY.Minigame
 
             fuelButtonRect.gameObject.SetActive(isOperator);
             assigneeText.text = isOperator
-                ? "Assignee : You"
-                : "Assignee : OtherPlayer";
+                ? "<담당자>"
+                : "<관전자>";
         }
 
         public void FadeInGameTexts()
@@ -80,11 +77,17 @@ namespace CY.Minigame
 
                 fuelButtonRect.DOKill();
                 fuelButtonRect.DOScale(Vector3.one * 0.9f, 0.1f);
+                
+                // [소리] 주유 루프음 시작
+                CY.Vehicle.SoundManager.Instance?.StartFuelLoopSound();
             }
             else if (isPressed == false && isCurrentlyPressed)
             {
                 isCurrentlyPressed = false;
                 RetractNozzleButton();
+                
+                // [소리] 주유 루프음 멈춤
+                CY.Vehicle.SoundManager.Instance?.StopFuelLoopSound();
             }
         }
 
@@ -96,18 +99,22 @@ namespace CY.Minigame
         public void ApplyCompleted()
         {
             RetractNozzleButton();
-            ShowResultText("Success!", Color.green);
+            
+            ShowResultText("미션 성공!", Color.green);
         }
 
         public void ApplyAborted()
         {
             RetractNozzleButton();
-            ShowResultText("Pause", Color.gray);
+            ShowResultText("중지", Color.gray);
         }
 
         public void ResetView()
         {
             StopAllCoroutines();
+            
+            // [소리] 뷰 리셋 시 주유음 정지
+            CY.Vehicle.SoundManager.Instance?.StopFuelLoopSound();
             
             gaugeFill.color = originalGaugeColor;
             gaugeFill.fillAmount = 0f;
@@ -135,9 +142,14 @@ namespace CY.Minigame
 
         private IEnumerator FailRoutine()
         {
+            // 실패 시점에 강제로 눌림 상태 해제 및 소리 정지
+            isCurrentlyPressed = false;
+            RetractNozzleButton();
+            CY.Vehicle.SoundManager.Instance?.StopFuelLoopSound();
+            
             gaugeFill.color = Color.red;
 
-            ShowResultText("Fail!", Color.red);
+            ShowResultText("실패!", Color.red);
             
             yield return new WaitForSeconds(0.5f);
 
@@ -158,7 +170,5 @@ namespace CY.Minigame
             resultText.transform.localScale = Vector3.zero;
             resultText.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.OutBack);
         }
-
-
     }
 }

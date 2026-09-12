@@ -13,14 +13,22 @@ namespace CY.Vehicle
     [RequireComponent(typeof(VehicleController))]
     public class VehicleDamage : MonoBehaviour
     {
+        public static event Action OnMiddleCrash;
+        public static event Action OnHardCrash;
+        public event Action Destroyed;
+        
         [Header("내구도")] [SerializeField] private float maxDurability = 100f;
+        [Header("충돌 데미지")] 
+        [SerializeField] private float ignoreSpeed = 3f;                   
+        [SerializeField] private float hardCrashSpeedThreshold = 10f;       
+        [SerializeField] private float damagePerSpeed = 4f;
+        [Tooltip("완전히 부서졌을 때의 감속. 클수록 빨리 선다")]
+        [SerializeField] private float wreckLinearDamping = 3f;
+        [Tooltip("한 번 깎인 뒤 이 시간 동안은 다시 안 깎인다")]
+        [SerializeField] private float damageCooldown = 0.5f;
 
-        [Header("충돌 데미지")] [SerializeField] private float ignoreSpeed = 3f; // 이 속도 미만 충돌은 무시
-        [SerializeField] private float damagePerSpeed = 4f; // 초과 속도 1당 데미지
-
-        [Header("속도 페널티 (3단계)")] [SerializeField, Range(0f, 1f)]
-        private float damagedThreshold = 0.4f;
-
+        [Header("속도 페널티 (3단계)")] 
+        [SerializeField, Range(0f, 1f)] private float damagedThreshold = 0.4f;
         [SerializeField, Range(0f, 1f)] private float severeThreshold = 0.2f;
         [SerializeField, Range(0f, 1f)] private float damagedMultiplier = 0.6f;
         [SerializeField, Range(0f, 1f)] private float severeMultiplier = 0.3f;
@@ -33,13 +41,46 @@ namespace CY.Vehicle
         public bool IsDestroyed => durability <= 0f;
 
         private float durability;
+        private float nextDamageAt;
         private VehicleController controller;
         private RoundManager roundManager;
+        private Rigidbody2D body;
+        private float baseLinearDamping;
 
         private void Awake()
         {
             controller = GetComponent<VehicleController>();
+            body = GetComponent<Rigidbody2D>();
+            baseLinearDamping = body.linearDamping;
             ResetDurability();
+        }
+        
+        // [추가] 인게임에서 차가 켜질 때 네트워크 구독
+        private void OnEnable()
+        {
+            if (NetworkSession.Instance != null)
+                NetworkSession.Instance.MessageReceived += OnNetworkMessageReceived;
+        }
+
+        // [추가] 차가 꺼질 때 네트워크 구독 해제
+        private void OnDisable()
+        {
+            if (NetworkSession.Instance != null)
+                NetworkSession.Instance.MessageReceived -= OnNetworkMessageReceived;
+        }
+
+        // [추가] 비호스트 클라이언트가 충돌 패킷을 받아서 자기 차에서 소리 이벤트를 발생시킴
+        private void OnNetworkMessageReceived(string type, string json)
+        {
+            if (Session.IsHost) return;
+
+            if (type == "vehicle_crash")
+            {
+                if (json.Contains("\"isHard\":true") || json.Contains("\"isHard\": true"))
+                    OnHardCrash?.Invoke();
+                else
+                    OnMiddleCrash?.Invoke();
+            }
         }
 
         public void Bind(RoundManager manager) => roundManager = manager;
@@ -47,18 +88,33 @@ namespace CY.Vehicle
         public void ResetDurability()
         {
             durability = maxDurability;
+            controller.SetInputEnabled(true);
+            body.linearDamping = baseLinearDamping;
             ApplySpeedPenalty();
             onDurabilityChanged.Invoke(DurabilityRatio);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!Session.IsHost) return;
             if (IsDestroyed) return;
-
-            // 충돌 직전의 상대 속도. 벽은 정지해 있으므로 사실상 차의 속도
+    
             float impactSpeed = collision.relativeVelocity.magnitude;
             if (impactSpeed < ignoreSpeed) return;
+            // 잘게 쪼개진 콜라이더를 연달아 스쳐도 한 번만 친다
+            if (Time.time < nextDamageAt) return;
+            nextDamageAt = Time.time + damageCooldown;
+    
+            bool isHard = impactSpeed >= hardCrashSpeedThreshold;
+
+            if (isHard) OnHardCrash?.Invoke();
+            else OnMiddleCrash?.Invoke();
+ 
+            // 데미지 처리 및 네트워크 송신은 호스트만
+            if (!Session.IsHost) return;
+
+            // 호스트가 비호스트들에게 충돌 발생 알림
+            _ = NetworkSession.Instance?.SendAsync
+                (new { type = "vehicle_crash", isHard = isHard });
 
             float damage = (impactSpeed - ignoreSpeed) * damagePerSpeed;
             durability = Mathf.Max(0f, durability - damage);
@@ -66,11 +122,11 @@ namespace CY.Vehicle
             ApplySpeedPenalty();
             onDurabilityChanged.Invoke(DurabilityRatio);
 
-            Debug.Log($"[Damage] 충돌 속도 {impactSpeed:0.#} → 데미지 {damage:0.#} / 내구도 {durability:0.#}", this);
-
             if (IsDestroyed)
             {
-                Debug.Log("[Damage] 차량 파괴 — 라운드 실패", this);
+                controller.SetInputEnabled(false);
+                body.linearDamping = wreckLinearDamping; // 감속
+                Destroyed?.Invoke();
                 roundManager?.FailRound();
             }
         }
@@ -78,12 +134,7 @@ namespace CY.Vehicle
         private void ApplySpeedPenalty()
         {
             float ratio = DurabilityRatio;
-
-            float multiplier =
-                ratio > damagedThreshold ? 1f : // 1단계는 페널티 없음
-                ratio > severeThreshold ? damagedMultiplier :
-                severeMultiplier;
-
+            float multiplier = ratio > damagedThreshold ? 1f : ratio > severeThreshold ? damagedMultiplier : severeMultiplier;
             controller.SetSpeedMultiplier(multiplier);
         }
     }

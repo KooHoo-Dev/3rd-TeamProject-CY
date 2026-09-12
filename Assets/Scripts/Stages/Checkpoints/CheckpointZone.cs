@@ -24,7 +24,7 @@ namespace CY.Stages
 
         private BoxCollider2D zone;
         private Rigidbody2D vehicleBody;
-        private IVehicleInputSource vehicleInput;
+        private VehicleController vehicleController;
         private BoxCollider2D vehicleBox;
         private bool completed; // 이미 완료한 미션은 다시 진행 못함
         private VehicleController lockedVehicle;
@@ -47,11 +47,11 @@ namespace CY.Stages
             Rigidbody2D body = other.attachedRigidbody;
             if (body == null) return;
 
-            IVehicleInputSource input = body.GetComponent<IVehicleInputSource>();
-            if (input == null) return;
+            VehicleController controller = body.GetComponent<VehicleController>();
+            if (controller == null) return;
 
             vehicleBody = body;
-            vehicleInput = input;
+            vehicleController = controller;
             vehicleBox = body.GetComponent<BoxCollider2D>();
         }
 
@@ -60,7 +60,7 @@ namespace CY.Stages
             if (other.attachedRigidbody == vehicleBody)
             {
                 vehicleBody = null;
-                vehicleInput = null;
+                vehicleController = null;
                 vehicleBox = null;
             }
         }
@@ -70,7 +70,7 @@ namespace CY.Stages
             if (!Session.IsHost) return;
             if (completed) return;
             if (vehicleBody == null) return;
-            if (vehicleInput.Read().CurrentGear != Gear.N) return;
+            if (vehicleController.LastInput.CurrentGear != Gear.N) return;
             if (vehicleBody.linearVelocity.magnitude > stopSpeedThreshold) return;
             if (!IsFullyInside()) return;
 
@@ -104,6 +104,21 @@ namespace CY.Stages
         {
             Vector2 world = vehicleBox.transform.TransformPoint(localCorner);
             return zone.OverlapPoint(world);
+        }
+
+        public void ResetZone()
+        {
+            completed = false;
+
+            vehicleBody = null;
+            vehicleController = null;
+            vehicleBox = null;
+
+            if (lockedVehicle != null)
+            {
+                lockedVehicle.SetInputEnabled(true);
+                lockedVehicle = null;
+            }
         }
 
         [ContextMenu("미션 완료 (테스트)")]

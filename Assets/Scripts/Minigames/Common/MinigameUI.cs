@@ -19,9 +19,10 @@ namespace CY.Minigame
         
         public event Action OnGameStartRequested;
 
-        private Vector2 visiblePosition;
-        [SerializeField] private RectTransform currentMiniGamePanel;
-        [SerializeField] private GameObject currentExplanationPanel;
+        private Vector2[] visiblePositions;
+        private int currentPanelIndex;
+        private RectTransform currentMiniGamePanel;
+        private GameObject currentExplanationPanel;
         
         private bool isOperator;
         public bool IsOperator { get; set; }
@@ -34,10 +35,11 @@ namespace CY.Minigame
 
         private void Start()
         {
-            visiblePosition = Vector2.zero; 
+            visiblePositions = new Vector2[minigamePanel.Length];
             
             for (int i = 0; i < minigamePanel.Length; i++)
             {
+                visiblePositions[i] = minigamePanel[i].anchoredPosition;
                 minigamePanel[i].anchoredPosition = GetHiddenPosition(minigamePanel[i]);
             }
 
@@ -46,15 +48,15 @@ namespace CY.Minigame
                 explanationPanel[i].SetActive(false);
             }
             
+            currentPanelIndex = 0;
             currentMiniGamePanel = minigamePanel[0];
             currentExplanationPanel = explanationPanel[0];
         }
 
         private Vector2 GetHiddenPosition(RectTransform panel)
         {
-            return new Vector2(panel.rect.width + 10f, 0f);
+            return new Vector2(panel.rect.width + 10f, panel.anchoredPosition.y);
         }
-        
         
         public void SetCurrentMiniGameType(string missionType)
         {
@@ -74,13 +76,14 @@ namespace CY.Minigame
 
         private void UpdateCurrentPanels(int missionTypeIdx)
         {
+            currentPanelIndex = missionTypeIdx;
             currentMiniGamePanel = minigamePanel[missionTypeIdx];
             currentExplanationPanel = explanationPanel[missionTypeIdx];
         }
         
         public void ShowMinigameUI()
         {
-            currentMiniGamePanel.DOAnchorPos(visiblePosition, slideDuration).SetEase(Ease.OutQuad)
+            currentMiniGamePanel.DOAnchorPos(visiblePositions[currentPanelIndex],slideDuration, snapping: true).SetEase(Ease.OutQuad)
                 .OnComplete(() => StartCoroutine(ShowExplanationRoutine())); 
         }
     
@@ -103,12 +106,16 @@ namespace CY.Minigame
         
         public void OnGameStartButtonClicked()
         {
+            // 미니게임 설명창의 '게임 시작' 버튼을 누르면 소리가 난다
+            CY.Vehicle.SoundManager.Instance?.PlayUIClick();
+            
             if (explanationPanel != null) currentExplanationPanel.SetActive(false);
         }
     
         public void HideMinigameUI()
         {
-            currentMiniGamePanel.DOAnchorPos(GetHiddenPosition(currentMiniGamePanel), slideDuration).SetEase(Ease.InQuad);
+            currentMiniGamePanel.DOAnchorPos(GetHiddenPosition(currentMiniGamePanel), slideDuration , snapping: true)
+                .SetEase(Ease.InQuad);
         }
     }
 }

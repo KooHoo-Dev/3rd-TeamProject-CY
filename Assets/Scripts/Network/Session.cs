@@ -6,20 +6,19 @@ namespace CY.Network
     public static class Session
     {
         public static bool IsHost { get; private set; } = true;
-        public static bool HasAssignedRole { get; private set; }
-        public static VehicleRole MyRole { get; private set; } = VehicleRole.Handle;
+        public static VehicleRole MyRole { get; private set; } = VehicleRole.None;
+        
+        public static bool HasAssignedRole => MyRole != VehicleRole.None;
 
         public static void Apply(bool isHost, VehicleRole role)
         {
             IsHost = isHost;
             MyRole = role;
-            HasAssignedRole = true;
         }
 
         public static void ClearRole()
         {
             IsHost = false;
-            HasAssignedRole = false;
             MyRole = VehicleRole.None;
         }
     }

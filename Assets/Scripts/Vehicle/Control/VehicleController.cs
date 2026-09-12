@@ -1,4 +1,3 @@
-using CY.Network;
 using UnityEngine;
 
 namespace CY.Vehicle
@@ -23,38 +22,78 @@ namespace CY.Vehicle
         private float sideFriction = 0.9f;
 
         private Rigidbody2D rb;
-        private VehicleSyncManager vehicleSync;
 
         private bool inputEnabled = true;
         private float speedMultiplier = 1f;
+        
+        private float slipGrip = 1f;
+        private float slipUntil;
 
         public void SetInputEnabled(bool value) => inputEnabled = value;
         public void SetSpeedMultiplier(float value) => speedMultiplier = Mathf.Clamp01(value);
+        
+        // HUD 표시용
+        public VehicleInput LastInput { get; private set; }
+        public float MaxSpeed => maxSpeed;
+        public float SpeedRatio =>
+            rb != null ? Mathf.Clamp01(rb.linearVelocity.magnitude / maxSpeed) : 0f;
+        
+        private IVehicleInputSource inputSource;
+        public void SetInputSource(IVehicleInputSource source) => inputSource = source;
+        
+        /// <summary>잠시 옆으로 미끄러지기 쉽게 만든다. ObstacleAI 에게 밀려날 때 빠져나갈 수 있다.</summary>
+        public void ApplySlip(float grip, float duration)
+        {
+            slipGrip = Mathf.Clamp01(grip);
+            slipUntil = Mathf.Max(slipUntil, Time.time + duration); // 연달아 불렸을 때 나중 것이 앞의 시간을 잘라먹지 않게 하기 위해 Max로
+        }
+        private Vector2 lastPosition;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
-            vehicleSync = GetComponent<VehicleSyncManager>();
-
-            if (vehicleSync == null)
-                Debug.LogError($"{name}: vehicleSync가 붙어있지 않습니다.", this);
+            lastPosition = transform.position;
+        }
+        
+        // 비호스트(클라이언트)는 여기서 속도를 계산해야 부드럽게 이어집니다
+        private void Update()
+        {
+            if (rb != null && rb.simulated == false)
+            {
+                float clientSpeed = ((Vector2)transform.position - lastPosition).magnitude / Time.deltaTime;
+                CY.Vehicle.SoundManager.Instance?.UpdateVehicleSpeed(clientSpeed);
+                lastPosition = transform.position;
+            }
         }
 
         private void FixedUpdate()
         {
-            if (Session.IsHost == false) return;
-            if (vehicleSync == null) return;
+            if (inputSource == null) return;
+            
+            // 모두가 조작을 읽어옵니다.
+            VehicleInput input = inputEnabled ? inputSource.Read() : default;
+            LastInput = input;
+            
+            // 모두가 이벤트를 쏩니다 (미니게임 멈춤 현상 완벽 해결)
+            VehicleSoundEvents.Raise(input);
+            
+            if (rb.simulated)
+            {
+                // 호스트는 기존처럼 물리 엔진의 정확한 속도를 사용합니다.
+                CY.Vehicle.SoundManager.Instance?.UpdateVehicleSpeed(rb.linearVelocity.magnitude);
+                lastPosition = transform.position; 
+            }
 
-            VehicleInput input = inputEnabled ? vehicleSync.ReadMergedInput() : default;
-
+            // 비호스트(클라이언트)는 물리 연산을 하지 않고 여기서 안전하게 퇴근
+            if (rb.simulated == false) return; 
+            
             ApplyEngine(input);
             ApplyBrake(input);
             ApplySteering(input);
             KillSideVelocity();
             ClampSpeed(input);
-            
-            vehicleSync.PublishVehicleState(rb);
         }
+        
 
         private void ApplyEngine(VehicleInput input)
         {
@@ -94,8 +133,12 @@ namespace CY.Vehicle
 
             float f = Vector2.Dot(rb.linearVelocity, forward);
             float s = Vector2.Dot(rb.linearVelocity, right);
+            
+            // 밀려나는 중이면 접지력을 낮춰서 옆으로 흐를 수 있게 한다
+            float scale = Time.time < slipUntil ? slipGrip : 1f;
+            float friction = sideFriction * scale;
 
-            rb.linearVelocity = forward * f + right * (s * (1f - sideFriction));
+            rb.linearVelocity = forward * f + right * (s * (1f - friction));
         }
 
         private void ClampSpeed(VehicleInput input)

@@ -6,13 +6,14 @@ namespace CY.Vehicle
     {
         private readonly VehicleInput[] byRole = new VehicleInput[4];
 
-        /// <summary>한 역할의 최신 입력을 갱신한다. 갱신되지 않은 역할은 직전 값을 유지한다.</summary>
         public void Set(VehicleRole role, VehicleInput input)
         {
-            byRole[(int)role] = input;
+            int index = (int)role;
+            if (index < 0 || index >= byRole.Length) return;
+            
+            byRole[index] = input;
         }
 
-        /// <summary>각 역할이 담당하는 필드만 뽑아 하나로 합친다.</summary>
         public VehicleInput Merge()
         {
             return new VehicleInput

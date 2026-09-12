@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "scenarioId": "intro",
+  "groups": [
+    {
+      "id": "opening",
+      "lines": [
+        {
+          "id": "opening_001",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "야, 차량 담당 아직 안 왔어?"
+        },
+        {
+          "id": "opening_002",
+          "characterId": "sharp",
+          "positionId": "left2",
+          "text": "찾는 데 오래걸리나보지! <delay>그만 좀 찡찡대!"
+        },
+        {
+          "id": "opening_003",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "오기로 한 시간이 한참 지났잖아. <delay>갑자기 마음 바꿔서 자수라도 했으면 어떡할건데!"
+        },
+        {
+          "id": "opening_004",
+          "characterId": "sharp",
+          "positionId": "left2",
+          "text": "애도 아니고 알아서 잘 하겠지. <delay>넌 이리 와서 계획이나 다시 봐."
+        },
+        {
+          "id": "opening_005",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "이미 백 번은 봤어. <delay>지금은 차가 없는 게 문제지."
+        },
+        {
+          "id": "opening_006",
+          "characterId": "sharp",
+          "positionId": "left2",
+          "text": "그럼 네가 나가서 구해오든가."
+        },
+        {
+          "id": "opening_007",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "내가 왜—"
+        },
+        {
+          "id": "opening_008",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "나 왔다……"
+        },
+        {
+          "id": "opening_009",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "왜 이제와! <delay>차는? <delay>제대로 구한거야?"
+        },
+        {
+          "id": "opening_010",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "잠깐, <delay>그거… 차가 왜 그래?"
+        },
+        {
+          "id": "opening_011",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "작동엔 문제 없어."
+        },
+        {
+          "id": "opening_012",
+          "characterId": "sharp",
+          "positionId": "left2",
+          "text": "차가 왜 이렇게 낡았어… 안에서 냄새 날 거 같아."
+        },
+        {
+          "id": "opening_013",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "그 정돈 아니야."
+        },
+        {
+          "id": "opening_014",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "운전석은? 뭔데 저게. <delay>왜 네 개야?"
+        },
+        {
+          "id": "opening_015",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "협동 운전 시스템."
+        },
+        {
+          "id": "opening_016",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "협동… 뭐?"
+        },
+        {
+          "id": "opening_017",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "핸들, 엑셀, 브레이크, 기어. 네 명이 하나씩 조작하는 방식이야."
+        },
+        {
+          "id": "opening_018",
+          "characterId": "sharp",
+          "positionId": "left2",
+          "text": "그게 무슨 소리야?"
+        },
+        {
+          "id": "opening_019",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "네 명이 맞춰서 조작해야 한다는 소리지."
+        },
+        {
+          "id": "opening_020",
+          "characterId": "leader",
+          "positionId": "left",
+          "shake": true,
+          "text": "<size=150%>누가 이딴 차로 도망을 가!</size>"
+        },
+        {
+          "id": "opening_021",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "그럼 나보고 어쩌라고!"
+        },
+        {
+          "id": "opening_022",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "고작 50만원 주고 도주 차량을 구해오라는 너가 이상한 거잖아!"
+        },
+        {
+          "id": "opening_023",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "아니, 그건 그렇긴 하지만—"
+        },
+        {
+          "id": "opening_024",
+          "characterId": "sharp",
+          "positionId": "left2",
+          "text": "그럴 줄 알았다. <delay>차 구할 돈도 없으면서 시작하자고 했냐?"
+        },
+        {
+          "id": "opening_025",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "중고차 사이트를 몇 개를 뒤졌는지 알아? <delay>“급매”, “무사고”, “범죄용”까지 검색했어!"
+        },
+        {
+          "id": "opening_026",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "범죄용은 뭔데?! 꼬리잡히고 싶어서 환장했어?"
+        },
+        {
+          "id": "opening_027",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "도저히 안 나오니까 넣었지!"
+        },
+        {
+          "id": "opening_028",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "겨우 찾은 게 이거야. <delay>“대학 동아리 차량 개조 프로젝트” 작품이라고 했고, 작동이 되는 건 확인했어."
+        },
+        {
+          "id": "opening_029",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "그리고 에어컨도 돼."
+        },
+        {
+          "id": "opening_030",
+          "characterId": "sharp",
+          "positionId": "left2",
+          "text": "지금 그게 중요해?"
+        },
+        {
+          "id": "opening_031",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "여름이잖아!"
+        },
+        {
+          "id": "opening_032",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "…진짜 이걸로 도망쳐야한다고?"
+        },
+        {
+          "id": "opening_033",
+          "characterId": "sharp",
+          "positionId": "left2",
+          "text": "3일 안에 익숙해져야지 뭐. <delay>다른 방법 있어?"
+        },
+        {
+          "id": "opening_034",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "직진만?"
+        },
+        {
+          "id": "opening_035",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "연습하면 돼. <delay>넷이 호흡만 맞으면 직진은 할 수 있어."
+        },
+        {
+          "id": "opening_036",
+          "characterId": "driver",
+          "positionId": "right",
+          "text": "브레이크 담당이 정신 차리면 멈출 수도 있겠지."
+        },
+        {
+          "id": "opening_037",
+          "characterId": "sharp",
+          "positionId": "left2",
+          "text": "아주 희망차네."
+        },
+        {
+          "id": "opening_038",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "젠장. 다시 구할 돈도 없고… 어떡하지?"
+        },
+        {
+          "id": "opening_039",
+          "characterId": "silent",
+          "positionId": "center",
+          "text": "가자."
+        },
+        {
+          "id": "opening_040",
+          "characterId": "leader",
+          "positionId": "left",
+          "text": "어딜?! <delay>여태 한 마디도 안 하고 있다가 갑자기 뭐야!"
+        },
+        {
+          "id": "opening_041",
+          "characterId": "silent",
+          "positionId": "center",
+          "text": "연습하러."
+        }
+      ]
+    }
+  ]
+}

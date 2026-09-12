@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Text;
@@ -17,7 +18,7 @@ namespace CY.Network
     {
         [Header("서버")]
         // 웹소켓 주소. http 가 아니라 ws로 시작.
-        [SerializeField] private string url = "ws://localhost:5000/room";
+        [SerializeField] private string url = "ws://34.50.63.204:5001/room";
         
          private string nickName = "";
          private string roomCode = "ABCD";
@@ -31,11 +32,25 @@ namespace CY.Network
              && socket.State == WebSocketState.Open 
              && Me != null;
          
+         public int CurrentSceneVersion { get; private set; }
+         
          private ClientWebSocket socket;
          private readonly SemaphoreSlim sendLock = new SemaphoreSlim(1, 1);
+         private readonly object stateSendGate = new object();
+         private readonly Dictionary<string, string> latestStateMessages = new Dictionary<string, string>();
+         private readonly ConcurrentQueue<ReceivedMessage> eventMessages = new();
+         private readonly ConcurrentDictionary<string, string> latestReceivedStates = new();
+         private struct ReceivedMessage
+         {
+             public string Type;
+             public string Json;
+         }
+         private bool stateSendLoopRunning;
+         private float sendTimeoutSeconds = 2f;
          
          private readonly Dictionary<String, User> participants = new Dictionary<string, User>();
          public IReadOnlyDictionary<String, User> Participants => participants;
+         
          public event Action<string, string> MessageReceived;
 
          protected override void OnInitialize()
@@ -76,6 +91,7 @@ namespace CY.Network
              Debug.Log($"[방] {full} 에 접속.  : {nickName}");
              await SendAsync(new HelloMessage { NickName = nickName });
              await ReceiveLoopAsync();
+             await UniTask.SwitchToMainThread();
 
              Debug.LogWarning($"[방] 수신 루프 종료. socket={socket?.State}, me={Me?.Id ?? "null"}");
              
@@ -86,18 +102,23 @@ namespace CY.Network
 
          private async UniTask ReceiveLoopAsync()
          {
-             byte[] buffer = new byte[4096];
+             ClientWebSocket receivingSocket = socket;
+             if (receivingSocket == null) return;
+             
+             CancellationToken token = destroyCancellationToken;
+             
+             byte[] buffer = new byte[4096 * 4];
              StringBuilder builder = new StringBuilder();
 
-             while (socket.State == WebSocketState.Open)
+             while (receivingSocket.State == WebSocketState.Open)
              {
                  WebSocketReceiveResult result;
 
                  try
                  {
-                     result = await socket
-                         .ReceiveAsync(new ArraySegment<byte>(buffer), destroyCancellationToken)
-                         .AsUniTask();
+                     result = await receivingSocket
+                         .ReceiveAsync(new ArraySegment<byte>(buffer), token)
+                         .ConfigureAwait(false);
                  }
                  catch (OperationCanceledException)
                  {
@@ -106,6 +127,10 @@ namespace CY.Network
                  catch (WebSocketException)
                  {
                      Debug.LogWarning("[방] 연결이 끊겼다");
+                     return;
+                 }
+                 catch (ObjectDisposedException)
+                 {
                      return;
                  }
                  
@@ -118,10 +143,98 @@ namespace CY.Network
                  string json = builder.ToString();
                  builder.Clear();
 
-                 Handle(json);
+                 QueueReceivedMessage(json);
+             }
+         }
+         
+         private void QueueReceivedMessage(string json)
+         {
+             TypeOnly header = JsonConvert.DeserializeObject<TypeOnly>(json);
+
+             if (header == null || string.IsNullOrEmpty(header.Type))
+                 return;
+
+             string stateKey = GetReceivedStateKey(header.Type, json);
+
+             if (stateKey != null)
+             {
+                 latestReceivedStates[stateKey] = json;
+                 return;
+             }
+
+             eventMessages.Enqueue(new ReceivedMessage
+             {
+                 Type = header.Type,
+                 Json = json
+             });
+         }
+
+         private static string GetReceivedStateKey(string type, string json)
+         {
+             switch (type)
+             {
+                 case "vehicle_input":
+                 {
+                     VehicleInputMessage message =
+                         JsonConvert.DeserializeObject<VehicleInputMessage>(json);
+
+                     return $"vehicle_input:{message.UserId}";
+                 }
+
+                 case "vehicle_state":
+                     return "vehicle_state";
+
+                 case "round_state":
+                     return "round_state";
+
+                 case "traffic_state":
+                     return "traffic_state";
+
+                 case "state":
+                     return "state";
+
+                 case "fuel_state":
+                     return "fuel_state";
+
+                 case "barricade_progress":
+                     return "barricade_progress";
+
+                 case "license_plate_drag":
+                 {
+                     LicensePlateDragMessage message =
+                         JsonConvert.DeserializeObject<LicensePlateDragMessage>(json);
+
+                     return $"license_plate_drag:{message.IsOldPlate}";
+                 }
+
+                 default:
+                     return null;
              }
          }
 
+         private void Update()
+         {
+             while (eventMessages.TryDequeue(out ReceivedMessage message))
+             {
+                 if (message.Type == "scene_change")
+                 {
+                     latestReceivedStates.Clear();
+                     Handle(message.Json);
+                     return;
+                 }
+
+                 Handle(message.Json);
+             }
+
+             foreach (string stateKey in latestReceivedStates.Keys)
+             {
+                 if (latestReceivedStates.TryRemove(stateKey, out string json))
+                 {
+                     Handle(json);
+                 }
+             }
+         }
+         
          private void Handle(string json)
          {
              string type = JsonConvert.DeserializeObject<TypeOnly>(json).Type;
@@ -164,7 +277,6 @@ namespace CY.Network
          private void OnSceneChange(SceneChangeMessage message)
          {
              if (message == null || string.IsNullOrEmpty(message.SceneName)) return;
-             
              if (IsConnected == false)
              {
                  Debug.LogWarning(
@@ -172,38 +284,130 @@ namespace CY.Network
                      $"socket={socket?.State}, me={Me?.Id ?? "null"}");
                  return;
              }
-             
              // Build Setting에 등록되지 않은 씬의 경우
              if (Application.CanStreamedLevelBeLoaded(message.SceneName) == false) return;
 
+             CurrentSceneVersion = message.SceneVersion;
              SceneManager.LoadScene(message.SceneName);
          }
 
-         public async UniTask SendAsync(object message)
+         public UniTask SendAsync(object message)
          {
-             if (socket == null || socket.State != WebSocketState.Open) return;
+             if (socket == null || socket.State != WebSocketState.Open) return UniTask.CompletedTask;
 
-             byte[] bytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
+             string json = JsonConvert.SerializeObject(message);
+             string stateKey = GetStateKey(message);
 
-             await sendLock.WaitAsync();
+             if (stateKey == null)
+                 return SendRawAsync(json);
+
+             QueueLatestState(stateKey, json);
+             return UniTask.CompletedTask;
+         }
+
+         private static string GetStateKey(object message)
+         {
+             return message switch
+             {
+                 MoveMessage => "move",
+                 VehicleInputMessage => "vehicle_input",
+                 VehicleStateMessage => "vehicle_state",
+                 TrafficStateMessage => "traffic_state",
+                 RoundStateMessage => "round_state",
+                 LicensePlateDragMessage drag => $"license_plate_drag:{drag.IsOldPlate}",
+                 _ => null
+             };
+         }
+
+         private void QueueLatestState(string stateKey, string json)
+         {
+             bool startLoop = false;
+
+             lock (stateSendGate)
+             {
+                 latestStateMessages[stateKey] = json;
+
+                 if (stateSendLoopRunning == false)
+                 {
+                     stateSendLoopRunning = true;
+                     startLoop = true;
+                 }
+             }
+
+             if (startLoop) SendLatestStatesAsync().Forget();
+         }
+
+         private async UniTaskVoid SendLatestStatesAsync()
+         {
+             while (true)
+             {
+                 List<string> messages;
+
+                 lock (stateSendGate)
+                 {
+                     if (latestStateMessages.Count == 0)
+                     {
+                         stateSendLoopRunning = false;
+                         return;
+                     }
+
+                     messages = new List<string>(latestStateMessages.Values);
+                     latestStateMessages.Clear();
+                 }
+
+                 foreach (string message in messages)
+                     await SendRawAsync(message);
+             }
+         }
+
+         private async UniTask SendRawAsync(string json)
+         {
+             ClientWebSocket sendingSocket = socket;
+
              
+             if (sendingSocket == null || sendingSocket.State != WebSocketState.Open) return;
+
+             byte[] bytes = Encoding.UTF8.GetBytes(json);
+             bool locked = false;
+
              try
              {
-                 await socket
-                     .SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, destroyCancellationToken)
-                     .AsUniTask();
+                 await sendLock.WaitAsync(destroyCancellationToken);
+                 locked = true;
+
+                 if (socket != sendingSocket || sendingSocket.State != WebSocketState.Open) return;
+
+                 // 게임 종료 토큰과 송신 시간 제한을 함께 사용한다.
+                 using CancellationTokenSource timeout =
+                     CancellationTokenSource.CreateLinkedTokenSource(destroyCancellationToken);
+                 
+                 timeout.CancelAfter(TimeSpan.FromSeconds(sendTimeoutSeconds));
+                 
+                 await sendingSocket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, timeout.Token);
              }
              catch (OperationCanceledException)
              {
-                 // 이 오브젝트가 사라졌다.
+                 // 게임 종료가 아닌 송신 타임아웃이면,
+                 // 이 WebSocket은 정상 동작하지 않는 것으로 보고 끊는다.
+                 if (!destroyCancellationToken.IsCancellationRequested)
+                 {
+                     Debug.LogWarning(
+                         $"[방] 송신 {sendTimeoutSeconds:0.#}초 초과. 연결을 재시작합니다.");
+
+                     sendingSocket.Abort();
+                 }
              }
              catch (WebSocketException)
              {
-                 // 보내는 순간 끊겼다. 듣는 쪽 루프가 알아서 빠져나온다.
+                 sendingSocket.Abort();
+             }
+             catch (ObjectDisposedException)
+             {
+                 // 세션이 정리되는 중이다.
              }
              finally
              {
-                 sendLock.Release();
+                 if (locked) sendLock.Release();
              }
          }
 
@@ -218,6 +422,9 @@ namespace CY.Network
          protected override void OnDispose()
          {
              base.OnDispose();
+             
+             socket?.Abort();
+             socket?.Dispose();
              socket = null;
          }
     }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8230711318777794247}
   - component: {fileID: 1816095486014640178}
   - component: {fileID: 5365187702399678965}
+  - component: {fileID: 796652030202746673}
   - component: {fileID: 3159230363147768910}
   - component: {fileID: 745939253515065187}
   m_Layer: 0
@@ -97,6 +98,18 @@ MonoBehaviour:
   onDurabilityChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &796652030202746673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460622424888676623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d5f87e9649804489058a7a98b4c74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Vehicle
 --- !u!50 &3159230363147768910
 Rigidbody2D:
   serializedVersion: 5

@@ -111,6 +111,9 @@ namespace CY.Minigame
         public void HandleFuelAttemptFailed()
         {
             if (!IsActive) return;
+            
+            // [소리] 주유 실패 음원 재생
+            CY.Vehicle.SoundManager.Instance?.PlayFuelFailSound();
 
             CanSendInput = IsOperator;
             view.ApplyAttemptFailed();
@@ -119,6 +122,9 @@ namespace CY.Minigame
         public void HandleFuelCompleted()
         {
             if (!IsActive || completedRoutine != null) return;
+            
+            // [소리] 주유 성공 음원 재생
+            CY.Vehicle.SoundManager.Instance?.PlayFuelSuccessSound();
 
             CanSendInput = false;
             view.ApplyCompleted();

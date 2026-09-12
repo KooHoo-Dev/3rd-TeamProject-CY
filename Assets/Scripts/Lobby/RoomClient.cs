@@ -15,7 +15,15 @@ namespace HelloServer
 
         [Header("보내기")]
         [SerializeField] private float sendPerSecond = 20f;
+        
+        [Header("캐릭터 에셋")]
+        [SerializeField] private Sprite[] characterSprites;
+            
+        [Header("로비 고정 배치")]
+        [SerializeField] private Transform[] lobbySlots;
 
+        private readonly Dictionary<string, int> slotByUserId = new Dictionary<string, int>();
+        
         private NetworkSession session;
         
         private readonly Dictionary<string, RemotePlayer> remotes = new Dictionary<string, RemotePlayer>();
@@ -66,25 +74,30 @@ namespace HelloServer
                 case "welcome": OnWelcome(JsonConvert.DeserializeObject<WelcomeMessage>(json)); break;
                 case "join": OnJoin(JsonConvert.DeserializeObject<JoinMessage>(json)); break;
                 case "leave": OnLeave(JsonConvert.DeserializeObject<LeaveMessage>(json)); break;
-                case "state": OnState(JsonConvert.DeserializeObject<StateMessage>(json)); break;
                 case "chat": OnChat(JsonConvert.DeserializeObject<ChatMessage>(json)); break;
             }
         }
 
         private void OnWelcome(WelcomeMessage message)
         {
-            localPlayer.Setup(Me, ColorOf(Me.Id));
+            localPlayer.Setup(Me);
+            localPlayer.CanMove = false;
 
             foreach (User user in message.Users)
             {
                 Spawn(user);
-                Debug.Log($"[방] {RoomCode} 에 들어왔다. 내 번호는 {Me.Id}, 이미 {message.Users.Length}명 있다");
             }
+
+            AssignInitialSlots();
+
+            Debug.Log($"[방] {RoomCode} 에 들어왔다. " + $"내 번호는 {Me.Id}, 이미 {message.Users.Length}명 있다");
         }
 
         private void OnJoin(JoinMessage message)
         {
             Spawn(message.User);
+            AssignNextSlot(message.User);
+            
             Debug.Log($"[방] {message.User.NickName}({message.User.Id}) 이(가) 들어왔다");
         }
 
@@ -93,23 +106,12 @@ namespace HelloServer
             if (remotes.TryGetValue(message.Id, out RemotePlayer remote) == false) return;
 
             remotes.Remove(message.Id);
+            slotByUserId.Remove(message.Id);
             Destroy(remote.gameObject);
 
             Debug.Log($"[방] {message.Id} 이(가) 나갔다");
         }
         
-        private void OnState(StateMessage message)
-        {
-            foreach (PlayerState state in message.States)
-            {
-                // 내 것은 버린다. 서버가 알려 준 내 위치로 나를 다시 옮기면 안 된다.
-                // 내가 방금 움직인 자리보다 늘 한 박자 늦은 값이라, 넣으면 캐릭터가 뒤로 끌린다.
-                if (state.Id == Me.Id) continue;
-                if (remotes.TryGetValue(state.Id, out RemotePlayer remote) == false) continue;
-                remote.SetTarget(new Vector2(state.X, state.Y));
-            }
-        }
-
         // 방에서 누가 말했다. 내 말도 여기로 돌아옴
         private void OnChat(ChatMessage message)
         {
@@ -128,7 +130,7 @@ namespace HelloServer
             if (remotes.ContainsKey(user.Id)) return;
 
             RemotePlayer remote = Instantiate(remotePrefab, Vector3.zero, Quaternion.identity);
-            remote.Setup(user, ColorOf(user.Id));
+            remote.Setup(user);
             remotes[user.Id] = remote;
         }
 
@@ -174,6 +176,57 @@ namespace HelloServer
 
             return Color.HSVToRGB(Mathf.Abs(hash % 360) / 360f, 0.65f, 0.95f);
         }
+        
+        private void AssignInitialSlots()
+        {
+            List<User> users = new List<User>(session.Participants.Values);
+
+            users.Sort((left, right) =>
+                GetJoinOrder(left.Id).CompareTo(GetJoinOrder(right.Id)));
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                slotByUserId[users[i].Id] = i;
+                ApplySlot(users[i]);
+            }
+        }
+
+        private void AssignNextSlot(User user)
+        {
+            int slotIndex = 0;
+
+            while (slotByUserId.ContainsValue(slotIndex))
+            {
+                slotIndex++;
+            }
+
+            slotByUserId[user.Id] = slotIndex;
+            ApplySlot(user);
+        }
+
+        private void ApplySlot(User user)
+        {
+            int slotIndex = slotByUserId[user.Id];
+            Sprite sprite = characterSprites[slotIndex];
+            Vector3 position = lobbySlots[slotIndex].position;
+
+            if (user.Id == Me.Id)
+            {
+                localPlayer.SetSprite(sprite);
+                localPlayer.transform.position = position;
+                return;
+            }
+
+            RemotePlayer remote = remotes[user.Id];
+            remote.SetSprite(sprite);
+            remote.SetPosition(position);
+        }
+
+        private static int GetJoinOrder(string userId)
+        {
+            return int.Parse(userId.Substring(1));
+        }
+        
 
     }
 }
